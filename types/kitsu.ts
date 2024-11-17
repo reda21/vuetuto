@@ -1,10 +1,10 @@
 export interface kitsuList {
-    data:  kitsu[];
+    data:  Kitsu[];
     meta:  WelcomeMeta;
     links: WelcomeLinks;
 }
 
-export interface kitsu {
+export interface Kitsu {
     id:            string;
     type:          string;
     links:         DatumLinks;
