@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  modules: ["@unocss/nuxt", "@pinia/nuxt"],
+  modules: ["@unocss/nuxt", "@pinia/nuxt", '@vueuse/nuxt', "nuxt-lodash"],
   devtools: { enabled: true },
   unocss: {
     nuxtLayers: true,
@@ -11,6 +11,9 @@ export default defineNuxtConfig({
   ],
   pinia: {
     storesDirs: ["./stores/**"],
+  },
+  devServer: {
+    port: 4000, // Changez le port ici
   },
   app: {
     head: {

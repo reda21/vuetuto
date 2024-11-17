@@ -14,6 +14,8 @@
     "@logto/next": "^3.7.1",
     "@pinia/nuxt": "^0.7.0",
     "@unocss/reset": "^0.64.0",
+    "@vueuse/core": "^11.2.0",
+    "@vueuse/nuxt": "^11.2.0",
     "json-server": "1.0.0-beta.3",
     "nuxt": "^3.14.159",
     "pinia": "^2.2.6",
@@ -23,6 +25,7 @@
   "packageManager": "pnpm@9.1.2+sha512.127dc83b9ea10c32be65d22a8efb4a65fb952e8fefbdfded39bdc3c97efc32d31b48b00420df2c1187ace28c921c902f0cb5a134a4d032b8b5295cbfa2c681e2",
   "devDependencies": {
     "@unocss/nuxt": "^0.64.0",
+    "nuxt-lodash": "^2.5.3",
     "unocss": "^0.64.0"
   }
 }

@@ -1,10 +1,10 @@
-export interface AnimeList {
-    data:  Anime[];
+export interface kitsuList {
+    data:  kitsu[];
     meta:  WelcomeMeta;
     links: WelcomeLinks;
 }
 
-export interface Anime {
+export interface kitsu {
     id:            string;
     type:          string;
     links:         DatumLinks;
