@@ -1,4 +1,3 @@
-import { Titles } from "./../types/kitsu";
 import { defineStore } from "pinia";
 import type { KitsuState, kitsuList } from "@/types/kitsuStore";
 import {
@@ -21,7 +20,48 @@ export const useAnimeStore = defineStore("animeStore", {
     sortBy: "popularity",
   }),
   actions: {
-    async fetchContents(type?: "anime" | "manga") {
+    async fetchContents() {
+      if (this.loading) return;
+
+      try {
+        this.loading = true; // Démarre le chargement
+        this.error = null;
+        const offset = this.currentPage * 20;
+        const sort =
+          this.sortBy === "rating" ? "-average_rating" : "-user_count";
+        const params = {
+          "page[limit]": this.limiteParPage,
+          "page[offset]": offset,
+          "filter[text]": this.searchQuery ?? null, // this.searchQuery
+          sort,
+        };
+
+        const { data, meta, links } =
+          await animeRepository.getAllWithPagination({
+            "page[limit]": this.limiteParPage,
+            "page[offset]": offset,
+            "filter[text]": this.searchQuery ?? null, // this.searchQuery
+            sort,
+          });
+
+        console.info("data", data);
+        if (this.currentPage === 0) {
+          this.items = data;
+        } else {
+          this.items = [...this.items, ...data];
+        }
+        this.currentPage++;
+      } finally {
+        this.loading = false; // Arrête le chargement
+      }
+    },
+  },
+});
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/*
+ async fetchContents(type?: "anime" | "manga") {
       if (this.loading) return;
 
       try {
@@ -43,24 +83,11 @@ export const useAnimeStore = defineStore("animeStore", {
         } else {
           this.items = [...this.items, ...data];
         }
-        this.currentPage++
+        this.currentPage++;
       } catch (error) {
         this.error = "hello";
       } finally {
         this.loading = false;
       }
     },
-    async tester() {
-      const {
-        data: animes,
-        meta,
-        links,
-      } = await animeRepository.getAllWithPagination({
-        "page[limit]": 5,
-        "page[offset]": 5,
-        sort: "-user_count",
-      });
-      console.log("animes", animes);
-    },
-  },
-});
+*/

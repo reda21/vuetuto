@@ -1,7 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <slot />
+    <div class="container mx-auto py-4 px-4 md:px-0">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -9,6 +11,4 @@
 
 </script>
 
-<style>
-
-</style>
+<style></style>
