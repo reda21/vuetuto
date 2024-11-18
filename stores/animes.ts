@@ -1,5 +1,10 @@
+import { Titles } from './../types/kitsu';
 import { defineStore } from 'pinia';
 import type { KitsuState, kitsuList } from "@/types/kitsuStore";
+import { RepositoryFactory, AnimeRepository } from "@@/repositories/repositoryFactory"
+import { Title } from '../.nuxt/components';
+
+const animeRepository = RepositoryFactory.get<AnimeRepository>("anime")
 
 
 export const useAnimeStore = defineStore('animeStore', { // Ajout de l'ID du store
@@ -7,7 +12,7 @@ export const useAnimeStore = defineStore('animeStore', { // Ajout de l'ID du sto
         items: [],
         loading: false,
         error: null,
-        currentPage: 1,
+        currentPage: 0,
         limiteParPage : 20,
         searchQuery: "",
         sortBy: "popularity",
@@ -18,10 +23,9 @@ export const useAnimeStore = defineStore('animeStore', { // Ajout de l'ID du sto
 
             try {
                 this.loading = true
-                const sort = this.sortBy === 'rating' ? '-average_rating' : '-user_count'
-                const url = `https://kitsu.io/api/edge/anime?page[limit]=${this.limiteParPage}&sort=${sort}`
-                const response = await $fetch<kitsuList>(url)
-                const {data, meta, links} = response;
+                const offset = this.currentPage * 20
+                const sort = this.sortBy === 'rating' ? '-average_rating' : '-user_count'                
+                const {data, meta, links} = await animeRepository.getAllWithPagination({'page[limit]': this.limiteParPage, 'page[offset]': offset, sort});
                 this.items = data;
                 this.error = null
             } catch (error) {
@@ -29,6 +33,10 @@ export const useAnimeStore = defineStore('animeStore', { // Ajout de l'ID du sto
             } finally {
                 this.loading = false
             }
+        },
+        async tester () {
+            const {data: animes, meta, links} = await animeRepository.getAllWithPagination({'page[limit]': 5, 'page[offset]': 5, sort: '-user_count'})
+            console.log("animes", animes)
         }
     },
 });
