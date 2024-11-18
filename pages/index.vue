@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen gap-4">
+  <div class="dark:bg-gray-800 flex flex-col items-center justify-center min-h-screen gap-4">
     <h1 class="text-2xl font-bold">Compteur Nuxt</h1>
     <div class="flex items-center gap-4">
       <button @click="store.decrement"
