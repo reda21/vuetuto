@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vueuse/nuxt",
     "nuxt-lodash",
+    '@nuxt/test-utils/module'
   ],
   plugins: ['~/plugins/iconify.ts'],
   devtools: { enabled: true },

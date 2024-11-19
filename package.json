@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "api": "json-server --watch db.json --port 3030"
+    "api": "json-server --watch db.json --port 3030",
+    "test": "vitest"
   },
   "dependencies": {
     "@iconify/vue": "^4.1.2",
@@ -25,8 +26,13 @@
   },
   "packageManager": "pnpm@9.1.2+sha512.127dc83b9ea10c32be65d22a8efb4a65fb952e8fefbdfded39bdc3c97efc32d31b48b00420df2c1187ace28c921c902f0cb5a134a4d032b8b5295cbfa2c681e2",
   "devDependencies": {
+    "@nuxt/test-utils": "^3.14.4",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^15.11.6",
     "nuxt-lodash": "^2.5.3",
-    "unocss": "^0.64.0"
+    "playwright-core": "^1.49.0",
+    "unocss": "^0.64.0",
+    "vitest": "^2.1.5"
   }
 }
