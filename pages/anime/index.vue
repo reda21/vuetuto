@@ -2,12 +2,13 @@
   <div class="container mx-auto my-5">
     <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
       Anime
-    </h1>   
+    </h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-    
-      
+
+
     </div>
-    <pre>{{ store.items.length }}</pre>
+    <p @click="fetchData">{{ error?.message ?? "sucess" }} - {{ status }}</p>
+    <pre>{{ data }}</pre>
   </div>
 </template>
 
@@ -16,18 +17,25 @@ import type { kitsuList } from "@/types/kitsu"
 
 // Initialisation du store
 const store = useAnimeStore();
-const { data } = await useFetch<kitsuList>(
-      "https://kitsu.io/api/edge/anime?page%5Bnumber%5D=1&page%5Bsize%5D=10"
-    );
-
+const { data, refresh, status, error } = await useFetch<kitsuList>(
+  "https://kitsu.io/api/edge/anime?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+  {
+    immediate: false, // La requête ne sera pas exécutée automatiquement
+  }
+)
+const fetchData = async () => {
+  await refresh() // Exécute la requête à ce moment-là
+}
 console.info("data", data.value?.data)
-if(data.value?.data) store.loadItems(data.value?.data)
+if (data.value?.data) store.loadItems(data.value?.data)
 
-  
+const recharger = async () => await refresh();
+
+
 //await store.fetchContents();
 
 
-//<AnimeItem v-for="item in store.items.all()" :key="item.id" :content="item" />
+//<AnimeItem v-for="item in store.items.all()" :key="item.id" :con tent="item" />
 
 
 /*
@@ -38,7 +46,7 @@ if(data.value?.data) store.loadItems(data.value?.data)
 
 // Déclencher tester() correctement
 onMounted(async () => {
-  
+
 });
 </script>
 
