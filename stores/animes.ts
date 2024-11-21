@@ -1,23 +1,26 @@
 import { defineStore } from "pinia";
 import { Anime } from "@/data/animes";
-import { Kitsu } from "@/types/kitsu"
-
+import type { Kitsu, KitsuState } from "@/types/kitsuStore";
 
 const animeInstance = new Anime();
 
 export const useAnimeStore = defineStore("anime", {
-  state: () => ({
+  state: (): KitsuState => ({
+    items: [],
     loading: false,
-    items: animeInstance.all(), // Utilise les données brutes ici
     error: null,
-    currentPage: 1,
+    currentPage: 0,
+    limiteParPage: 20,
+    searchQuery: "",
+    sortBy: "popularity",
   }),
   actions: {
     loadItems(newItems: Kitsu[]) {
       animeInstance.set(newItems); // Mets à jour les données dans l'instance Anime
       this.items = animeInstance.all(); // Mets à jour le state avec les données brutes
     },
+    addItem() {
+      
+    },
   },
 });
-
-

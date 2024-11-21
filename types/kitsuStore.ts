@@ -1,7 +1,7 @@
-import type { kitsu, kitsuList } from "./kitsu";
+import type { Kitsu , kitsuList } from "./kitsu";
 
 export interface KitsuState {
-  items: kitsu[];
+  items: Kitsu[];
   loading: boolean;
   error: string | null;
   currentPage: number;
@@ -10,4 +10,4 @@ export interface KitsuState {
   sortBy: "popularity" | "rating";
 }
 
-export type { kitsu, kitsuList }
+export type { Kitsu, kitsuList }
