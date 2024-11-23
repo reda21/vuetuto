@@ -15,12 +15,54 @@ export const useAnimeStore = defineStore("anime", {
     sortBy: "popularity",
   }),
   actions: {
-    loadItems(newItems: Kitsu[]) {
-      animeInstance.set(newItems); // Mets à jour les données dans l'instance Anime
-      this.items = animeInstance.all(); // Mets à jour le state avec les données brutes
+    loadAnimes(newItems: Kitsu[]) {
+       newItems.forEach((item) => this.addAnime(item));
     },
-    addItem() {
-      
+    addAnime(anime: Kitsu) {
+      const index = this.getIndexAnimeById(anime.id);
+      if (index !== null) {
+        this.items[index] = anime;
+      } else {
+        this.items.push(anime);
+      }
     },
+    removeAnime(id: number) {
+      this.items = this.items.filter((item) => item.id !== id);
+    },
+    updateItem(updatedAnime: Kitsu) {
+      const index = this.getIndexAnimeById(updatedAnime.id);
+      if (index !== null) {
+        this.items[index] = updatedAnime;
+      }
+    },
+    findAnimes(id: number): Kitsu | null {
+      return this.getAnimeById(id) ?? null;
+    },
+    clearStore() {
+      this.items = [];
+    },
+  },
+  getters: {
+    getIndexAnimeById: (state: KitsuState) => (id: number) => {
+      const index = state.items.findIndex((item) => item.id === id);
+      return index !== -1 ? index : null;
+    },
+    isAnimeInStore: (state: KitsuState) => (id: number) =>
+      state.items.some((item) => item.id === id),
+    getAnimeById: (state: KitsuState) => (id: number) =>
+      state.items.find((item) => item.id === id),
+    getAnimeByIndex: (state: KitsuState) => (index: number) =>
+      state.items[index],
+    getAnimeByTitle: (state: KitsuState) => (title: string) =>
+      state.items.find((item) =>
+        item.attributes.canonicalTitle
+          .toLowerCase()
+          .includes(title.toLowerCase())
+      ),
+    getAnimeBySlug: (state: KitsuState) => (slug: string) =>
+      state.items.find((item) => item.attributes.slug === slug),
+    getAnimeByGenre: (state: KitsuState) => (genre: string) =>
+      state.items.filter((item) => item.attributes.showType === genre),
+    count: (state: KitsuState): number => state.items.length,
   },
 });

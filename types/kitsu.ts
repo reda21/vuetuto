@@ -5,7 +5,7 @@ export interface kitsuList {
 }
 
 export interface Kitsu {
-    id:            string;
+    id:            number;
     type:          string;
     links:         DatumLinks;
     attributes:    Attributes;

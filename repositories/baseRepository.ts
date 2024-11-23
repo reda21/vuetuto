@@ -8,7 +8,7 @@ export default class BaseRepository<T> {
   }
 
   async getAll(params: Record<string, any> = {}): Promise<T[]> {
-    return await $fetch<T[]>(this.resource, { params });
+    return await $fetch<T[]>(this.resource, { params });    
   }
 
   async getById(id: string | number): Promise<Data<T>> {
