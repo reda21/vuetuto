@@ -9,12 +9,14 @@ const animeRepository = RepositoryFactory.get<AnimeRepository>("anime");
 export const useAnimeStore = defineStore("anime", {
   state: (): KitsuState => ({
     items: [],
+    countAllItem: 0,
+    totalPages: 0,
     loading: true,
     error: null,
-    currentPage: 0,
-    limiteParPage: 20,
+    currentPage: 1,
+    limiteParPage: 18,
     searchQuery: "",
-    sortBy: "popularity",
+    sortBy: "-episodeCount",
   }),
   actions: {
     loadAnimes(newItems: Kitsu[]) {
@@ -46,9 +48,20 @@ export const useAnimeStore = defineStore("anime", {
     async fetchContents() {
       try {
         this.loading = true;
-        const {data: animes} = await animeRepository.fetchContents();
-        this.loadAnimes(animes)
+        this.clearStore();
+        const { data: animes, meta } = await animeRepository.fetchContents({
+          number: this.currentPage,
+          size: this.limiteParPage,
+          sort: this.sortBy,
+          filter: this.searchQuery,
+        });
+        this.loadAnimes(animes);
+        this.countAllItem = meta.count;
+        this.totalPages = Math.ceil(this.countAllItem / this.limiteParPage);
       } catch (error) {
+        this.error =
+          error instanceof Error ? error.message : "Failed to fetch contents";
+        console.error("Error fetching contents:", error);
       } finally {
         this.loading = false;
       }

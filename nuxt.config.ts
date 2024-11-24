@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module'
   ],
   plugins: ['~/plugins/iconify.ts'],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: [
     // "@unocss/reset/tailwind.css", // Importez les styles de réinitialisation de Tailwind CSS
   ],
