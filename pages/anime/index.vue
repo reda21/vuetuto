@@ -3,21 +3,20 @@
     <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
       Anime {{ date }} - {{ texte }}
     </h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-
-
-    </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
+    ></div>
     <p @click="fetchData">{{ error?.message ?? "sucess" }} - {{ status }}</p>
     <pre>{{ data }}</pre>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { kitsuList } from "@/types/kitsu"
+import type { kitsuList } from "@/types/kitsu";
 
-//data 
-const date = formatDate(new Date().toISOString())
-const texte = Collection.tester()
+//data
+const date = formatDate(new Date().toISOString());
+const texte = Collection.tester();
 
 // Initialisation du store
 const store = useAnimeStore();
@@ -26,21 +25,18 @@ const { data, refresh, status, error } = await useFetch<kitsuList>(
   {
     immediate: false, // La requête ne sera pas exécutée automatiquement
   }
-)
+);
 const fetchData = async () => {
-  await refresh() // Exécute la requête à ce moment-là
-}
-console.info("data", data.value?.data)
-if (data.value?.data) store.loadItems(data.value?.data)
+  await refresh(); // Exécute la requête à ce moment-là
+};
+console.info("data", data.value?.data);
+if (data.value?.data) store.loadItems(data.value?.data);
 
 const recharger = async () => await refresh();
 
-
 //await store.fetchContents();
 
-
 //<AnimeItem v-for="item in store.items.all()" :key="item.id" :con tent="item" />
-
 
 /*
 <div v-if="store.loading" class="flex justify-center my-8">
@@ -49,11 +45,8 @@ const recharger = async () => await refresh();
 */
 
 // Déclencher tester() correctement
-onMounted(async () => {
-
-});
+onMounted(async () => {});
 </script>
-
 
 <style scoped>
 /* Styles personnalisés si nécessaire */

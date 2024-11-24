@@ -1,20 +1,34 @@
 <template>
   <div>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia id excepturi temporibus culpa ut ducimus libero
-      voluptates provident cumque repellat delectus, odit tenetur. Cupiditate quidem obcaecati dolor nostrum sint
-      blanditiis!</p>
+    <p class="text-gray-900 dark:text-white">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia id
+      excepturi temporibus culpa ut ducimus libero voluptates provident cumque
+      repellat delectus, odit tenetur. Cupiditate quidem obcaecati dolor nostrum
+      sint blanditiis!
+    </p>
   </div>
-  <pre>
-    {{ response.meta }}
-  </pre>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
+  >
+    <AnimeItem v-for="anime in store.items" key="anime.id" :content="anime" />
+  </div>
+  <Loader v-if="store.loading" />
 </template>
 
 <script lang="ts" setup>
-import { AnimeRepository, RepositoryFactory } from "@/repositories/repositoryFactory"
+import { useAnimeStore } from "@/stores/animes"
+import type { Kitsu } from "@/types/kitsu";
 
-const anime = RepositoryFactory.get<AnimeRepository>('anime')
 
-const response = await anime.getAllWithPagination();
+//store
+const store = useAnimeStore()
+await store.fetchContents()
+
+
+
+
+
+
 
 
 

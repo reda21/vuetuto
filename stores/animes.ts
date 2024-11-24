@@ -1,13 +1,15 @@
 import { defineStore } from "pinia";
-import { Anime } from "@/data/animes";
 import type { Kitsu, KitsuState } from "@/types/kitsuStore";
-
-const animeInstance = new Anime();
+import {
+  AnimeRepository,
+  RepositoryFactory,
+} from "@/repositories/repositoryFactory";
+const animeRepository = RepositoryFactory.get<AnimeRepository>("anime");
 
 export const useAnimeStore = defineStore("anime", {
   state: (): KitsuState => ({
     items: [],
-    loading: false,
+    loading: true,
     error: null,
     currentPage: 0,
     limiteParPage: 20,
@@ -16,7 +18,7 @@ export const useAnimeStore = defineStore("anime", {
   }),
   actions: {
     loadAnimes(newItems: Kitsu[]) {
-       newItems.forEach((item) => this.addAnime(item));
+      newItems.forEach((item) => this.addAnime(item));
     },
     addAnime(anime: Kitsu) {
       const index = this.getIndexAnimeById(anime.id);
@@ -40,6 +42,16 @@ export const useAnimeStore = defineStore("anime", {
     },
     clearStore() {
       this.items = [];
+    },
+    async fetchContents() {
+      try {
+        this.loading = true;
+        const {data: animes} = await animeRepository.fetchContents();
+        this.loadAnimes(animes)
+      } catch (error) {
+      } finally {
+        this.loading = false;
+      }
     },
   },
   getters: {

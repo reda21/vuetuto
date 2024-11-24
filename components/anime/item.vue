@@ -32,10 +32,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { kitsu } from "~/types/kitsu";
+import type { Kitsu } from "~/types/kitsu";
 
 const props = defineProps<{
-  content: kitsu;
+  content: Kitsu;
 }>();
 
 const formatRating = (rating: string) => {
