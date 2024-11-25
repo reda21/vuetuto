@@ -66,6 +66,9 @@ export const useAnimeStore = defineStore("anime", {
         this.loading = false;
       }
     },
+    async fetchMoreContents(){
+      
+    }
   },
   getters: {
     getIndexAnimeById: (state: KitsuState) => (id: number) => {
