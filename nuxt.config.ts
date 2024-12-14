@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 import {ConfigApp} from "./configs/app"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
