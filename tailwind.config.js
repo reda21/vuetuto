@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  content: [],
-  darkMode: 'class',
+  content: [
+    './components/**/*.{vue,js}', // Tous les fichiers dans le dossier components
+    './layouts/**/*.vue',        // Tous les layouts
+    './pages/**/*.vue',          // Toutes les pages
+    './plugins/**/*.{js,ts}',    // Tous les plugins
+    './nuxt.config.{js,ts}',     // Fichier de configuration de Nuxt
+  ],
+  darkMode: 'class', // ou 'media'
   theme: {
     extend: {
       colors: {
@@ -17,9 +23,9 @@ export default {
           700: '#0369a1',
           800: '#075985',
           900: '#0c4a6e',
-        }
-      }
-    }
+        },
+      },
+    },
   },
-  plugins: []
-} 
+  plugins: [],
+};
