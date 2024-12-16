@@ -22,6 +22,7 @@
     "json-server": "1.0.0-beta.3",
     "nuxt": "^3.14.159",
     "pinia": "^2.2.6",
+    "socket.io-client": "^4.8.1",
     "vue": "latest",
     "vue-router": "latest"
   },
