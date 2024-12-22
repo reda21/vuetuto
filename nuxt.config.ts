@@ -1,6 +1,5 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
-import {ConfigApp} from "./configs/app"
+import { defineNuxtConfig } from 'nuxt/config';
+import { ConfigApp } from './configs/app';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -26,7 +25,7 @@ export default defineNuxtConfig({
     }
   },
   plugins: ["~/plugins/iconify.ts"],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   css: [
     // "@unocss/reset/tailwind.css", // Importez les styles de réinitialisation de Tailwind CSS
   ],
@@ -36,11 +35,11 @@ export default defineNuxtConfig({
   devServer: {
     port: 4000, // Changez le port ici
   },
-  ... ConfigApp,
+  ...ConfigApp,
   runtimeConfig: {
     public: {
       laravelToken: process.env.LARAVEL_TOKEN ?? "hello",
-      tester: process.env.TESTER ?? "alpha"
-    }
-  }
+      tester: process.env.TESTER ?? "alpha",
+    },
+  },
 });

@@ -14,6 +14,9 @@ importers:
       '@logto/next':
         specifier: ^3.7.1
         version: 3.7.1(next@13.5.7(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      '@material-tailwind/html':
+        specifier: ^2.3.2
+        version: 2.3.2
       '@pinia/nuxt':
         specifier: ^0.7.0
         version: 0.7.0(magicast@0.3.5)(rollup@4.28.1)(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
@@ -756,6 +759,9 @@ packages:
     resolution: {integrity: sha512-nhSMNprz3WmeRvd8iUs5JqkKr0Ncx46JtPxM3AhXes84XpSJfmIwKeWXRpsr53S7kqPkQfPhzrMFUxSNb23qSA==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@material-tailwind/html@2.3.2':
+    resolution: {integrity: sha512-wtK5DaKfw0KC6M2gPmx0TO/IvVXqOz536pxcoAvV4InQ+eLP77gFiQu3btJYjkgkwBtECSDDhFSWekqAsUuG1Q==}
 
   '@netlify/functions@2.8.2':
     resolution: {integrity: sha512-DeoAQh8LuNPvBE4qsKlezjKj0PyXDryOFJfJKo3Z1qZLKzQ21sT314KQKPVjfvw6knqijj+IO+0kHXy/TJiqNA==}
@@ -2822,6 +2828,9 @@ packages:
   map-obj@4.3.0:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
     engines: {node: '>=8'}
+
+  material-ripple-effects@2.0.1:
+    resolution: {integrity: sha512-hHlUkZAuXbP94lu02VgrPidbZ3hBtgXBtjlwR8APNqOIgDZMV8MCIcsclL8FmGJQHvnORyvoQgC965vPsiyXLQ==}
 
   mdn-data@2.0.28:
     resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
@@ -4981,6 +4990,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@material-tailwind/html@2.3.2':
+    dependencies:
+      deepmerge: 4.3.1
+      material-ripple-effects: 2.0.1
 
   '@netlify/functions@2.8.2':
     dependencies:
@@ -7413,6 +7427,8 @@ snapshots:
       source-map-js: 1.2.1
 
   map-obj@4.3.0: {}
+
+  material-ripple-effects@2.0.1: {}
 
   mdn-data@2.0.28: {}
 

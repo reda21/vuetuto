@@ -7,6 +7,12 @@ export const ConfigApp  = {
             { name: "viewport", content: "width=device-width, initial-scale=1.0" },
             { charset: "UTF-8" },
           ],
+          script: [
+            {
+              async: true,
+              src: "/js/ripple.js", // Chemin local
+            },
+          ],
           htmlAttrs: {
            // class: "dark",
           },

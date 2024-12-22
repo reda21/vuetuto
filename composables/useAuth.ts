@@ -1,4 +1,4 @@
-export const useAuth = () => {
+export const useAuth2 = () => {
 
         return []
 }
