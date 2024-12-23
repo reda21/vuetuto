@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from "nuxt/config";
-
 import { ConfigApp } from "./configs/app";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -19,7 +18,10 @@ export default defineNuxtConfig({
       theme: "none",
     },
   },
-  css: ['@/assets/styles/tailwind.css'],
+  css: [
+    '@/assets/styles/tailwind.css',
+    'primeicons/primeicons.css'
+  ],
   postcss: {
     plugins: {
       'postcss-import': {},
@@ -40,7 +42,7 @@ export default defineNuxtConfig({
     },
   },
   plugins: ["~/plugins/iconify.ts"],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   pinia: {
     storesDirs: ["./stores/**"],
   },

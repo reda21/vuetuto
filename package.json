@@ -26,6 +26,7 @@
     "next-auth": "~4.21.1",
     "nuxt": "^3.14.159",
     "pinia": "^2.2.6",
+    "primeicons": "^7.0.0",
     "primevue": "^4.2.5",
     "socket.io-client": "^4.8.1",
     "tailwindcss-primeui": "^0.3.4",
