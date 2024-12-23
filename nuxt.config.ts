@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       theme: "none",
     },
   },
-  css: ['@/assets/styles/tailwind.css', '@/assets/styles/base.css'],
+  css: ['@/assets/styles/tailwind.css'],
   postcss: {
     plugins: {
       'postcss-import': {},
