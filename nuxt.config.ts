@@ -1,6 +1,6 @@
-import { defineNuxtConfig } from 'nuxt/config'
+import { defineNuxtConfig } from "nuxt/config";
 
-import {ConfigApp} from "./configs/app"
+import { ConfigApp } from "./configs/app";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -12,35 +12,46 @@ export default defineNuxtConfig({
     "nuxt-lodash",
     "@nuxt/test-utils/module",
     "@sidebase/nuxt-auth",
+    "@primevue/nuxt-module",
   ],
+  primevue: {
+    options: {
+      theme: "none",
+    },
+  },
+  css: ['@/assets/styles/tailwind.css', '@/assets/styles/base.css'],
+  postcss: {
+    plugins: {
+      'postcss-import': {},
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   auth: {
-    baseURL: '/api/auth',
+    baseURL: "/api/auth",
     provider: {
-      type: 'local',
+      type: "local",
       endpoints: {
-        signIn: { path: '/login', method: 'post' },
-        signOut: { path: '/logout', method: 'post' },
-        signUp: { path: '/register', method: 'post' },
-        getSession: { path: '/session', method: 'get' },
-      }
-    }
+        signIn: { path: "/login", method: "post" },
+        signOut: { path: "/logout", method: "post" },
+        signUp: { path: "/register", method: "post" },
+        getSession: { path: "/session", method: "get" },
+      },
+    },
   },
   plugins: ["~/plugins/iconify.ts"],
   devtools: { enabled: false },
-  css: [
-    // "@unocss/reset/tailwind.css", // Importez les styles de réinitialisation de Tailwind CSS
-  ],
   pinia: {
     storesDirs: ["./stores/**"],
   },
   devServer: {
     port: 4000, // Changez le port ici
   },
-  ... ConfigApp,
+  ...ConfigApp,
   runtimeConfig: {
     public: {
       laravelToken: process.env.LARAVEL_TOKEN ?? "hello",
-      tester: process.env.TESTER ?? "alpha"
-    }
-  }
+      tester: process.env.TESTER ?? "alpha",
+    },
+  },
 });
