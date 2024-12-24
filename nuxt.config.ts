@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config";
 import { ConfigApp } from "./configs/app";
+import { ConfigCss } from "./configs/primevue";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -13,23 +14,7 @@ export default defineNuxtConfig({
     "@sidebase/nuxt-auth",
     "@primevue/nuxt-module",
   ],
-  primevue: {
-    options: {
-      theme: "none",
-      ripple: true,
-    },
-    components: {
-      include: ["Button"]
-    },
-  },
-  css: ["@/assets/styles/tailwind.css", "primeicons/primeicons.css"],
-  postcss: {
-    plugins: {
-      "postcss-import": {},
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
+  ... ConfigCss,
   auth: {
     baseURL: "/api/auth",
     provider: {
@@ -42,7 +27,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  plugins: ["~/plugins/iconify.ts"],
+  plugins: ["~/plugins/iconify.ts", "~/plugins/primevue.ts"],
   devtools: { enabled: true },
   pinia: {
     storesDirs: ["./stores/**"],

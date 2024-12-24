@@ -13,7 +13,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        
+        twitter: '#1DA1F2', // Couleur principale
+        'twitter-dark': '#1A91DA', // Couleur au survol
+        'twitter-light': '#ADD8F7', // Couleur pour focus
       },
     },
   },
