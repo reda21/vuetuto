@@ -16,15 +16,16 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       theme: "none",
+      ripple: true,
+    },
+    components: {
+      include: ["Button"]
     },
   },
-  css: [
-    '@/assets/styles/tailwind.css',
-    'primeicons/primeicons.css'
-  ],
+  css: ["@/assets/styles/tailwind.css", "primeicons/primeicons.css"],
   postcss: {
     plugins: {
-      'postcss-import': {},
+      "postcss-import": {},
       tailwindcss: {},
       autoprefixer: {},
     },
