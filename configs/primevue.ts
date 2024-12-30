@@ -5,7 +5,7 @@ export const ConfigCss = {
       ripple: true,
     },
     components: {
-      include: ["Button", "Drawer"],
+      include: ["Button", "Drawer", "Menu"],
     },
   },
   css: ["@/assets/styles/tailwind.css", "primeicons/primeicons.css"],
