@@ -11,11 +11,12 @@
         :initialValues="initialValues"
         :resolver="resolver"
         @submit="onFormSubmit"
-        class="flex flex-col gap-4 w-full sm:w-1/2"
+        class="flex flex-col gap-2 w-full sm:w-1/2"
       >
-        {{ $form }}
-        <div class="flex flex-col gap-1">
+        <Form-control :form="$form">
           <InputText name="username" type="text" placeholder="Username" fluid />
+        </Form-control>        
+        <div class="flex flex-col gap-1">
           <Message
             v-if="$form.username?.invalid"
             severity="error"
