@@ -5,7 +5,15 @@ export const ConfigCss = {
       ripple: true,
     },
     components: {
-      include: ["Button", "Drawer", "Menu", "AutoComplete", "Form", "Toast", "CascadeSelect"],
+      include: [
+        "Button",
+        "Drawer",
+        "Menu",
+        "AutoComplete",
+        "Form",
+        "Toast",
+        "CascadeSelect",
+      ],
     },
   },
   css: ["@/assets/styles/tailwind.css", "primeicons/primeicons.css"],

@@ -9,6 +9,4 @@
 const { status, signIn } = useAuth();
 </script>
 
-<style>
-
-</style>
+<style></style>

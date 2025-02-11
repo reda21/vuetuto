@@ -9,5 +9,4 @@ export const RepositoryFactory = {
   get: <T>(name: keyof typeof repositories): T => repositories[name] as T,
 };
 
-
-export {AnimeRepository}
+export { AnimeRepository };

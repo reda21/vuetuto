@@ -9,12 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import Knob from 'primevue/knob'
-import Button from 'primevue/button';
+import Knob from "primevue/knob";
+import Button from "primevue/button";
 
-const value = ref(0)
-
-
+const value = ref(0);
 </script>
 
 <style></style>

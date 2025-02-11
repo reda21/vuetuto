@@ -132,15 +132,15 @@ describe("User class tests", () => {
     expect(user.find(3)).toEqual(newUser);
   });
 
-  it('should update a user', () => {
-    user.update(1, { username: 'UpdatedJohn' });
+  it("should update a user", () => {
+    user.update(1, { username: "UpdatedJohn" });
     const updatedUser = user.find(1);
 
     expect(updatedUser).not.toBeNull();
-    expect(updatedUser?.username).toBe('UpdatedJohn');
+    expect(updatedUser?.username).toBe("UpdatedJohn");
   });
 
-  it('should delete a user by ID', () => {
+  it("should delete a user by ID", () => {
     const deleted = user.delete(1);
 
     expect(deleted).toBe(true);
@@ -148,63 +148,69 @@ describe("User class tests", () => {
     expect(user.count()).toBe(1);
   });
 
-  it('should find a user by username', () => {
-    const foundUser = user.findBy('username', 'JaneDoe');
+  it("should find a user by username", () => {
+    const foundUser = user.findBy("username", "JaneDoe");
 
     expect(foundUser).not.toBeNull();
-    expect(foundUser?.email).toBe('jane@example.com');
+    expect(foundUser?.email).toBe("jane@example.com");
   });
 
-  it('should return all usernames using pluckUsername', () => {
+  it("should return all usernames using pluckUsername", () => {
     const usernames = user.pluckUsername();
 
-    expect(usernames).toEqual(['JohnDoe', 'JaneDoe']);
+    expect(usernames).toEqual(["JohnDoe", "JaneDoe"]);
   });
-  
-  it('should return the first user', () => {
+
+  it("should return the first user", () => {
     const firstUser = user.first();
 
     expect(firstUser).not.toBeNull();
-    expect(firstUser?.username).toBe('JohnDoe');
+    expect(firstUser?.username).toBe("JohnDoe");
   });
 
-  it('should return the last user', () => {
+  it("should return the last user", () => {
     const lastUser = user.last();
 
     expect(lastUser).not.toBeNull();
-    expect(lastUser?.username).toBe('JaneDoe');
-  });  
+    expect(lastUser?.username).toBe("JaneDoe");
+  });
 
-  it('should clear all users', () => {
+  it("should clear all users", () => {
     user.clear();
 
     expect(user.count()).toBe(0);
     expect(user.all()).toEqual([]);
   });
 
-  it('should handle addOrUpdate: update existing user', () => {
-    user.addOrUpdate({ id: 1, username: 'JohnUpdated', email: 'john@example.com', role: 'user', createdAt: new Date() });
+  it("should handle addOrUpdate: update existing user", () => {
+    user.addOrUpdate({
+      id: 1,
+      username: "JohnUpdated",
+      email: "john@example.com",
+      role: "user",
+      createdAt: new Date(),
+    });
 
     const updatedUser = user.find(1);
     expect(updatedUser).not.toBeNull();
-    expect(updatedUser?.username).toBe('JohnUpdated');
-    expect(user.count()).toBe(2)
+    expect(updatedUser?.username).toBe("JohnUpdated");
+    expect(user.count()).toBe(2);
   });
 
-  it('should handle addOrUpdate: update an lot of users', () => {
-    expect(user.count()).toBe(2)
+  it("should handle addOrUpdate: update an lot of users", () => {
+    expect(user.count()).toBe(2);
     user.set(users);
-    expect(user.count()).toBe(10)
-    expect(user.find(2)).toEqual(users[1])
-    expect(user.find(2)?.username).toEqual("admin1")
-  })
+    expect(user.count()).toBe(10);
+    expect(user.find(2)).toEqual(users[1]);
+    expect(user.find(2)?.username).toEqual("admin1");
+  });
 
-  it('should handle addOrUpdate: add new user', () => {
+  it("should handle addOrUpdate: add new user", () => {
     const newUser: UserType = {
       id: 3,
-      username: 'NewUser',
-      email: 'newuser@example.com',
-      role: 'user',
+      username: "NewUser",
+      email: "newuser@example.com",
+      role: "user",
       createdAt: new Date(),
     };
 

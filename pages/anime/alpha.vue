@@ -5,16 +5,27 @@
     </header>
     <div class="container-2xl mx-auto p-4">
       <div class="flex gap-1 justify-center my-[1.25rem]">
-        <input class="w-1/2 p-2 text-base border border-gray-300 rounded" v-model="searchQuery" type="text"
-          placeholder="Search for anime or manga..." @keyup.enter="resetPagination" />
-        <button @click="toggleView"
-          class="px-5 py-2 text-base text-white bg-blue-700 rounded cursor-pointer hover:bg-blue-800 transition-colors duration-300">
+        <input
+          class="w-1/2 p-2 text-base border border-gray-300 rounded"
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search for anime or manga..."
+          @keyup.enter="resetPagination"
+        />
+        <button
+          @click="toggleView"
+          class="px-5 py-2 text-base text-white bg-blue-700 rounded cursor-pointer hover:bg-blue-800 transition-colors duration-300"
+        >
           Toggle Anime/Manga
         </button>
       </div>
       <div class="content-grid">
-        <div v-for="item in filteredContent" :key="item.id" class="content-card">
-          <img :src="item.image" :alt="item.title" width="200" height="280">
+        <div
+          v-for="item in filteredContent"
+          :key="item.id"
+          class="content-card"
+        >
+          <img :src="item.image" :alt="item.title" width="200" height="280" />
           <div class="content-info">
             <div class="content-title">{{ item.title }}</div>
             <div class="content-rating">★ {{ item.rating.toFixed(1) }}</div>
@@ -39,20 +50,80 @@ const searchQuery = ref("");
 let nextId = 1;
 const contentData = ref(
   [
-    { title: "Attack on Titan", rating: 9.0, image: "https://cdn.myanimelist.net/images/anime/10/47347.jpg", type: "Anime" },
-    { title: "Death Note", rating: 8.6, image: "https://cdn.myanimelist.net/images/anime/9/9453.jpg", type: "Anime" },
-    { title: "Fullmetal Alchemist: Brotherhood", rating: 9.1, image: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg", type: "Anime" },
-    { title: "One Punch Man", rating: 8.5, image: "https://cdn.myanimelist.net/images/anime/12/76049.jpg", type: "Anime" },
-    { title: "My Hero Academia", rating: 8.3, image: "https://cdn.myanimelist.net/images/anime/10/78745.jpg", type: "Anime" },
-    { title: "Steins;Gate", rating: 9.1, image: "https://cdn.myanimelist.net/images/anime/5/73199.jpg", type: "Anime" },
-    { title: "Demon Slayer", rating: 8.5, image: "https://cdn.myanimelist.net/images/anime/1286/99889.jpg", type: "Anime" },
-    { title: "Tokyo Ghoul", rating: 7.8, image: "https://cdn.myanimelist.net/images/anime/5/64449.jpg", type: "Anime" },
-    { title: "Sword Art Online", rating: 7.2, image: "https://cdn.myanimelist.net/images/anime/11/39717.jpg", type: "Anime" },
-    { title: "Naruto", rating: 7.9, image: "https://cdn.myanimelist.net/images/anime/13/17405.jpg", type: "Anime" },
-    { title: "One Piece", rating: 8.6, image: "https://cdn.myanimelist.net/images/anime/6/73245.jpg", type: "Anime" },
-    { title: "Dragon Ball Z", rating: 8.1, image: "https://cdn.myanimelist.net/images/anime/7/75199.jpg", type: "Anime" },
+    {
+      title: "Attack on Titan",
+      rating: 9.0,
+      image: "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Death Note",
+      rating: 8.6,
+      image: "https://cdn.myanimelist.net/images/anime/9/9453.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Fullmetal Alchemist: Brotherhood",
+      rating: 9.1,
+      image: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg",
+      type: "Anime",
+    },
+    {
+      title: "One Punch Man",
+      rating: 8.5,
+      image: "https://cdn.myanimelist.net/images/anime/12/76049.jpg",
+      type: "Anime",
+    },
+    {
+      title: "My Hero Academia",
+      rating: 8.3,
+      image: "https://cdn.myanimelist.net/images/anime/10/78745.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Steins;Gate",
+      rating: 9.1,
+      image: "https://cdn.myanimelist.net/images/anime/5/73199.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Demon Slayer",
+      rating: 8.5,
+      image: "https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Tokyo Ghoul",
+      rating: 7.8,
+      image: "https://cdn.myanimelist.net/images/anime/5/64449.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Sword Art Online",
+      rating: 7.2,
+      image: "https://cdn.myanimelist.net/images/anime/11/39717.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Naruto",
+      rating: 7.9,
+      image: "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
+      type: "Anime",
+    },
+    {
+      title: "One Piece",
+      rating: 8.6,
+      image: "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
+      type: "Anime",
+    },
+    {
+      title: "Dragon Ball Z",
+      rating: 8.1,
+      image: "https://cdn.myanimelist.net/images/anime/7/75199.jpg",
+      type: "Anime",
+    },
     // Autres données...
-  ].map((item) => ({ ...item, id: nextId++ }))
+  ].map((item) => ({ ...item, id: nextId++ })),
 );
 
 // Génère une copie avec des IDs incrémentés
@@ -70,7 +141,7 @@ const filteredContent = computed(() => {
     .filter(
       (item) =>
         item.type === currentView.value &&
-        item.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+        item.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
     )
     .slice(0, currentPage.value * itemsPerPage);
 });
@@ -126,7 +197,9 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .content-card:hover {

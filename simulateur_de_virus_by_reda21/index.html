@@ -1,0 +1,114 @@
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur de Virus</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="main-menu" class="main-menu">
+    <h1>Simulateur de Virus</h1>
+    <div class="menu-buttons">
+      <button id="mobile-mode">Mode Mobile</button>
+      <button id="computer-mode">Mode Ordinateur</button>
+    </div>
+  </div>
+
+  <div id="game-container" class="game-container hidden">
+    <div class="world-map"></div>
+    <div class="controls">
+      <div class="news-ticker">
+        <h2>Actualités Mondiales</h2>
+        <div id="news-container"></div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <label>Date Actuelle :</label>
+          <span id="current-date"></span>
+        </div>
+        <div class="stat warning">
+          <label>Infectés :</label>
+          <span id="infected">0</span>
+        </div>
+        <div class="stat">
+          <label>Sains :</label>
+          <span id="healthy">8,231,613,070</span>
+        </div>
+        <div class="stat warning">
+          <label>Décédés :</label>
+          <span id="dead">0</span>
+        </div>
+        <div class="stat warning">
+          <label>Panique Globale :</label>
+          <span id="global-panic">0%</span>
+          <div class="panic-meter">
+            <div class="panic-level"></div>
+          </div>
+        </div>
+        <div class="stat success">
+          <label>Progression de la Recherche :</label>
+          <span id="research-progress">0%</span>
+          <div class="research-bar">
+            <div class="research-progress"></div>
+          </div>
+        </div>
+        <div class="stat">
+          <label>Pays en Confinement :</label>
+          <span id="countries-lockdown">0</span>
+        </div>
+      </div>
+      <div class="game-controls">
+        <button id="pauseSimulation" class="control-button">Pause</button>
+        <button id="speedUp" class="control-button">Accélérer</button>
+        <button id="slowDown" class="control-button">Ralentir</button>
+      </div>
+      <div class="virus-creator">
+        <h2>Créateur de Virus Personnalisé</h2>
+        <div class="property">
+          <label>Nommez! votre virus :</label>
+          <input type="text" id="virusName" placeholder="Tapez le nom du virus...">
+        </div>
+        <div class="property">
+          <label>Décrivez votre virus (optionnel) :</label>
+          <textarea id="virusDescription" placeholder="Ex. : Un virus mystérieux qui se propage via les réseaux sociaux..."></textarea>
+        </div>
+        <div class="property">
+          <label>Infectiosité :</label>
+          <input type="range" id="infectivity" min="1" max="100" value="30">
+          <span class="range-value"></span>
+        </div>
+        <div class="property">
+          <label>Létalité :</label>
+          <input type="range" id="lethality" min="1" max="100" value="20">
+          <span class="range-value"></span>
+        </div>
+        <div class="property">
+          <label>Taux de Mutation :</label>
+          <input type="range" id="mutationRate" min="1" max="100" value="10">
+          <span class="range-value"></span>
+        </div>
+        <div class="property">
+          <label>Résistance Environnementale :</label>
+          <input type="range" id="resistanceLevel" min="1" max="100" value="25">
+          <span class="range-value"></span>
+        </div>
+        <div class="property">
+          <label>Période d'Incubation :</label>
+          <input type="range" id="incubationPeriod" min="1" max="100" value="40">
+          <span class="range-value"></span>
+        </div>
+        <div class="property">
+          <label>Pays de Départ :</label>
+          <select id="startCountry"></select>
+        </div>
+        <button id="generateVirus" class="secondary-button">Générer le Profil du Virus</button>
+        <div id="virusProfile" class="virus-profile hidden"></div>
+        <button id="startSimulation">Démarrer la Simulation</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
+  <script src="main.js" type="module"></script>
+</body>
+</html>

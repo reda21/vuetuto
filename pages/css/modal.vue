@@ -6,9 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useDialog } from 'primevue/usedialog';
-import ProductListDemo from "@/components/ProductListDemo.vue"
-
+import { useDialog } from "primevue/usedialog";
+import ProductListDemo from "@/components/ProductListDemo.vue";
 
 interface CancelEventPayload {
   user: string; // Définition du type de charge utile émise lors de l'annulation
@@ -18,13 +17,13 @@ const dialog = useDialog();
 const showProducts = (): void => {
   dialog.open(ProductListDemo, {
     props: {
-      header: 'Product List alpha',
+      header: "Product List alpha",
       style: {
-        width: '50vw',
+        width: "50vw",
       },
       breakpoints: {
-        '960px': '75vw',
-        '640px': '90vw',
+        "960px": "75vw",
+        "640px": "90vw",
       },
       modal: true,
     },
@@ -35,6 +34,4 @@ const showProducts = (): void => {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

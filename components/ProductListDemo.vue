@@ -11,11 +11,7 @@
       </li>
     </ul>
     <div class="mt-4 text-right">
-      <Button 
-        label="Annuler" 
-        class="p-button-danger" 
-        @click="handleCancel" 
-      />
+      <Button label="Annuler" class="p-button-danger" @click="handleCancel" />
     </div>
   </div>
 </template>
@@ -28,21 +24,21 @@ defineProps({
 
 // Événement à émettre pour l'annulation
 const emit = defineEmits<{
-  (e: 'cancel', payload: { user: string }): void;
+  (e: "cancel", payload: { user: string }): void;
 }>();
 
 // Liste des produits (exemple de données statiques)
 const products = [
-  { id: 1, name: 'Produit 1', price: 100 },
-  { id: 2, name: 'Produit 2', price: 200 },
-  { id: 3, name: 'Produit 3', price: 300 },
-  { id: 4, name: 'Produit 4', price: 400 },
-  { id: 5, name: 'Produit 5', price: 500 },
+  { id: 1, name: "Produit 1", price: 100 },
+  { id: 2, name: "Produit 2", price: 200 },
+  { id: 3, name: "Produit 3", price: 300 },
+  { id: 4, name: "Produit 4", price: 400 },
+  { id: 5, name: "Produit 5", price: 500 },
 ];
 
 // Méthode pour gérer le clic sur "Annuler"
 const handleCancel = () => {
-  emit('cancel', { user: 'primetime' });
+  emit("cancel", { user: "primetime" });
 };
 </script>
 

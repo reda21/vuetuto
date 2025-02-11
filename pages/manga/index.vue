@@ -13,7 +13,11 @@ remplacer dans le script détecteur scroll par .anime-list :
     </div>
     <Loader v-if="store.loading" />
   </div>
-  <p class="pb-52">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum, corporis cum placeat quod culpa vitae assumenda totam esse quia, voluptatem numquam iste distinctio architecto atque ipsam beatae est tempora!</p>
+  <p class="pb-52">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum,
+    corporis cum placeat quod culpa vitae assumenda totam esse quia, voluptatem
+    numquam iste distinctio architecto atque ipsam beatae est tempora!
+  </p>
 </template>
 
 <script lang="ts" setup>
@@ -31,13 +35,25 @@ const fetchMoreContents = () => store.fetchMoreContents();
 
 //methods
 const handleScroll = useDebounceFn(() => {
-  const animeList = document.querySelector('.anime-list');
-  if(!animeList) return;
+  const animeList = document.querySelector(".anime-list");
+  if (!animeList) return;
   const animeMaxY = animeList.scrollHeight - animeList.clientHeight;
   const maxY = document.documentElement.scrollHeight - window.innerHeight;
-  console.info("scrollHeight", document.documentElement.scrollHeight, "innerHeight", window.innerHeight);
-  console.info("animeMaxY", animeMaxY, "y", y.value, "maxY - y", y.value > animeMaxY - 100);
-  console.info("animeList.scrollTop", animeMaxY)
+  console.info(
+    "scrollHeight",
+    document.documentElement.scrollHeight,
+    "innerHeight",
+    window.innerHeight,
+  );
+  console.info(
+    "animeMaxY",
+    animeMaxY,
+    "y",
+    y.value,
+    "maxY - y",
+    y.value > animeMaxY - 100,
+  );
+  console.info("animeList.scrollTop", animeMaxY);
 }, 200); // 200ms de délai
 
 //store

@@ -15,7 +15,7 @@
       >
         <Form-control :form="$form">
           <InputText name="username" type="text" placeholder="Username" fluid />
-        </Form-control>        
+        </Form-control>
         <div class="flex flex-col gap-1">
           <Message
             v-if="$form.username?.invalid"

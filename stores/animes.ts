@@ -66,9 +66,7 @@ export const useAnimeStore = defineStore("anime", {
         this.loading = false;
       }
     },
-    async fetchMoreContents(){
-      
-    }
+    async fetchMoreContents() {},
   },
   getters: {
     getIndexAnimeById: (state: KitsuState) => (id: number) => {
@@ -85,7 +83,7 @@ export const useAnimeStore = defineStore("anime", {
       state.items.find((item) =>
         item.attributes.canonicalTitle
           .toLowerCase()
-          .includes(title.toLowerCase())
+          .includes(title.toLowerCase()),
       ),
     getAnimeBySlug: (state: KitsuState) => (slug: string) =>
       state.items.find((item) => item.attributes.slug === slug),

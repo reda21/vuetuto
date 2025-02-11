@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     "@sidebase/nuxt-auth",
     "@primevue/nuxt-module",
   ],
-  ... ConfigCss,
+  ...ConfigCss,
   auth: {
     baseURL: "/api/auth",
     provider: {
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     public: {
       laravelToken: process.env.LARAVEL_TOKEN ?? "hello",
       tester: process.env.TESTER ?? "alpha",
-      geminiApiKey: process.env.GEMINI_API_KEY || '',
+      geminiApiKey: process.env.GEMINI_API_KEY || "",
     },
   },
 });
