@@ -1,12 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
-
+import tailwindcss from "@tailwindcss/vite";
 import {ConfigApp} from "./configs/app"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  modules: [
-    "@nuxtjs/tailwindcss",
+  modules: [   
     "@pinia/nuxt",
     "@vueuse/nuxt",
     "nuxt-lodash",
@@ -25,11 +24,14 @@ export default defineNuxtConfig({
       }
     }
   },
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
   plugins: ["~/plugins/iconify.ts"],
   devtools: { enabled: false },
-  css: [
-    // "@unocss/reset/tailwind.css", // Importez les styles de réinitialisation de Tailwind CSS
-  ],
+  css: ['~/assets/css/main.css'],
   pinia: {
     storesDirs: ["./stores/**"],
   },
