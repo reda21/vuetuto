@@ -12,6 +12,8 @@ export default defineNuxtConfig({
     "@nuxt/test-utils/module",
     "@sidebase/nuxt-auth",
     "@nuxt/eslint",
+    "@nuxt/fonts",
+ //   "@nuxt/icon",
   ],
   auth: {
     baseURL: "/api/auth",
