@@ -7,7 +7,7 @@ export interface DataWithMeta<T> {
 }
 
 export interface Data<T> {
-  data: T;  
+  data: T;
 }
 
 export interface Links {

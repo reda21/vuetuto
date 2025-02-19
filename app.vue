@@ -7,13 +7,5 @@
 </template>
 
 <script setup lauguage="ts">
-
-
-
-
-onMounted(() => {
-    
-
-
-});
+onMounted(() => {});
 </script>

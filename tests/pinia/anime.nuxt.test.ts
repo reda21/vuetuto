@@ -71,20 +71,20 @@ describe("Counter Store", () => {
   it("returns the correct anime by slug", () => {
     animeStore.addAnime(animes[0]);
     expect(animeStore.getAnimeBySlug(animes[0].attributes.slug)).toEqual(
-      animes[0]
+      animes[0],
     );
     expect(
-      animeStore.getAnimeBySlug(animes[1].attributes.slug)
+      animeStore.getAnimeBySlug(animes[1].attributes.slug),
     ).toBeUndefined();
   });
 
   it("returns the correct anime by title", () => {
-    animeStore.addAnime(animes[0]);   
+    animeStore.addAnime(animes[0]);
     expect(animeStore.getAnimeByTitle(animes[0].attributes.titles.en)).toEqual(
-      animes[0]
+      animes[0],
     );
     expect(
-      animeStore.getAnimeByTitle(animes[1].attributes.titles.en)
+      animeStore.getAnimeByTitle(animes[1].attributes.titles.en),
     ).toBeUndefined();
     expect(true).toBe(true);
   });

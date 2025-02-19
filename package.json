@@ -11,11 +11,13 @@
     "postinstall": "nuxt prepare",
     "start": "nuxt start",
     "api": "json-server --watch db.json --port 3030",
-    "test": "vitest"
+    "test": "vitest",
+    "format": "prettier --write \"**/*.{js,ts,vue,json,css,md}\""
   },
   "dependencies": {
     "@iconify/vue": "^4.1.2",
     "@logto/next": "^4.2.0",
+    "@nuxt/eslint": "1.1.0",
     "@pinia/nuxt": "^0.10.1",
     "@sidebase/nuxt-auth": "0.10.0",
     "@tailwindcss/vite": "^4.0.6",
@@ -23,6 +25,7 @@
     "@vueuse/core": "^12.7.0",
     "@vueuse/nuxt": "^12.7.0",
     "dotenv": "^16.4.7",
+    "eslint": "^9.0.0",
     "json-server": "1.0.0-beta.3",
     "next-auth": "~4.24.11",
     "nuxt": "^3.15.4",
@@ -39,6 +42,7 @@
     "happy-dom": "^17.1.0",
     "nuxt-lodash": "^2.5.3",
     "playwright-core": "^1.50.1",
+    "prettier": "^3.5.1",
     "unocss": "^66.0.0",
     "vitest": "^3.0.6"
   },

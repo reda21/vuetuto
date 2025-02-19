@@ -1,6 +1,6 @@
 export class Data<T extends { id: number | string; [key: string]: any }> {
   /* C'est une valeur par défaut pour la propriété id. */
-  protected id: string = 'id';
+  protected id: string = "id";
 
   /**
    * La fonction constructeur prend un paramètre facultatif de type T[], et si aucun paramètre n'est
@@ -22,7 +22,7 @@ export class Data<T extends { id: number | string; [key: string]: any }> {
    * @param {T[]} items - Un tableau d'éléments de type T.
    */
   set(items: T[]) {
-    items.forEach(item => this.addOrUpdate(item));
+    items.forEach((item) => this.addOrUpdate(item));
   }
 
   /**
@@ -34,7 +34,7 @@ export class Data<T extends { id: number | string; [key: string]: any }> {
     if (this._items[i]) {
       this._items[i] = {
         ...this._items[i],
-        ...item
+        ...item,
       };
     }
   }

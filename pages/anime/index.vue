@@ -24,7 +24,7 @@ const { data, refresh, status, error } = await useFetch<kitsuList>(
   "https://kitsu.io/api/edge/anime?page%5Bnumber%5D=1&page%5Bsize%5D=10",
   {
     immediate: false, // La requête ne sera pas exécutée automatiquement
-  }
+  },
 );
 const fetchData = async () => {
   await refresh(); // Exécute la requête à ce moment-là

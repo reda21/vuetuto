@@ -36,7 +36,7 @@ export default class BaseRepository<T> {
   }
 
   async getAllWithPagination(
-    params: Record<string, any> = {}
+    params: Record<string, any> = {},
   ): Promise<DataWithMeta<T>> {
     return await $fetch<DataWithMeta<T>>(this.resource, { params });
   }

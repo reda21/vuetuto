@@ -6,7 +6,7 @@
       @click="handlePageChange(currentPage - 1)"
     >
       Previous
-    </button>    
+    </button>
 
     <!-- Première page -->
     <button
@@ -27,7 +27,7 @@
       class="px-3 py-1 mx-1"
       :class="{
         'bg-blue-500 text-white': page === currentPage,
-        'bg-gray-200 text-black': page !== currentPage
+        'bg-gray-200 text-black': page !== currentPage,
       }"
       @click="handlePageChange(page)"
     >
@@ -35,7 +35,11 @@
     </button>
 
     <!-- Séparation après les pages visibles -->
-    <span v-if="visiblePages[visiblePages.length - 1] < totalPages - 1" class="mx-2">...</span>
+    <span
+      v-if="visiblePages[visiblePages.length - 1] < totalPages - 1"
+      class="mx-2"
+      >...</span
+    >
 
     <!-- Dernière page -->
     <button
@@ -58,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from "vue";
 
 // Props interface
 interface Props {
@@ -79,7 +83,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 // Calcul du nombre total de pages
 const totalPages = computed(() =>
-  Math.ceil((props.total || 1) / props.limiteParPage!)
+  Math.ceil((props.total || 1) / props.limiteParPage!),
 );
 
 // Page courante
