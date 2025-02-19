@@ -3,20 +3,13 @@
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center h-16">
         <div class="flex items-center space-x-8">
-          <NuxtLink
-            to="/"
-            class="text-primary-600 dark:text-primary-400 font-bold text-xl"
-          >
+          <NuxtLink to="/" class="text-primary-600 dark:text-primary-400 font-bold text-xl">
             Anime & Manga
           </NuxtLink>
           <div class="hidden md:flex space-x-4">
-            <NuxtLink
-              v-for="link in navLinks"
-              :key="link.path"
-              :to="link.path"
+            <NuxtLink v-for="link in navLinks" :key="link.path" :to="link.path"
               class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 rounded-md text-sm font-medium"
-              active-class="text-primary-600 dark:text-primary-400"
-            >
+              active-class="text-primary-600 dark:text-primary-400">
               {{ link.name }}
             </NuxtLink>
           </div>
@@ -24,10 +17,7 @@
         <div class="flex items-center space-x-4">
           <button @click="toggleDark" class="classBtn">
             <Icon :icon="icon" :class="iconClass" />
-          </button>
-          <button @click="toggleDark" class="classBtn">
-            <Icon icon="heroicons:moon-20-solid" :class="iconClass" />
-          </button>
+          </button>         
         </div>
       </div>
     </div>

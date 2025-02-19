@@ -63,22 +63,15 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import type { PaginationProps } from "~/types/pagination";
 
-// Props interface
-interface Props {
-  currentPage?: number;
-  total?: number; // Total d'éléments
-  limiteScreenPage?: number; // Nombre de boutons affichés
-  limiteParPage?: number; // Limite d'éléments par page
-  onPageChange: (page: number) => void; // Callback pour changer la page
-}
+defineProps<PaginationProps>();
 
-// Default props with `withDefaults`
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<PaginationProps>(), {
   currentPage: 1,
   limiteScreenPage: 5,
-  total: 100, // Par défaut, 100 éléments
-  limiteParPage: 10, // Par défaut, 10 éléments par page
+  total: 100,
+  limiteParPage: 10,
 });
 
 // Calcul du nombre total de pages

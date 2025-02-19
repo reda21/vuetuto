@@ -11,9 +11,9 @@ export default defineNuxtConfig({
     "nuxt-lodash",
     "@nuxt/test-utils/module",
     "@sidebase/nuxt-auth",
-    "@nuxt/eslint",
+    //"@nuxt/eslint",
     "@nuxt/fonts",
- //   "@nuxt/icon",
+    //   "@nuxt/icon",
   ],
   auth: {
     baseURL: "/api/auth",
@@ -24,15 +24,6 @@ export default defineNuxtConfig({
         signOut: { path: "/logout", method: "post" },
         signUp: { path: "/register", method: "post" },
         getSession: { path: "/session", method: "get" },
-      },
-    },
-  },
-  eslint: {
-    config: {
-      stylistic: {
-        indent: "tab",
-        semi: true,
-        // ...
       },
     },
   },
@@ -56,3 +47,13 @@ export default defineNuxtConfig({
     },
   },
 });
+
+/*  eslint: {
+    config: {
+      stylistic: {
+        indent: "tab",
+        semi: true,
+        // ...
+      },
+    },
+  }, */
