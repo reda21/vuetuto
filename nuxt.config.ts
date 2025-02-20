@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   plugins: ["~/plugins/iconify.ts"],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   pinia: {
     storesDirs: ["./stores/**"],
