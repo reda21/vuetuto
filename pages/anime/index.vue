@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto my-5">
     <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-      Anime {{ date }} 
+      Anime {{ date }}
     </h1>
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"

@@ -12,7 +12,7 @@ export const useDarkMode = () => {
 
   // Icône dynamique en fonction de l'état
   const icon = computed(() =>
-    isDark.value ? "heroicons:sun-20-solid" : "heroicons:moon-20-solid"
+    isDark.value ? "heroicons:sun-20-solid" : "heroicons:moon-20-solid",
   );
 
   // Classes CSS dynamiques pour l'icône

@@ -3,6 +3,7 @@
 @layer components {
   .btn {
     @apply font-bold rounded;
+    cursor: pointer;
   }
 
   .btn-sm {
@@ -60,6 +61,38 @@
   .btn-link {
     @apply text-blue-500 hover:text-blue-700;
   }
+
+  .btn-outline-primary {
+    @apply border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500;
+  }
+
+  .btn-outline-secondary {
+    @apply border border-gray-200 hover:bg-gray-200 hover:text-gray-800 text-gray-800;
+  }
+
+  .btn-outline-success {
+    @apply border border-green-500 hover:bg-green-500 hover:text-white text-green-500;
+  }
+
+  .btn-outline-danger {
+    @apply border border-red-500 hover:bg-red-500 hover:text-white text-red-500;
+  }
+
+  .btn-outline-warning {
+    @apply border border-yellow-500 hover:bg-yellow-500 hover:text-white text-yellow-500;
+  }
+
+  .btn-outline-info {
+    @apply border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500;
+  }
+
+  .btn-outline-light {
+    @apply border border-gray-200 hover:bg-gray-200 hover:text-gray-800 text-gray-800;
+  }
+
+  .btn-outline-dark {
+    @apply border border-gray-800 hover:bg-gray-800 hover:text-white text-white;
+  }
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -77,18 +110,16 @@
   --color-primary-900: #0c4a6e;
 
   --color-dark-01: #22244d;
-  --color-dark-02: #1b1e3d; 
+  --color-dark-02: #1b1e3d;
   --color-dark-03: #13152b;
   --color-dark-b: #2a2e5e;
-  
 
-  --color-light-01: #f0f4fa; 
+  --color-light-01: #f0f4fa;
   --color-light-02: #f7fafb;
   --color-light-03: #e6eff4;
   --color-light-04: #9da4a7;
   --color-light-b: #d5e3ec;
 }
-
 
 /* Largeur de la barre */
 ::-webkit-scrollbar {
@@ -125,4 +156,3 @@
   background: var(--color-dark-03);
   border-radius: 5px;
 }
-

@@ -43,14 +43,14 @@ describe("ContactPage", () => {
     const emailInput = inputs[1];
     const messageTextarea = wrapper.findComponent(FormTextarea);
 
-    await nameInput.setValue('John Doe');
-    await emailInput.setValue('john.doe@example.com');
-    await messageTextarea.setValue('Bonjour, ceci est un message de test.');
+    await nameInput.setValue("John Doe");
+    await emailInput.setValue("john.doe@example.com");
+    await messageTextarea.setValue("Bonjour, ceci est un message de test.");
 
     const formButton = wrapper.findComponent(FormButton);
-    await formButton.trigger('submit');
+    await formButton.trigger("submit");
 
-    console.info('input', wrapper.vm.form )
+    console.info("input", wrapper.vm.form);
 
     expect(3 - 1).toBe(2);
   });

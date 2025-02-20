@@ -1,10 +1,20 @@
 <template>
   <div class="mb-4">
-    <label :for="id" class="block text-gray-700 text-sm font-bold mb-2 dark:text-white">
+    <label
+      :for="id"
+      class="block text-gray-700 text-sm font-bold mb-2 dark:text-white"
+    >
       {{ label }}
     </label>
     <input
-      :class="['shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700 dark:border-gray-700', inputClass, { 'opacity-50 cursor-not-allowed': disabled, 'dark:text-gray-400': disabled && isDark }]"
+      :class="[
+        'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700 dark:border-gray-700',
+        inputClass,
+        {
+          'opacity-50 cursor-not-allowed': disabled,
+          'dark:text-gray-400': disabled && isDark,
+        },
+      ]"
       :id="id"
       :type="type"
       :placeholder="placeholder"
@@ -17,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useDarkMode } from '~/composables/useDarkMode';
+import { useDarkMode } from "~/composables/useDarkMode";
 
 const { isDark } = useDarkMode();
 
@@ -32,15 +42,15 @@ defineProps({
   },
   type: {
     type: String,
-    default: 'text',
+    default: "text",
   },
   placeholder: {
     type: String,
-    default: '',
+    default: "",
   },
   modelValue: {
     type: [String, Number],
-    default: '',
+    default: "",
   },
   required: {
     type: Boolean,
@@ -52,9 +62,9 @@ defineProps({
   },
   inputClass: {
     type: String,
-    default: '',
+    default: "",
   },
 });
 
-defineEmits(['update:modelValue']);
+defineEmits(["update:modelValue"]);
 </script>

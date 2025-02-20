@@ -1,6 +1,10 @@
 <template>
   <button
-    :class="['bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline', buttonClass, { 'opacity-50 cursor-not-allowed': disabled }]"
+    :class="[
+      'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline',
+      buttonClass,
+      { 'opacity-50 cursor-not-allowed': disabled },
+    ]"
     :type="type"
     :disabled="disabled"
   >
@@ -17,7 +21,7 @@ defineProps({
   },
   type: {
     type: String,
-    default: 'button',
+    default: "button",
   },
   disabled: {
     type: Boolean,
@@ -29,7 +33,7 @@ defineProps({
   },
   buttonClass: {
     type: String,
-    default: '',
+    default: "",
   },
 });
 </script>

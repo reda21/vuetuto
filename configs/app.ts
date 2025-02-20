@@ -8,7 +8,7 @@ export const ConfigApp = {
         { charset: "UTF-8" },
       ],
       htmlAttrs: {
-   //     class: "dark",
+        //     class: "dark",
       },
       bodyAttrs: {
         class:
@@ -26,7 +26,7 @@ export const ConfigApp = {
               document.documentElement.classList.remove('dark')
             }
           })()`,
-          type: 'text/javascript',
+          type: "text/javascript",
         },
       ],
     },
