@@ -8,11 +8,11 @@ export const ConfigApp = {
         { charset: "UTF-8" },
       ],
       htmlAttrs: {
-   //     class: "dark",
+        //     class: "dark",
       },
       bodyAttrs: {
         class:
-          "min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300",
+          "min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300",
       },
       script: [
         {
@@ -26,7 +26,7 @@ export const ConfigApp = {
               document.documentElement.classList.remove('dark')
             }
           })()`,
-          type: 'text/javascript',
+          type: "text/javascript",
         },
       ],
     },

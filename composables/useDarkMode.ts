@@ -1,16 +1,18 @@
 // composables/useDarkMode.ts
+const darkModelOption = {
+  selector: "body",
+  attribute: "color-scheme",
+  valueDark: "dark",
+  valueLight: "light",
+};
+
 export const useDarkMode = () => {
   // Gestion du mode sombre avec VueUse
-  const isDark = useDark({
-    selector: "body",
-    attribute: "color-scheme",
-    valueDark: "dark",
-    valueLight: "light",
-  });
+  const isDark = useDark();
 
   // Icône dynamique en fonction de l'état
   const icon = computed(() =>
-    isDark.value ? "heroicons:sun-20-solid" : "heroicons:moon-20-solid"
+    isDark.value ? "heroicons:sun-20-solid" : "heroicons:moon-20-solid",
   );
 
   // Classes CSS dynamiques pour l'icône

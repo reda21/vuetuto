@@ -52,8 +52,7 @@ export default defineNuxtConfig({
     config: {
       stylistic: {
         indent: "tab",
-        semi: true,
-        // ...
+        semi: true,        
       },
     },
   }, */

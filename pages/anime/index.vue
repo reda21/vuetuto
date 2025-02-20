@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto my-5">
     <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-      Anime {{ date }} - {{ texte }}
+      Anime {{ date }}
     </h1>
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
@@ -13,10 +13,13 @@
 
 <script lang="ts" setup>
 import type { kitsuList } from "@/types/kitsu";
+import { formatDate } from "@/utils/date";
+import { useAnimeStore } from "@/stores/animes";
+import * as Collection from "@/utils/collect";
 
 //data
 const date = formatDate(new Date().toISOString());
-const texte = Collection.tester();
+//const texte = Collection.tester();
 
 // Initialisation du store
 const store = useAnimeStore();
@@ -30,7 +33,7 @@ const fetchData = async () => {
   await refresh(); // Exécute la requête à ce moment-là
 };
 console.info("data", data.value?.data);
-if (data.value?.data) store.loadItems(data.value?.data);
+if (data.value?.data) store.loadAnimes(data.value?.data);
 
 const recharger = async () => await refresh();
 

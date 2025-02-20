@@ -1,5 +1,100 @@
 @import "tailwindcss";
 
+@layer components {
+  .btn {
+    @apply font-bold rounded;
+    cursor: pointer;
+  }
+
+  .btn-sm {
+    @apply py-1 px-2;
+  }
+
+  .btn-md {
+    @apply py-2 px-4;
+  }
+
+  .btn-lg {
+    @apply py-3 px-6;
+  }
+
+  .btn-xl {
+    @apply py-4 px-8;
+  }
+
+  .btn-2xl {
+    @apply py-6 px-12;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-700 text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800;
+  }
+
+  .btn-success {
+    @apply bg-green-500 hover:bg-green-700 text-white;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-700 text-white;
+  }
+
+  .btn-warning {
+    @apply bg-yellow-500 hover:bg-yellow-700 text-white;
+  }
+
+  .btn-info {
+    @apply bg-blue-500 hover:bg-blue-700 text-white;
+  }
+
+  .btn-light {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800;
+  }
+
+  .btn-dark {
+    @apply bg-gray-800 hover:bg-gray-900 text-white;
+  }
+
+  .btn-link {
+    @apply text-blue-500 hover:text-blue-700;
+  }
+
+  .btn-outline-primary {
+    @apply border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500;
+  }
+
+  .btn-outline-secondary {
+    @apply border border-gray-200 hover:bg-gray-200 hover:text-gray-800 text-gray-800;
+  }
+
+  .btn-outline-success {
+    @apply border border-green-500 hover:bg-green-500 hover:text-white text-green-500;
+  }
+
+  .btn-outline-danger {
+    @apply border border-red-500 hover:bg-red-500 hover:text-white text-red-500;
+  }
+
+  .btn-outline-warning {
+    @apply border border-yellow-500 hover:bg-yellow-500 hover:text-white text-yellow-500;
+  }
+
+  .btn-outline-info {
+    @apply border border-blue-500 hover:bg-blue-500 hover:text-white text-blue-500;
+  }
+
+  .btn-outline-light {
+    @apply border border-gray-200 hover:bg-gray-200 hover:text-gray-800 text-gray-800;
+  }
+
+  .btn-outline-dark {
+    @apply border border-gray-800 hover:bg-gray-800 hover:text-white text-white;
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -14,9 +109,50 @@
   --color-primary-800: #075985;
   --color-primary-900: #0c4a6e;
 
-  --color-dark-1: #1b1e3d;
-  --color-dark-2: #13152b;
+  --color-dark-01: #22244d;
+  --color-dark-02: #1b1e3d;
+  --color-dark-03: #13152b;
+  --color-dark-b: #2a2e5e;
 
-  --color-light-1: #ffffff;
-  --color-light-2: #f7fafb;
+  --color-light-01: #f0f4fa;
+  --color-light-02: #f7fafb;
+  --color-light-03: #e6eff4;
+  --color-light-04: #9da4a7;
+  --color-light-b: #d5e3ec;
+}
+
+/* Largeur de la barre */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Couleur de fond de la barre */
+::-webkit-scrollbar-track {
+  background: var(--color-light-01);
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-dark-01);
+}
+
+/* Couleur du curseur (la partie défilante) */
+::-webkit-scrollbar-thumb {
+  background: var(--color-light-04);
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-dark-03);
+  border-radius: 5px;
+}
+
+/* Changement de couleur au survol */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light-04);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-dark-03);
+  border-radius: 5px;
 }
