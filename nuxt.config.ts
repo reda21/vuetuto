@@ -4,7 +4,7 @@ import { ConfigApp } from "./configs/app";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: "2025-02-20",
   modules: [
     "@pinia/nuxt",
     "@vueuse/nuxt",
@@ -30,7 +30,9 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  plugins: ["~/plugins/iconify.ts"],
+  plugins: [
+    //"~/plugins/iconify.ts"
+  ],
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   pinia: {

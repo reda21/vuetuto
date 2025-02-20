@@ -1,28 +1,38 @@
+import { UiTester } from '../.nuxt/components';
 <template>
-  <h1 class="text-2xl font-bold mb-4 dark:text-white">Formulaire</h1>
+  <h1 class="flex gap-0.5 items-center text-2xl font-bold mb-4 dark:text-white">
+    Formulaire
+    <UiIcon icon="alarm-panel" inline rotation="right" />
+  </h1>
   <div class="flex gap-1">
-    <UiButton variant="danger" size="sm" />
-    <UiButton variant="danger" />
-    <UiButton variant="danger" size="lg" />
-    <UiButton variant="danger" size="xl" />
-    <UiButton variant="danger" size="2xl" />
+    <UiButton label="alpha" variant="danger" size="sm" />
+    <UiButton label="clickez" variant="danger" />
+    <UiButton label="clickez" variant="danger" size="lg" />
+    <UiButton label="clickez" variant="danger" size="xl" />
+    <UiButton label="clickez" variant="danger" size="2xl" disabled/>
   </div>
   <div class="flex gap-1 mt-3">
-    <UiButton variant="primary" />
-    <UiButton variant="success" />
-    <UiButton variant="light" />
-    <UiButton variant="dark" />
-    <UiButton variant="link" />
+    <UiButton label="clickez" variant="primary" />
+    <UiButton label="clickez" variant="success" disabled />
+    <UiButton label="clickez" variant="light" disabled />
+    <UiButton label="clickez" variant="dark" />
+    <UiButton label="clickez" variant="link" disabled />
   </div>
   <div class="flex gap-1 mt-3">
-    <UiButton variant="outline-primary">Primary</UiButton>
-    <UiButton variant="outline-secondary">Secondary</UiButton>
-    <UiButton variant="outline-success">Success</UiButton>
-    <UiButton variant="outline-warning">Warning</UiButton>
-    <UiButton variant="outline-danger">Danger</UiButton>
-    <UiButton variant="outline-info">Info</UiButton>
-    <UiButton variant="outline-light">Light</UiButton>
-    <UiButton variant="outline-dark">Dark</UiButton>
+    <UiButton variant="outline-primary" />
+    <UiButton variant="outline-secondary" disabled />
+    <UiButton variant="outline-success" disabled />
+    <UiButton variant="outline-warning" />
+    <UiButton variant="outline-danger" />
+    <UiButton variant="outline-info" />
+    <UiButton variant="outline-light" />
+    <UiButton variant="outline-dark" />
+  </div>
+  <div class="flex gap-1 mt-3">
+    <UiButton label="Profile" icon="home" lazy />
+    <UiButton label="Save" icon="account-badge" iconPos="right" />
+    <UiButton label="Search" icon="alarm-panel" iconPos="top" />
+    <UiButton label="Update" icon="refresh" iconPos="bottom" />
   </div>
 </template>
 
