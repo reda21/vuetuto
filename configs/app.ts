@@ -12,7 +12,7 @@ export const ConfigApp = {
       },
       bodyAttrs: {
         class:
-          "min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300",
+          "min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300",
       },
       script: [
         {

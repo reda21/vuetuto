@@ -65,8 +65,6 @@
 import { computed } from "vue";
 import type { PaginationProps } from "~/types/pagination";
 
-defineProps<PaginationProps>();
-
 const props = withDefaults(defineProps<PaginationProps>(), {
   currentPage: 1,
   limiteScreenPage: 5,

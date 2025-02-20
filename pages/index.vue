@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dark:bg-gray-800 flex flex-col items-center justify-center min-h-screen gap-4"
+    class="dark:bg-dark-02 bg-light-02 border-2 border-light-b dark:border-dark-b flex flex-col items-center justify-center min-h-screen gap-4"
   >
     <h1 class="text-2xl font-bold">Compteur Nuxt</h1>
     <div class="flex items-center gap-4">
