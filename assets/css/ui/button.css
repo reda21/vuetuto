@@ -1,0 +1,110 @@
+.btn {
+  @apply flex cursor-pointer flex-col items-center justify-center gap-0.5 rounded font-bold disabled:cursor-default;
+}
+
+/* taile de bouton */
+
+.btn-sm {
+  @apply px-2 py-1;
+}
+
+.btn-md {
+  @apply px-4 py-2;
+}
+
+.btn-lg {
+  @apply px-6 py-3;
+}
+
+.btn-xl {
+  @apply px-8 py-4;
+}
+
+.btn-2xl {
+  @apply px-12 py-6;
+}
+
+/*colors button*/
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-hover disabled:bg-primary/50;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-secondary-hover disabled:bg-secondary/50;
+}
+
+.btn-success {
+  @apply bg-success text-white hover:bg-success-hover disabled:bg-success/50;
+}
+
+.btn-danger {
+  @apply bg-danger text-white hover:bg-danger-hover disabled:bg-danger/50;
+}
+
+.btn-warning {
+  @apply bg-warning text-white hover:bg-warning-hover disabled:bg-warning/50;
+}
+
+.btn-info {
+  @apply bg-info text-white hover:bg-info-hover disabled:bg-info/50;
+}
+
+.btn-light {
+  @apply bg-light text-dark hover:bg-light-hover disabled:bg-light/50;
+}
+
+.btn-dark {
+  @apply bg-dark text-light hover:bg-dark-hover disabled:bg-dark/50;
+}
+
+.btn-link {
+  @apply text-blue-500 hover:text-blue-700 disabled:text-black;
+}
+
+.btn-outline-primary {
+  @apply border border-primary text-primary hover:bg-primary hover:text-white disabled:bg-transparent/50 disabled:text-primary/50;
+}
+
+.btn-outline-secondary {
+  @apply border border-secondary text-secondary hover:bg-secondary hover:text-white disabled:bg-transparent/50 disabled:text-secondary/50;
+}
+
+.btn-outline-success {
+  @apply border border-success text-success hover:bg-success hover:text-white disabled:bg-transparent/50 disabled:text-success/50;
+}
+
+.btn-outline-danger {
+  @apply border border-danger text-danger hover:bg-danger hover:text-white disabled:bg-transparent/50 disabled:text-danger/50;
+}
+
+.btn-outline-warning {
+  @apply border border-warning text-warning hover:bg-warning hover:text-white disabled:bg-transparent/50 disabled:text-warning/50;
+}
+
+.btn-outline-info {
+  @apply border border-info text-info hover:bg-info hover:text-white disabled:bg-transparent/50 disabled:text-info/50;
+}
+
+.btn-outline-light {
+  @apply border border-light text-light hover:bg-light hover:text-dark disabled:bg-transparent/50 disabled:text-light/50;
+}
+
+.btn-outline-dark {
+  @apply border border-dark text-dark hover:bg-dark hover:text-white disabled:bg-transparent/50 disabled:text-dark/50;
+}
+
+.btn:has(.icon-left) {
+  @apply flex-row;
+}
+
+.btn:has(.icon-right) {
+  @apply flex-row-reverse;
+}
+
+.btn:has(.icon-top) {
+  @apply flex-col;
+}
+
+.btn:has(.icon-bottom) {
+  @apply flex-col-reverse;
+}

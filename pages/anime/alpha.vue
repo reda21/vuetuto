@@ -1,12 +1,12 @@
 <template>
-  <div @scroll="onScroll" class="overflow-auto h-screen">
+  <div @scroll="onScroll" class="h-screen overflow-auto">
     <header>
       <h1>My Extensive Anime & Manga List</h1>
     </header>
     <div class="container-2xl mx-auto p-4">
-      <div class="flex gap-1 justify-center my-[1.25rem]">
+      <div class="my-[1.25rem] flex justify-center gap-1">
         <input
-          class="w-1/2 p-2 text-base border border-gray-300 rounded"
+          class="w-1/2 rounded border border-gray-300 p-2 text-base"
           v-model="searchQuery"
           type="text"
           placeholder="Search for anime or manga..."
@@ -14,7 +14,7 @@
         />
         <button
           @click="toggleView"
-          class="px-5 py-2 text-base text-white bg-blue-700 rounded cursor-pointer hover:bg-blue-800 transition-colors duration-300"
+          class="cursor-pointer rounded bg-blue-700 px-5 py-2 text-base text-white transition-colors duration-300 hover:bg-blue-800"
         >
           Toggle Anime/Manga
         </button>

@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center justify-center">
     <button
-      class="px-3 py-1 mx-1 bg-gray-200 rounded"
+      class="mx-1 rounded bg-gray-200 px-3 py-1"
       :disabled="currentPage === 1"
       @click="handlePageChange(currentPage - 1)"
     >
@@ -11,7 +11,7 @@
     <!-- Première page -->
     <button
       v-if="currentPage > 1"
-      class="px-3 py-1 mx-1 bg-gray-200 rounded"
+      class="mx-1 rounded bg-gray-200 px-3 py-1"
       @click="handlePageChange(1)"
     >
       1
@@ -24,7 +24,7 @@
     <button
       v-for="page in visiblePages"
       :key="page"
-      class="px-3 py-1 mx-1"
+      class="mx-1 px-3 py-1"
       :class="{
         'bg-blue-500 text-white': page === currentPage,
         'bg-gray-200 text-black': page !== currentPage,
@@ -44,7 +44,7 @@
     <!-- Dernière page -->
     <button
       v-if="currentPage < totalPages"
-      class="px-3 py-1 mx-1 bg-gray-200 rounded"
+      class="mx-1 rounded bg-gray-200 px-3 py-1"
       @click="handlePageChange(totalPages)"
     >
       {{ totalPages }}
@@ -52,7 +52,7 @@
 
     <!-- Bouton suivant -->
     <button
-      class="px-3 py-1 mx-1 bg-gray-200 rounded"
+      class="mx-1 rounded bg-gray-200 px-3 py-1"
       :disabled="currentPage === totalPages"
       @click="handlePageChange(currentPage + 1)"
     >

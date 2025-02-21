@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="submitForm"
-    class="space-y-4 p-4 border rounded-lg shadow-md dark:bg-gray-800 dark:text-white"
+    class="space-y-4 rounded-lg border p-4 shadow-md dark:bg-gray-800 dark:text-white"
   >
     <slot />
   </form>

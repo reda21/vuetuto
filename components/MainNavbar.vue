@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white dark:bg-gray-800 shadow-lg">
+  <nav class="bg-white shadow-lg dark:bg-gray-800">
     <!-- Le reste du template reste identique -->
   </nav>
 </template>

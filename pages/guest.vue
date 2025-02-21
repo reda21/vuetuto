@@ -6,14 +6,14 @@
     <button
       v-if="status === 'authenticated'"
       @click="logout"
-      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
     >
       Logout
     </button>
     <button
       v-else
       @click="login"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
     >
       Login
     </button>

@@ -2,12 +2,12 @@ remplacer dans le script détecteur scroll par .anime-list :
 
 <template>
   <div class="anime-list">
-    <h1 class="text-3xl font-bold text-gray-900 dark:text-white pb-2">
+    <h1 class="pb-2 text-3xl font-bold text-gray-900 dark:text-white">
       Anime {{ store.countAllItem }} / {{ store.totalPages }} /
       {{ store.loading ? "lazy" : "done" }}
     </h1>
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6"
     >
       <AnimeItem v-for="anime in store.items" key="anime.id" :content="anime" />
     </div>

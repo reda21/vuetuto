@@ -1,9 +1,9 @@
 <template>
   <button
     :class="[
-      'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline',
+      'focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none',
       buttonClass,
-      { 'opacity-50 cursor-not-allowed': disabled },
+      { 'cursor-not-allowed opacity-50': disabled },
     ]"
     :type="type"
     :disabled="disabled"

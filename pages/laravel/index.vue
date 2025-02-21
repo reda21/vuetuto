@@ -31,14 +31,14 @@ const { data, error, status } = await useFetch("http://myapi.me/api/user", {
     <!-- Affichage des données -->
     <pre
       v-if="data"
-      class="bg-gray-100 p-4 rounded-md shadow-md text-gray-700"
+      class="rounded-md bg-gray-100 p-4 text-gray-700 shadow-md"
       >{{ data }}</pre
     >
 
     <!-- Affichage de l'erreur -->
     <div
       v-if="error"
-      class="bg-red-100 border border-red-400 text-red-700 p-4 rounded-md mt-4"
+      class="mt-4 rounded-md border border-red-400 bg-red-100 p-4 text-red-700"
     >
       <h2 class="text-lg font-semibold">Erreur :</h2>
       <pre class="whitespace-pre-wrap">{{ error }}</pre>

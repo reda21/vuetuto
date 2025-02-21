@@ -1,0 +1,38 @@
+/*configure typography*/
+@plugin "@tailwindcss/typography";
+
+/*configure dark mode*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*scrollbar*/ 
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-light-01);
+    border-radius: 5px;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: var(--color-dark-01);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-light-04);
+    border-radius: 5px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--color-dark-03);
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-light-04);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--color-dark-03);
+    border-radius: 5px;
+  }

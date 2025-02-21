@@ -2,10 +2,13 @@
   <div>
     <button :class="buttonClasses" :disabled="disabled || lazy">
       <span v-if="icon" :class="iconClass">
-        <UiIcon :rotation="lazy ? 'right' : 'none'" :icon="lazy ? 'refresh' : icon" />
+        <UiIcon
+          :rotation="lazy ? 'right' : 'none'"
+          :icon="lazy ? 'refresh' : icon"
+        />
       </span>
       <span :class="textClass">
-        {{ label || 'Click me' }}
+        {{ label || "Click me" }}
       </span>
     </button>
   </div>
@@ -52,7 +55,6 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   type: "button",
   lazy: false,
 });
-
 
 const buttonClasses = computed(() => {
   let classes = ["btn"];

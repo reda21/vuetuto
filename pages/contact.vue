@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl font-bold mb-4 dark:text-white">Contactez-nous</h1>
+  <h1 class="mb-4 text-2xl font-bold dark:text-white">Contactez-nous</h1>
   <div>
     <ui-form @submit="handleSubmit">
       <FormInput

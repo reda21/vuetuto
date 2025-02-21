@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-center my-8">
+  <div class="my-8 flex justify-center">
     <div
-      class="animate-spin rounded-full h-12 w-12 border-4 border-primary-500 border-t-transparent"
+      class="border-primary-500 h-12 w-12 animate-spin rounded-full border-4 border-t-transparent"
     ></div>
   </div>
 </template>
