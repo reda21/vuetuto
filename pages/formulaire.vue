@@ -2,15 +2,15 @@
   <h1 class="mb-4 flex items-center gap-0.5 text-2xl font-bold dark:text-white">
     Formulaire
   </h1>
-  <ButtonGroup class="grid mb-3" aria-label="Basic example">
+  <UiButtonGroup class="grid mb-3" aria-label="Basic example">
     <UiButton label="alpha" variant="danger" size="xs" />
     <UiButton label="alpha" variant="danger" size="sm" />
     <UiButton label="clickez" variant="danger" lazy />
     <UiButton label="clickez" variant="danger" size="lg" />
     <UiButton label="clickez" variant="danger" size="xl" />
     <UiButton label="clickez" variant="danger" size="2xl" />
-  </ButtonGroup>
-  
+  </UiButtonGroup>
+
   <div class="grid mb-3">
     <UiButton bsPrefix="toto" @click="handleClick" variant="primary" full/>
   </div>
@@ -47,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-
 const handleClick = () => {
   console.log('clicked')
 }
