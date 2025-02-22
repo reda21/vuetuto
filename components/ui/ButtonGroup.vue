@@ -35,5 +35,9 @@ const groupClasses = computed(() => {
 });
 
 /*
+https://flowbite.com/docs/components/button-group/
+https://www.material-tailwind.com/docs/html/button-group
+https://react-bootstrap.github.io/docs/components/button-group/
+https://getbootstrap.com/docs/5.3/components/button-group/
  */
 </script>
