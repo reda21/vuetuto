@@ -1,37 +1,39 @@
 .btn {
-  @apply flex cursor-pointer flex-col items-center justify-center gap-0.5 rounded font-bold disabled:cursor-default;
+  @apply inline-flex items-center justify-center px-4 py-2 transition-colors duration-200;
 }
 
 /* taile de bouton */
-
+.btn-xs {
+  @apply px-2 py-1 text-xs;
+}
 .btn-sm {
-  @apply px-2 py-1;
+  @apply px-2 py-1 text-sm;
 }
 
 .btn-md {
-  @apply px-4 py-2;
+  @apply px-4 py-2 text-sm;
 }
 
 .btn-lg {
-  @apply px-6 py-3;
+  @apply px-6 py-3 text-base;
 }
 
 .btn-xl {
-  @apply px-8 py-4;
+  @apply px-8 py-4 text-base;
 }
 
 .btn-2xl {
-  @apply px-12 py-6;
+  @apply px-12 py-6 text-lg;
 }
 
-/*colors button*/
 .btn-primary {
-  @apply bg-primary text-white hover:bg-primary-hover disabled:bg-primary/50;
+  @apply bg-primary text-white hover:bg-primary-hover focus:ring-4 focus:ring-blue-300 disabled:bg-primary/50;
 }
 
 .btn-secondary {
   @apply bg-secondary text-white hover:bg-secondary-hover disabled:bg-secondary/50;
 }
+
 
 .btn-success {
   @apply bg-success text-white hover:bg-success-hover disabled:bg-success/50;
@@ -60,6 +62,7 @@
 .btn-link {
   @apply text-blue-500 hover:text-blue-700 disabled:text-black;
 }
+
 
 .btn-outline-primary {
   @apply border border-primary text-primary hover:bg-primary hover:text-white disabled:bg-transparent/50 disabled:text-primary/50;
@@ -93,6 +96,12 @@
   @apply border border-dark text-dark hover:bg-dark hover:text-white disabled:bg-transparent/50 disabled:text-dark/50;
 }
 
+.btn-gradient-primary {
+  @apply bg-gradient-to-r from-primary via-primary-hover text-white hover:bg-gradient-to-br hover:from-primary-hover hover:via-primary-hover disabled:bg-primary/50;
+}
+
+/* <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Blue</button> */
+
 .btn:has(.icon-left) {
   @apply flex-row;
 }
@@ -108,3 +117,8 @@
 .btn:has(.icon-bottom) {
   @apply flex-col-reverse;
 }
+
+.icon-left { @apply mr-2; }
+.icon-right { @apply ml-2; }
+.icon-top { @apply mb-2; }
+.icon-bottom { @apply mt-2; }
