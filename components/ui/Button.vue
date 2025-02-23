@@ -1,5 +1,4 @@
-<template>
-  <div>
+<template>  
     <component
       :is="componentType"
       :class="buttonClasses"
@@ -31,8 +30,7 @@
       <span :class="textClass">
         {{ lazy ? "chargement..." : label || "Click me" }}
       </span>
-    </component>
-  </div>
+    </component> 
 </template>
 
 <script lang="ts" setup>
@@ -157,7 +155,3 @@ const textClass = computed(() => {
   return classes.join(" ");
 });
 </script>
-
-<style>
-/* Ajoutez ici des styles supplémentaires si nécessaire */
-</style>

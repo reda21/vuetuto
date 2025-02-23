@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   plugins: [
     //"~/plugins/iconify.ts"
   ],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: ["~/assets/css/main.css"],
   pinia: {
     storesDirs: ["./stores/**"],
