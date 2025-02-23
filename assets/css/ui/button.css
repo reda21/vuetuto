@@ -27,28 +27,27 @@
 }
 
 .btn-primary {
-  @apply bg-primary text-white hover:bg-primary-hover focus:ring-4 focus:ring-blue-300 disabled:bg-primary/50;
+  @apply bg-primary hover:bg-primary-hover disabled:bg-primary/50 text-white focus:ring-4 focus:ring-blue-300;
 }
 
 .btn-secondary {
-  @apply bg-secondary text-white hover:bg-secondary-hover disabled:bg-secondary/50;
+  @apply bg-secondary hover:bg-secondary-hover disabled:bg-secondary/50 text-white;
 }
 
-
 .btn-success {
-  @apply bg-success text-white hover:bg-success-hover disabled:bg-success/50;
+  @apply bg-success hover:bg-success-hover disabled:bg-success/50 text-white;
 }
 
 .btn-danger {
-  @apply bg-danger text-white hover:bg-danger-hover disabled:bg-danger/50;
+  @apply bg-danger hover:bg-danger-hover disabled:bg-danger/50 text-white;
 }
 
 .btn-warning {
-  @apply bg-warning text-white hover:bg-warning-hover disabled:bg-warning/50;
+  @apply bg-warning hover:bg-warning-hover disabled:bg-warning/50 text-white;
 }
 
 .btn-info {
-  @apply bg-info text-white hover:bg-info-hover disabled:bg-info/50;
+  @apply bg-info hover:bg-info-hover disabled:bg-info/50 text-white;
 }
 
 .btn-light {
@@ -63,41 +62,40 @@
   @apply text-blue-500 hover:text-blue-700 disabled:text-black;
 }
 
-
 .btn-outline-primary {
-  @apply border border-primary text-primary hover:bg-primary hover:text-white disabled:bg-transparent/50 disabled:text-primary/50;
+  @apply border-primary text-primary hover:bg-primary disabled:text-primary/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-secondary {
-  @apply border border-secondary text-secondary hover:bg-secondary hover:text-white disabled:bg-transparent/50 disabled:text-secondary/50;
+  @apply border-secondary text-secondary hover:bg-secondary disabled:text-secondary/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-success {
-  @apply border border-success text-success hover:bg-success hover:text-white disabled:bg-transparent/50 disabled:text-success/50;
+  @apply border-success text-success hover:bg-success disabled:text-success/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-danger {
-  @apply border border-danger text-danger hover:bg-danger hover:text-white disabled:bg-transparent/50 disabled:text-danger/50;
+  @apply border-danger text-danger hover:bg-danger disabled:text-danger/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-warning {
-  @apply border border-warning text-warning hover:bg-warning hover:text-white disabled:bg-transparent/50 disabled:text-warning/50;
+  @apply border-warning text-warning hover:bg-warning disabled:text-warning/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-info {
-  @apply border border-info text-info hover:bg-info hover:text-white disabled:bg-transparent/50 disabled:text-info/50;
+  @apply border-info text-info hover:bg-info disabled:text-info/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-light {
-  @apply border border-light text-light hover:bg-light hover:text-dark disabled:bg-transparent/50 disabled:text-light/50;
+  @apply border-light text-light hover:bg-light hover:text-dark disabled:text-light/50 border disabled:bg-transparent/50;
 }
 
 .btn-outline-dark {
-  @apply border border-dark text-dark hover:bg-dark hover:text-white disabled:bg-transparent/50 disabled:text-dark/50;
+  @apply border-dark text-dark hover:bg-dark disabled:text-dark/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-gradient-primary {
-  @apply bg-gradient-to-r from-primary via-primary-hover text-white hover:bg-gradient-to-br hover:from-primary-hover hover:via-primary-hover disabled:bg-primary/50;
+  @apply from-primary via-primary-hover hover:from-primary-hover hover:via-primary-hover disabled:bg-primary/50 bg-gradient-to-r text-white hover:bg-gradient-to-br;
 }
 
 /* <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Blue</button> */
@@ -118,7 +116,15 @@
   @apply flex-col-reverse;
 }
 
-.icon-left { @apply mr-2; }
-.icon-right { @apply ml-2; }
-.icon-top { @apply mb-2; }
-.icon-bottom { @apply mt-2; }
+.icon-left {
+  @apply mr-2;
+}
+.icon-right {
+  @apply ml-2;
+}
+.icon-top {
+  @apply mb-2;
+}
+.icon-bottom {
+  @apply mt-2;
+}

@@ -42,6 +42,7 @@ const navLinks = [
   { name: "Anime", path: "/anime" },
   { name: "Manga", path: "/manga" },
   { name: "laravel", path: "/laravel" },
+  { name: "formulaire", path: "/formulaire" },
 ];
 
 const classBtn =

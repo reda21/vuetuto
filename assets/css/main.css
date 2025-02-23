@@ -7,10 +7,11 @@
 @import "./theme.css";
 
 /*ui composent */
-@import './ui/button.css';
+@import "./ui/button.css";
+
+@import "./ui/buttonGroup.css";
 
 @import "./ui/icon.css";
-
 
 /*
 @utility demo {

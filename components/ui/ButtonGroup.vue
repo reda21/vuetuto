@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { computed, withDefaults, defineProps } from "vue";
 /**
- * 
+ *
  * @param {string} [ariaLabel="Button group"]
  * @param {string} [bsPrefix="btn-group"]
  * @param {string} [size="md"]
@@ -39,5 +39,6 @@ https://flowbite.com/docs/components/button-group/
 https://www.material-tailwind.com/docs/html/button-group
 https://react-bootstrap.github.io/docs/components/button-group/
 https://getbootstrap.com/docs/5.3/components/button-group/
+https://www.trae.ai/
  */
 </script>
