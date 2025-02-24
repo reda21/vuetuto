@@ -45,7 +45,7 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted } from "vue";
 import { useDarkMode } from "~/composables/useDarkMode";
-import FormInput from "~/components/ui/form/FormInput.vue";
+import FormInput from "~/components/ui/form/FormInput2.vue";
 import FormTextarea from "~/components/ui/form/FormTextarea.vue";
 import FormButton from "~/components/ui/form/FormButton.vue";
 import UiForm from "~/components/ui/form/Form.vue";

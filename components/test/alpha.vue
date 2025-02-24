@@ -1,6 +1,6 @@
 <template>
   <div>
     <p>parent alpha</p>
-    <slot/>
+    <slot />
   </div>
 </template>

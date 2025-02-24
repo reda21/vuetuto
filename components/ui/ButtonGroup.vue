@@ -28,14 +28,14 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
 });
 
 const groupClasses = computed(() => {
-  let classes = [!props.vertical ?props.bsPrefix : `${props.bsPrefix}-vertical`];
- // 
- // if (props.size) classes.push(`${props.bsPrefix}-${props.size}`);
- // if (props.vertical) classes.push(`${props.bsPrefix}-vertical`);
+  let classes = [
+    !props.vertical ? props.bsPrefix : `${props.bsPrefix}-vertical`,
+  ];
+  //
+  // if (props.size) classes.push(`${props.bsPrefix}-${props.size}`);
+  // if (props.vertical) classes.push(`${props.bsPrefix}-vertical`);
   return classes.join(" ");
 });
-
-
 
 /*
 https://flowbite.com/docs/components/button-group/

@@ -13,6 +13,8 @@
 
 @import "./ui/icon.css";
 
+@import "./ui/form.css";
+
 /*
 @utility demo {
     @apply text-gray-900;
