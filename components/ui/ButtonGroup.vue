@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, withDefaults, defineProps } from "vue";
+import { computed, withDefaults, defineProps } from 'vue';
 /**
  *
  * @param {string} [ariaLabel="Button group"]
@@ -16,25 +16,23 @@ import { computed, withDefaults, defineProps } from "vue";
 interface ButtonGroupProps {
   ariaLabel?: string;
   bsPrefix?: string;
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   vertical?: boolean;
 }
 
 const props = withDefaults(defineProps<ButtonGroupProps>(), {
-  ariaLabel: "Button group",
-  bsPrefix: "btn-group",
-  size: "md",
+  ariaLabel: 'Button group',
+  bsPrefix: 'btn-group',
+  size: 'md',
   vertical: false,
 });
 
 const groupClasses = computed(() => {
-  let classes = [
-    !props.vertical ? props.bsPrefix : `${props.bsPrefix}-vertical`,
-  ];
+  let classes = [!props.vertical ? props.bsPrefix : `${props.bsPrefix}-vertical`];
   //
   // if (props.size) classes.push(`${props.bsPrefix}-${props.size}`);
   // if (props.vertical) classes.push(`${props.bsPrefix}-vertical`);
-  return classes.join(" ");
+  return classes.join(' ');
 });
 
 /*

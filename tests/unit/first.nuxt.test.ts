@@ -1,6 +1,6 @@
 // @vitest-environment nuxt
-import { test, expect } from "vitest";
+import { test, expect } from 'vitest';
 
-test("test de succès", () => {
+test('test de succès', () => {
   expect(true).toBe(true);
 });

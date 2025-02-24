@@ -1,14 +1,9 @@
 <template>
   <nav class="bg-light-01 dark:bg-dark-01">
-    <div
-      class="border-light-b dark:border-dark-b container mx-auto border-b-2 px-4"
-    >
+    <div class="border-light-b dark:border-dark-b container mx-auto border-b-2 px-4">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center space-x-8">
-          <NuxtLink
-            to="/"
-            class="text-primary dark:text-primary text-xl font-bold"
-          >
+          <NuxtLink to="/" class="text-primary dark:text-primary text-xl font-bold">
             Anime & Manga
           </NuxtLink>
           <div class="hidden space-x-4 md:flex">
@@ -34,19 +29,18 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
-import { useDarkMode } from "@/composables/useDarkMode";
+import { Icon } from '@iconify/vue';
+import { useDarkMode } from '@/composables/useDarkMode';
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Anime", path: "/anime" },
-  { name: "Manga", path: "/manga" },
-  { name: "laravel", path: "/laravel" },
-  { name: "formulaire", path: "/formulaire" },
+  { name: 'Home', path: '/' },
+  { name: 'Anime', path: '/anime' },
+  { name: 'Manga', path: '/manga' },
+  { name: 'tailwind', path: '/tailwind' },
+  { name: 'formulaire', path: '/formulaire' },
 ];
 
-const classBtn =
-  "transition-transform duration-300 ease-in-out transform hover:scale-110";
+const classBtn = 'transition-transform duration-300 ease-in-out transform hover:scale-110';
 
 // Utilisation du composable
 const { isDark, toggleDark, icon, iconClass } = useDarkMode();

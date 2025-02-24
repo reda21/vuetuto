@@ -35,11 +35,7 @@
     </button>
 
     <!-- Séparation après les pages visibles -->
-    <span
-      v-if="visiblePages[visiblePages.length - 1] < totalPages - 1"
-      class="mx-2"
-      >...</span
-    >
+    <span v-if="visiblePages[visiblePages.length - 1] < totalPages - 1" class="mx-2">...</span>
 
     <!-- Dernière page -->
     <button
@@ -62,8 +58,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import type { PaginationProps } from "~/types/pagination";
+import { computed } from 'vue';
+import type { PaginationProps } from '~/types/pagination';
 
 const props = withDefaults(defineProps<PaginationProps>(), {
   currentPage: 1,
@@ -73,9 +69,7 @@ const props = withDefaults(defineProps<PaginationProps>(), {
 });
 
 // Calcul du nombre total de pages
-const totalPages = computed(() =>
-  Math.ceil((props.total || 1) / props.limiteParPage!),
-);
+const totalPages = computed(() => Math.ceil((props.total || 1) / props.limiteParPage!));
 
 // Page courante
 const currentPage = computed(() => props.currentPage || 1);

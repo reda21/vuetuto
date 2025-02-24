@@ -1,9 +1,6 @@
 <template>
   <div class="mb-6">
-    <label
-      :for="id"
-      class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
-    >
+    <label :for="id" class="mb-2 block text-sm font-bold text-gray-700 dark:text-white">
       {{ label }}
     </label>
     <textarea
@@ -26,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useDarkMode } from "~/composables/useDarkMode";
+import { useDarkMode } from '~/composables/useDarkMode';
 
 const { isDark } = useDarkMode();
 
@@ -41,11 +38,11 @@ defineProps({
   },
   placeholder: {
     type: String,
-    default: "",
+    default: '',
   },
   modelValue: {
     type: String,
-    default: "",
+    default: '',
   },
   required: {
     type: Boolean,
@@ -57,9 +54,9 @@ defineProps({
   },
   textareaClass: {
     type: String,
-    default: "",
+    default: '',
   },
 });
 
-defineEmits(["update:modelValue"]);
+defineEmits(['update:modelValue']);
 </script>

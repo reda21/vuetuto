@@ -8,9 +8,7 @@
       class="h-64 w-full object-cover"
     />
     <div class="p-4">
-      <h3
-        class="mb-2 line-clamp-2 text-lg font-semibold text-gray-900 dark:text-white"
-      >
+      <h3 class="mb-2 line-clamp-2 text-lg font-semibold text-gray-900 dark:text-white">
         {{ content.attributes.canonicalTitle }}
       </h3>
       <div class="flex items-center justify-between">
@@ -32,13 +30,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { Kitsu } from "~/types/kitsu";
+import type { Kitsu } from '~/types/kitsu';
 
 const props = defineProps<{
   content: Kitsu;
 }>();
 
 const formatRating = (rating: string) => {
-  return rating ? (parseFloat(rating) / 10).toFixed(1) : "N/A";
+  return rating ? (parseFloat(rating) / 10).toFixed(1) : 'N/A';
 };
 </script>

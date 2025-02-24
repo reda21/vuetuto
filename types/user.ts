@@ -3,7 +3,7 @@ export interface UserType {
   username: string;
   email: string;
   avatar?: string;
-  role: "user" | "admin";
+  role: 'user' | 'admin';
   createdAt: Date;
   lastLogin?: Date;
 }

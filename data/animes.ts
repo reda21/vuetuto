@@ -1,5 +1,5 @@
-import { Data } from "./data";
-import type { Kitsu } from "~/types/kitsu";
+import { Data } from './data';
+import type { Kitsu } from '~/types/kitsu';
 
 /* User is a class that extends Data and has a method called pluckUsername that returns an array of
 strings. */

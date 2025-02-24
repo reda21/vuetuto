@@ -1,9 +1,6 @@
 <template>
   <div class="mb-4">
-    <label
-      :for="id"
-      class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
-    >
+    <label :for="id" class="mb-2 block text-sm font-bold text-gray-700 dark:text-white">
       {{ label }}
     </label>
     <input
@@ -27,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useDarkMode } from "~/composables/useDarkMode";
+import { useDarkMode } from '~/composables/useDarkMode';
 
 const { isDark } = useDarkMode();
 
@@ -42,15 +39,15 @@ defineProps({
   },
   type: {
     type: String,
-    default: "text",
+    default: 'text',
   },
   placeholder: {
     type: String,
-    default: "",
+    default: '',
   },
   modelValue: {
     type: [String, Number],
-    default: "",
+    default: '',
   },
   required: {
     type: Boolean,
@@ -62,9 +59,9 @@ defineProps({
   },
   inputClass: {
     type: String,
-    default: "",
+    default: '',
   },
 });
 
-defineEmits(["update:modelValue"]);
+defineEmits(['update:modelValue']);
 </script>

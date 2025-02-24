@@ -5,6 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from "@/composables/useDarkMode";
+import { useDarkMode } from '@/composables/useDarkMode';
 // Le reste du script reste identique
 </script>

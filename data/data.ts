@@ -1,6 +1,6 @@
 export class Data<T extends { id: number | string; [key: string]: any }> {
   /* C'est une valeur par défaut pour la propriété id. */
-  protected id: string = "id";
+  protected id: string = 'id';
 
   /**
    * La fonction constructeur prend un paramètre facultatif de type T[], et si aucun paramètre n'est

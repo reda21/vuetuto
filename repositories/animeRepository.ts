@@ -1,6 +1,6 @@
 // repositories/UserRepository.js
-import BaseRepository from "./baseRepository";
-import type { Kitsu, kitsuList } from "@/types/kitsu";
+import BaseRepository from './baseRepository';
+import type { Kitsu, kitsuList } from '@/types/kitsu';
 
 type FetchContentsParams = {
   number?: number;
@@ -11,20 +11,20 @@ type FetchContentsParams = {
 
 export class AnimeRepository extends BaseRepository<Kitsu> {
   constructor() {
-    super("https://kitsu.io/api/edge/anime");
+    super('https://kitsu.io/api/edge/anime');
   }
 
   async fetchContents({
     number = 1,
     size = 20,
-    sort = "-episodeCount",
+    sort = '-episodeCount',
     filter,
   }: FetchContentsParams = {}) {
     const queryParams = {
-      "page[number]": number,
-      "page[size]": size,
+      'page[number]': number,
+      'page[size]': size,
       sort,
-      "filter[text]": filter,
+      'filter[text]': filter,
     };
 
     return await $fetch<kitsuList>(this.resource, { params: queryParams });

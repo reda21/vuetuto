@@ -20,11 +20,7 @@
         </button>
       </div>
       <div class="content-grid">
-        <div
-          v-for="item in filteredContent"
-          :key="item.id"
-          class="content-card"
-        >
+        <div v-for="item in filteredContent" :key="item.id" class="content-card">
           <img :src="item.image" :alt="item.title" width="200" height="280" />
           <div class="content-info">
             <div class="content-title">{{ item.title }}</div>
@@ -38,92 +34,92 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from 'vue';
 
 // Références
-const currentView = ref<"Anime" | "Manga">("Anime");
+const currentView = ref<'Anime' | 'Manga'>('Anime');
 const currentPage = ref(1);
 const itemsPerPage = 12;
-const searchQuery = ref("");
+const searchQuery = ref('');
 
 // Données principales avec ID assignés
 let nextId = 1;
 const contentData = ref(
   [
     {
-      title: "Attack on Titan",
+      title: 'Attack on Titan',
       rating: 9.0,
-      image: "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/10/47347.jpg',
+      type: 'Anime',
     },
     {
-      title: "Death Note",
+      title: 'Death Note',
       rating: 8.6,
-      image: "https://cdn.myanimelist.net/images/anime/9/9453.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/9/9453.jpg',
+      type: 'Anime',
     },
     {
-      title: "Fullmetal Alchemist: Brotherhood",
+      title: 'Fullmetal Alchemist: Brotherhood',
       rating: 9.1,
-      image: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/1223/96541.jpg',
+      type: 'Anime',
     },
     {
-      title: "One Punch Man",
+      title: 'One Punch Man',
       rating: 8.5,
-      image: "https://cdn.myanimelist.net/images/anime/12/76049.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/12/76049.jpg',
+      type: 'Anime',
     },
     {
-      title: "My Hero Academia",
+      title: 'My Hero Academia',
       rating: 8.3,
-      image: "https://cdn.myanimelist.net/images/anime/10/78745.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/10/78745.jpg',
+      type: 'Anime',
     },
     {
-      title: "Steins;Gate",
+      title: 'Steins;Gate',
       rating: 9.1,
-      image: "https://cdn.myanimelist.net/images/anime/5/73199.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/5/73199.jpg',
+      type: 'Anime',
     },
     {
-      title: "Demon Slayer",
+      title: 'Demon Slayer',
       rating: 8.5,
-      image: "https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg',
+      type: 'Anime',
     },
     {
-      title: "Tokyo Ghoul",
+      title: 'Tokyo Ghoul',
       rating: 7.8,
-      image: "https://cdn.myanimelist.net/images/anime/5/64449.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/5/64449.jpg',
+      type: 'Anime',
     },
     {
-      title: "Sword Art Online",
+      title: 'Sword Art Online',
       rating: 7.2,
-      image: "https://cdn.myanimelist.net/images/anime/11/39717.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/11/39717.jpg',
+      type: 'Anime',
     },
     {
-      title: "Naruto",
+      title: 'Naruto',
       rating: 7.9,
-      image: "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/13/17405.jpg',
+      type: 'Anime',
     },
     {
-      title: "One Piece",
+      title: 'One Piece',
       rating: 8.6,
-      image: "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/6/73245.jpg',
+      type: 'Anime',
     },
     {
-      title: "Dragon Ball Z",
+      title: 'Dragon Ball Z',
       rating: 8.1,
-      image: "https://cdn.myanimelist.net/images/anime/7/75199.jpg",
-      type: "Anime",
+      image: 'https://cdn.myanimelist.net/images/anime/7/75199.jpg',
+      type: 'Anime',
     },
     // Autres données...
-  ].map((item) => ({ ...item, id: nextId++ })),
+  ].map((item) => ({ ...item, id: nextId++ }))
 );
 
 // Génère une copie avec des IDs incrémentés
@@ -141,14 +137,14 @@ const filteredContent = computed(() => {
     .filter(
       (item) =>
         item.type === currentView.value &&
-        item.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
+        item.title.toLowerCase().includes(searchQuery.value.toLowerCase())
     )
     .slice(0, currentPage.value * itemsPerPage);
 });
 
 // Change entre Anime et Manga
 function toggleView() {
-  currentView.value = currentView.value === "Anime" ? "Manga" : "Anime";
+  currentView.value = currentView.value === 'Anime' ? 'Manga' : 'Anime';
   resetPagination();
 }
 
@@ -159,17 +155,16 @@ function resetPagination() {
 
 // Gestion du scroll infini
 function onScroll() {
-  const bottomReached =
-    window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+  const bottomReached = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
 
   if (bottomReached) {
-    console.log("Bottom reached");
+    console.log('Bottom reached');
   }
 }
 
 // Ajout de l'événement scroll
 onMounted(() => {
-  window.addEventListener("scroll", onScroll);
+  window.addEventListener('scroll', onScroll);
 });
 </script>
 

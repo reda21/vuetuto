@@ -1,18 +1,17 @@
 export const ConfigApp = {
   app: {
     head: {
-      title: "Twitter Clone",
+      title: 'Twitter Clone',
       meta: [
-        { name: "description", content: "A Twitter clone built with Nuxt 3" },
-        { name: "viewport", content: "width=device-width, initial-scale=1.0" },
-        { charset: "UTF-8" },
+        { name: 'description', content: 'A Twitter clone built with Nuxt 3' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
+        { charset: 'UTF-8' },
       ],
       htmlAttrs: {
         //     class: "dark",
       },
       bodyAttrs: {
-        class:
-          "min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300",
+        class: 'min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300',
       },
       script: [
         {
@@ -26,7 +25,7 @@ export const ConfigApp = {
               document.documentElement.classList.remove('dark')
             }
           })()`,
-          type: "text/javascript",
+          type: 'text/javascript',
         },
       ],
     },

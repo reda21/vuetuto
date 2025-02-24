@@ -13,16 +13,16 @@
 <script lang="ts" setup>
 //props
 type InputType =
-  | "text"
-  | "password"
-  | "email"
-  | "number"
-  | "tel"
-  | "url"
-  | "search"
-  | "date"
-  | "time"
-  | "datetime-local";
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
+  | 'date'
+  | 'time'
+  | 'datetime-local';
 
 interface InputProps {
   type?: InputType;
@@ -34,11 +34,11 @@ interface InputProps {
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
-  type: "text",
+  type: 'text',
   disabled: false,
-  placeholder: "",
-  name: "input",
-  id: "input",
+  placeholder: '',
+  name: 'input',
+  id: 'input',
 });
 
 //data

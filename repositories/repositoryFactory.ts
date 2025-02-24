@@ -1,5 +1,5 @@
 // repositories/RepositoryFactory.ts
-import { AnimeRepository } from "./animeRepository";
+import { AnimeRepository } from './animeRepository';
 
 export const repositories = {
   anime: new AnimeRepository(),

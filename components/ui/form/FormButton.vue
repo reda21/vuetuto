@@ -21,7 +21,7 @@ defineProps({
   },
   type: {
     type: String,
-    default: "button",
+    default: 'button',
   },
   disabled: {
     type: Boolean,
@@ -33,7 +33,7 @@ defineProps({
   },
   buttonClass: {
     type: String,
-    default: "",
+    default: '',
   },
 });
 </script>

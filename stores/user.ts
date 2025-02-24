@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
 interface UserState {
   isAuthenticated: boolean;
@@ -9,7 +9,7 @@ interface UserState {
   } | null;
 }
 
-export const useUserStore = defineStore("user", {
+export const useUserStore = defineStore('user', {
   state: (): UserState => ({
     isAuthenticated: false,
     user: null,
@@ -36,7 +36,7 @@ export const useUserStore = defineStore("user", {
     },
 
     // Update user information
-    updateUserInfo(userData: Partial<UserState["user"]>) {
+    updateUserInfo(userData: Partial<UserState['user']>) {
       if (this.user) {
         this.user = { ...this.user, ...userData };
       }

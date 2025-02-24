@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
 interface LabelProps {
   forAttr?: string;
@@ -18,12 +18,12 @@ interface LabelProps {
 }
 
 const props = withDefaults(defineProps<LabelProps>(), {
-  forAttr: "",
-  id: "",
+  forAttr: '',
+  id: '',
 });
 
 // Si aucun id n'est fourni, on génère un id unique
 const idComputed = computed(
-  () => props.id || `label-${Math.random().toString(36).substring(2, 10)}`,
+  () => props.id || `label-${Math.random().toString(36).substring(2, 10)}`
 );
 </script>

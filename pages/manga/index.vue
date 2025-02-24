@@ -4,26 +4,24 @@ remplacer dans le script détecteur scroll par .anime-list :
   <div class="anime-list">
     <h1 class="pb-2 text-3xl font-bold text-gray-900 dark:text-white">
       Anime {{ store.countAllItem }} / {{ store.totalPages }} /
-      {{ store.loading ? "lazy" : "done" }}
+      {{ store.loading ? 'lazy' : 'done' }}
     </h1>
-    <div
-      class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6"
-    >
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
       <AnimeItem v-for="anime in store.items" key="anime.id" :content="anime" />
     </div>
     <Loader v-if="store.loading" />
   </div>
   <p class="pb-52">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum,
-    corporis cum placeat quod culpa vitae assumenda totam esse quia, voluptatem
-    numquam iste distinctio architecto atque ipsam beatae est tempora!
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum, corporis cum placeat quod
+    culpa vitae assumenda totam esse quia, voluptatem numquam iste distinctio architecto atque ipsam
+    beatae est tempora!
   </p>
 </template>
 
 <script lang="ts" setup>
-import { useAnimeStore } from "@/stores/animes";
+import { useAnimeStore } from '@/stores/animes';
 
-import type { Kitsu } from "@/types/kitsu";
+import type { Kitsu } from '@/types/kitsu';
 
 //data
 const { y } = useWindowScroll();
@@ -35,25 +33,18 @@ const fetchMoreContents = () => store.fetchMoreContents();
 
 //methods
 const handleScroll = useDebounceFn(() => {
-  const animeList = document.querySelector(".anime-list");
+  const animeList = document.querySelector('.anime-list');
   if (!animeList) return;
   const animeMaxY = animeList.scrollHeight - animeList.clientHeight;
   const maxY = document.documentElement.scrollHeight - window.innerHeight;
   console.info(
-    "scrollHeight",
+    'scrollHeight',
     document.documentElement.scrollHeight,
-    "innerHeight",
-    window.innerHeight,
+    'innerHeight',
+    window.innerHeight
   );
-  console.info(
-    "animeMaxY",
-    animeMaxY,
-    "y",
-    y.value,
-    "maxY - y",
-    y.value > animeMaxY - 100,
-  );
-  console.info("animeList.scrollTop", animeMaxY);
+  console.info('animeMaxY', animeMaxY, 'y', y.value, 'maxY - y', y.value > animeMaxY - 100);
+  console.info('animeList.scrollTop', animeMaxY);
 }, 200); // 200ms de délai
 
 //store

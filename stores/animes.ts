@@ -1,12 +1,9 @@
-import { defineStore } from "pinia";
-import type { Kitsu, KitsuState } from "@/types/kitsuStore";
-import {
-  AnimeRepository,
-  RepositoryFactory,
-} from "@/repositories/repositoryFactory";
-const animeRepository = RepositoryFactory.get<AnimeRepository>("anime");
+import { defineStore } from 'pinia';
+import type { Kitsu, KitsuState } from '@/types/kitsuStore';
+import { AnimeRepository, RepositoryFactory } from '@/repositories/repositoryFactory';
+const animeRepository = RepositoryFactory.get<AnimeRepository>('anime');
 
-export const useAnimeStore = defineStore("anime", {
+export const useAnimeStore = defineStore('anime', {
   state: (): KitsuState => ({
     items: [],
     countAllItem: 0,
@@ -15,8 +12,8 @@ export const useAnimeStore = defineStore("anime", {
     error: null,
     currentPage: 1,
     limiteParPage: 18,
-    searchQuery: "",
-    sortBy: "-episodeCount",
+    searchQuery: '',
+    sortBy: '-episodeCount',
   }),
   actions: {
     loadAnimes(newItems: Kitsu[]) {
@@ -59,9 +56,8 @@ export const useAnimeStore = defineStore("anime", {
         this.countAllItem = meta.count;
         this.totalPages = Math.ceil(this.countAllItem / this.limiteParPage);
       } catch (error) {
-        this.error =
-          error instanceof Error ? error.message : "Failed to fetch contents";
-        console.error("Error fetching contents:", error);
+        this.error = error instanceof Error ? error.message : 'Failed to fetch contents';
+        console.error('Error fetching contents:', error);
       } finally {
         this.loading = false;
       }
@@ -75,15 +71,11 @@ export const useAnimeStore = defineStore("anime", {
     },
     isAnimeInStore: (state: KitsuState) => (id: number) =>
       state.items.some((item) => item.id === id),
-    getAnimeById: (state: KitsuState) => (id: number) =>
-      state.items.find((item) => item.id === id),
-    getAnimeByIndex: (state: KitsuState) => (index: number) =>
-      state.items[index],
+    getAnimeById: (state: KitsuState) => (id: number) => state.items.find((item) => item.id === id),
+    getAnimeByIndex: (state: KitsuState) => (index: number) => state.items[index],
     getAnimeByTitle: (state: KitsuState) => (title: string) =>
       state.items.find((item) =>
-        item.attributes.canonicalTitle
-          .toLowerCase()
-          .includes(title.toLowerCase()),
+        item.attributes.canonicalTitle.toLowerCase().includes(title.toLowerCase())
       ),
     getAnimeBySlug: (state: KitsuState) => (slug: string) =>
       state.items.find((item) => item.attributes.slug === slug),

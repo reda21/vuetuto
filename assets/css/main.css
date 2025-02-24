@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import "tailwindcss-primeui";
+
+@import 'primeicons/primeicons.css';
+
+/* @import "./primevue/tailwind.css"; */
+
 
 /*configure dark mode*/
 @import "./base.css";
@@ -35,3 +41,6 @@
     }
 }
 */
+
+
+

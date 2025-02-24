@@ -1,5 +1,5 @@
 export class Collection {
   static tester() {
-    return "the test";
+    return 'the test';
   }
 }
