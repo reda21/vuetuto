@@ -4,14 +4,23 @@
       tailwind main page
     </h1>
     <div class="card flex justify-center">
-        <AutoComplete v-model="selectedCountry" optionLabel="name" :suggestions="filteredCountries" @complete="search" />
+      <AutoComplete
+        v-model="selectedCountry"
+        optionLabel="name"
+        :suggestions="filteredCountries"
+        @complete="search"
+      />
     </div>
     <div class="card flex justify-center">
       <Drawer v-model:visible="visible" header="Bottom Drawer" position="full" style="height: auto">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </Drawer>
-        <Button icon="pi pi-arrow-left" @click="visible = true" />
-    </div>    
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </Drawer>
+      <Button icon="pi pi-arrow-left" @click="visible = true" />
+    </div>
   </div>
 </template>
 
@@ -21,13 +30,13 @@ import { ref, onMounted } from 'vue';
 import Button from 'primevue/button';
 import SelectButton from 'primevue/selectbutton';
 import AutoComplete from 'primevue/autocomplete';
-import { CountryService} from "~~/utils/contries"
+import { CountryService } from '~~/utils/contries';
 import Drawer from 'primevue/drawer';
 
 const visible = ref(false);
 
 onMounted(() => {
-    CountryService.getCountries().then((data) => (countries.value = data));
+  CountryService.getCountries().then((data) => (countries.value = data));
 });
 
 interface AutoCompleteEvent {

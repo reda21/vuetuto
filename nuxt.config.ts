@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import tailwindcss from '@tailwindcss/vite';
 import { ConfigApp } from './configs/app';
-import Aura from '@primeuix/themes/aura';
+//import Aura from '@primeuix/themes/aura';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -17,17 +17,7 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
   ],
   primevue: {
-    options: {
-      theme: {
-        preset: Aura,
-        /*     options: {
-          cssLayer: {
-            name: "primevue",
-            order: "tailwind-base, primevue, tailwind-utilities",
-          },
-        }, */
-      },
-    },
+    options: { theme: 'none' },
   },
   auth: {
     baseURL: '/api/auth',
@@ -47,7 +37,7 @@ export default defineNuxtConfig({
   plugins: [
     //"~/plugins/iconify.ts"
   ],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   pinia: {
     storesDirs: ['./stores/**'],

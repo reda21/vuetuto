@@ -9,7 +9,10 @@
   <form class="mx-auto mt-6 max-w-xl">
     <div class="mb-5">
       <UiFormLabel for="name" id="name">Nom</UiFormLabel>
-      <UiFormInput id="name" v-model="form.name" placeholder="John Doe" />
+      <UiFormInput id="name" v-model="form.name" placeholder="John Doe" size="small" />
+    </div>
+    <div class="mb-5">
+      <UiFormFloat/>
     </div>
     <div class="mb-5">
       <UiFormLabel for="email" id="email">Email</UiFormLabel>
