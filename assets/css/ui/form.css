@@ -39,3 +39,5 @@ input.p-inputtext-lg {
 input.p-inputtext-fluid {
     @apply w-full;
 }
+
+@import "../primevue/floatlabel.css"
