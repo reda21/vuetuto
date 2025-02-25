@@ -1,6 +1,6 @@
 <template>
   <FloatLabel variant="on">
-    <InputText id="on_label" v-model="value" autocomplete="off" fluid />
+    <InputText id="lolo" v-model="value" variant="filled" fluid />
     <label for="on_label">On Label</label>
 </FloatLabel>
 </template>
@@ -10,6 +10,13 @@ import FloatLabel from "primevue/floatlabel"
 import InputText from "primevue/inputtext"
 
 const value = ref(null);
+/* 
+<IftaLabel>
+    <InputText id="username" v-model="value" variant="filled" />
+    <label for="username">Username</label>
+</IftaLabel>
+
+*/
 </script>
 
 <style>

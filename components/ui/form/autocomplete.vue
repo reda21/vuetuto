@@ -1,9 +1,10 @@
 <template>
-  <InputText :id :name :type v-model="value" :placeholder="placeholder" :disabled :fluid :invalid :size :variant />
+  <AutoComplete v-model="value" :suggestions="items" @complete="search" :fluid />
 </template>
 
 <script lang="ts" setup>
-import InputText from 'primevue/inputtext';
+import AutoComplete from 'primevue/autocomplete';
+import type { AutoCompleteCompleteEvent } from 'primevue/autocomplete';
 //props
 type InputType = 'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week' | (string & {});
 
@@ -33,9 +34,12 @@ const props = withDefaults(defineProps<InputProps>(), {
 });
 
 //data
-const value = defineModel<string | null>({ required: false, default: null });
+//const value = defineModel<string | null>({ required: false, default: null });
 
-/*
-https://www.creative-tim.com/twcomponents/component/select-with-search
-*/
+const value = ref("");
+const items = ref<string[]>([]);
+
+const search = (event: AutoCompleteCompleteEvent) => {
+  items.value = [...Array(10).keys()].map((item) => event.query + '-' + item);
+}
 </script>
