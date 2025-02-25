@@ -1,7 +1,7 @@
 <template>
-  <FloatLabel>
-    <InputText id="username" v-model="value" fluid />
-    <label for="username">Username</label>
+  <FloatLabel variant="on">
+    <InputText id="on_label" v-model="value" autocomplete="off" fluid />
+    <label for="on_label">On Label</label>
 </FloatLabel>
 </template>
 

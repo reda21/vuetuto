@@ -11,7 +11,7 @@
       <UiFormLabel for="name" id="name">Nom</UiFormLabel>
       <UiFormInput id="name" v-model="form.name" placeholder="John Doe" size="small" />
     </div>
-    <div class="mb-5">
+    <div class="mb-5 pt-4">
       <UiFormFloat/>
     </div>
     <div class="mb-5">
