@@ -11,7 +11,7 @@
               v-for="link in navLinks"
               :key="link.path"
               :to="link.path"
-              class="hover:text-primary  border-b-2 border-primary/0 hover:border-primary px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 duration-200"
+              class="hover:text-primary border-primary/0 hover:border-primary border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200 dark:text-gray-300"
               active-class="text-primary dark:text-primary"
             >
               {{ link.name }}

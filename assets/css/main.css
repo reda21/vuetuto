@@ -1,7 +1,8 @@
 @import 'tailwindcss';
+@import 'tailwindcss-primeui';
 @import 'primeicons/primeicons.css';
 
-@import "./utility.css";
+@import './utility.css';
 
 /*configure dark mode*/
 @import './base.css';
@@ -37,4 +38,63 @@
         @slot;
     }
 }
+*/
+
+.p-autocomplete {
+  @apply inline-flex;
+}
+
+.p-autocomplete.p-disabled {
+  @apply opacity-100;
+}
+
+.p-autocomplete-loader {
+  @apply absolute end-3 top-1/2 -mt-2;
+}
+
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-loader {
+  @apply end-[3.25rem];
+}
+
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input {
+  @apply w-[1%] flex-auto;
+}
+
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input,
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input-multiple {
+  @apply rounded-e-none;
+}
+
+.p-autocomplete-dropdown {
+  @apply bg-surface-100 enabled:hover:bg-surface-200 enabled:active:bg-surface-300 text-surface-600 enabled:hover:text-surface-700 enabled:hover:active:text-surface-800 focus-visible:outline-primary relative inline-flex w-10 cursor-pointer items-center justify-center overflow-hidden rounded-e-md transition-colors 
+  duration-200 select-none focus-visible:outline focus-visible:outline-offset-2;
+
+  @variant dark {
+    @apply bg-dark-02 text-surface-300 enabled:hover:dark:bg-dark-b  enabled:hover:text-surface-200 enabled:active:text-surface-100 enabled:active:bg-dark-b;
+  }
+}
+
+.p-autocomplete .p-autocomplete-overlay {
+  @apply min-w-full;
+}
+
+.p-autocomplete-overlay{
+  @apply bg-light-02 border-surface-200 text-surface-700 absolute top-0 left-0 rounded-md border ;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  @variant dark{
+    @apply bg-dark-02 border-surface-700 text-surface-0;
+  }
+}
+
+.p-autocomplete-list-container {
+  @apply overflow-auto;
+}
+
+.p-autocomplete-list {
+  @apply m-0 flex list-none flex-col gap-[2px] p-1;
+}
+
+/*
+  
 */

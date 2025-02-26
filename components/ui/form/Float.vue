@@ -2,12 +2,12 @@
   <FloatLabel variant="on">
     <InputText id="lolo" v-model="value" variant="filled" fluid />
     <label for="on_label">On Label</label>
-</FloatLabel>
+  </FloatLabel>
 </template>
 
 <script lang="ts" setup>
-import FloatLabel from "primevue/floatlabel"
-import InputText from "primevue/inputtext"
+import FloatLabel from 'primevue/floatlabel';
+import InputText from 'primevue/inputtext';
 
 const value = ref(null);
 /* 
@@ -19,6 +19,4 @@ const value = ref(null);
 */
 </script>
 
-<style>
-
-</style>
+<style></style>

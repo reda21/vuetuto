@@ -1,11 +1,45 @@
 <template>
-  <InputText :id :name :type v-model="value" :placeholder="placeholder" :disabled :fluid :invalid :size :variant />
+  <InputText
+    :id
+    :name
+    :type
+    v-model="value"
+    :placeholder="placeholder"
+    :disabled
+    :fluid
+    :invalid
+    :size
+    :variant
+  />
 </template>
 
 <script lang="ts" setup>
 import InputText from 'primevue/inputtext';
 //props
-type InputType = 'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week' | (string & {});
+type InputType =
+  | 'button'
+  | 'checkbox'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'hidden'
+  | 'image'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'radio'
+  | 'range'
+  | 'reset'
+  | 'search'
+  | 'submit'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week'
+  | (string & {});
 
 type sizeType = 'small' | 'large' | undefined | null;
 
@@ -29,7 +63,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   name: 'input',
   id: 'input',
   fluid: true,
-  invalid: false
+  invalid: false,
 });
 
 //data
