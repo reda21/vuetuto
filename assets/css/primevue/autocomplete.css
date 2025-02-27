@@ -1,4 +1,54 @@
-/* @import './inputtext';
- */
+.p-autocomplete {
+  @apply inline-flex;
+}
 
+.p-autocomplete.p-disabled {
+  @apply opacity-100;
+}
 
+.p-autocomplete-loader {
+  @apply absolute end-3 top-1/2 -mt-2;
+}
+
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-loader {
+  @apply end-[3.25rem];
+}
+
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input {
+  @apply w-[1%] flex-auto;
+}
+
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input,
+.p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input-multiple {
+  @apply rounded-e-none;
+}
+
+.p-autocomplete-dropdown {
+  @apply bg-surface-100 text-surface-600 relative inline-flex w-10 cursor-pointer items-center justify-center overflow-hidden rounded-e-md transition-colors 
+  duration-200 select-none ;
+
+  @variant enabled {
+    @variant hover {
+      @apply bg-surface-200 text-surface-700;
+
+      @variant active {
+        @apply text-surface-800;
+      }
+    }
+
+    @variant active {
+      @apply bg-surface-300;
+    }
+
+    @variant focus-visible{
+      @apply outline-primary visible:outline outline-offset-2;
+    }
+  }
+
+  @variant dark {
+    @variant enabled {
+      @variant hover {
+      }
+    }
+  }
+}
