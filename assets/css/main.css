@@ -29,7 +29,6 @@
 
 @import './primevue/chip';
 
-
 /*
 @utility demo {
     @apply text-gray-900;
@@ -50,8 +49,6 @@
     }
 }
 */
-
-
 
 /*
   .p-autocomplete-option {

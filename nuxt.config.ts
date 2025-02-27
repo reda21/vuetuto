@@ -43,7 +43,6 @@ export default defineNuxtConfig({
       ],
       htmlAttrs: {
         //     class: "dark",
-        
       },
       bodyAttrs: {
         class: 'min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300',
@@ -79,7 +78,7 @@ export default defineNuxtConfig({
   },
   primevue: {
     options: {
- //     css: false,
+      //     css: false,
       theme: {
         preset: Aura,
         options: {

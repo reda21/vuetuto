@@ -18,8 +18,8 @@
   --color-link: oklch(55.2% 0.1234 157.01);
   --color-link-hover: oklch(49.22% 0.1095 156.98);
 
-  --color-design : oklch(96.58% 0.0091 258.34);
-  
+  --color-design: oklch(96.58% 0.0091 258.34);
+
   --color-dark-01: oklch(28.24% 0.074 278.43);
   --color-dark-02: oklch(25% 0.0583 277.13);
   --color-dark-03: oklch(20.65% 0.0435 277.93);
@@ -78,8 +78,7 @@
 /* Dark */
 @media (prefers-color-scheme: dark) {
   :root {
-   /* --color-design : oklch(28.24% 0.074 278.43); */
-
+    /* --color-design : oklch(28.24% 0.074 278.43); */
 
     --color-primary-color: var(--color-primary-400);
     --color-primary-contrast-color: var(--color-surface-900);

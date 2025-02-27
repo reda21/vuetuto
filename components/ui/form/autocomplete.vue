@@ -1,14 +1,24 @@
 <template>
-  <AutoComplete v-model="selectedCountry" optionLabel="name" :suggestions="filteredCountries" @complete="search" fluid>
+  <AutoComplete
+    v-model="selectedCountry"
+    optionLabel="name"
+    :suggestions="filteredCountries"
+    @complete="search"
+    fluid
+  >
     <template #option="slotProps">
       <div class="flex items-center">
-        <img :alt="slotProps.option.name" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-          :class="`flag flag-${slotProps.option.code.toLowerCase()} mr-2`" style="width: 18px" />
+        <img
+          :alt="slotProps.option.name"
+          src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
+          :class="`flag flag-${slotProps.option.code.toLowerCase()} mr-2`"
+          style="width: 18px"
+        />
         <div>{{ slotProps.option.name }}</div>
       </div>
     </template>
     <template #header>
-      <div class="font-medium px-3 py-2">Available Countries</div>
+      <div class="px-3 py-2 font-medium">Available Countries</div>
     </template>
     <template #footer>
       <div class="px-3 py-3">
@@ -21,7 +31,7 @@
 <script lang="ts" setup>
 import AutoComplete from 'primevue/autocomplete';
 import type { AutoCompleteCompleteEvent } from 'primevue/autocomplete';
-import { CountryService } from "~~/utils/contries";
+import { CountryService } from '~~/utils/contries';
 
 //props
 type InputType =
@@ -78,23 +88,22 @@ const props = withDefaults(defineProps<InputProps>(), {
 //const value = defineModel<string | null>({ required: false, default: null });
 
 onMounted(() => {
-    CountryService.getCountries().then((data) => (countries.value = data));
+  CountryService.getCountries().then((data) => (countries.value = data));
 });
 
 const countries = ref();
 const selectedCountry = ref();
 const filteredCountries = ref();
 
-
 const search = (event: AutoCompleteCompleteEvent) => {
-    setTimeout(() => {
-        if (!event.query.trim().length) {
-            filteredCountries.value = [...countries.value];
-        } else {
-            filteredCountries.value = countries.value.filter((country: { name: string }) => {
-                return country.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-    }, 250);
-}
+  setTimeout(() => {
+    if (!event.query.trim().length) {
+      filteredCountries.value = [...countries.value];
+    } else {
+      filteredCountries.value = countries.value.filter((country: { name: string }) => {
+        return country.name.toLowerCase().startsWith(event.query.toLowerCase());
+      });
+    }
+  }, 250);
+};
 </script>
