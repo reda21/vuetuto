@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light-02 dark:bg-dark-02 p-3 text-gray-800 dark:text-gray-300">
+  <div class="bg-light-02 dark:bg-white/10 p-3 text-gray-800 dark:text-gray-300">
     <h1 class="mb-4 flex items-center gap-0.5 text-2xl font-bold dark:text-white">Formulaire</h1>
     <p class="mb-4 text-gray-700 dark:text-gray-300">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus quo optio a doloribus
