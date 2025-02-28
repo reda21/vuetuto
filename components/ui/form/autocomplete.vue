@@ -1,10 +1,25 @@
 <template>
-  <AutoComplete v-model="selectedCountry" loading disabled class="w-full" dropdown placeholder="selection le pays" optionLabel="name" :suggestions="filteredCountries" @complete="search" fluid />
+  <AutoComplete
+    v-model="selectedCountry"
+    loading
+    disabled
+    class="w-full"
+    dropdown
+    placeholder="selection le pays"
+    optionLabel="name"
+    :suggestions="filteredCountries"
+    @complete="search"
+    fluid
+  />
 </template>
 
 <script lang="ts" setup>
 import AutoComplete from 'primevue/autocomplete';
-import type { AutoCompleteCompleteEvent } from 'primevue/autocomplete';
+import type {
+  AutoCompleteCompleteEvent,
+  AutoCompleteContext,
+  AutoCompleteEmits,
+} from 'primevue/autocomplete';
 import { CountryService } from '~~/utils/contries';
 
 //props
@@ -58,28 +73,18 @@ const props = withDefaults(defineProps<InputProps>(), {
   invalid: false,
 });
 
-//data
-//const value = defineModel<string | null>({ required: false, default: null });
-
-onMounted(() => {
-  CountryService.getCountries().then((data) => (countries.value = data));
-});
-
 const countries = ref();
 const selectedCountry = ref();
 const filteredCountries = ref();
+CountryService.getCountries().then((data) => (countries.value = data));
+
+watch(selectedCountry, (newVal) => {
+  console.log(newVal);
+});
 
 const search = (event: AutoCompleteCompleteEvent) => {
-  setTimeout(() => {
-    if (!event.query.trim().length) {
-      filteredCountries.value = [...countries.value];
-    } else {
-      filteredCountries.value = countries.value.filter((country: { name: string }) => {
-        return country.name.toLowerCase().startsWith(event.query.toLowerCase());
-      });
-    }
-  }, 250);
+  filteredCountries.value = countries.value.filter((country: { name: string }) => {
+    return country.name.toLowerCase().includes(event.query.toLowerCase());
+  });
 };
-
-
 </script>

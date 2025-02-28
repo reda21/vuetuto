@@ -1,4 +1,80 @@
 @theme {
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --font-poppins: Poppins, sans-serif;
+
+  --color-blog-card: #2e3267;
+  --color-blog-accent: #f59e0b;
+  --color-blog-secondary: #3b82f6;
+  --color-blog-tertiary: #10b981;
+
+  --animate-spin: spin 1s linear infinite;
+  --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-bounce: bounce 1s infinite;
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-in: slideIn 0.5s ease-in-out;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(20px);
+      opacity: '0';
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes ping {
+    75%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  /*
+'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in': 'slideIn 0.5s ease-in-out',
+  */
+
   --color-primary: oklch(57.82% 0.2282 260.03);
   --color-primary-hover: oklch(51.49% 0.1997 259.8);
   --color-secondary: oklch(55.75% 0.0165 244.89);
@@ -7,7 +83,7 @@
   --color-success-hover: oklch(49.22% 0.1095 156.98);
   --color-warning: oklch(86.24% 0.1667 88.09);
   --color-warning-hover: oklch(84.42% 0.172159 84.9338);
-  --color-danger: oklch(52.53% 0.1776 20.88); 
+  --color-danger: oklch(52.53% 0.1776 20.88);
   --color-danger-hover: oklch(59.15% 0.202 21.24);
   --color-info: oklch(79.84% 0.1319 215.11);
   --color-info-hover: oklch(77.49% 0.138 218.05);

@@ -1,16 +1,26 @@
 <template>
-  <Form v-slot="$form" :initialValues="initialValues" :resolver="resolver" @submit="onFormSubmit"
-    class="mx-auto mt-8 flex w-full flex-col gap-4 sm:w-3xl">
+  <Form
+    v-slot="$form"
+    :initialValues="initialValues"
+    :resolver="resolver"
+    @submit="onFormSubmit"
+    class="mx-auto mt-8 flex w-full flex-col gap-4 sm:w-3xl"
+  >
     <div class="mb-5">
       <UiFormLabel for="username" id="name">username</UiFormLabel>
-      <UiFormInput id="username" v-model="initialValues.username" placeholder="john.doe" size="small" />
+      <UiFormInput
+        id="username"
+        v-model="initialValues.username"
+        placeholder="john.doe"
+        size="small"
+      />
       <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{
         $form.username.error?.message
-        }}</Message>
+      }}</Message>
     </div>
     <div class="mb-5">
       <UiFormLabel for="name" id="name">Nom</UiFormLabel>
-      <UiFormInput id="name" v-model="initialValues.name" placeholder="John Doe"  />
+      <UiFormInput id="name" v-model="initialValues.name" placeholder="John Doe" />
     </div>
     <div class="mb-5">
       <UiFormLabel for="contry" id="name">Nation</UiFormLabel>
@@ -21,32 +31,48 @@
     </div>
     <div class="mb-5">
       <UiFormLabel for="email" id="email">Email</UiFormLabel>
-      <UiFormInput type="email" id="email" v-model="initialValues.email" placeholder="name@email.com" />
+      <UiFormInput
+        type="email"
+        id="email"
+        v-model="initialValues.email"
+        placeholder="name@email.com"
+      />
     </div>
     <div class="mb-5">
       <UiFormLabel for="password" id="password">Mots de passe</UiFormLabel>
       <UiFormInput v-model="initialValues.password" id="password" type="password" />
     </div>
     <div class="mb-5">
-      <UiFormLabel for="password_confirm" id="password_confirm">Confirmer le Mots de passe</UiFormLabel>
+      <UiFormLabel for="password_confirm" id="password_confirm"
+        >Confirmer le Mots de passe</UiFormLabel
+      >
       <UiFormInput v-model="initialValues.password_confirm" id="password_confirm" type="password" />
     </div>
     <div class="mb-5 flex items-start">
       <div class="flex h-5 items-center">
-        <input id="remember" type="checkbox" value=""
-          class="h-4 w-4 rounded-sm border border-gray-300 bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800" />
+        <input
+          id="remember"
+          type="checkbox"
+          value=""
+          class="h-4 w-4 rounded-sm border border-gray-300 bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+        />
       </div>
-      <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+      <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Remember me</label
+      >
     </div>
-    <button type="submit"
-      class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    <button
+      type="submit"
+      class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
       Submit
     </button>
   </Form>
   <div class="mx-auto mt-4 max-w-xl text-gray-700 dark:text-gray-300">
     <pre>
     {{ initialValues }}
-  </pre>
+  </pre
+    >
   </div>
 </template>
 
@@ -96,9 +122,8 @@ const initialValues = reactive<FormValues>({
   email: '',
   password: '',
   password_confirm: '',
-  contry: ''
+  contry: '',
 });
-
 
 /**
  onMounted(() => {
