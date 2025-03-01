@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démonstration Typographique - Le Blog Moderne</title>
+    <!-- Tailwind CSS et Typography via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'blog-bg': '#22244d',
+                        'blog-card': '#2e3267',
+                        'blog-accent': '#f59e0b',
+                        'blog-secondary': '#3b82f6',
+                        'blog-tertiary': '#10b981',
+                        'light-bg': '#f8fafc',
+                        'light-card': '#ffffff',
+                        'light-accent': '#f59e0b',
+                        'light-secondary': '#3b82f6',
+                        'light-tertiary': '#10b981',
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                color: '#374151', // gray-700
+                                maxWidth: 'none',
+                                a: {
+                                    color: '#f59e0b',
+                                    '&:hover': {
+                                        color: '#d97706',
+                                    },
+                                    textDecoration: 'underline',
+                                },
+                                h1: {
+                                    color: '#111827', // gray-900
+                                    fontWeight: '700',
+                                },
+                                h2: {
+                                    color: '#1f2937', // gray-800
+                                    fontWeight: '600',
+                                },
+                                h3: {
+                                    color: '#1f2937', // gray-800
+                                    fontWeight: '600',
+                                },
+                                'code::before': {
+                                    content: '""',
+                                },
+                                'code::after': {
+                                    content: '""',
+                                },
+                                code: {
+                                    color: '#f59e0b',
+                                    backgroundColor: '#f3f4f6',
+                                    borderRadius: '0.25rem',
+                                    padding: '0.25rem',
+                                },
+                            },
+                        },
+                        dark: {
+                            css: {
+                                color: '#f3f4f6', // gray-100
+                                a: {
+                                    color: '#f59e0b',
+                                    '&:hover': {
+                                        color: '#fbbf24',
+                                    },
+                                },
+                                h1: {
+                                    color: '#ffffff',
+                                },
+                                h2: {
+                                    color: '#3b82f6', // blog-secondary
+                                },
+                                h3: {
+                                    color: '#10b981', // blog-tertiary
+                                },
+                                code: {
+                                    color: '#f59e0b',
+                                    backgroundColor: '#1f2937',
+                                },
+                                blockquote: {
+                                    borderLeftColor: '#f59e0b',
+                                    backgroundColor: '#1f2937',
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-light-bg dark:bg-blog-bg text-gray-700 dark:text-gray-100 transition-colors duration-300">
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 z-50 bg-light-bg/95 dark:bg-blog-bg/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <!-- Logo et titre du blog -->
+            <div class="flex items-center mb-4 md:mb-0">
+                <h1 class="text-2xl font-bold">
+                    <a href="#">
+                        <span class="text-light-accent dark:text-blog-accent">Le</span>Blog<span class="text-light-secondary dark:text-blog-secondary">Moderne</span>
+                    </a>
+                </h1>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="w-full md:w-auto flex items-center">
+                <ul class="flex flex-wrap justify-center md:justify-end space-x-1 md:space-x-6">
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-blog-card transition-colors duration-300">Accueil</a></li>
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-blog-card transition-colors duration-300">Articles</a></li>
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-blog-card transition-colors duration-300">À propos</a></li>
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-blog-card transition-colors duration-300">Contact</a></li>
+                </ul>
+                <!-- Bouton de basculement du mode sombre -->
+                <button id="darkModeToggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200" title="Basculer le thème clair/sombre">
+                    <i class="fas fa-sun dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:inline"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto bg-light-card dark:bg-blog-card rounded-xl shadow-lg overflow-hidden">
+            <div class="p-8">
+                <h1 class="text-4xl font-bold mb-8">Démonstration Typographique</h1>
+
+                <!-- Titres -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Titres</h2>
+                    <h1 class="text-4xl font-bold mb-2">Titre h1</h1>
+                    <h2 class="text-3xl font-bold mb-2">Titre h2</h2>
+                    <h3 class="text-2xl font-bold mb-2">Titre h3</h3>
+                    <h4 class="text-xl font-bold mb-2">Titre h4</h4>
+                    <h5 class="text-lg font-bold mb-2">Titre h5</h5>
+                    <h6 class="text-base font-bold mb-2">Titre h6</h6>
+                </section>
+
+                <!-- Paragraphes -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Paragraphes</h2>
+                    <p class="mb-4">Voici un exemple de paragraphe. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</p>
+                    <p class="mb-4">Un autre paragraphe pour montrer l'espacement. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de
+                        polices de texte.</p>
+                </section>
+
+                <!-- Listes -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Listes</h2>
+                    <h3 class="text-2xl font-bold mb-2">Liste non ordonnée</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Premier élément</li>
+                        <li>Deuxième élément</li>
+                        <li>Troisième élément</li>
+                    </ul>
+                    <h3 class="text-2xl font-bold mb-2">Liste ordonnée</h3>
+                    <ol class="list-decimal list-inside mb-4">
+                        <li>Premier élément</li>
+                        <li>Deuxième élément</li>
+                        <li>Troisième élément</li>
+                    </ol>
+                </section>
+
+                <!-- Citations -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Citations</h2>
+                    <blockquote class="border-l-4 border-light-accent pl-4 italic mb-4">
+                        <p>Ceci est un exemple de citation. Les citations sont utiles pour mettre en évidence des informations importantes ou des déclarations d'autres personnes.</p>
+                    </blockquote>
+                </section>
+
+                <!-- Code -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Code</h2>
+                    <p class="mb-2">Voici un exemple de code en ligne : <code class="bg-gray-100 dark:bg-gray-800 rounded px-1">const greeting = "Hello, World!";</code></p>
+                    <h3 class="text-2xl font-bold mb-2">Bloc de code</h3>
+                    <pre class="bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-auto"><code>function greet(name) {
+    console.log(`Hello, ${name}!`);
+}
+
+greet("John Doe");</code></pre>
+                </section>
+
+                <!-- Liens -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Liens</h2>
+                    <p>Voici un <a href="#" class="text-light-accent hover:text-amber-600 dark:hover:text-amber-400 underline">exemple de lien</a> dans un paragraphe.</p>
+                </section>
+
+                <!-- Autres éléments -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-semibold mb-4">Autres éléments</h2>
+                    <p>Texte normal avec <small>petit texte</small> intégré.</p>
+                    <hr class="my-4 border-t border-gray-300 dark:border-gray-600">
+                    <p>Texte avec <strong>emphase forte</strong> et <em>emphase normale</em>.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-gray-100 dark:bg-blog-card mt-16 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Copyright -->
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Le Blog Moderne. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blog-accent dark:hover:text-blog-accent text-sm transition-colors">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blog-accent dark:hover:text-blog-accent text-sm transition-colors">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blog-accent dark:hover:text-blog-accent text-sm transition-colors">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pour le basculement du mode sombre -->
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        // Fonction pour mettre à jour l'icône et le titre du bouton
+        function updateDarkModeButton(isDark) {
+            const sunIcon = darkModeToggle.querySelector('.fa-sun');
+            const moonIcon = darkModeToggle.querySelector('.fa-moon');
+
+            if (isDark) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                darkModeToggle.title = 'Passer au mode clair';
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                darkModeToggle.title = 'Passer au mode sombre';
+            }
+        }
+
+        // Fonction pour basculer le mode sombre
+        function toggleDarkMode() {
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark);
+            updateDarkModeButton(isDark);
+        }
+
+        // Gestionnaire d'événement pour le bouton
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        // Initialisation du mode au chargement de la page
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const storedDarkMode = localStorage.getItem('darkMode');
+        const shouldBeDark = storedDarkMode === 'true' || (storedDarkMode === null && prefersDark);
+
+        if (shouldBeDark) {
+            html.classList.add('dark');
+        }
+        updateDarkModeButton(shouldBeDark);
+
+        // Écouter les changements de préférence système
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                const shouldBeDark = e.matches;
+                html.classList.toggle('dark', shouldBeDark);
+                updateDarkModeButton(shouldBeDark);
+            }
+        });
+    </script>
+</body>
+
+</html>

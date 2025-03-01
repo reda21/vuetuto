@@ -1,16 +1,13 @@
 <template>
   <div>
     <!-- En-tête (Header) -->
-    <header class="bg-blog-bg/95 sticky top-0 z-50 border-b border-gray-700 backdrop-blur-sm">
-      <div
-        class="container mx-auto flex flex-col items-center justify-between px-4 py-4 md:flex-row"
-      >
+    <header
+      class="bg-light-bg/95 dark:bg-blog-bg/95 text-gray-700 dark:text-gray-100 sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+      <div class="container mx-auto flex flex-col items-center justify-between px-4 py-4 md:flex-row">
         <!-- Logo et titre du blog -->
         <div class="mb-4 flex items-center md:mb-0">
           <h1 class="text-2xl font-bold text-white">
-            <span class="text-blog-accent">Le</span>Blog<span class="text-blog-secondary"
-              >Moderne</span
-            >
+            <span class="text-blog-accent">Le</span class="text-gray-700 dark:text-gray-100">Blog<span class="text-blog-secondary">Moderne</span>
           </h1>
         </div>
 
@@ -18,39 +15,25 @@
         <nav class="w-full md:w-auto">
           <ul class="flex flex-wrap justify-center space-x-1 md:justify-end md:space-x-6">
             <li>
-              <a
-                href="#"
-                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300"
-                >Accueil</a
-              >
+              <a href="#"
+                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300">Accueil</a>
             </li>
             <li>
-              <a
-                href="#"
-                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300"
-                >Articles</a
-              >
+              <a href="#"
+                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300">Articles</a>
             </li>
             <li>
-              <a
-                href="#"
-                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300"
-                >À propos</a
-              >
+              <a href="#"
+                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300">À
+                propos</a>
             </li>
             <li>
-              <a
-                href="#"
-                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300"
-                >Contact</a
-              >
+              <a href="#"
+                class="hover:bg-blog-card hover:text-blog-accent rounded-md px-3 py-2 text-white transition-colors duration-300">Contact</a>
             </li>
             <li>
-              <a
-                href="#"
-                class="bg-blog-accent ml-2 rounded-md px-4 py-2 text-white transition-colors duration-300 hover:bg-amber-500"
-                >S'abonner</a
-              >
+              <a href="#"
+                class="bg-blog-accent ml-2 rounded-md px-4 py-2 text-white transition-colors duration-300 hover:bg-amber-500">S'abonner</a>
             </li>
           </ul>
         </nav>
@@ -93,29 +76,20 @@
             <h4 class="mb-4 text-xl font-bold">Liens rapides</h4>
             <ul class="space-y-2">
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Accueil</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Accueil</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Articles</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Articles</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >À propos</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">À propos</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Contact</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Contact</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Politique de confidentialité</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Politique de
+                  confidentialité</a>
               </li>
             </ul>
           </div>
@@ -125,29 +99,19 @@
             <h4 class="mb-4 text-xl font-bold">Catégories</h4>
             <ul class="space-y-2">
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Développement Web</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Développement Web</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Design UI/UX</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Design UI/UX</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Intelligence Artificielle</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Intelligence Artificielle</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >Cybersécurité</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">Cybersécurité</a>
               </li>
               <li>
-                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors"
-                  >DevOps</a
-                >
+                <a href="#" class="hover:text-blog-accent text-gray-300 transition-colors">DevOps</a>
               </li>
             </ul>
           </div>
@@ -173,72 +137,63 @@
         </div>
 
         <!-- Copyright -->
-        <div
-          class="mt-12 flex flex-col items-center justify-between border-t border-gray-700 pt-8 md:flex-row"
-        >
+        <div class="mt-12 flex flex-col items-center justify-between border-t border-gray-700 pt-8 md:flex-row">
           <p class="mb-4 text-sm text-gray-400 md:mb-0">
             &copy; 2025 Le Blog Moderne. Tous droits réservés.
           </p>
           <div class="flex space-x-6">
-            <a href="#" class="hover:text-blog-accent text-sm text-gray-400 transition-colors"
-              >Conditions d'utilisation</a
-            >
-            <a href="#" class="hover:text-blog-accent text-sm text-gray-400 transition-colors"
-              >Politique de confidentialité</a
-            >
-            <a href="#" class="hover:text-blog-accent text-sm text-gray-400 transition-colors"
-              >Mentions légales</a
-            >
+            <a href="#" class="hover:text-blog-accent text-sm text-gray-400 transition-colors">Conditions
+              d'utilisation</a>
+            <a href="#" class="hover:text-blog-accent text-sm text-gray-400 transition-colors">Politique de
+              confidentialité</a>
+            <a href="#" class="hover:text-blog-accent text-sm text-gray-400 transition-colors">Mentions légales</a>
           </div>
         </div>
       </div>
     </footer>
 
     <!-- Bouton retour en haut -->
-    <button
-      id="back-to-top"
-      class="bg-blog-accent focus:ring-blog-accent invisible fixed right-6 bottom-6 rounded-full p-3 text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-amber-500 focus:ring-2 focus:ring-offset-2 focus:outline-none"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 10l7-7m0 0l7 7m-7-7v18"
-        />
+    <button ref="backToTopButton" @click="scrollToTop"
+      class="bg-blog-accent focus:ring-blog-accent invisible fixed right-6 bottom-6 rounded-full p-3 text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-amber-500 focus:ring-2 focus:ring-offset-2 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg>
     </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-const backToTopButton = document.getElementById('back-to-top');
+import { ref, onMounted, onUnmounted } from 'vue';
 
-if (backToTopButton) {
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.remove('opacity-0', 'invisible');
-            backToTopButton.classList.add('opacity-100', 'visible');
-        } else {
-            backToTopButton.classList.remove('opacity-100', 'visible');
-            backToTopButton.classList.add('opacity-0', 'invisible');
-        }
-    });
-    
-    // Scroll vers le haut quand le bouton est cliqué
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
+const backToTopButton = ref<HTMLButtonElement | null>(null);
+
+// Gestion du bouton "Retour en haut"
+const handleScroll = () => {
+  if (!backToTopButton.value) return;
+
+  if (window.pageYOffset > 300) {
+    backToTopButton.value.classList.remove('opacity-0', 'invisible');
+    backToTopButton.value.classList.add('opacity-100', 'visible');
+  } else {
+    backToTopButton.value.classList.remove('opacity-100', 'visible');
+    backToTopButton.value.classList.add('opacity-0', 'invisible');
+  }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style></style>

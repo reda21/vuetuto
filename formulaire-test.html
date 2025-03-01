@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Formulaires - Le Blog Moderne</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blog-bg': '#22244d',
+                        'blog-card': '#2e3267',
+                        'blog-accent': '#f59e0b',
+                        'blog-secondary': '#3b82f6',
+                        'blog-tertiary': '#10b981',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in': 'slideIn 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            },
+                        },
+                        slideIn: {
+                            '0%': {
+                                transform: 'translateY(20px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js pour le parsing Markdown -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+</head>
+
+<body class="bg-blog-bg text-gray-100 font-sans">
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 z-50 bg-blog-bg/95 backdrop-blur-sm border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <!-- Logo et titre du blog -->
+            <div class="flex items-center mb-4 md:mb-0">
+                <h1 class="text-2xl font-bold text-white">
+                    <a href="#">
+                        <span class="text-blog-accent">Le</span>Blog<span class="text-blog-secondary">Moderne</span>
+                    </a>
+                </h1>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="w-full md:w-auto">
+                <ul class="flex flex-wrap justify-center md:justify-end space-x-1 md:space-x-6">
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-blog-card transition-colors duration-300 text-white hover:text-blog-accent">Accueil</a></li>
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-blog-card transition-colors duration-300 text-white hover:text-blog-accent">Articles</a></li>
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-blog-card transition-colors duration-300 text-white hover:text-blog-accent">À propos</a></li>
+                    <li><a href="#" class="px-3 py-2 rounded-md hover:bg-blog-card transition-colors duration-300 text-white hover:text-blog-accent">Contact</a></li>
+                    <li><a href="#" class="px-4 py-2 bg-blog-accent text-white rounded-md hover:bg-amber-500 transition-colors duration-300 ml-2">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-3xl mx-auto bg-blog-card rounded-xl shadow-2xl overflow-hidden animate-fade-in">
+            <div class="p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center">Test de Formulaires</h2>
+                <form class="space-y-6">
+                    <!-- Champ texte -->
+                    <div>
+                        <label for="nom" class="block text-sm font-medium text-gray-300 mb-1">Nom</label>
+                        <input type="text" id="nom" name="nom" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                    </div>
+
+                    <!-- Champ texte avec erreur de validation -->
+                    <div>
+                        <label for="nom_erreur" class="block text-sm font-medium text-red-400 mb-1">Nom (erreur)</label>
+                        <input type="text" id="nom_erreur" name="nom_erreur" class="w-full bg-gray-800 text-white border border-red-500 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <p class="mt-1 text-sm text-red-400">Ce champ est requis</p>
+                    </div>
+
+                    <!-- Champ texte avec validation réussie -->
+                    <div>
+                        <label for="nom_valide" class="block text-sm font-medium text-green-400 mb-1">Nom (valide)</label>
+                        <input type="text" id="nom_valide" name="nom_valide" value="John Doe" class="w-full bg-gray-800 text-white border border-green-500 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <p class="mt-1 text-sm text-green-400">Parfait !</p>
+                    </div>
+
+                    <!-- Champ email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                    </div>
+
+                    <!-- Champ mot de passe -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Mot de passe</label>
+                        <input type="password" id="password" name="password" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                    </div>
+
+                    <!-- Champ date -->
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-300 mb-1">Date de naissance</label>
+                        <input type="date" id="date" name="date" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                    </div>
+
+                    <!-- Champ nombre -->
+                    <div>
+                        <label for="nombre" class="block text-sm font-medium text-gray-300 mb-1">Âge</label>
+                        <input type="number" id="nombre" name="nombre" min="0" max="120" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                    </div>
+
+                    <!-- Select simple -->
+                    <div>
+                        <label for="pays" class="block text-sm font-medium text-gray-300 mb-1">Pays</label>
+                        <select id="pays" name="pays" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                            <option value="">Sélectionnez un pays</option>
+                            <option value="fr">France</option>
+                            <option value="ca">Canada</option>
+                            <option value="be">Belgique</option>
+                            <option value="ch">Suisse</option>
+                        </select>
+                    </div>
+
+                    <!-- Select multiple -->
+                    <div>
+                        <label for="langues" class="block text-sm font-medium text-gray-300 mb-1">Langues parlées</label>
+                        <select id="langues" name="langues" multiple class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent">
+                            <option value="fr">Français</option>
+                            <option value="en">Anglais</option>
+                            <option value="es">Espagnol</option>
+                            <option value="de">Allemand</option>
+                            <option value="it">Italien</option>
+                        </select>
+                        <p class="text-xs text-gray-400 mt-1">Maintenez Ctrl (ou Cmd sur Mac) pour sélectionner plusieurs options</p>
+                    </div>
+
+                    <!-- Checkbox simple -->
+                    <div class="flex items-center">
+                        <input type="checkbox" id="newsletter" name="newsletter" class="h-4 w-4 text-blog-accent border-gray-700 rounded focus:ring-blog-accent">
+                        <label for="newsletter" class="ml-2 block text-sm text-gray-300">
+                            S'abonner à la newsletter
+                        </label>
+                    </div>
+
+                    <!-- Checkbox multiple -->
+                    <div>
+                        <p class="block text-sm font-medium text-gray-300 mb-2">Centres d'intérêt</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="interet_tech" name="interets[]" value="tech" class="h-4 w-4 text-blog-accent border-gray-700 rounded focus:ring-blog-accent">
+                                <label for="interet_tech" class="ml-2 block text-sm text-gray-300">
+                                    Technologie
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="interet_design" name="interets[]" value="design" class="h-4 w-4 text-blog-accent border-gray-700 rounded focus:ring-blog-accent">
+                                <label for="interet_design" class="ml-2 block text-sm text-gray-300">
+                                    Design
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="interet_business" name="interets[]" value="business" class="h-4 w-4 text-blog-accent border-gray-700 rounded focus:ring-blog-accent">
+                                <label for="interet_business" class="ml-2 block text-sm text-gray-300">
+                                    Business
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Radio buttons -->
+                    <div>
+                        <p class="block text-sm font-medium text-gray-300 mb-2">Niveau d'expérience</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="niveau_debutant" name="niveau" value="debutant" class="h-4 w-4 text-blog-accent border-gray-700 focus:ring-blog-accent">
+                                <label for="niveau_debutant" class="ml-2 block text-sm text-gray-300">
+                                    Débutant
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="niveau_intermediaire" name="niveau" value="intermediaire" class="h-4 w-4 text-blog-accent border-gray-700 focus:ring-blog-accent">
+                                <label for="niveau_intermediaire" class="ml-2 block text-sm text-gray-300">
+                                    Intermédiaire
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="niveau_expert" name="niveau" value="expert" class="h-4 w-4 text-blog-accent border-gray-700 focus:ring-blog-accent">
+                                <label for="niveau_expert" class="ml-2 block text-sm text-gray-300">
+                                    Expert
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div>
+                        <label for="commentaire" class="block text-sm font-medium text-gray-300 mb-1">Commentaire</label>
+                        <textarea id="commentaire" name="commentaire" rows="4" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent"></textarea>
+                    </div>
+
+                    <!-- Éditeur Markdown simplifié avec barre d'outils et aperçu modal -->
+                    <div>
+                        <label for="markdown" class="block text-sm font-medium text-gray-300 mb-1">Éditeur Markdown</label>
+
+                        <!-- Barre d'outils de l'éditeur -->
+                        <div class="flex flex-wrap items-center bg-gray-900 border border-gray-700 border-b-0 rounded-t-lg px-3 py-2 gap-2">
+                            <button type="button" data-format="bold" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Gras">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" data-format="italic" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Italique">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" data-format="strikethrough" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Barré">
+                                <i class="fas fa-strikethrough"></i>
+                            </button>
+                            <div class="h-6 w-px bg-gray-700 mx-1"></div>
+                            <button type="button" data-format="h1" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Titre 1">
+                                <i class="fas fa-heading"></i><sup>1</sup>
+                            </button>
+                            <button type="button" data-format="h2" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Titre 2">
+                                <i class="fas fa-heading"></i><sup>2</sup>
+                            </button>
+                            <button type="button" data-format="h3" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Titre 3">
+                                <i class="fas fa-heading"></i><sup>3</sup>
+                            </button>
+                            <div class="h-6 w-px bg-gray-700 mx-1"></div>
+                            <button type="button" data-format="quote" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Citation">
+                                <i class="fas fa-quote-right"></i>
+                            </button>
+                            <button type="button" data-format="code" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Code">
+                                <i class="fas fa-code"></i>
+                            </button>
+                            <button type="button" data-format="codeblock" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Bloc de code">
+                                <i class="fas fa-file-code"></i>
+                            </button>
+                            <div class="h-6 w-px bg-gray-700 mx-1"></div>
+                            <button type="button" data-format="ul" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Liste à puces">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button type="button" data-format="ol" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Liste numérotée">
+                                <i class="fas fa-list-ol"></i>
+                            </button>
+                            <button type="button" data-format="task" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Liste de tâches">
+                                <i class="fas fa-tasks"></i>
+                            </button>
+                            <div class="h-6 w-px bg-gray-700 mx-1"></div>
+                            <button type="button" data-format="link" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Lien">
+                                <i class="fas fa-link"></i>
+                            </button>
+                            <button type="button" data-format="image" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Image">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button type="button" data-format="table" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Tableau">
+                                <i class="fas fa-table"></i>
+                            </button>
+                            <div class="h-6 w-px bg-gray-700 mx-1"></div>
+                            <button type="button" data-format="hr" class="text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-white px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center justify-center min-w-[32px]" title="Ligne horizontale">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <div class="flex-grow"></div>
+                            <button type="button" id="toggle-preview" class="text-white bg-blog-secondary hover:bg-blue-600 px-4 py-1.5 rounded-md transition-colors duration-200 flex items-center gap-2">
+                                <i class="fas fa-eye"></i> Aperçu
+                            </button>
+                        </div>
+                        <!-- Éditeur -->
+                        <textarea id="markdown" name="markdown" rows="8" class="w-full bg-gray-800 text-white border border-gray-700 border-t-0 rounded-b-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent font-mono" placeholder="Écrivez votre contenu en Markdown ici...">## Bienvenue dans l'éditeur Markdown
+
+Ceci est un **texte en gras** et ceci est en *italique*.
+
+### Caractéristiques:
+- Support pour les listes
+- Titres de différents niveaux
+- Et bien plus encore!
+
+```js
+// Un peu de code JavaScript
+function saluer(nom) {
+  return `Bonjour, ${nom}!`;
+}
+```</textarea>
+
+                        <!-- Aperçu (caché par défaut) -->
+                        <div id="markdown-preview" class="hidden w-full bg-gray-800 text-white border border-gray-700 border-t-0 rounded-b-lg py-2 px-4 prose prose-invert max-w-none">
+                            <!-- Le contenu de l'aperçu sera injecté ici -->
+                        </div>
+
+                        <style>
+                            /* Styles pour le contenu Markdown */
+                            
+                            #markdown-preview {
+                                /* Styles de base */
+                                @apply text-gray-100 leading-relaxed;
+                            }
+                            /* Titres */
+                            
+                            #markdown-preview h1 {
+                                @apply text-4xl font-bold mb-6 pb-3 border-b border-blog-accent/30 text-white;
+                            }
+                            
+                            #markdown-preview h2 {
+                                @apply text-3xl font-semibold mb-5 text-blog-secondary;
+                            }
+                            
+                            #markdown-preview h3 {
+                                @apply text-2xl font-medium mb-4 text-blog-tertiary;
+                            }
+                            /* Paragraphes */
+                            
+                            #markdown-preview p {
+                                @apply my-4 leading-7;
+                            }
+                            /* Listes */
+                            
+                            #markdown-preview ul {
+                                @apply my-4 pl-6 space-y-2;
+                            }
+                            
+                            #markdown-preview ul li {
+                                @apply relative;
+                            }
+                            
+                            #markdown-preview ul li::before {
+                                @apply content-[''] absolute w-2 h-2 bg-blog-accent rounded-full -left-4 top-2;
+                            }
+                            
+                            #markdown-preview ol {
+                                @apply my-4 pl-6 space-y-2 list-decimal;
+                            }
+                            /* Citations */
+                            
+                            #markdown-preview blockquote {
+                                @apply my-4 pl-4 italic border-l-4 border-blog-accent/50 bg-gray-900/30 py-2 pr-4 rounded-r;
+                            }
+                            /* Code */
+                            
+                            #markdown-preview code {
+                                @apply bg-gray-900 px-1.5 py-0.5 rounded font-mono text-blog-accent;
+                            }
+                            
+                            #markdown-preview pre {
+                                @apply my-4 p-4 bg-gray-900 rounded-lg overflow-x-auto;
+                            }
+                            
+                            #markdown-preview pre code {
+                                @apply bg-transparent p-0 text-gray-300;
+                            }
+                            /* Liens */
+                            
+                            #markdown-preview a {
+                                @apply text-blog-secondary hover: text-blog-accent transition-colors duration-200 underline;
+                            }
+                            /* Tableaux */
+                            
+                            #markdown-preview table {
+                                @apply w-full my-4 border-collapse;
+                            }
+                            
+                            #markdown-preview th {
+                                @apply bg-gray-900 text-left py-2 px-4 border border-gray-700;
+                            }
+                            
+                            #markdown-preview td {
+                                @apply py-2 px-4 border border-gray-700;
+                            }
+                            /* Images */
+                            
+                            #markdown-preview img {
+                                @apply max-w-full my-4 rounded-lg border border-gray-700 shadow-lg;
+                            }
+                            /* Séparateurs */
+                            
+                            #markdown-preview hr {
+                                @apply my-8 border-t border-gray-700;
+                            }
+                            /* Listes de tâches */
+                            
+                            #markdown-preview input[type="checkbox"] {
+                                @apply mr-2 rounded border-gray-700;
+                            }
+                            /* Styles spéciaux pour le code avec coloration syntaxique */
+                            
+                            #markdown-preview pre code.hljs {
+                                @apply rounded-md font-mono text-sm;
+                            }
+                        </style>
+
+                        <p class="text-xs text-gray-400 mt-1">Utilisez la syntaxe Markdown ou les boutons de formatage pour styliser votre texte</p>
+                    </div>
+
+                    <!-- Champ texte désactivé avec bg personnalisé -->
+                    <div>
+                        <label for="champ_disabled" class="block text-sm font-medium text-gray-300 mb-1">Champ désactivé</label>
+                        <input type="text" id="champ_disabled" name="champ_disabled" value="Ce champ est désactivé" disabled class="w-full bg-blog-bg text-gray-400 border border-gray-700 rounded-lg py-2 px-4 cursor-not-allowed">
+                    </div>
+
+                    <!-- Bouton de soumission -->
+                    <div>
+                        <button type="submit" class="w-full bg-blog-accent text-white font-medium py-2 px-4 rounded-lg hover:bg-amber-500 transition-colors transform hover:-translate-y-1 duration-200">
+                            Envoyer le formulaire
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-blog-card mt-16 border-t border-gray-700">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Copyright -->
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Le Blog Moderne. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-blog-accent text-sm transition-colors">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-400 hover:text-blog-accent text-sm transition-colors">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-blog-accent text-sm transition-colors">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pour la gestion du formulaire et de l'éditeur Markdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const markdownEditor = document.getElementById('markdown');
+            const markdownPreview = document.getElementById('markdown-preview');
+            const togglePreviewBtn = document.getElementById('toggle-preview');
+            const formatButtons = document.querySelectorAll('[data-format]');
+            let isPreviewMode = false;
+
+            // Gestion de l'aperçu Markdown
+            if (markdownEditor && markdownPreview && togglePreviewBtn) {
+                // Fonction de bascule entre édition et aperçu
+                togglePreviewBtn.addEventListener('click', function() {
+                    if (!isPreviewMode) {
+                        // Passer en mode aperçu
+                        markdownPreview.innerHTML = marked.parse(markdownEditor.value);
+                        markdownEditor.style.display = 'none'; // Cacher le textarea
+                        markdownPreview.style.display = 'block'; // Afficher l'aperçu
+                        togglePreviewBtn.innerHTML = '<i class="fas fa-edit"></i> Mode Édition';
+                    } else {
+                        // Revenir en mode édition
+                        markdownEditor.style.display = 'block';
+                        markdownPreview.style.display = 'none';
+                        togglePreviewBtn.innerHTML = '<i class="fas fa-eye"></i> Aperçu';
+                    }
+                    isPreviewMode = !isPreviewMode;
+                });
+            }
+
+            // Gérer les boutons de formatage
+            formatButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!markdownEditor) return;
+
+                    const format = this.getAttribute('data-format');
+                    let selectionStart = markdownEditor.selectionStart;
+                    let selectionEnd = markdownEditor.selectionEnd;
+                    let selectedText = markdownEditor.value.substring(selectionStart, selectionEnd);
+                    let replacement = '';
+
+                    switch (format) {
+                        case 'bold':
+                            replacement = `**${selectedText || 'texte en gras'}**`;
+                            break;
+                        case 'italic':
+                            replacement = `*${selectedText || 'texte en italique'}*`;
+                            break;
+                        case 'strikethrough':
+                            replacement = `~~${selectedText || 'texte barré'}~~`;
+                            break;
+                        case 'h1':
+                            replacement = `# ${selectedText || 'Titre de niveau 1'}`;
+                            break;
+                        case 'h2':
+                            replacement = `## ${selectedText || 'Titre de niveau 2'}`;
+                            break;
+                        case 'h3':
+                            replacement = `### ${selectedText || 'Titre de niveau 3'}`;
+                            break;
+                        case 'quote':
+                            replacement = selectedText ? selectedText.split('\n').map(line => `> ${line}`).join('\n') : '> Citation';
+                            break;
+                        case 'code':
+                            replacement = `\`${selectedText || 'code'}\``;
+                            break;
+                        case 'codeblock':
+                            replacement = selectedText ? `\`\`\`\n${selectedText}\n\`\`\`` : '```\ncode\n```';
+                            break;
+                        case 'ul':
+                            replacement = selectedText ? selectedText.split('\n').map(line => `- ${line}`).join('\n') : '- Élément de liste';
+                            break;
+                        case 'ol':
+                            replacement = selectedText ? selectedText.split('\n').map((line, i) => `${i+1}. ${line}`).join('\n') : '1. Élément de liste';
+                            break;
+                        case 'task':
+                            replacement = selectedText ? selectedText.split('\n').map(line => `- [ ] ${line}`).join('\n') : '- [ ] Tâche à faire';
+                            break;
+                        case 'link':
+                            replacement = selectedText ? `[${selectedText}](https://example.com)` : '[Texte du lien](https://example.com)';
+                            break;
+                        case 'image':
+                            replacement = '![Description de l\'image](https://example.com/image.jpg)';
+                            break;
+                        case 'table':
+                            replacement = `| En-tête 1 | En-tête 2 | En-tête 3 |\n| --------- | --------- | --------- |\n| Cellule 1 | Cellule 2 | Cellule 3 |\n| Cellule 4 | Cellule 5 | Cellule 6 |`;
+                            break;
+                        case 'hr':
+                            replacement = '\n\n---\n\n';
+                            break;
+                    }
+
+                    // Insérer le texte formaté
+                    markdownEditor.focus();
+                    document.execCommand('insertText', false, replacement);
+                });
+            });
+
+            // Gestion de la soumission du formulaire
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Formulaire soumis !');
+                    if (markdownEditor) {
+                        console.log('Contenu Markdown:', markdownEditor.value);
+                    }
+                    alert('Formulaire soumis avec succès !');
+                });
+            }
+
+            // Support des raccourcis clavier (Tab dans l'éditeur)
+            if (markdownEditor) {
+                markdownEditor.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        e.preventDefault();
+                        document.execCommand('insertText', false, '    ');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

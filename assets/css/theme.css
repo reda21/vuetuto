@@ -8,10 +8,15 @@
     monospace;
   --font-poppins: Poppins, sans-serif;
 
+  --color-blog-bg: #22244d;
   --color-blog-card: #2e3267;
   --color-blog-accent: #f59e0b;
   --color-blog-secondary: #3b82f6;
   --color-blog-tertiary: #10b981;
+
+  --color-light-bg: #f8fafc;
+  --color-light-card: #ffffff;
+   
 
   --animate-spin: spin 1s linear infinite;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
