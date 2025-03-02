@@ -7,6 +7,7 @@ interface IconProps {
   hf?: boolean;
   vf?: boolean;
   rotation?: 'right' | 'left' | 'none';
+  iconFamily?: string;
 }
 
 const props = withDefaults(defineProps<IconProps>(), {
@@ -15,13 +16,14 @@ const props = withDefaults(defineProps<IconProps>(), {
   hf: false,
   vf: false,
   rotation: 'none',
+  iconFamily: 'mdi',
 });
 
 const iconClass = computed(() =>
   props.rotation === 'right' ? 'right-rotation' : props.rotation === 'left' ? 'left-rotation' : null
 );
 
-const iconName = computed(() => `mdi:${props.icon}`);
+const iconName = computed(() => `${props.iconFamily}:${props.icon}`);
 </script>
 
 <template>

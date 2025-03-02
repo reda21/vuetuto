@@ -2,7 +2,8 @@
   <nav class="bg-light-01 dark:bg-dark-01">
     <div class="container mx-auto px-4">
       <div class="flex h-16 items-center justify-between">
-        <div class="flex items-center space-x-8">qyqt
+        <div class="flex items-center space-x-8">
+          qyqt
           <NuxtLink to="/" class="text-primary dark:text-primary text-xl font-bold">
             Anime & Manga
           </NuxtLink>
@@ -19,7 +20,7 @@
           </div>
         </div>
         <div class="flex items-center space-x-4">
-         <DarkModeToggle/>
+          <DarkModeToggle />
         </div>
       </div>
     </div>
@@ -28,7 +29,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import DarkModeToggle from "@/components/DarkModeToggle.vue"
+import DarkModeToggle from '@/components/DarkModeToggle.vue';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -41,7 +42,6 @@ const navLinks = [
 const classBtn = 'transition-transform duration-300 ease-in-out transform hover:scale-110';
 
 // Utilisation du composable
-
 
 /*
 border-light-b dark:border-dark-b 
