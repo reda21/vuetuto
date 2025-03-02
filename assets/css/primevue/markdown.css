@@ -1,0 +1,29 @@
+.markdown-editor .markdown-toolbar{
+    @apply flex flex-wrap items-center bg-gray-900 border border-gray-700 border-b-0 rounded-t-lg px-3 py-2 gap-1;
+}
+
+.markdown-editor .markdown-toolbar button{
+    @apply inline-flex gap-1 items-center rounded px-2 py-1 text-gray-300 hover:bg-gray-800 hover:text-white;
+}
+
+.markdown-editor .markdown-input {
+    @apply focus:ring-blog-accent w-full rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 font-mono text-white focus:ring-2 focus:outline-none;
+}
+
+.markdown-input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    resize: vertical;
+    min-height: 200px;
+    background: transparent;
+    color: inherit;
+  }
+  
+  .markdown-preview {
+    background: white;
+    color: black;
+    min-height: 200px;
+    overflow: auto;
+  }

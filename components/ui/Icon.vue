@@ -31,7 +31,7 @@ const iconName = computed(() => `${props.iconFamily}:${props.icon}`);
     :class="iconClass"
     :icon="iconName"
     :inline="inline"
-    :ssr="true"
+    :ssr="false"
     :horizontalFlip="hf"
     :verticalFlip="vf"
   />
