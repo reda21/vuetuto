@@ -1,29 +1,94 @@
-.markdown-editor .markdown-toolbar{
-    @apply flex flex-wrap items-center bg-gray-900 border border-gray-700 border-b-0 rounded-t-lg px-3 py-2 gap-1;
+.markdown-editor .markdown-toolbar {
+  @apply flex flex-wrap items-center gap-1 rounded-t-lg border border-b-0 border-gray-700 bg-gray-900 px-3 py-2;
 }
 
-.markdown-editor .markdown-toolbar button{
-    @apply inline-flex gap-1 items-center rounded px-2 py-1 text-gray-300 hover:bg-gray-800 hover:text-white;
+.markdown-editor .markdown-toolbar button {
+  @apply inline-flex items-center gap-1 rounded px-2 py-1 text-gray-300 hover:bg-gray-800 hover:text-white;
 }
 
 .markdown-editor .markdown-input {
-    @apply focus:ring-blog-accent w-full rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 font-mono text-white focus:ring-2 focus:outline-none;
+  @apply focus:ring-blog-accent w-full rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 font-mono text-white focus:ring-2 focus:outline-none;
 }
 
 .markdown-input {
-    flex: 1;
-    padding: 1rem;
-    border: none;
-    outline: none;
-    resize: vertical;
-    min-height: 200px;
-    background: transparent;
-    color: inherit;
-  }
-  
-  .markdown-preview {
-    background: white;
-    color: black;
-    min-height: 200px;
-    overflow: auto;
-  }
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  resize: vertical;
+  min-height: 300px;
+  background: transparent;
+  color: inherit;
+}
+
+.markdown-preview {
+ @apply prose prose-invert w-full max-w-none rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 text-white min-h-[300px] h-[300px] overflow-scroll;
+}
+
+/* Titres */
+#markdown-preview h1 {
+  @apply border-blog-accent/30 mb-6 border-b pb-3 text-4xl font-bold text-white;
+}
+#markdown-preview h2 {
+  @apply text-blog-secondary mb-5 text-3xl font-semibold;
+}
+#markdown-preview h3 {
+  @apply text-blog-tertiary mb-4 text-2xl font-medium;
+}
+/* Paragraphes */
+#markdown-preview p {
+  @apply my-4 leading-7;
+}
+/* Listes */
+#markdown-preview ul {
+  @apply my-4 space-y-2 pl-6;
+}
+#markdown-preview ul li {
+  @apply relative;
+}
+#markdown-preview ul li::before {
+  @apply bg-blog-accent absolute top-2 -left-4 h-2 w-2 rounded-full content-[''];
+}
+#markdown-preview ol {
+  @apply my-4 list-decimal space-y-2 pl-6;
+}
+/* Citations */
+#markdown-preview blockquote {
+  @apply border-blog-accent/50 my-4 rounded-r border-l-4 bg-gray-900/30 py-2 pr-4 pl-4 italic;
+}
+/* Code */
+#markdown-preview code {
+  @apply text-blog-accent rounded bg-gray-900 px-1.5 py-0.5 font-mono;
+}
+#markdown-preview pre {
+  @apply my-4 overflow-x-auto rounded-lg bg-gray-900 p-4;
+}
+#markdown-preview pre code {
+  @apply bg-transparent p-0 text-gray-300;
+}
+/* Liens */
+#markdown-preview a {
+  @apply text-blog-secondary hover:text-blog-accent underline transition-colors duration-200;
+}
+/* Tableaux */
+#markdown-preview table {
+  @apply my-4 w-full border-collapse;
+}
+#markdown-preview th {
+  @apply border border-gray-700 bg-gray-900 px-4 py-2 text-left;
+}
+#markdown-preview td {
+  @apply border border-gray-700 px-4 py-2;
+}
+/* Images */
+#markdown-preview img {
+  @apply my-4 max-w-full rounded-lg border border-gray-700 shadow-lg;
+}
+/* Séparateurs */
+#markdown-preview hr {
+  @apply my-8 border-t border-gray-700;
+}
+/* Listes de tâches */
+#markdown-preview input[type='checkbox'] {
+  @apply mr-2 rounded border-gray-700;
+}
