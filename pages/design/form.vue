@@ -238,7 +238,7 @@
         <label for="markdown" class="mb-1 block text-sm font-medium text-gray-300"
           >Éditeur Markdown</label
         >
-        <UiFormMarkdownEditor />
+        <UiFormMarkdownEditor v-model="markdown" />
       </div>
       <!-- Champ texte désactivé avec bg personnalisé -->
       <div>
@@ -265,6 +265,9 @@
         </button>
       </div>
     </form>
+    <pre>
+      {{ markdown }}
+    </pre>
   </div>
 </template>
 
@@ -272,4 +275,6 @@
 definePageMeta({
   layout: 'blog', // correspond au fichier layouts/blog.vue
 });
+
+const markdown = ref("# Titre de l'article\n\nContenu de l'article en Markdown.");
 </script>

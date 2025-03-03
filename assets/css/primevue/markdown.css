@@ -30,8 +30,13 @@
   @apply border-blog-accent/30 mb-6 border-b pb-3 text-4xl font-bold text-white;
 }
 #markdown-preview h2 {
-  @apply text-blog-secondary mb-5 text-3xl font-semibold;
+  @apply text-blog-secondary mt-0 mb-5 text-3xl font-semibold;
 }
+
+#markdown-preview :where(h2):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  @apply mt-0;
+}
+
 #markdown-preview h3 {
   @apply text-blog-tertiary mb-4 text-2xl font-medium;
 }
