@@ -22,7 +22,7 @@
 }
 
 .markdown-preview {
- @apply prose prose-invert w-full max-w-none rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 text-white min-h-[300px] h-[300px] overflow-scroll;
+  @apply prose prose-invert h-[300px] min-h-[300px] w-full max-w-none overflow-scroll rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 text-white;
 }
 
 /* Titres */

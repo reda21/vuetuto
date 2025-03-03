@@ -1,8 +1,13 @@
 <template>
   <div class="markdown-editor">
     <div class="markdown-toolbar" @click="handleToolbarClick" ref="markdownToolbar">
-      <button v-for="(action, key) in formatActions" :key="key" type="button" :data-format="action.format"
-        :title="action.placeholder">
+      <button
+        v-for="(action, key) in formatActions"
+        :key="key"
+        type="button"
+        :data-format="action.format"
+        :title="action.placeholder"
+      >
         <UiIcon iconFamily="fa6-solid" :icon="getIcon(action.format)" />
         <sup v-if="['h1', 'h2', 'h3'].includes(action.format)">{{ action.format.slice(1) }}</sup>
       </button>
@@ -11,8 +16,15 @@
         <UiIcon iconFamily="fa6-solid" :icon="preview ? 'eye-slash' : 'eye'" />
       </button>
     </div>
-    <textarea :class="preview ? 'hidden' : ''" ref="markdownEditor" name="markdown" rows="8" class="markdown-input"
-      :placeholder="placeholder" v-model="content" />
+    <textarea
+      :class="preview ? 'hidden' : ''"
+      ref="markdownEditor"
+      name="markdown"
+      rows="8"
+      class="markdown-input"
+      :placeholder="placeholder"
+      v-model="content"
+    />
     <!-- Aperçu (caché par défaut) -->
     <div id="markdown-preview" :class="!preview ? 'hidden' : ''" class="markdown-preview">
       <!-- Le contenu de l'aperçu sera injecté ici -->
@@ -22,7 +34,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue';
-import { marked } from "marked"
+import { marked } from 'marked';
 
 interface MarkdownAction {
   format: string;
@@ -52,7 +64,7 @@ Markdown Editor for Vue3, developed in JSX and TypeScript, supports different th
 - [ ] Saturday
 - [x] Sunday
 `);
-const previewContent = ref("");
+const previewContent = ref('');
 
 const preview = ref(false);
 
@@ -167,8 +179,6 @@ const formatActions: Record<string, MarkdownAction> = {
   },
   hr: { format: 'hr', icon: 'minus', placeholder: '', wrapper: () => '\n\n---\n\n', line: false },
 };
-
-
 
 //methods
 const insertText = (action: MarkdownAction): void => {
