@@ -6,7 +6,7 @@ import Aura from '@primeuix/themes/aura';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-02-20',
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   modules: [
     '@pinia/nuxt',
     '@vueuse/nuxt',
@@ -68,6 +68,7 @@ export default defineNuxtConfig({
     storesDirs: ['./stores/**'],
   },
   devServer: {
+    host: "0.0.0.0",
     port: 4000, // Changez le port ici 2
   },
   runtimeConfig: {
