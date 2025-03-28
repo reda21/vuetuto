@@ -1,37 +1,37 @@
-@import 'tailwindcss';
-@import 'tailwindcss-primeui';
-@import 'primeicons/primeicons.css';
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+@import "primeicons/primeicons.css";
 
 @plugin "@tailwindcss/typography";
 
-@import './utility.css';
+@import "./utility.css";
 
 /*configure dark mode*/
-@import './base.css';
+@import "./base.css";
 
 /*configure theme*/
-@import './theme.css';
+@import "./theme.css";
 
 /*ui composent */
-@import './ui/button.css';
+@import "./ui/button.css";
 
-@import './ui/buttonGroup.css';
+@import "./ui/buttonGroup.css";
 
-@import './ui/icon.css';
+@import "./ui/icon.css";
 
-@import './primevue/inputtext.css';
+@import "./primevue/inputtext.css";
 
-@import './primevue/markdown.css';
+@import "./primevue/markdown.css";
 
-@import './primevue/floatlabel.css';
+@import "./primevue/floatlabel.css";
 
-@import './primevue/toast.css';
+@import "./primevue/toast.css";
 
-@import './primevue/iftalabel.css';
+@import "./primevue/iftalabel.css";
 
-@import './primevue/autocomplete.css';
+@import "./primevue/autocomplete.css";
 
-@import './primevue/chip';
+@import "./primevue/chip";
 
 /*
 @utility demo {

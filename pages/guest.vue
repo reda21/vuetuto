@@ -29,34 +29,34 @@ const { status, signIn, signOut, data } = useAuth();
 const router = useRouter();
 
 // Credentials pour la connexion (à adapter selon vos besoins)
-const credentials = { username: 'jsmith', password: 'hunter2' };
+const credentials = { username: "jsmith", password: "hunter2" };
 
 // Fonction pour gérer la connexion
 const login = async () => {
-  try {
-    // Appeler l'endpoint de connexion
-    await signIn(credentials);
-    console.log('Connexion réussie');
+	try {
+		// Appeler l'endpoint de connexion
+		await signIn(credentials);
+		console.log("Connexion réussie");
 
-    // Redirection vers une autre page (facultatif)
-    //    router.push('/user'); // Assurez-vous que `/user` correspond au chemin de votre page
-  } catch (error) {
-    console.error('Erreur lors de la connexion :', error);
-  }
+		// Redirection vers une autre page (facultatif)
+		//    router.push('/user'); // Assurez-vous que `/user` correspond au chemin de votre page
+	} catch (error) {
+		console.error("Erreur lors de la connexion :", error);
+	}
 };
 
 // Fonction pour gérer la déconnexion
 const logout = async () => {
-  try {
-    // Appeler l'endpoint de déconnexion
-    await signOut();
-    console.log('Déconnexion réussie');
+	try {
+		// Appeler l'endpoint de déconnexion
+		await signOut();
+		console.log("Déconnexion réussie");
 
-    // Retour à la page d'accueil ou une autre page
-    router.push('/'); // Modifier le chemin si nécessaire
-  } catch (error) {
-    console.error('Erreur lors de la déconnexion :', error);
-  }
+		// Retour à la page d'accueil ou une autre page
+		router.push("/"); // Modifier le chemin si nécessaire
+	} catch (error) {
+		console.error("Erreur lors de la déconnexion :", error);
+	}
 };
 </script>
 

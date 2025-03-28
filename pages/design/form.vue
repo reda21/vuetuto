@@ -273,8 +273,10 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'blog', // correspond au fichier layouts/blog.vue
+	layout: "blog", // correspond au fichier layouts/blog.vue
 });
 
-const markdown = ref("# Titre de l'article\n\nContenu de l'article en Markdown.");
+const markdown = ref(
+	"# Titre de l'article\n\nContenu de l'article en Markdown.",
+);
 </script>

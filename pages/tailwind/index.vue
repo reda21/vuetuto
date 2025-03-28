@@ -25,28 +25,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
-import Button from 'primevue/button';
-import SelectButton from 'primevue/selectbutton';
-import AutoComplete from 'primevue/autocomplete';
-import { CountryService } from '~~/utils/contries';
-import Drawer from 'primevue/drawer';
+import Button from "primevue/button";
+import SelectButton from "primevue/selectbutton";
+import AutoComplete from "primevue/autocomplete";
+import { CountryService } from "~~/utils/contries";
+import Drawer from "primevue/drawer";
 
 const visible = ref(false);
 
 onMounted(() => {
-  CountryService.getCountries().then((data) => (countries.value = data));
+	CountryService.getCountries().then((data) => (countries.value = data));
 });
 
 interface AutoCompleteEvent {
-  originalEvent: Event;
-  query: string;
+	originalEvent: Event;
+	query: string;
 }
 
 interface Country {
-  name: string;
-  code: string;
+	name: string;
+	code: string;
 }
 
 const countries = ref<Country[]>([]);
@@ -54,15 +54,15 @@ const selectedCountry = ref<Country | null>(null);
 const filteredCountries = ref<Country[]>([]);
 
 const search = (event: AutoCompleteEvent) => {
-  setTimeout(() => {
-    if (!event.query.trim().length) {
-      filteredCountries.value = [...countries.value];
-    } else {
-      filteredCountries.value = countries.value.filter((country: Country) => {
-        return country.name.toLowerCase().startsWith(event.query.toLowerCase());
-      });
-    }
-  }, 250);
+	setTimeout(() => {
+		if (!event.query.trim().length) {
+			filteredCountries.value = [...countries.value];
+		} else {
+			filteredCountries.value = countries.value.filter((country: Country) => {
+				return country.name.toLowerCase().startsWith(event.query.toLowerCase());
+			});
+		}
+	}, 250);
 };
 </script>
 

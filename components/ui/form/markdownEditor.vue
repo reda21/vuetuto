@@ -41,20 +41,20 @@
 </template>
 
 <script lang="ts" setup>
-import { useMarkdownEditor } from '@/composables/useMarkdownEditor';
+import { useMarkdownEditor } from "@/composables/useMarkdownEditor";
 
 // Remplacement de la variable content avec defineModel
 const content = defineModel<string | null>({ required: false, default: null });
 
 const {
-  placeholder,
-  markdownEditor,
-  markdownToolbar,
-  preview,
-  renderedContent,
-  formatActions,
-  getIcon,
-  handleToolbarClick,
-  handleKeyDown,
+	placeholder,
+	markdownEditor,
+	markdownToolbar,
+	preview,
+	renderedContent,
+	formatActions,
+	getIcon,
+	handleToolbarClick,
+	handleKeyDown,
 } = useMarkdownEditor(content);
 </script>

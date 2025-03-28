@@ -28,18 +28,19 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
-import DarkModeToggle from '@/components/DarkModeToggle.vue';
+import { Icon } from "@iconify/vue";
+import DarkModeToggle from "@/components/DarkModeToggle.vue";
 
 const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Anime', path: '/anime' },
-  { name: 'Manga', path: '/manga' },
-  { name: 'tailwind', path: '/tailwind' },
-  { name: 'formulaire', path: '/formulaire' },
+	{ name: "Home", path: "/" },
+	{ name: "Anime", path: "/anime" },
+	{ name: "Manga", path: "/manga" },
+	{ name: "tailwind", path: "/tailwind" },
+	{ name: "formulaire", path: "/formulaire" },
 ];
 
-const classBtn = 'transition-transform duration-300 ease-in-out transform hover:scale-110';
+const classBtn =
+	"transition-transform duration-300 ease-in-out transform hover:scale-110";
 
 // Utilisation du composable
 

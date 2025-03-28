@@ -34,124 +34,124 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, withDefaults, defineProps } from 'vue';
+import { computed, withDefaults, defineProps } from "vue";
 
-type ButtonType = 'button' | 'submit' | 'reset';
-type ElementType = 'button' | 'a' | 'input';
+type ButtonType = "button" | "submit" | "reset";
+type ElementType = "button" | "a" | "input";
 
 type VariantType =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'light'
-  | 'dark'
-  | 'link'
-  | 'outline-primary'
-  | 'outline-secondary'
-  | 'outline-success'
-  | 'outline-warning'
-  | 'outline-danger'
-  | 'outline-info'
-  | 'outline-light'
-  | 'outline-dark'
-  | 'gradient-primary';
+	| "primary"
+	| "secondary"
+	| "success"
+	| "danger"
+	| "warning"
+	| "info"
+	| "light"
+	| "dark"
+	| "link"
+	| "outline-primary"
+	| "outline-secondary"
+	| "outline-success"
+	| "outline-warning"
+	| "outline-danger"
+	| "outline-info"
+	| "outline-light"
+	| "outline-dark"
+	| "gradient-primary";
 
-type SizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+type SizeType = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
-type RoundedType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+type RoundedType = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full";
 
 interface ButtonProps {
-  variant?: VariantType;
-  size?: SizeType;
-  label?: string;
-  icon?: string;
-  iconPos?: 'left' | 'right' | 'top' | 'bottom';
-  type?: ButtonType;
-  lazy?: boolean;
-  disabled?: boolean;
-  as?: ElementType;
-  href?: string; // Optionnel, pour le cas d'un lien
-  rounded?: RoundedType;
-  full?: boolean;
-  bsPrefix?: string;
-  active?: boolean;
-  onChange?: (event: Event) => void;
-  onClick?: (event: MouseEvent) => void;
+	variant?: VariantType;
+	size?: SizeType;
+	label?: string;
+	icon?: string;
+	iconPos?: "left" | "right" | "top" | "bottom";
+	type?: ButtonType;
+	lazy?: boolean;
+	disabled?: boolean;
+	as?: ElementType;
+	href?: string; // Optionnel, pour le cas d'un lien
+	rounded?: RoundedType;
+	full?: boolean;
+	bsPrefix?: string;
+	active?: boolean;
+	onChange?: (event: Event) => void;
+	onClick?: (event: MouseEvent) => void;
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
-  variant: 'primary',
-  size: 'md',
-  label: 'Click me',
-  icon: undefined,
-  iconPos: 'left',
-  type: 'button' as ButtonType,
-  lazy: false,
-  disabled: false,
-  as: 'button' as ElementType,
-  href: '#',
-  rounded: 'full',
-  full: false,
-  bsPrefix: 'btn',
-  active: false,
-  onChange: () => {},
-  onClick: () => {},
+	variant: "primary",
+	size: "md",
+	label: "Click me",
+	icon: undefined,
+	iconPos: "left",
+	type: "button" as ButtonType,
+	lazy: false,
+	disabled: false,
+	as: "button" as ElementType,
+	href: "#",
+	rounded: "full",
+	full: false,
+	bsPrefix: "btn",
+	active: false,
+	onChange: () => {},
+	onClick: () => {},
 });
 
 const componentType = computed(() => props.as);
 
 const componentAttrs = computed(() => {
-  if (props.as === 'a') {
-    return { href: props.href, role: 'button' };
-  } else if (props.as === 'input') {
-    return {
-      type: props.type,
-      value: props.label,
-      disabled: props.disabled || props.lazy,
-    };
-  } else {
-    return { type: props.type, disabled: props.disabled || props.lazy };
-  }
+	if (props.as === "a") {
+		return { href: props.href, role: "button" };
+	} else if (props.as === "input") {
+		return {
+			type: props.type,
+			value: props.label,
+			disabled: props.disabled || props.lazy,
+		};
+	} else {
+		return { type: props.type, disabled: props.disabled || props.lazy };
+	}
 });
 
 const buttonClasses = computed(() => {
-  let classes = [props.bsPrefix || 'btn'];
-  if (props.variant) classes.push(`btn-${props.variant}`);
+	let classes = [props.bsPrefix || "btn"];
+	if (props.variant) classes.push(`btn-${props.variant}`);
 
-  if (props.size) classes.push(`btn-${props.size}`);
+	if (props.size) classes.push(`btn-${props.size}`);
 
-  if (props.rounded) classes.push(`rounded-${props.rounded}`);
+	if (props.rounded) classes.push(`rounded-${props.rounded}`);
 
-  if (props.active) classes.push('active');
+	if (props.active) classes.push("active");
 
-  if (props.full) classes.push(`w-full`);
-  return classes.join(' ');
+	if (props.full) classes.push(`w-full`);
+	return classes.join(" ");
 });
 
 const iconClass = computed(() => {
-  let classes = ['icon'];
-  if (props.iconPos === 'left') {
-    classes.push('icon-left');
-  } else if (props.iconPos === 'right') {
-    classes.push('icon-right');
-  } else if (props.iconPos === 'top') {
-    classes.push('icon-top');
-  } else if (props.iconPos === 'bottom') {
-    classes.push('icon-bottom');
-  }
-  return classes.join(' ');
+	let classes = ["icon"];
+	if (props.iconPos === "left") {
+		classes.push("icon-left");
+	} else if (props.iconPos === "right") {
+		classes.push("icon-right");
+	} else if (props.iconPos === "top") {
+		classes.push("icon-top");
+	} else if (props.iconPos === "bottom") {
+		classes.push("icon-bottom");
+	}
+	return classes.join(" ");
 });
 
 const textClass = computed(() => {
-  let classes = ['text'];
-  if (props.iconPos === 'left' || props.iconPos === 'right') {
-    classes.push('text-inline');
-  } else if (props.iconPos === 'top' || props.iconPos === 'bottom') {
-    classes.push('text-block');
-  }
-  return classes.join(' ');
+	let classes = ["text"];
+	if (props.iconPos === "left" || props.iconPos === "right") {
+		classes.push("text-inline");
+	} else if (props.iconPos === "top" || props.iconPos === "bottom") {
+		classes.push("text-block");
+	}
+	return classes.join(" ");
 });
 </script>

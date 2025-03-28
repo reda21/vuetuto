@@ -1,47 +1,110 @@
-<!-- Éditeur Markdown simplifié avec barre d'outils et aperçu modal -->
-<div>
-    
-    
+<!doctype html>
+<html>
+  <head>
+    <title>3D Earth</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.js"></script>
 
-    <!-- Éditeur -->
-    <textarea
-      id="markdown"
-      name="markdown"
-      rows="8"
-      class="focus:ring-blog-accent w-full rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 font-mono text-white focus:ring-2 focus:outline-none"
-      placeholder="Écrivez votre contenu en Markdown ici..."
-    ></textarea>
+    <script>
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
 
-    <!-- Modal Aperçu (caché par défaut) -->
-    <div
-      id="preview-modal"
-      class="bg-opacity-75 fixed inset-0 z-50 flex hidden items-center justify-center bg-black"
-    >
-      <div class="bg-blog-card mx-4 flex max-h-[80vh] w-full max-w-3xl flex-col rounded-xl">
-        <div class="flex items-center justify-between border-b border-gray-700 p-4">
-          <h3 class="text-xl font-bold">Aperçu Markdown</h3>
-          <button id="close-preview" class="text-gray-400 hover:text-white">
-            <i class="fas fa-times text-xl"></i>
-          </button>
-        </div>
-        <div
-          id="markdown-preview"
-          class="prose prose-invert max-w-none flex-grow overflow-auto p-4"
-        >
-          <!-- Le contenu de l'aperçu sera injecté ici -->
-        </div>
-        <div class="flex justify-end border-t border-gray-700 p-4">
-          <button
-            id="close-preview-btn"
-            class="rounded bg-gray-700 px-4 py-2 text-white transition-colors hover:bg-gray-600"
-          >
-            Fermer
-          </button>
-        </div>
-      </div>
-    </div>
+      // Camera position
+      camera.position.z = 5;
 
-    <p class="mt-1 text-xs text-gray-400">
-      Utilisez la syntaxe Markdown ou les boutons de formatage pour styliser votre texte
-    </p>
-  </div>
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 3, 5);
+      scene.add(directionalLight);
+
+      // Earth creation
+      const textureLoader = new THREE.TextureLoader();
+
+      // Earth surface
+      const earthGeometry = new THREE.SphereGeometry(2, 32, 32);
+      const earthMaterial = new THREE.MeshPhongMaterial({
+        map: textureLoader.load(
+          'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'
+        ),
+        bumpMap: textureLoader.load(
+          'https://threejs.org/examples/textures/planets/earth_normal_2048.jpg'
+        ),
+        bumpScale: 0.05,
+      });
+      const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+      scene.add(earth);
+
+      // Atmosphere
+      const atmosphereGeometry = new THREE.SphereGeometry(2.1, 32, 32);
+      const atmosphereMaterial = new THREE.MeshBasicMaterial({
+        color: 0x3f51b5,
+        transparent: true,
+        opacity: 0.3,
+      });
+      const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+      scene.add(atmosphere);
+
+      // Clouds
+      const cloudsGeometry = new THREE.SphereGeometry(2.05, 32, 32);
+      const cloudsMaterial = new THREE.MeshPhongMaterial({
+        map: textureLoader.load(
+          'https://threejs.org/examples/textures/planets/earth_clouds_2048.jpg'
+        ),
+        transparent: true,
+        opacity: 0.5,
+      });
+      const clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
+      scene.add(clouds);
+
+      // Controls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+
+      // Animation
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Earth rotation
+        earth.rotation.y += 0.001;
+        clouds.rotation.y += 0.001;
+
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      // Handle window resize
+      window.addEventListener('resize', onWindowResize, false);
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      animate();
+    </script>
+  </body>
+</html>

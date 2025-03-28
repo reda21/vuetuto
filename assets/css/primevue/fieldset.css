@@ -1,31 +1,31 @@
 .p-fieldset {
-  @apply border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0 rounded-md border px-[1.125rem] pt-0 pb-[1.125rem];
+	@apply border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0 rounded-md border px-[1.125rem] pt-0 pb-[1.125rem];
 }
 
 .p-fieldset-legend {
-  @apply rounded-md border border-transparent px-3 py-2 transition-colors duration-200;
+	@apply rounded-md border border-transparent px-3 py-2 transition-colors duration-200;
 }
 
 .p-fieldset-toggleable > .p-fieldset-legend {
-  @apply p-0;
+	@apply p-0;
 }
 
 .p-fieldset-toggle-button {
-  @apply bg-surface-0 dark:bg-surface-900 hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-700 dark:text-surface-0 hover:text-surface-800 dark:hover:text-surface-0 focus-visible:outline-primary relative flex items-center justify-center gap-2 overflow-hidden rounded-md border-none px-3 py-2 transition-colors duration-200 select-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2;
+	@apply bg-surface-0 dark:bg-surface-900 hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-700 dark:text-surface-0 hover:text-surface-800 dark:hover:text-surface-0 focus-visible:outline-primary relative flex items-center justify-center gap-2 overflow-hidden rounded-md border-none px-3 py-2 transition-colors duration-200 select-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2;
 }
 
 .p-fieldset-legend-label {
-  @apply font-semibold;
+	@apply font-semibold;
 }
 
 .p-fieldset-toggle-icon {
-  @apply text-surface-500 dark:text-surface-400 transition-colors duration-200;
+	@apply text-surface-500 dark:text-surface-400 transition-colors duration-200;
 }
 
 .p-fieldset-toggle-button:hover .p-fieldset-toggle-icon {
-  @apply text-surface-600 dark:text-surface-300;
+	@apply text-surface-600 dark:text-surface-300;
 }
 
 .p-fieldset .p-fieldset-content {
-  @apply p-0;
+	@apply p-0;
 }

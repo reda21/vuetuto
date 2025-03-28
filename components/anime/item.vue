@@ -30,13 +30,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { Kitsu } from '~/types/kitsu';
+import type { Kitsu } from "~/types/kitsu";
 
 const props = defineProps<{
-  content: Kitsu;
+	content: Kitsu;
 }>();
 
 const formatRating = (rating: string) => {
-  return rating ? (parseFloat(rating) / 10).toFixed(1) : 'N/A';
+	return rating ? (parseFloat(rating) / 10).toFixed(1) : "N/A";
 };
 </script>

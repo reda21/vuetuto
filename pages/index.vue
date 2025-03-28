@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default', // correspond au fichier layouts/blog.vue
+	layout: "default", // correspond au fichier layouts/blog.vue
 });
 
 const store = useCounterStore();

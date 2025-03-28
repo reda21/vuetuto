@@ -24,44 +24,44 @@
 </template>
 
 <script lang="ts" setup>
-import { useDarkMode } from '~/composables/useDarkMode';
+import { useDarkMode } from "~/composables/useDarkMode";
 
 const { isDark } = useDarkMode();
 
 defineProps({
-  id: {
-    type: String,
-    required: true,
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    default: 'text',
-  },
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  modelValue: {
-    type: [String, Number],
-    default: '',
-  },
-  required: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  inputClass: {
-    type: String,
-    default: '',
-  },
+	id: {
+		type: String,
+		required: true,
+	},
+	label: {
+		type: String,
+		required: true,
+	},
+	type: {
+		type: String,
+		default: "text",
+	},
+	placeholder: {
+		type: String,
+		default: "",
+	},
+	modelValue: {
+		type: [String, Number],
+		default: "",
+	},
+	required: {
+		type: Boolean,
+		default: false,
+	},
+	disabled: {
+		type: Boolean,
+		default: false,
+	},
+	inputClass: {
+		type: String,
+		default: "",
+	},
 });
 
-defineEmits(['update:modelValue']);
+defineEmits(["update:modelValue"]);
 </script>

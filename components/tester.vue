@@ -15,25 +15,25 @@
 </template>
 
 <script lang="ts" setup>
-import AutoComplete from 'primevue/autocomplete';
-import type { AutoCompleteCompleteEvent } from 'primevue/autocomplete';
+import AutoComplete from "primevue/autocomplete";
+import type { AutoCompleteCompleteEvent } from "primevue/autocomplete";
 
 interface Item {
-  label: string;
-  value: number;
+	label: string;
+	value: number;
 }
 
 const items = ref<Item[]>(
-  Array.from({ length: 1000 }, (_, i) => ({ label: `Item #${i}`, value: i }))
+	Array.from({ length: 1000 }, (_, i) => ({ label: `Item #${i}`, value: i })),
 );
 const selectedItem = ref<Item | null>(null);
 const filteredItems = ref<Item[]>([]);
 
 const searchItems = (event: AutoCompleteCompleteEvent) => {
-  const query = event.query;
-  filteredItems.value = items.value.filter(
-    (item) => item.label.toLowerCase().indexOf(query.toLowerCase()) === 0
-  );
+	const query = event.query;
+	filteredItems.value = items.value.filter(
+		(item) => item.label.toLowerCase().indexOf(query.toLowerCase()) === 0,
+	);
 };
 </script>
 
