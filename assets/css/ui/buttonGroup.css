@@ -1,9 +1,9 @@
 .btn-group {
-	@apply inline-flex *:not-first:rounded-l-none *:not-last:rounded-r-none;
+  @apply inline-flex *:not-first:rounded-l-none *:not-last:rounded-r-none;
 }
 
 .btn-group-vertical {
-	@apply inline-flex flex-col *:not-first:rounded-t-none *:not-last:rounded-b-none;
+  @apply inline-flex flex-col *:not-first:rounded-t-none *:not-last:rounded-b-none;
 }
 
 /* classes.push((true ? "" : '*:not-first:rounded-t-none *:not-last:rounded-b-none')) */

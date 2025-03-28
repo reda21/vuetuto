@@ -10,16 +10,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { onMounted, ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 //import { useFetch } from '#app'
 
 interface Post {
-	id: number;
-	title: string;
-	body: string;
-	author: string;
-	createdAt: string;
+  id: number;
+  title: string;
+  body: string;
+  author: string;
+  createdAt: string;
 }
 
 const route = useRoute();
@@ -27,14 +27,12 @@ const router = useRouter();
 const post = ref<Post | null>(null);
 
 async function fetchPost() {
-	const { data } = await useFetch<Post>(
-		`http://localhost:3030/posts/${route.params.id}`,
-	);
-	post.value = data.value;
+  const { data } = await useFetch<Post>(`http://localhost:3030/posts/${route.params.id}`);
+  post.value = data.value;
 }
 
 function goBack() {
-	router.back();
+  router.back();
 }
 
 onMounted(fetchPost);

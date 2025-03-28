@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
-defineEmits(["submit"]);
+defineEmits(['submit']);
 
 const submitForm = () => {
-	emit("submit");
+  emit('submit');
 };
 </script>

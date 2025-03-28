@@ -1,130 +1,130 @@
 .btn {
-	@apply inline-flex items-center justify-center px-4 py-2 transition-colors duration-200;
+  @apply inline-flex items-center justify-center px-4 py-2 transition-colors duration-200;
 }
 
 /* taile de bouton */
 .btn-xs {
-	@apply px-2 py-1 text-xs;
+  @apply px-2 py-1 text-xs;
 }
 .btn-sm {
-	@apply px-2 py-1 text-sm;
+  @apply px-2 py-1 text-sm;
 }
 
 .btn-md {
-	@apply px-4 py-2 text-sm;
+  @apply px-4 py-2 text-sm;
 }
 
 .btn-lg {
-	@apply px-6 py-3 text-base;
+  @apply px-6 py-3 text-base;
 }
 
 .btn-xl {
-	@apply px-8 py-4 text-base;
+  @apply px-8 py-4 text-base;
 }
 
 .btn-2xl {
-	@apply px-12 py-6 text-lg;
+  @apply px-12 py-6 text-lg;
 }
 
 .btn-primary {
-	@apply bg-primary hover:bg-primary-hover disabled:bg-primary/50 text-white focus:ring-4 focus:ring-blue-300;
+  @apply bg-primary hover:bg-primary-hover disabled:bg-primary/50 text-white focus:ring-4 focus:ring-blue-300;
 }
 
 .btn-secondary {
-	@apply bg-secondary hover:bg-secondary-hover disabled:bg-secondary/50 text-white;
+  @apply bg-secondary hover:bg-secondary-hover disabled:bg-secondary/50 text-white;
 }
 
 .btn-success {
-	@apply bg-success hover:bg-success-hover disabled:bg-success/50 text-white;
+  @apply bg-success hover:bg-success-hover disabled:bg-success/50 text-white;
 }
 
 .btn-danger {
-	@apply bg-danger hover:bg-danger-hover disabled:bg-danger/50 text-white;
+  @apply bg-danger hover:bg-danger-hover disabled:bg-danger/50 text-white;
 }
 
 .btn-warning {
-	@apply bg-warning hover:bg-warning-hover disabled:bg-warning/50 text-white;
+  @apply bg-warning hover:bg-warning-hover disabled:bg-warning/50 text-white;
 }
 
 .btn-info {
-	@apply bg-info hover:bg-info-hover disabled:bg-info/50 text-white;
+  @apply bg-info hover:bg-info-hover disabled:bg-info/50 text-white;
 }
 
 .btn-light {
-	@apply bg-light text-dark hover:bg-light-hover disabled:bg-light/50;
+  @apply bg-light text-dark hover:bg-light-hover disabled:bg-light/50;
 }
 
 .btn-dark {
-	@apply bg-dark text-light hover:bg-dark-hover disabled:bg-dark/50;
+  @apply bg-dark text-light hover:bg-dark-hover disabled:bg-dark/50;
 }
 
 .btn-link {
-	@apply text-blue-500 hover:text-blue-700 disabled:text-black;
+  @apply text-blue-500 hover:text-blue-700 disabled:text-black;
 }
 
 .btn-outline-primary {
-	@apply border-primary text-primary hover:bg-primary disabled:text-primary/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-primary text-primary hover:bg-primary disabled:text-primary/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-secondary {
-	@apply border-secondary text-secondary hover:bg-secondary disabled:text-secondary/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-secondary text-secondary hover:bg-secondary disabled:text-secondary/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-success {
-	@apply border-success text-success hover:bg-success disabled:text-success/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-success text-success hover:bg-success disabled:text-success/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-danger {
-	@apply border-danger text-danger hover:bg-danger disabled:text-danger/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-danger text-danger hover:bg-danger disabled:text-danger/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-warning {
-	@apply border-warning text-warning hover:bg-warning disabled:text-warning/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-warning text-warning hover:bg-warning disabled:text-warning/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-info {
-	@apply border-info text-info hover:bg-info disabled:text-info/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-info text-info hover:bg-info disabled:text-info/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-outline-light {
-	@apply border-light text-light hover:bg-light hover:text-dark disabled:text-light/50 border disabled:bg-transparent/50;
+  @apply border-light text-light hover:bg-light hover:text-dark disabled:text-light/50 border disabled:bg-transparent/50;
 }
 
 .btn-outline-dark {
-	@apply border-dark text-dark hover:bg-dark disabled:text-dark/50 border hover:text-white disabled:bg-transparent/50;
+  @apply border-dark text-dark hover:bg-dark disabled:text-dark/50 border hover:text-white disabled:bg-transparent/50;
 }
 
 .btn-gradient-primary {
-	@apply from-primary via-primary-hover hover:from-primary-hover hover:via-primary-hover disabled:bg-primary/50 bg-gradient-to-r text-white hover:bg-gradient-to-br;
+  @apply from-primary via-primary-hover hover:from-primary-hover hover:via-primary-hover disabled:bg-primary/50 bg-gradient-to-r text-white hover:bg-gradient-to-br;
 }
 
 /* <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Blue</button> */
 
 .btn:has(.icon-left) {
-	@apply flex-row;
+  @apply flex-row;
 }
 
 .btn:has(.icon-right) {
-	@apply flex-row-reverse;
+  @apply flex-row-reverse;
 }
 
 .btn:has(.icon-top) {
-	@apply flex-col;
+  @apply flex-col;
 }
 
 .btn:has(.icon-bottom) {
-	@apply flex-col-reverse;
+  @apply flex-col-reverse;
 }
 
 .icon-left {
-	@apply mr-2;
+  @apply mr-2;
 }
 .icon-right {
-	@apply ml-2;
+  @apply ml-2;
 }
 .icon-top {
-	@apply mb-2;
+  @apply mb-2;
 }
 .icon-bottom {
-	@apply mt-2;
+  @apply mt-2;
 }

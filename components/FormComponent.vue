@@ -77,52 +77,52 @@
 </template>
 
 <script setup lang="ts">
-import { UiFormAutocomplete } from "#components";
-import { Form } from "@primevue/forms";
-import type { FormResolverOptions, FormSubmitEvent } from "@primevue/forms";
-import { useToast } from "primevue/usetoast";
+import { UiFormAutocomplete } from '#components';
+import { Form } from '@primevue/forms';
+import type { FormResolverOptions, FormSubmitEvent } from '@primevue/forms';
+import { useToast } from 'primevue/usetoast';
 
 const toast = useToast();
 
 interface FormValues {
-	username?: string;
-	name: string;
-	email: string;
-	password: string;
-	password_confirm: string;
-	contry: string;
+  username?: string;
+  name: string;
+  email: string;
+  password: string;
+  password_confirm: string;
+  contry: string;
 }
 
 const onFormSubmit = ({ valid }: FormSubmitEvent) => {
-	console.log("Form is submitted", valid);
-	if (valid) {
-		console.log("Form is valid");
-		/* toast.add({
+  console.log('Form is submitted', valid);
+  if (valid) {
+    console.log('Form is valid');
+    /* toast.add({
       severity: 'success',
       summary: 'Form is submitted.',
       life: 3000
     }); */
-	}
+  }
 };
 
 const resolver = (options: FormResolverOptions) => {
-	const values = options.values as FormValues;
-	const errors: Record<string, any> = {};
+  const values = options.values as FormValues;
+  const errors: Record<string, any> = {};
 
-	if (!values.username) {
-		errors.username = [{ message: "Username is required." }];
-	}
-	console.info("Resolver", options);
-	return { values, errors };
+  if (!values.username) {
+    errors.username = [{ message: 'Username is required.' }];
+  }
+  console.info('Resolver', options);
+  return { values, errors };
 };
 
 const initialValues = reactive<FormValues>({
-	username: "hello",
-	name: "",
-	email: "",
-	password: "",
-	password_confirm: "",
-	contry: "",
+  username: 'hello',
+  name: '',
+  email: '',
+  password: '',
+  password_confirm: '',
+  contry: '',
 });
 
 /**

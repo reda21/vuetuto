@@ -1,61 +1,81 @@
-@import "tailwindcss";
-@import "tailwindcss-primeui";
-@import "primeicons/primeicons.css";
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import 'primeicons/primeicons.css';
 
 @plugin "@tailwindcss/typography";
 
-@import "./utility.css";
+@import './utility.css';
 
 /*configure dark mode*/
-@import "./base.css";
+@import './base.css';
 
 /*configure theme*/
-@import "./theme.css";
+@import './theme.css';
 
 /*ui composent */
-@import "./ui/button.css";
+@import './ui/button.css';
 
-@import "./ui/buttonGroup.css";
+@import './ui/buttonGroup.css';
 
-@import "./ui/icon.css";
+@import './ui/icon.css';
 
-@import "./primevue/inputtext.css";
+@import './primevue/inputtext.css';
 
-@import "./primevue/markdown.css";
+@import './primevue/markdown.css';
 
-@import "./primevue/floatlabel.css";
+@import './primevue/floatlabel.css';
 
-@import "./primevue/toast.css";
+@import './primevue/toast.css';
 
-@import "./primevue/iftalabel.css";
+@import './primevue/iftalabel.css';
 
-@import "./primevue/autocomplete.css";
+@import './primevue/autocomplete.css';
 
-@import "./primevue/chip";
+@import './primevue/chip';
 
-/*
-@utility demo {
-    @apply text-gray-900;
-    @variant dark {
-        @apply text-gray-200;
-    }
+.navbar-link {
+  @apply border-blog-accent/0 m-0 border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200;
+
+  @variant hover {
+    @apply text-blog-accent border-blog-accent;
+  }
+
+  @variant dark {
+    @apply text-gray-300;
+  }
+
+  @variant active {
+    @apply text-green-500;
+  }
+
+  /*
+  
+    border-blog-accent  dark:text-gray-300
+    text-primary dark:text-primary  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)
+    */
 }
 
-
-@utility stack-* {
-    background: fuchsia;
-    padding: calc(var(--spacing) * --value(integer));
+.navbar-link.active {
+  @apply text-blog-accent border-blog-accent font-bold;
 }
 
-@custom-variant max-500 {
-    @media (max-width: 500px) {
-        @slot;
-    }
+.submenu {
+  @apply space-y-1 pt-2 pb-3 md:hidden;
 }
-*/
 
-/*
-  .p-autocomplete-option {
-  @apply text-surface-700 dark:text-surface-0 relative flex cursor-pointer items-center overflow-hidden rounded-sm border-none bg-transparent px-3 py-2 whitespace-nowrap transition-colors duration-200;
+.submenu .submenu-link {
+  @apply hover:text-blog-accent block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300;
 }
-*/
+
+.submenu .submenu-link.active {
+  @apply text-blog-accent font-bold;
+}
+
+.c {
+  --tw-shadow:
+    0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+    0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+    var(--tw-ring-shadow), var(--tw-shadow);
+}

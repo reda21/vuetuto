@@ -504,7 +504,7 @@
 
 <script lang="ts" setup>
 definePageMeta({
-	layout: "blog", // correspond au fichier layouts/blog.vue
+  layout: 'blog', // correspond au fichier layouts/blog.vue
 });
 </script>
 

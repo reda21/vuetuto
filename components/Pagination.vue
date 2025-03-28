@@ -58,48 +58,46 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import type { PaginationProps } from "~/types/pagination";
+import { computed } from 'vue';
+import type { PaginationProps } from '~/types/pagination';
 
 const props = withDefaults(defineProps<PaginationProps>(), {
-	currentPage: 1,
-	limiteScreenPage: 5,
-	total: 100,
-	limiteParPage: 10,
+  currentPage: 1,
+  limiteScreenPage: 5,
+  total: 100,
+  limiteParPage: 10,
 });
 
 // Calcul du nombre total de pages
-const totalPages = computed(() =>
-	Math.ceil((props.total || 1) / props.limiteParPage!),
-);
+const totalPages = computed(() => Math.ceil((props.total || 1) / props.limiteParPage!));
 
 // Page courante
 const currentPage = computed(() => props.currentPage || 1);
 
 // Pages visibles
 const visiblePages = computed(() => {
-	const pages: number[] = [];
-	const half = Math.floor(props.limiteScreenPage! / 2);
+  const pages: number[] = [];
+  const half = Math.floor(props.limiteScreenPage! / 2);
 
-	let start = Math.max(1, currentPage.value - half);
-	let end = Math.min(totalPages.value, start + props.limiteScreenPage! - 1);
+  let start = Math.max(1, currentPage.value - half);
+  let end = Math.min(totalPages.value, start + props.limiteScreenPage! - 1);
 
-	if (end - start + 1 < props.limiteScreenPage!) {
-		start = Math.max(1, end - props.limiteScreenPage! + 1);
-	}
+  if (end - start + 1 < props.limiteScreenPage!) {
+    start = Math.max(1, end - props.limiteScreenPage! + 1);
+  }
 
-	for (let i = start; i <= end; i++) {
-		pages.push(i);
-	}
+  for (let i = start; i <= end; i++) {
+    pages.push(i);
+  }
 
-	return pages;
+  return pages;
 });
 
 // Gestion du changement de page
 const handlePageChange = (page: number) => {
-	if (page > 0 && page <= totalPages.value) {
-		props.onPageChange(page);
-	}
+  if (page > 0 && page <= totalPages.value) {
+    props.onPageChange(page);
+  }
 };
 </script>
 

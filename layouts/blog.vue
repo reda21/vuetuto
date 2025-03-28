@@ -221,35 +221,35 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const backToTopButton = ref<HTMLButtonElement | null>(null);
 
 // Gestion du bouton "Retour en haut"
 const handleScroll = () => {
-	if (!backToTopButton.value) return;
+  if (!backToTopButton.value) return;
 
-	if (window.pageYOffset > 300) {
-		backToTopButton.value.classList.remove("opacity-0", "invisible");
-		backToTopButton.value.classList.add("opacity-100", "visible");
-	} else {
-		backToTopButton.value.classList.remove("opacity-100", "visible");
-		backToTopButton.value.classList.add("opacity-0", "invisible");
-	}
+  if (window.pageYOffset > 300) {
+    backToTopButton.value.classList.remove('opacity-0', 'invisible');
+    backToTopButton.value.classList.add('opacity-100', 'visible');
+  } else {
+    backToTopButton.value.classList.remove('opacity-100', 'visible');
+    backToTopButton.value.classList.add('opacity-0', 'invisible');
+  }
 };
 
 const scrollToTop = () => {
-	window.scrollTo({
-		top: 0,
-		behavior: "smooth",
-	});
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 };
 
 onMounted(() => {
-	window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
-	window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>

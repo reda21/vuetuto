@@ -6,7 +6,7 @@ import Aura from '@primeuix/themes/aura';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-02-20',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: [
     '@pinia/nuxt',
     '@vueuse/nuxt',

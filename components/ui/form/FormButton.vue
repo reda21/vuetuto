@@ -15,25 +15,25 @@
 
 <script lang="ts" setup>
 defineProps({
-	label: {
-		type: String,
-		required: true,
-	},
-	type: {
-		type: String,
-		default: "button",
-	},
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
-	isLoading: {
-		type: Boolean,
-		default: false,
-	},
-	buttonClass: {
-		type: String,
-		default: "",
-	},
+  label: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    default: 'button',
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
+  buttonClass: {
+    type: String,
+    default: '',
+  },
 });
 </script>

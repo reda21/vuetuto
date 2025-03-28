@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { kitsuList } from "@/types/kitsu";
-import { formatDate } from "@/utils/date";
-import { useAnimeStore } from "@/stores/animes";
-import * as Collection from "@/utils/collect";
+import type { kitsuList } from '@/types/kitsu';
+import { formatDate } from '@/utils/date';
+import { useAnimeStore } from '@/stores/animes';
+import * as Collection from '@/utils/collect';
 
 //data
 const date = formatDate(new Date().toISOString());
@@ -20,15 +20,15 @@ const date = formatDate(new Date().toISOString());
 // Initialisation du store
 const store = useAnimeStore();
 const { data, refresh, status, error } = await useFetch<kitsuList>(
-	"https://kitsu.io/api/edge/anime?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-	{
-		immediate: false, // La requête ne sera pas exécutée automatiquement
-	},
+  'https://kitsu.io/api/edge/anime?page%5Bnumber%5D=1&page%5Bsize%5D=10',
+  {
+    immediate: false, // La requête ne sera pas exécutée automatiquement
+  }
 );
 const fetchData = async () => {
-	await refresh(); // Exécute la requête à ce moment-là
+  await refresh(); // Exécute la requête à ce moment-là
 };
-console.info("data", data.value?.data);
+console.info('data', data.value?.data);
 if (data.value?.data) store.loadAnimes(data.value?.data);
 
 const recharger = async () => await refresh();

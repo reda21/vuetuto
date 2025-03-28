@@ -1,0 +1,26 @@
+/*
+@utility demo {
+    @apply text-gray-900;
+    @variant dark {
+        @apply text-gray-200;
+    }
+}
+
+
+@utility stack-* {
+    background: fuchsia;
+    padding: calc(var(--spacing) * --value(integer));
+}
+
+@custom-variant max-500 {
+    @media (max-width: 500px) {
+        @slot;
+    }
+}
+*/
+
+/*
+  .p-autocomplete-option {
+  @apply text-surface-700 dark:text-surface-0 relative flex cursor-pointer items-center overflow-hidden rounded-sm border-none bg-transparent px-3 py-2 whitespace-nowrap transition-colors duration-200;
+}
+*/

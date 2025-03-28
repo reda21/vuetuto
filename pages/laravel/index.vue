@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
-console.info("config", config.public);
+console.info('config', config.public);
 
 const laravelToken = config.public.laravelToken;
 
-const tester = config.public.TESTER ?? "hello";
+const tester = config.public.TESTER ?? 'hello';
 
-const { data, error, status } = await useFetch("http://myapi.me/api/user", {
-	headers: {
-		"Content-Type": "application/json",
-		Accept: "application/json",
-		Authorization: `Bearer ${laravelToken}`, // Remplacez par le token réel
-	},
+const { data, error, status } = await useFetch('http://myapi.me/api/user', {
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `Bearer ${laravelToken}`, // Remplacez par le token réel
+  },
 });
 </script>
 

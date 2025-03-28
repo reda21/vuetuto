@@ -1,21 +1,21 @@
 // types/Data.ts
 
 export interface DataWithMeta<T> {
-	data: T[];
-	meta: Meta;
-	links: Links;
+  data: T[];
+  meta: Meta;
+  links: Links;
 }
 
 export interface Data<T> {
-	data: T;
+  data: T;
 }
 
 export interface Links {
-	first: string;
-	next: string;
-	last: string;
+  first: string;
+  next: string;
+  last: string;
 }
 
 export interface Meta {
-	count: number;
+  count: number;
 }

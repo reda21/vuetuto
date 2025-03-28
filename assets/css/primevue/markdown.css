@@ -1,100 +1,99 @@
 .markdown-editor .markdown-toolbar {
-	@apply flex flex-wrap items-center gap-1 rounded-t-lg border border-b-0 border-gray-700 bg-gray-900 px-3 py-2;
+  @apply flex flex-wrap items-center gap-1 rounded-t-lg border border-b-0 border-gray-700 bg-gray-900 px-3 py-2;
 }
 
 .markdown-editor .markdown-toolbar button {
-	@apply inline-flex items-center gap-1 rounded px-2 py-1 text-gray-300 hover:bg-gray-800 hover:text-white;
+  @apply inline-flex items-center gap-1 rounded px-2 py-1 text-gray-300 hover:bg-gray-800 hover:text-white;
 }
 
 .markdown-editor .markdown-input {
-	@apply focus:ring-blog-accent w-full rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 font-mono text-white focus:ring-2 focus:outline-none;
+  @apply focus:ring-blog-accent w-full rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 font-mono text-white focus:ring-2 focus:outline-none;
 }
 
 .markdown-input {
-	flex: 1;
-	padding: 1rem;
-	border: none;
-	outline: none;
-	resize: vertical;
-	min-height: 300px;
-	background: transparent;
-	color: inherit;
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  resize: vertical;
+  min-height: 300px;
+  background: transparent;
+  color: inherit;
 }
 
 .markdown-preview {
-	@apply prose prose-invert h-[300px] min-h-[300px] w-full max-w-none overflow-scroll rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 text-white;
+  @apply prose prose-invert h-[300px] min-h-[300px] w-full max-w-none overflow-scroll rounded-b-lg border border-t-0 border-gray-700 bg-gray-800 px-4 py-2 text-white;
 }
 
 /* Titres */
 #markdown-preview h1 {
-	@apply border-blog-accent/30 mb-6 border-b pb-3 text-4xl font-bold text-white;
+  @apply border-blog-accent/30 mb-6 border-b pb-3 text-4xl font-bold text-white;
 }
 #markdown-preview h2 {
-	@apply text-blog-secondary mt-0 mb-5 text-3xl font-semibold;
+  @apply text-blog-secondary mt-0 mb-5 text-3xl font-semibold;
 }
 
-#markdown-preview
-	:where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-	@apply mt-0;
+#markdown-preview :where(h2):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  @apply mt-0;
 }
 
 #markdown-preview h3 {
-	@apply text-blog-tertiary mb-4 text-2xl font-medium;
+  @apply text-blog-tertiary mb-4 text-2xl font-medium;
 }
 /* Paragraphes */
 #markdown-preview p {
-	@apply my-4 leading-7;
+  @apply my-4 leading-7;
 }
 /* Listes */
 #markdown-preview ul {
-	@apply my-4 space-y-2 pl-6;
+  @apply my-4 space-y-2 pl-6;
 }
 #markdown-preview ul li {
-	@apply relative;
+  @apply relative;
 }
 #markdown-preview ul li::before {
-	@apply bg-blog-accent absolute top-2 -left-4 h-2 w-2 rounded-full content-[''];
+  @apply bg-blog-accent absolute top-2 -left-4 h-2 w-2 rounded-full content-[''];
 }
 #markdown-preview ol {
-	@apply my-4 list-decimal space-y-2 pl-6;
+  @apply my-4 list-decimal space-y-2 pl-6;
 }
 /* Citations */
 #markdown-preview blockquote {
-	@apply border-blog-accent/50 my-4 rounded-r border-l-4 bg-gray-900/30 py-2 pr-4 pl-4 italic;
+  @apply border-blog-accent/50 my-4 rounded-r border-l-4 bg-gray-900/30 py-2 pr-4 pl-4 italic;
 }
 /* Code */
 #markdown-preview code {
-	@apply text-blog-accent rounded bg-gray-900 px-1.5 py-0.5 font-mono;
+  @apply text-blog-accent rounded bg-gray-900 px-1.5 py-0.5 font-mono;
 }
 #markdown-preview pre {
-	@apply my-4 overflow-x-auto rounded-lg bg-gray-900 p-4;
+  @apply my-4 overflow-x-auto rounded-lg bg-gray-900 p-4;
 }
 #markdown-preview pre code {
-	@apply bg-transparent p-0 text-gray-300;
+  @apply bg-transparent p-0 text-gray-300;
 }
 /* Liens */
 #markdown-preview a {
-	@apply text-blog-secondary hover:text-blog-accent underline transition-colors duration-200;
+  @apply text-blog-secondary hover:text-blog-accent underline transition-colors duration-200;
 }
 /* Tableaux */
 #markdown-preview table {
-	@apply my-4 w-full border-collapse;
+  @apply my-4 w-full border-collapse;
 }
 #markdown-preview th {
-	@apply border border-gray-700 bg-gray-900 px-4 py-2 text-left;
+  @apply border border-gray-700 bg-gray-900 px-4 py-2 text-left;
 }
 #markdown-preview td {
-	@apply border border-gray-700 px-4 py-2;
+  @apply border border-gray-700 px-4 py-2;
 }
 /* Images */
 #markdown-preview img {
-	@apply my-4 max-w-full rounded-lg border border-gray-700 shadow-lg;
+  @apply my-4 max-w-full rounded-lg border border-gray-700 shadow-lg;
 }
 /* Séparateurs */
 #markdown-preview hr {
-	@apply my-8 border-t border-gray-700;
+  @apply my-8 border-t border-gray-700;
 }
 /* Listes de tâches */
-#markdown-preview input[type="checkbox"] {
-	@apply mr-2 rounded border-gray-700;
+#markdown-preview input[type='checkbox'] {
+  @apply mr-2 rounded border-gray-700;
 }

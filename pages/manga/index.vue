@@ -19,9 +19,9 @@ remplacer dans le script détecteur scroll par .anime-list :
 </template>
 
 <script lang="ts" setup>
-import { useAnimeStore } from "@/stores/animes";
+import { useAnimeStore } from '@/stores/animes';
 
-import type { Kitsu } from "@/types/kitsu";
+import type { Kitsu } from '@/types/kitsu';
 
 //data
 const { y } = useWindowScroll();
@@ -33,25 +33,18 @@ const fetchMoreContents = () => store.fetchMoreContents();
 
 //methods
 const handleScroll = useDebounceFn(() => {
-	const animeList = document.querySelector(".anime-list");
-	if (!animeList) return;
-	const animeMaxY = animeList.scrollHeight - animeList.clientHeight;
-	const maxY = document.documentElement.scrollHeight - window.innerHeight;
-	console.info(
-		"scrollHeight",
-		document.documentElement.scrollHeight,
-		"innerHeight",
-		window.innerHeight,
-	);
-	console.info(
-		"animeMaxY",
-		animeMaxY,
-		"y",
-		y.value,
-		"maxY - y",
-		y.value > animeMaxY - 100,
-	);
-	console.info("animeList.scrollTop", animeMaxY);
+  const animeList = document.querySelector('.anime-list');
+  if (!animeList) return;
+  const animeMaxY = animeList.scrollHeight - animeList.clientHeight;
+  const maxY = document.documentElement.scrollHeight - window.innerHeight;
+  console.info(
+    'scrollHeight',
+    document.documentElement.scrollHeight,
+    'innerHeight',
+    window.innerHeight
+  );
+  console.info('animeMaxY', animeMaxY, 'y', y.value, 'maxY - y', y.value > animeMaxY - 100);
+  console.info('animeList.scrollTop', animeMaxY);
 }, 200); // 200ms de délai
 
 //store

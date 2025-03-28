@@ -1,110 +1,437 @@
 <!doctype html>
-<html>
+<html lang="fr">
   <head>
-    <title>3D Earth</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accueil - Votre Hub de Tutoriels</title>
+    <!-- Inclusion de Tailwind CSS via CDN (pour test) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-primary-dark: #22244d;
+        --color-accent-orange: #fe9a00;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
-        margin: 0;
-        overflow: hidden;
-      }
-      canvas {
-        display: block;
+        font-family: 'Poppins', sans-serif;
       }
     </style>
   </head>
-  <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.js"></script>
+  <body class="bg-[var(--color-primary-dark)] text-white">
+    <!-- ===== Header ===== -->
+    <header class="sticky top-0 z-50 bg-[var(--color-primary-dark)] shadow-lg">
+      <div class="container mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo/Nom du site -->
+        <a href="#" class="text-2xl font-bold">
+          <span class="text-white">Tuto</span
+          ><span class="text-[var(--color-accent-orange)]">Hub</span>
+        </a>
 
+        <!-- Navigation Desktop -->
+        <nav class="hidden items-center space-x-6 md:flex">
+          <a
+            href="#categories"
+            class="transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >Catégories</a
+          >
+          <a href="#" class="transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >Nouveautés</a
+          >
+          <a href="#" class="transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >À Propos</a
+          >
+          <a
+            href="#"
+            class="rounded-full bg-[var(--color-accent-orange)] px-5 py-2 text-sm font-semibold text-[var(--color-primary-dark)] transition duration-300 hover:bg-orange-400"
+          >
+            Connexion
+          </a>
+        </nav>
+
+        <!-- Menu Mobile -->
+        <nav
+          id="mobile-menu"
+          class="fixed inset-x-0 top-[73px] hidden bg-[var(--color-primary-dark)] p-4 md:hidden"
+        >
+          <div class="flex flex-col space-y-4">
+            <a
+              href="#categories"
+              class="transition duration-300 hover:text-[var(--color-accent-orange)]"
+              >Catégories</a
+            >
+            <a href="#" class="transition duration-300 hover:text-[var(--color-accent-orange)]"
+              >Nouveautés</a
+            >
+            <a href="#" class="transition duration-300 hover:text-[var(--color-accent-orange)]"
+              >À Propos</a
+            >
+            <a
+              href="#"
+              class="rounded-full bg-[var(--color-accent-orange)] px-5 py-2 text-center text-sm font-semibold text-[var(--color-primary-dark)] transition duration-300 hover:bg-orange-400"
+            >
+              Connexion
+            </a>
+          </div>
+        </nav>
+
+        <!-- Burger Menu (Mobile) -->
+        <button
+          id="menu-toggle"
+          type="button"
+          class="text-white focus:outline-none md:hidden"
+          aria-label="Toggle mobile menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+      <!-- Hero Section -->
+      <section class="bg-[var(--color-primary-dark)] py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+          <h1 class="mb-4 text-4xl leading-tight font-bold md:text-6xl">
+            Apprenez à votre rythme, <br class="hidden md:inline" />
+            <span class="text-[var(--color-accent-orange)]"
+              >Maîtrisez de nouvelles compétences.</span
+            >
+          </h1>
+          <p class="mx-auto mb-10 max-w-3xl text-lg text-gray-300 md:text-xl">
+            Découvrez des centaines de tutoriels vidéo et écrits, créés par des experts pour vous
+            aider à progresser.
+          </p>
+          <a
+            href="#categories"
+            class="transform rounded-full bg-[var(--color-accent-orange)] px-8 py-3 text-lg font-bold text-[var(--color-primary-dark)] shadow-lg transition duration-300 hover:scale-105 hover:bg-orange-400"
+          >
+            Explorer les tutoriels
+          </a>
+        </div>
+      </section>
+
+      <!-- Section Card -->
+      <div class="h-full min-h-screen w-full bg-primary-dark pt-12 p-4">
+  <div class="grid gap-14 md:grid-cols-3 md:gap-5">
+    <div class="rounded-xl bg-[#2e3267] p-6 text-center shadow-xl">
+      <div
+        class="mx-auto flex h-32 w-32 -translate-y-22 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
+       <svg
+  viewBox="0 0 32 32"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  class="w-24 h-24 text-white"
+  fill="currentColor"
+  stroke="currentColor"
+>
+  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+  <g
+    id="SVGRepo_tracerCarrier"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  ></g>
+  <g id="SVGRepo_iconCarrier">
+    <path d="M9.633 7.968h3.751v10.514c0 4.738-2.271 6.392-5.899 6.392-0.888 0-2.024-0.148-2.764-0.395l0.42-3.036c0.518 0.173 1.185 0.296 1.925 0.296 1.58 0 2.567-0.716 2.567-3.282v-10.489zM16.641 20.753c0.987 0.518 2.567 1.037 4.171 1.037 1.728 0 2.641-0.716 2.641-1.826 0-1.012-0.79-1.629-2.789-2.32-2.764-0.987-4.59-2.517-4.59-4.961 0-2.838 2.394-4.985 6.293-4.985 1.9 0 3.258 0.37 4.245 0.839l-0.839 3.011c-0.642-0.321-1.851-0.79-3.455-0.79-1.629 0-2.419 0.765-2.419 1.604 0 1.061 0.913 1.53 3.085 2.369 2.937 1.086 4.294 2.616 4.294 4.985 0 2.789-2.122 5.158-6.688 5.158-1.9 0-3.776-0.518-4.714-1.037l0.765-3.085z"></path>
+  </g>
+</svg>
+
+      </div>
+      <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">TREE AND SHRUB PRUNING</h1>
+      <p class="px-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo iure inventore amet
+        modi
+        accusantium vero perspiciatis, incidunt dicta sed aspernatur!</p>
+    </div>
+    <div data-aos-delay="150" class="rounded-xl bg-[#2e3267] p-6 text-center shadow-xl">
+      <div
+        class="mx-auto flex h-32 w-32 -translate-y-22 transform items-center justify-center rounded-full shadow-lg bg-rose-500 shadow-rose-500/40"">
+          <svg viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#ffffff" d="M9.633 7.968h3.751v10.514c0 4.738-2.271 6.392-5.899 6.392-0.888 0-2.024-0.148-2.764-0.395l0.42-3.036c0.518 0.173 1.185 0.296 1.925 0.296 1.58 0 2.567-0.716 2.567-3.282v-10.489zM16.641 20.753c0.987 0.518 2.567 1.037 4.171 1.037 1.728 0 2.641-0.716 2.641-1.826 0-1.012-0.79-1.629-2.789-2.32-2.764-0.987-4.59-2.517-4.59-4.961 0-2.838 2.394-4.985 6.293-4.985 1.9 0 3.258 0.37 4.245 0.839l-0.839 3.011c-0.642-0.321-1.851-0.79-3.455-0.79-1.629 0-2.419 0.765-2.419 1.604 0 1.061 0.913 1.53 3.085 2.369 2.937 1.086 4.294 2.616 4.294 4.985 0 2.789-2.122 5.158-6.688 5.158-1.9 0-3.776-0.518-4.714-1.037l0.765-3.085z"></path> </g></svg>
+      </div>
+      <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">IRRIGATION & DRAINAGE</h1>
+      <p class="px-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo iure inventore amet
+        modi
+        accusantium vero perspiciatis, incidunt dicta sed aspernatur!</p>
+    </div>
+    <div data-aos-delay="300" class="rounded-xl bg-[#2e3267] p-6 text-center shadow-xl">
+      <div
+        class="mx-auto flex h-32 w-32 -translate-y-22 transform items-center justify-center rounded-full shadow-lg bg-sky-500 shadow-sky-500/40">
+        <svg viewBox="0 0 55 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white">
+          <path
+            d="M8.25 19.25C11.2836 19.25 13.75 16.7836 13.75 13.75C13.75 10.7164 11.2836 8.25 8.25 8.25C5.21641 8.25 2.75 10.7164 2.75 13.75C2.75 16.7836 5.21641 19.25 8.25 19.25ZM46.75 19.25C49.7836 19.25 52.25 16.7836 52.25 13.75C52.25 10.7164 49.7836 8.25 46.75 8.25C43.7164 8.25 41.25 10.7164 41.25 13.75C41.25 16.7836 43.7164 19.25 46.75 19.25ZM49.5 22H44C42.4875 22 41.1211 22.6102 40.1242 23.5984C43.5875 25.4977 46.0453 28.9266 46.5781 33H52.25C53.7711 33 55 31.7711 55 30.25V27.5C55 24.4664 52.5336 22 49.5 22ZM27.5 22C32.8195 22 37.125 17.6945 37.125 12.375C37.125 7.05547 32.8195 2.75 27.5 2.75C22.1805 2.75 17.875 7.05547 17.875 12.375C17.875 17.6945 22.1805 22 27.5 22ZM34.1 24.75H33.3867C31.5992 25.6094 29.6141 26.125 27.5 26.125C25.3859 26.125 23.4094 25.6094 21.6133 24.75H20.9C15.4344 24.75 11 29.1844 11 34.65V37.125C11 39.4023 12.8477 41.25 15.125 41.25H39.875C42.1523 41.25 44 39.4023 44 37.125V34.65C44 29.1844 39.5656 24.75 34.1 24.75ZM14.8758 23.5984C13.8789 22.6102 12.5125 22 11 22H5.5C2.46641 22 0 24.4664 0 27.5V30.25C0 31.7711 1.22891 33 2.75 33H8.41328C8.95469 28.9266 11.4125 25.4977 14.8758 23.5984Z"
+            fill="white"></path>
+        </svg>
+      </div>
+      <h1 class="text-darken mb-3 pt-3 text-xl font-medium lg:h-14 lg:px-14">GARDEN BED MAINTENANCE</h1>
+      <p class="px-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo iure inventore amet
+        modi
+        accusantium vero perspiciatis, incidunt dicta sed aspernatur!</p>
+    </div>
+  </div>
+
+</div>
+
+      <!-- Catégories/Featured Section -->
+      <section id="categories" class="bg-gray-800/50 py-16">
+        <div class="container mx-auto px-6">
+          <h2 class="mb-12 text-center text-3xl font-bold">
+            Technologies <span class="text-[var(--color-accent-orange)]">Populaires</span>
+          </h2>
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Carte Catégorie 1: JavaScript -->
+            <div
+              class="flex flex-col items-center overflow-hidden rounded-lg bg-[var(--color-primary-dark)] text-center shadow-xl transition duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="icon-container flex h-48 items-center justify-center bg-gray-900/30 text-[var(--color-accent-orange)]"
+              >
+                <svg
+                  class="h-20 w-20"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>JavaScript</title>
+                  <path
+                    d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.8-1.939-2.203-2.615-.6-.3-1.025-.534-1.025-.975 0-.32.31-.584.875-.584.575 0 .875.254.975.645h1.95c-.1-.834-.575-1.395-1.465-1.715-.76-.29-1.43-.41-1.86-.41-.95 0-1.685.33-2.195.955-.53.635-.8 1.4-.8 2.31 0 .91.285 1.63.845 2.15.56.52 1.36.905 2.415 1.34.9.365 1.315.66 1.315 1.075 0 .4-.43.685-1.04.685-.685 0-1.11-.275-1.225-.75H17.17c.145.975.895 1.6 2.165 1.6.975 0 1.725-.375 2.225-1.02.51-.645.775-1.465.775-2.475 0-.78-.235-1.44-.7-1.95zM9.01 12.48h1.96V11.4h-1.96v1.08zm-1.96 3.225h1.96v-.964h-1.96v.964zm4.895-3.225H13.9v-.975h-1.96v.975zm1.96 3.225h1.96v-.964h-1.96v.964zm-4.895 3.19h1.96v-1.005h-1.96v1.005zm2.93.01h1.96v-.975h-1.96v.975zm1.96-3.2h1.96v-.975h-1.96v.975zm-1.96-3.225H13.9V11.4h-1.96v1.08zm-1.96 1.085h1.96V11.4H9.01v2.165zM11.97 8.96c-.535 0-.925.144-1.19.444-.26.3-.395.715-.395 1.25h1.96c0-.445-.105-.77-.31-.975-.21-.205-.505-.315-.91-.315zm-1.96 7.805h1.96v-.985h-1.96v.985zM9.01 8.955v.01h.015v5.09h1.96V9.045c.01-.005.015-.01.015-.01v-.025c0-.91.41-1.61 1.22-1.61.165 0 .33.02.49.05v-1.81c-.16-.01-.32-.02-.48-.02-.77 0-1.39.24-1.85.72-.46.47-.69 1.13-.69 1.975z"
+                  />
+                </svg>
+              </div>
+              <div class="p-6">
+                <h3 class="mb-2 text-xl font-semibold">JavaScript</h3>
+                <p class="mb-4 text-sm text-gray-400">ES6+, Node.js, React, Vue, Angular...</p>
+                <a
+                  href="#"
+                  class="inline-block rounded-full bg-[var(--color-accent-orange)]/20 px-4 py-2 text-sm font-medium text-[var(--color-accent-orange)] transition duration-300 hover:bg-[var(--color-accent-orange)]/30"
+                >
+                  Voir les tutos →
+                </a>
+              </div>
+            </div>
+
+            <!-- Carte Catégorie 2: Python -->
+            <div
+              class="flex flex-col items-center overflow-hidden rounded-lg bg-[var(--color-primary-dark)] text-center shadow-xl transition duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="icon-container flex h-48 items-center justify-center bg-gray-900/30 text-[var(--color-accent-orange)]"
+              >
+                <svg
+                  class="h-20 w-20"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Python</title>
+                  <path
+                    d="M23.474 16.073c-.018-.23-.09-.442-.21-.629-.027-.038-.05-.08-.08-.116l-2.93-2.93c-.17-.17-.4-.27-.65-.27h-1.52c-.03 0-.06-.01-.09-.02-.25-.07-.49-.19-.69-.34-.02-.01-.03-.03-.05-.04l-3.2-2.08c-.3-.2-.67-.31-1.06-.31H11.91v-1.41c0-.25-.1-.48-.27-.65l-2.9-2.9c-.34-.34-.8-.53-1.27-.53h-1.4c-.04 0-.08-.02-.12-.03-.28-.08-.54-.21-.77-.38-.01-.01-.02-.02-.04-.03l-2.08-1.35C2.77.21 2.38.07 1.97.01 1.94 0 1.9 0 1.86 0H.99C.44 0 0 .44 0 .99v.87c0 .04.02.08.03.12.08.28.21.54.38.77.01.01.02.02.03.04l1.35 2.08c.21.3.35.62.41.96.01.04.01.08.01.12v1.41c0 .47.19.93.53 1.27l2.9 2.9c.17.17.4.27.65.27h1.41c.04 0 .08.02.12.03.28.08.54.21.77.38.01.01.02.02.04.03l2.08 1.35c.3.21.62.35.96.41.04.01.08.01.12.01h1.41c.47 0 .93.19 1.27.53l2.9-2.9c.17-.17.27-.4.27-.65V11.9c0-.04.01-.08.02-.12.07-.25.19-.49.34-.69.01-.02.03-.03.04-.05l2.08-3.2c.2-.3.31-.67.31-1.06V5.68h1.4c.47 0 .93.19 1.27.53l2.93 2.93c.18.19.29.43.3.69h.01zm-9.98 4.93c0 .25-.1.48-.27.65l-2.9 2.9c-.34.34-.8.53-1.27.53h-1.4c-.04 0-.08.02-.12.03-.28.08-.54.21-.77.38-.01.01-.02.02-.04.03l-2.08 1.35c-.3.21-.62.35-.96.41-.04.01-.08.01-.12.01H1c-.47 0-.93-.19-1.27-.53L-.8 23.4c-.17-.17-.27-.4-.27-.65v-.87c0-.04-.01-.08-.02-.12-.07-.28-.19-.54-.34-.77-.01-.01-.03-.02-.04-.04l-1.35-2.08c-.21-.3-.35-.62-.41-.96-.01-.04-.01-.08-.01-.12v-1.41c0-.47.19-.93.53-1.27l2.9-2.9c.17-.17.4-.27.65-.27h1.41c.04 0 .08-.01.12-.02.28-.07.54-.19.77-.34.01-.01.02-.03.04-.04l2.08-1.35c.3-.2.62-.34.96-.41.04-.01.08-.01.12-.01h1.41c.47 0 .93.19 1.27.53l2.9 2.9c.17.17.27.4.27.65v1.08z"
+                  />
+                </svg>
+              </div>
+              <div class="p-6">
+                <h3 class="mb-2 text-xl font-semibold">Python</h3>
+                <p class="mb-4 text-sm text-gray-400">Scripting, Django, Flask, Data Science...</p>
+                <a
+                  href="#"
+                  class="inline-block rounded-full bg-[var(--color-accent-orange)]/20 px-4 py-2 text-sm font-medium text-[var(--color-accent-orange)] transition duration-300 hover:bg-[var(--color-accent-orange)]/30"
+                >
+                  Voir les tutos →
+                </a>
+              </div>
+            </div>
+
+            <!-- Carte Catégorie 3: PHP -->
+            <div
+              class="flex flex-col items-center overflow-hidden rounded-lg bg-[var(--color-primary-dark)] text-center shadow-xl transition duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="icon-container flex h-48 items-center justify-center bg-gray-900/30 text-[var(--color-accent-orange)]"
+              >
+                <svg
+                  class="h-20 w-20"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 128 75"
+                >
+                  <title>PHP</title>
+                  <path
+                    d="M72.5 49.9c-1.7-.9-2.7-2-3-3.4-.4-1.7-.1-3.3.4-4.7.9-2.3 2.4-4.2 4.6-5.6 1.6-.9 3.4-1.5 5.3-1.8 1.9-.1 3.8-.1 5.7.4 2.3.6 4.4 1.5 6.3 2.8l-2.8 4.5c-1.2-.8-2.5-1.4-3.9-1.7-1-.3-2-.4-3-.4-1.3 0-2.5.3-3.5.8-1.3.7-2.2 1.8-2.7 3.1-.5 1.5-.4 3 .3 4.4.6 1.2 1.5 2.2 2.6 3 1.1.8 2.3 1.3 3.7 1.5 1.1.3 2.3.3 3.4.1 1.7-.3 3.3-1 4.7-1.9l2.9 4.6c-1.4 1-3 1.9-4.7 2.5-2.1.8-4.2 1.1-6.4 1.1-2.9 0-5.6-.6-8-1.8-2.6-1.3-4.6-3.2-6-5.6zm-21.2 1.6c-1.7-.9-2.7-2-3-3.4-.4-1.7-.1-3.3.4-4.7.9-2.3 2.4-4.2 4.6-5.6 1.6-.9 3.4-1.5 5.3-1.8 1.9-.1 3.8-.1 5.7.4 2.3.6 4.4 1.5 6.3 2.8l-2.8 4.5c-1.2-.8-2.5-1.4-3.9-1.7-1-.3-2-.4-3-.4-1.3 0-2.5.3-3.5.8-1.3.7-2.2 1.8-2.7 3.1-.5 1.5-.4 3 .3 4.4.6 1.2 1.5 2.2 2.6 3 1.1.8 2.3 1.3 3.7 1.5 1.1.3 2.3.3 3.4.1 1.7-.3 3.3-1 4.7-1.9l2.9 4.6c-1.4 1-3 1.9-4.7 2.5-2.1.8-4.2 1.1-6.4 1.1-2.9 0-5.6-.6-8-1.8-2.6-1.3-4.6-3.2-6-5.6zM0 75h128V0H0zm106.6-15.9c-1.7.9-3.5 1.5-5.4 1.8-1.9.1-3.8.1-5.7-.4-2.3-.6-4.4-1.5-6.3-2.8l2.8-4.5c1.2.8 2.5 1.4 3.9 1.7 1 .3 2 .4 3 .4 1.3 0 2.5-.3 3.5-.8 1.3-.7 2.2-1.8 2.7-3.1.5-1.5.4-3-.3-4.4-.6-1.2-1.5-2.2-2.6-3-1.1-.8-2.3-1.3-3.7-1.5-1.1-.3-2.3.3-3.4.1-1.7-.3-3.3-1-4.7-1.9l-2.9-4.6c1.4-1 3-1.9 4.7-2.5 2.1-.8 4.2-1.1 6.4-1.1 2.9 0 5.6.6 8 1.8 2.6 1.3 4.6 3.2 6 5.6 1.7.9 2.7 2 3 3.4.4 1.7.1 3.3-.4 4.7-.9 2.3-2.4 4.2-4.6 5.6z"
+                  />
+                </svg>
+              </div>
+              <div class="p-6">
+                <h3 class="mb-2 text-xl font-semibold">PHP</h3>
+                <p class="mb-4 text-sm text-gray-400">
+                  Développement Web Backend, Laravel, Symfony...
+                </p>
+                <a
+                  href="#"
+                  class="inline-block rounded-full bg-[var(--color-accent-orange)]/20 px-4 py-2 text-sm font-medium text-[var(--color-accent-orange)] transition duration-300 hover:bg-[var(--color-accent-orange)]/30"
+                >
+                  Voir les tutos →
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-12 text-center">
+            <a href="#" class="font-semibold text-[var(--color-accent-orange)] hover:underline">
+              Voir toutes les catégories →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pourquoi Nous Choisir? Section -->
+      <section class="bg-[var(--color-primary-dark)] py-16">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="mb-12 text-3xl font-bold">
+            Pourquoi choisir <span class="text-[var(--color-accent-orange)]">TutoHub ?</span>
+          </h2>
+          <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+            <div class="feature-item">
+              <div class="mb-4 inline-block rounded-full bg-[var(--color-accent-orange)]/10 p-4">
+                <svg
+                  class="h-10 w-10 text-[var(--color-accent-orange)]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17.25v-.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v.375m-3.75 0h3.75M12 12.75h.008v.008H12v-.008zM12 15h.008v.008H12v-.008zM3.75 6.75h16.5M3.75 9.75h16.5M4.5 12.75h15A2.25 2.25 0 0121.75 15v2.25a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 17.25V15a2.25 2.25 0 012.25-2.25z"
+                  />
+                </svg>
+              </div>
+              <h3 class="mb-2 text-xl font-semibold">Contenu de Qualité</h3>
+              <p class="text-gray-400">Tutoriels clairs et précis par des experts.</p>
+            </div>
+            <div class="feature-item">
+              <div class="mb-4 inline-block rounded-full bg-[var(--color-accent-orange)]/10 p-4">
+                <svg
+                  class="h-10 w-10 text-[var(--color-accent-orange)]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"
+                  />
+                </svg>
+              </div>
+              <h3 class="mb-2 text-xl font-semibold">Apprentissage Pratique</h3>
+              <p class="text-gray-400">Mettez en application avec des exercices et projets.</p>
+            </div>
+            <div class="feature-item">
+              <div class="mb-4 inline-block rounded-full bg-[var(--color-accent-orange)]/10 p-4">
+                <svg
+                  class="h-10 w-10 text-[var(--color-accent-orange)]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="mb-2 text-xl font-semibold">Accès Illimité</h3>
+              <p class="text-gray-400">Apprenez quand vous voulez, où vous voulez.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="bg-gray-900 py-8 text-gray-400">
+      <div class="container mx-auto px-6 text-center">
+        <div class="mb-4">
+          <a href="#" class="text-lg font-bold">
+            <span class="text-white">Tuto</span
+            ><span class="text-[var(--color-accent-orange)]">Hub</span>
+          </a>
+        </div>
+        <div class="mb-4 space-x-4">
+          <a
+            href="#"
+            class="text-sm transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >À Propos</a
+          >
+          <a
+            href="#"
+            class="text-sm transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >Contact</a
+          >
+          <a
+            href="#"
+            class="text-sm transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >FAQ</a
+          >
+          <a
+            href="#"
+            class="text-sm transition duration-300 hover:text-[var(--color-accent-orange)]"
+            >Carrières</a
+          >
+        </div>
+        <p class="text-sm">© 2023 TutoHub. Tous droits réservés.</p>
+        <div class="mt-2 space-x-3">
+          <a
+            href="#"
+            class="text-gray-400 transition duration-300 hover:text-[var(--color-accent-orange)]"
+          >
+            Politique de confidentialité
+          </a>
+          <span class="text-gray-600">|</span>
+          <a
+            href="#"
+            class="text-gray-400 transition duration-300 hover:text-[var(--color-accent-orange)]"
+          >
+            Conditions d'utilisation
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script pour le menu mobile -->
     <script>
-      // Scene setup
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuBtn = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-      // Camera position
-      camera.position.z = 5;
-
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(ambientLight);
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionalLight.position.set(5, 3, 5);
-      scene.add(directionalLight);
-
-      // Earth creation
-      const textureLoader = new THREE.TextureLoader();
-
-      // Earth surface
-      const earthGeometry = new THREE.SphereGeometry(2, 32, 32);
-      const earthMaterial = new THREE.MeshPhongMaterial({
-        map: textureLoader.load(
-          'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'
-        ),
-        bumpMap: textureLoader.load(
-          'https://threejs.org/examples/textures/planets/earth_normal_2048.jpg'
-        ),
-        bumpScale: 0.05,
+        menuBtn.addEventListener('click', function () {
+          mobileMenu.classList.toggle('hidden');
+        });
       });
-      const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-      scene.add(earth);
-
-      // Atmosphere
-      const atmosphereGeometry = new THREE.SphereGeometry(2.1, 32, 32);
-      const atmosphereMaterial = new THREE.MeshBasicMaterial({
-        color: 0x3f51b5,
-        transparent: true,
-        opacity: 0.3,
-      });
-      const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
-      scene.add(atmosphere);
-
-      // Clouds
-      const cloudsGeometry = new THREE.SphereGeometry(2.05, 32, 32);
-      const cloudsMaterial = new THREE.MeshPhongMaterial({
-        map: textureLoader.load(
-          'https://threejs.org/examples/textures/planets/earth_clouds_2048.jpg'
-        ),
-        transparent: true,
-        opacity: 0.5,
-      });
-      const clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
-      scene.add(clouds);
-
-      // Controls
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
-
-      // Animation
-      function animate() {
-        requestAnimationFrame(animate);
-
-        // Earth rotation
-        earth.rotation.y += 0.001;
-        clouds.rotation.y += 0.001;
-
-        controls.update();
-        renderer.render(scene, camera);
-      }
-
-      // Handle window resize
-      window.addEventListener('resize', onWindowResize, false);
-
-      function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      }
-
-      animate();
     </script>
   </body>
 </html>
