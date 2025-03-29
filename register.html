@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - TutoHub</title>
+    <!-- Inclusion de Tailwind CSS via CDN (pour test) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<style type="text/tailwindcss">
+      @theme {
+        --color-primary-dark: #22244d;
+		--color-accent-orange: #fe9a00;
+      }
+    </style>    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-primary-dark text-white min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-md w-full space-y-8 bg-gray-800/60 p-10 rounded-xl shadow-2xl"> 
+        <div>
+          
+             <a href="/" class="text-3xl font-bold text-center block">
+                <span class="text-white">Tuto</span><span class="text-accent-orange">Hub</span>
+            </a>
+            <h2 class="mt-6 text-center text-2xl font-semibold tracking-tight text-white">
+                Créez votre compte
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-400">
+                Ou
+                <a href="#" class="font-medium text-accent-orange hover:text-orange-400">
+                    connectez-vous si vous avez déjà un compte
+                </a>
+            </p>
+        </div>
+        <form class="mt-8 space-y-6" action="#" method="POST">
+             
+            <input type="hidden" name="remember" value="true">
+
+            <div class="rounded-md shadow-sm -space-y-px flex flex-col gap-4"> 
+
+                
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Nom d'utilisateur</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required
+                           class="appearance-none relative block w-full px-3 py-2 border border-gray-600 bg-gray-700 placeholder-gray-400 text-white rounded-md focus:outline-none focus:ring-accent-orange focus:border-accent-orange focus:z-10 sm:text-sm"
+                           placeholder="Choisissez un nom d'utilisateur">
+                </div>
+
+              
+                 <div>
+                    <label for="email-address" class="block text-sm font-medium text-gray-300 mb-1">Adresse Email</label>
+                    <input id="email-address" name="email" type="email" autocomplete="email" required
+                           class="appearance-none relative block w-full px-3 py-2 border border-gray-600 bg-gray-700 placeholder-gray-400 text-white rounded-md focus:outline-none focus:ring-accent-orange focus:border-accent-orange focus:z-10 sm:text-sm"
+                           placeholder="votre.email@exemple.com">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Mot de passe</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required
+                           class="appearance-none relative block w-full px-3 py-2 border border-gray-600 bg-gray-700 placeholder-gray-400 text-white rounded-md focus:outline-none focus:ring-accent-orange focus:border-accent-orange focus:z-10 sm:text-sm"
+                           placeholder="Créez un mot de passe sécurisé">
+                </div>
+
+                 
+                 <div>
+                    <label for="confirm-password" class="block text-sm font-medium text-gray-300 mb-1">Confirmez le mot de passe</label>
+                    <input id="confirm-password" name="confirm_password" type="password" autocomplete="new-password" required
+                           class="appearance-none relative block w-full px-3 py-2 border border-gray-600 bg-gray-700 placeholder-gray-400 text-white rounded-md focus:outline-none focus:ring-accent-orange focus:border-accent-orange focus:z-10 sm:text-sm"
+                           placeholder="Retapez votre mot de passe">
+                </div>
+            </div>
+
+           
+            <div class="flex items-center">
+                <input id="terms" name="terms" type="checkbox" required
+                       class="h-4 w-4 text-accent-orange focus:ring-accent-orange border-gray-500 rounded bg-gray-700 focus:ring-offset-gray-800 cursor-pointer">
+                <label for="terms" class="ml-2 block text-sm text-gray-300 cursor-pointer">
+                    J'accepte les <a href="#" class="font-medium text-accent-orange hover:text-orange-400">Conditions d'utilisation</a>
+                </label>
+            </div>
+
+
+            <div>
+                <button type="submit"
+                        class="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-medium rounded-md text-primary-dark bg-accent-orange hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-accent-orange transition duration-300 shadow-lg">
+                    Créer mon compte
+                </button>
+            </div>
+        </form>
+         <div class="text-center text-sm text-gray-500">
+            <p>© 2023 TutoHub. Tous droits réservés.</p>
+        </div>
+    </div>
+
+</body>
+</html>
