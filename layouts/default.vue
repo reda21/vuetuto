@@ -7,4 +7,10 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useHead({
+  bodyAttrs: {
+    class: 'min-h-screen bg-light dark:bg-dark transition-colors duration-300', // Ajoute la classe au body
+  },
+});
+</script>

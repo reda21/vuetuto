@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion - Le Blog Moderne (Light Mode)</title>
+    <style>
+      /* Reset simple pour démo */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          'Open Sans',
+          'Helvetica Neue',
+          sans-serif;
+        line-height: 1.6;
+      }
+
+      /* ----------------------------------------- */
+      /*          VARIABLES LIGHT MODE             */
+      /* ----------------------------------------- */
+      :root {
+        /* Couleurs de fond */
+        --lm-bg-body: #f8f9fa; /* Fond principal très légèrement gris */
+        --lm-bg-container: #ffffff; /* Fond des conteneurs (login box, header, footer) */
+        --lm-bg-input: #ffffff; /* Fond des champs input */
+
+        /* Couleurs de texte */
+        --lm-text-primary: #212529; /* Texte principal (gris très foncé) */
+        --lm-text-secondary: #6c757d; /* Texte secondaire (gris moyen) */
+        --lm-text-link: #0d6efd; /* Couleur des liens standard (bleu bootstrap) */
+        --lm-text-link-hover: #0a58ca; /* Couleur des liens au survol */
+        --lm-text-placeholder: #6c757d; /* Couleur du placeholder */
+        --lm-text-btn-primary: #212529; /* Texte sur bouton primaire (foncé pour contraste sur orange) */
+        --lm-text-btn-social: #ffffff; /* Texte sur boutons sociaux (blanc) */
+        --lm-input-text: #495057; /* Couleur du texte dans les inputs */
+
+        /* Couleurs des boutons */
+        --lm-btn-primary-bg: #f0ad4e; /* Fond bouton primaire (orange original) */
+        --lm-btn-primary-hover-bg: #ec971f; /* Fond bouton primaire au survol */
+        --lm-btn-facebook-bg: #3b5998; /* Bleu Facebook */
+        --lm-btn-twitter-bg: #1da1f2; /* Bleu Twitter */
+        --lm-btn-google-bg: #db4437; /* Rouge Google */
+
+        /* Couleurs des bordures et séparateurs */
+        --lm-border-color: #dee2e6; /* Bordure légère pour inputs ou conteneurs */
+        --lm-divider-color: #ced4da; /* Couleur pour la ligne "OU" */
+
+        /* Ombres */
+        --lm-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Ombre légère */
+        --lm-box-shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+      }
+
+      /* ----------------------------------------- */
+      /*          STYLES GÉNÉRAUX LIGHT MODE        */
+      /* ----------------------------------------- */
+
+      body.light-mode {
+        background-color: var(--lm-bg-body);
+        color: var(--lm-text-primary);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .container {
+        /* Conteneur simple pour limiter la largeur */
+        width: 90%;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header */
+      .main-header {
+        background-color: var(--lm-bg-container);
+        color: var(--lm-text-primary); /* Texte principal du header */
+        padding: 15px 0;
+        box-shadow: var(--lm-box-shadow);
+        margin-bottom: 30px; /* Espace avant le contenu */
+      }
+
+      .main-header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo a {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #0d6efd; /* Bleu pour le logo */
+      }
+      .logo a span {
+        color: #0a58ca; /* Bleu plus foncé */
+      }
+
+      .main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px; /* Espace entre les liens */
+      }
+
+      .main-nav a {
+        color: var(--lm-text-primary);
+        text-decoration: none;
+        padding: 5px 0;
+      }
+      .main-nav a:hover,
+      .main-nav a.active {
+        /* Style pour lien actif ou survol */
+        color: var(--lm-text-link);
+        border-bottom: 2px solid var(--lm-text-link);
+      }
+
+      /* Liens généraux */
+      a {
+        color: var(--lm-text-link);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--lm-text-link-hover);
+        text-decoration: underline;
+      }
+
+      /* Main Content Area */
+      main {
+        flex-grow: 1; /* Pour que le main prenne l'espace disponible */
+        padding: 20px 0;
+      }
+
+      /* ----------------------------------------- */
+      /*          STYLES CONNEXION LIGHT MODE      */
+      /* ----------------------------------------- */
+
+      .login-container {
+        background-color: var(--lm-bg-container);
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: var(--lm-box-shadow-lg);
+        max-width: 450px;
+        margin: 30px auto; /* Ajusté pour moins d'espace si header présent */
+        color: var(--lm-text-primary);
+      }
+
+      .login-container h2 {
+        color: var(--lm-text-primary);
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+      }
+
+      .login-container .subtitle {
+        color: var(--lm-text-secondary);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      /* Séparateur "OU" */
+      .divider {
+        text-align: center;
+        margin: 25px 0;
+        overflow: hidden;
+        color: var(--lm-text-secondary);
+        font-weight: bold;
+        position: relative; /* Nécessaire pour le positionnement des lignes */
+      }
+      .divider::before,
+      .divider::after {
+        content: '';
+        display: inline-block;
+        width: 40%;
+        height: 1px;
+        background-color: var(--lm-divider-color);
+        vertical-align: middle;
+        position: absolute; /* Positionnement précis */
+        top: 50%;
+      }
+      .divider::before {
+        left: 0;
+        margin-left: 5%; /* Espace avant la ligne */
+      }
+      .divider::after {
+        right: 0;
+        margin-right: 5%; /* Espace après la ligne */
+      }
+
+      /* Formulaire */
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500; /* Moins gras que bold */
+        color: var(--lm-text-primary);
+        font-size: 0.95rem;
+      }
+      .form-group .label-line {
+        /* Pour aligner label et lien mot de passe */
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      .form-control {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: var(--lm-input-text);
+        background-color: var(--lm-bg-input);
+        background-clip: padding-box;
+        border: 1px solid var(--lm-border-color);
+        border-radius: 4px;
+        transition:
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+      }
+      .form-control::placeholder {
+        color: var(--lm-text-placeholder);
+        opacity: 1;
+      }
+      .form-control:focus {
+        border-color: #86b7fe; /* Couleur de focus standard (Bootstrap) */
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Effet de focus */
+      }
+
+      .forgot-password-link {
+        font-size: 0.85em;
+        color: var(--lm-text-link);
+      }
+      .forgot-password-link:hover {
+        color: var(--lm-text-link-hover);
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        margin-top: 5px; /* Réduit l'espace avant Se souvenir */
+        margin-bottom: 20px;
+      }
+      .remember-me input[type='checkbox'] {
+        margin-right: 8px;
+        width: 1em; /* Taille cohérente */
+        height: 1em;
+      }
+      .remember-me label {
+        margin-bottom: 0;
+        font-weight: normal;
+        color: var(--lm-text-secondary);
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      /* Boutons */
+      .btn {
+        display: inline-block;
+        font-weight: 500;
+        line-height: 1.5;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .btn:last-child {
+        margin-bottom: 0; /* Pas de marge en bas pour le dernier bouton d'un groupe */
+      }
+
+      /* Bouton Primaire (Se connecter, S'abonner) */
+      .btn-primary,
+      .btn-subscribe {
+        color: var(--lm-text-btn-primary); /* Texte foncé pour contraste */
+        background-color: var(--lm-btn-primary-bg);
+        border-color: var(--lm-btn-primary-bg);
+      }
+      .btn-primary:hover,
+      .btn-subscribe:hover {
+        color: var(--lm-text-btn-primary);
+        background-color: var(--lm-btn-primary-hover-bg);
+        border-color: var(--lm-btn-primary-hover-bg);
+      }
+
+      /* Boutons Sociaux */
+      .btn-social-facebook {
+        color: var(--lm-text-btn-social);
+        background-color: var(--lm-btn-facebook-bg);
+        border-color: var(--lm-btn-facebook-bg);
+      }
+      .btn-social-facebook:hover {
+        opacity: 0.9;
+      }
+
+      .btn-social-twitter {
+        color: var(--lm-text-btn-social);
+        background-color: var(--lm-btn-twitter-bg);
+        border-color: var(--lm-btn-twitter-bg);
+      }
+      .btn-social-twitter:hover {
+        opacity: 0.9;
+      }
+
+      .btn-social-google {
+        color: var(--lm-text-btn-social);
+        background-color: var(--lm-btn-google-bg);
+        border-color: var(--lm-btn-google-bg);
+      }
+      .btn-social-google:hover {
+        opacity: 0.9;
+      }
+
+      /* Lien d'inscription en bas */
+      .register-link-container {
+        text-align: center;
+        margin-top: 25px;
+        padding-top: 20px; /* Espace après le bouton connecter */
+        border-top: 1px solid var(--lm-border-color); /* Ligne fine avant le lien */
+        font-size: 0.95rem;
+        color: var(--lm-text-secondary);
+      }
+      .register-link-container a {
+        color: var(--lm-text-link);
+        font-weight: bold;
+      }
+      .register-link-container a:hover {
+        color: var(--lm-text-link-hover);
+      }
+
+      /* Footer */
+      .main-footer {
+        background-color: var(--lm-bg-container); /* Fond blanc pour le footer */
+        color: var(--lm-text-secondary);
+        padding-top: 40px;
+        padding-bottom: 20px;
+        margin-top: 50px; /* Espace avant le footer */
+        border-top: 1px solid var(--lm-border-color);
+      }
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap; /* Pour responsive */
+        justify-content: space-between;
+        gap: 30px; /* Espace entre colonnes */
+        margin-bottom: 30px;
+      }
+      .footer-column {
+        flex: 1; /* Prend espace égal */
+        min-width: 200px; /* Largeur minimum avant de passer à la ligne */
+      }
+      .footer-column h4 {
+        color: var(--lm-text-primary);
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+      .footer-column p,
+      .footer-column ul {
+        list-style: none;
+        font-size: 0.95rem;
+      }
+      .footer-column ul li {
+        margin-bottom: 8px;
+      }
+      .footer-column a {
+        color: var(--lm-text-link);
+      }
+      .footer-column a:hover {
+        color: var(--lm-text-link-hover);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid var(--lm-border-color);
+        padding-top: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: var(--lm-text-secondary);
+      }
+      .footer-bottom-links a {
+        color: var(--lm-text-secondary);
+        margin: 0 10px;
+      }
+      .footer-bottom-links a:hover {
+        color: var(--lm-text-link);
+      }
+
+      /* Responsive (simple exemple) */
+      @media (max-width: 768px) {
+        .main-header .container {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .main-nav ul {
+          gap: 15px;
+          justify-content: center;
+          flex-wrap: wrap; /* Permet aux liens de passer à la ligne */
+        }
+        .footer-content {
+          flex-direction: column;
+          text-align: center; /* Centrer le texte sur mobile */
+        }
+        .footer-column {
+          min-width: auto; /* Annuler la largeur min sur mobile */
+        }
+        .login-container {
+          padding: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body class="light-mode">
+    <header class="main-header">
+      <div class="container">
+        <div class="logo">
+          <a href="#">LeBlog<span>Moderne</span></a>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="btn btn-subscribe">S'abonner</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="login-container">
+        <h2>Connexion</h2>
+        <p class="subtitle">Connectez-vous pour accéder à votre compte</p>
+
+        <button class="btn btn-social-facebook">Continuer avec Facebook</button>
+        <button class="btn btn-social-twitter">Continuer avec Twitter</button>
+        <button class="btn btn-social-google">Continuer avec Google</button>
+
+        <div class="divider">OU</div>
+
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="votre.email@exemple.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <div class="label-line">
+              <label for="password">Mot de passe</label>
+              <a href="#" class="forgot-password-link">Mot de passe oublié ?</a>
+            </div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Votre mot de passe"
+              required
+            />
+          </div>
+          <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember" />
+            <label for="remember">Se souvenir de moi</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+
+        <div class="register-link-container">
+          Vous n'avez pas de compte ? <a href="#">Inscrivez-vous</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column about">
+            <h4>À propos</h4>
+            <p>
+              Le Blog Moderne est votre source d'information sur les dernières tendances en
+              développement web, design UI/UX et technologies numériques. Notre mission est de vous
+              tenir informé et inspiré.
+            </p>
+          </div>
+          <div class="footer-column links">
+            <h4>Liens rapides</h4>
+            <ul>
+              <li><a href="#">Accueil</a></li>
+              <li><a href="#">Articles</a></li>
+              <li><a href="#">À propos</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Politique de confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="footer-column categories">
+            <h4>Catégories</h4>
+            <ul>
+              <li><a href="#">Développement Web</a></li>
+              <li><a href="#">Design UI/UX</a></li>
+              <li><a href="#">Intelligence Artificielle</a></li>
+              <li><a href="#">Cybersécurité</a></li>
+              <li><a href="#">DevOps</a></li>
+            </ul>
+          </div>
+          <div class="footer-column contact">
+            <h4>Contact</h4>
+            <p>
+              123 Rue du Web, 75000 Paris, France<br />
+              <a href="mailto:contact@leblogmoderne.fr">contact@leblogmoderne.fr</a><br />
+              <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Le Blog Moderne. Tous droits réservés.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Conditions d'utilisation</a>
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Mentions légales</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

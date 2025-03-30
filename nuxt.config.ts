@@ -45,12 +45,12 @@ export default defineNuxtConfig({
         //     class: "dark",
       },
       bodyAttrs: {
-        class: 'min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300',
+        //  class: 'min-h-screen bg-light-01 dark:bg-dark-01 transition-colors duration-300',
       },
       script: [
         {
           innerHTML: `(function() {
-            const theme = localStorage.getItem('vueuse-color-scheme')            
+            const theme = localStorage.getItem('vueuse-color-scheme')
             if (theme === 'auto' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
               console.info('script dark mode is on')
               document.documentElement.classList.add('dark')
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      laravelToken: process.env.LARAVEL_TOKEN ?? 'hello',
+      laravelToken: process.env.LARAVEL_TOKEN || 'hello',
       tester: process.env.TESTER ?? 'alpha',
     },
   },

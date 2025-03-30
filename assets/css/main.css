@@ -34,10 +34,10 @@
 @import './primevue/chip';
 
 .navbar-link {
-  @apply border-blog-accent/0 m-0 border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200;
+  @apply border-accent/0 m-0 border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200;
 
   @variant hover {
-    @apply text-blog-accent border-blog-accent;
+    @apply text-accent border-accent;
   }
 
   @variant dark {
@@ -45,18 +45,18 @@
   }
 
   @variant active {
-    @apply text-green-500;
+    @apply text-accent;
   }
 
   /*
   
-    border-blog-accent  dark:text-gray-300
+    border-accent  dark:text-gray-300
     text-primary dark:text-primary  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)
     */
 }
 
 .navbar-link.active {
-  @apply text-blog-accent border-blog-accent font-bold;
+  @apply text-accent border-accent font-bold;
 }
 
 .submenu {
@@ -64,11 +64,11 @@
 }
 
 .submenu .submenu-link {
-  @apply hover:text-blog-accent block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300;
+  @apply hover:text-accent block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300;
 }
 
 .submenu .submenu-link.active {
-  @apply text-blog-accent font-bold;
+  @apply text-accent font-bold;
 }
 
 .c {
