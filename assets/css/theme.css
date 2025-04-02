@@ -11,12 +11,12 @@
   /* theme */
   --color-light: oklch(0.97 0.0091 258.34); /* #f0f4fa */
   --color-light-second: oklch(1 0 0); /* #fffff */
-  --color-light-font: oklch(0.24 0.0731 269.22) /* #121c42 */
-  --color-dark: oklch(0.28 0.074 278.43);  /* #22244d */
-  --color-dark-second: oklch(0.34 0.0913 277.19);  /* #2e3267 */
-  --color-dark-font: oklch(0.9 0.0488 275.22)  /* #d4dcff */ 
-  --color-accent: #f59e0b;
-
+  --color-light-font: oklch(0.24 0.0731 269.22); /* #121c42 */
+  --color-dark: oklch(0.28 0.074 278.43); /* #22244d */
+  --color-dark-second: oklch(0.34 0.0913 277.19); /* #2e3267 */
+  --color-dark-font: oklch(0.9 0.0488 275.22); /* #d4dcff */
+  --color-accent: oklch(0.77 0.1647 70.08); /* #f59e0b;*/
+  --color-orange: oklch(0.77 0.1647 70.08);
 
   --color-blog-bg: #22244d;
   --color-blog-card: #2e3267;
@@ -101,7 +101,7 @@
   --color-danger-hover: oklch(59.15% 0.202 21.24);
   --color-info: oklch(79.84% 0.1319 215.11);
   --color-info-hover: oklch(77.49% 0.138 218.05);
-/*  --color-dark: oklch(39.15% 0.0073 240); */
+  /*  --color-dark: oklch(39.15% 0.0073 240); */
   --color-dark-hover: oklch(26.21% 0.0095 248.19);
   /*--color-light: oklch(96.58% 0.0091 258.34); */
   --color-light-hover: oklch(86.95% 0.0018 247.84);

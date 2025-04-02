@@ -5,12 +5,43 @@
 @plugin "@tailwindcss/typography";
 
 @import './utility.css';
-
 /*configure dark mode*/
 @import './base.css';
 
 /*configure theme*/
 @import './theme.css';
+
+.navbar-link {
+  @apply border-blog-accent/0 m-0 border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200;
+
+  @variant hover {
+    @apply text-accent border-accent;
+  }
+
+  @variant dark {
+    @apply text-gray-300;
+  }
+
+  @variant active {
+    @apply text-accent;
+  }
+}
+
+.navbar-link.active {
+  @apply text-accent border-accent font-bold;
+}
+
+.submenu {
+  @apply space-y-1 pt-2 pb-3 md:hidden;
+}
+
+.submenu .submenu-link {
+  @apply hover:text-accent block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300;
+}
+
+.submenu .submenu-link.active {
+  @apply text-accent font-bold;
+}
 
 /*ui composent */
 @import './ui/button.css';
@@ -33,45 +64,16 @@
 
 @import './primevue/chip';
 
-.navbar-link {
-  @apply border-accent/0 m-0 border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200;
-
-  @variant hover {
-    @apply text-accent border-accent;
-  }
-
-  @variant dark {
-    @apply text-gray-300;
-  }
-
-  @variant active {
-    @apply text-accent;
-  }
-
-  /*
-  
-    border-accent  dark:text-gray-300
-    text-primary dark:text-primary  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)
-    */
+.shadows {
+  --tw-shadow:
+    0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+    0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+    var(--tw-ring-shadow), var(--tw-shadow);
 }
 
-.navbar-link.active {
-  @apply text-accent border-accent font-bold;
-}
-
-.submenu {
-  @apply space-y-1 pt-2 pb-3 md:hidden;
-}
-
-.submenu .submenu-link {
-  @apply hover:text-accent block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300;
-}
-
-.submenu .submenu-link.active {
-  @apply text-accent font-bold;
-}
-
-.c {
+.shadow-lg {
   --tw-shadow:
     0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
     0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
