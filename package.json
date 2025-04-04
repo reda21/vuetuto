@@ -21,7 +21,7 @@
     "@mastra/client-js": "^0.1.11",
     "@mastra/core": "^0.6.3",
     "@pinia/nuxt": "^0.10.1",
-    "@sidebase/nuxt-auth": "0.10.0",
+    "@sidebase/nuxt-auth": "0.10.1",
     "@tailwindcss/vite": "^4.0.6",
     "@unocss/reset": "^66.0.0",
     "@vueuse/core": "^12.7.0",
