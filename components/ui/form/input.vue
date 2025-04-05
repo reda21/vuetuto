@@ -1,60 +1,18 @@
 <template>
-  <InputText
-    :id
-    :name
-    :type
-    v-model="value"
-    :placeholder="placeholder"
-    :disabled
-    :fluid
-    :invalid
-    :size
-    :variant
-  />
+  <InputText v-model="value" :id="id" :name="name" :type="type" :placeholder="placeholder" :disabled="disabled" :fluid="fluid" :invalid="invalidComputed" :size="size" :variant="variant" />
 </template>
 
 <script lang="ts" setup>
+//@ts-ignore
+import { withDefaults, defineProps, defineModel, inject } from "vue"
+//@ts-ignore
 import InputText from 'primevue/inputtext';
+import { CustomError } from "@/utils/customError"
+
+import type { InputProps } from "./formType"
 //props
-type InputType =
-  | 'button'
-  | 'checkbox'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'hidden'
-  | 'image'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'search'
-  | 'submit'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week'
-  | (string & {});
 
-type sizeType = 'small' | 'large' | undefined | null;
 
-interface InputProps {
-  type?: InputType;
-  name?: string;
-  id?: string;
-  placeholder?: string;
-  // value?: string;
-  disabled?: boolean;
-  fluid?: boolean;
-  size?: sizeType;
-  invalid?: boolean | undefined | null;
-  variant?: 'outlined' | 'filled' | undefined | null;
-}
 
 const props = withDefaults(defineProps<InputProps>(), {
   type: 'text',
@@ -64,10 +22,21 @@ const props = withDefaults(defineProps<InputProps>(), {
   id: 'input',
   fluid: true,
   invalid: false,
+  size: null,
+  variant: null,
+  lazy: false,
 });
 
-//data
+//get model value
 const value = defineModel<string | null>({ required: false, default: null });
+
+//get error value
+const errors = inject<CustomError>('errors')
+
+//computed
+const invalidComputed = computed(() => {
+  return errors?.has(props.name) || props.invalid
+})
 
 /*
 https://www.creative-tim.com/twcomponents/component/select-with-search

@@ -8,4 +8,6 @@
 
 @import '../primevue/autocomplete.css';
 
-@import '../primevue/chip';
+@import '../primevue/chip.css';
+
+@import "../primevue/message.css"

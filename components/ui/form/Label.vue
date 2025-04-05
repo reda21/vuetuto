@@ -1,24 +1,24 @@
 <template>
-  <label
-    :for="forAttr"
-    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-    v-bind="$attrs"
-  >
+  <label :for="forAttr" class="mb-2 block text-sm font-medium"
+    :class="{ 'text-danger': invalid, 'text-gray-900 dark:text-white': !invalid }" v-bind="$attrs">
     <slot></slot>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+//@ts-ignore
+import { computed, withDefaults, defineProps } from 'vue';
 
 interface LabelProps {
   forAttr?: string;
   id?: string;
+  invalid?: boolean
 }
 
 const props = withDefaults(defineProps<LabelProps>(), {
-  forAttr: '',
-  id: '',
+  forAttr: 'input',
+  id: 'input',
+  invalid: false
 });
 
 // Si aucun id n'est fourni, on génère un id unique
