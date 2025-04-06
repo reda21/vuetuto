@@ -1,13 +1,17 @@
 <template>
   <div class="mb-4">
-    <UiFormLabel :for="name" :id="id ?? name" :invalid="errors && errors.has(name)">{{ label }}</UiFormLabel>
+    <UiFormLabel :for="name" :id="id ?? name" :invalid="errors && errors.has(name)">{{
+      label
+    }}</UiFormLabel>
     <slot />
-    <p v-if="errors && errors.has(name)" class="mt-1 text-sm text-danger">{{ errors?.first(name) }}</p>
+    <p v-if="errors && errors.has(name)" class="text-danger mt-1 text-sm">
+      {{ errors?.first(name) }}
+    </p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { CustomError } from "@/utils/customError"
+import { CustomError } from '@/utils/customError';
 
 interface FormControlValues {
   name: string;
@@ -16,11 +20,8 @@ interface FormControlValues {
 }
 
 //@ts-ignore
-const props = withDefaults(defineProps<FormControlValues>(), {
-
-});
+const props = withDefaults(defineProps<FormControlValues>(), {});
 
 //inject
-const errors = inject<CustomError>('errors')
-
+const errors = inject<CustomError>('errors');
 </script>

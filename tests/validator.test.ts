@@ -26,7 +26,7 @@ describe('Validation des données avec Validator.js', () => {
 
   test('Échec de la validation avec un email incorrect', () => {
     if (validator.input) {
-        validator.input.email = 'adresse-email-invalide';
+      validator.input.email = 'adresse-email-invalide';
     }
     const validationRéussie = validator.passes();
     expect(validationRéussie).toBe(false);
@@ -35,7 +35,7 @@ describe('Validation des données avec Validator.js', () => {
 
   test('Échec de la validation avec un âge inférieur à 18', () => {
     if (validator.input) {
-        validator.input.âge = 16;
+      validator.input.âge = 16;
     }
     const validationRéussie = validator.passes();
     expect(validationRéussie).toBe(false);
