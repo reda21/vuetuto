@@ -30,7 +30,7 @@ const props = defineProps({
     default: '',
   },
 });
-
+//https://huggingface.co/spaces/enzostvs/deepsite
 const name = toRef(props, 'name');
 
 const {
