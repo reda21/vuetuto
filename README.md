@@ -1,7 +1,7 @@
 # Nuxt Minimal Starter https://huggingface.co/spaces/enzostvs/deepsite
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
+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
 ## Setup
 
 Make sure to install dependencies:

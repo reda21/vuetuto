@@ -11,37 +11,8 @@
 /*configure theme*/
 @import './theme.css';
 
-.navbar-link {
-  @apply border-blog-accent/0 m-0 border-b-2 px-3 py-2 text-sm font-medium text-gray-700 duration-200;
-
-  @variant hover {
-    @apply text-accent border-accent;
-  }
-
-  @variant dark {
-    @apply text-gray-300;
-  }
-
-  @variant active {
-    @apply text-accent;
-  }
-}
-
-.navbar-link.active {
-  @apply text-accent border-accent font-bold;
-}
-
-.submenu {
-  @apply space-y-1 pt-2 pb-3 md:hidden;
-}
-
-.submenu .submenu-link {
-  @apply hover:text-accent block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300;
-}
-
-.submenu .submenu-link.active {
-  @apply text-accent font-bold;
-}
+/* navbar */
+@import "./navbar.css";
 
 /*ui composent */
 @import './ui/button.css';

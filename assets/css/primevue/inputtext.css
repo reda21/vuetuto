@@ -1,13 +1,27 @@
 input.p-inputtext {
-  @apply border-surface-300 text-surface-700 placeholder:text-surface-500 disabled:bg-surface-200 disabled:text-surface-500 enabled:focus:border-primary shadows block appearance-none rounded-lg border-2 bg-gray-50 px-3 py-2 text-sm transition-colors duration-200 outline-none focus:border-blue-500 focus:ring-blue-500 enabled:hover:border-blue-500 disabled:opacity-100;
+  @apply bg-light-input text-light-font placeholder:text-surface-400 border-surface-300 block appearance-none rounded-lg border-2 px-4 py-2 text-base shadow-lg transition-colors duration-200 outline-none;
+
+  @variant enabled {
+    @variant focus {
+      @apply border-accent ring-accent;
+    }
+  }
+
+  @variant disabled {
+    @apply opacity-100 bg-light-input-disabled text-surface-400;
+  }
 
   @variant dark {
-    @apply bg-dark-02 border-surface-700 text-surface-0 placeholder:text-surface-400 disabled:text-surface-400 disabled:bg-[#10122b];
+    @apply bg-dark-input text-dark-font border-surface-700;
+
+    @variant disabled {
+      @apply  bg-dark-input-disabled;
+    }
   }
 }
 
 input.p-inputtext.p-invalid {
-  @apply border-red-400 text-red-400 enabled:border-red-400 enabled:hover:border-red-400 dark:border-red-400;
+  @apply border-danger text-danger enabled:border-danger enabled:hover:border-danger dark:border-danger;
 }
 
 input.p-inputtext.p-variant-filled {

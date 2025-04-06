@@ -12,11 +12,15 @@
   --color-light: oklch(0.97 0.0091 258.34); /* #f0f4fa */
   --color-light-second: oklch(1 0 0); /* #fffff */
   --color-light-font: oklch(0.24 0.0731 269.22); /* #121c42 */
+  --color-light-input: oklch(1 0 0); /* #fffff */
+  --color-light-input-disabled: oklch(0.93 0.0126 255.51); /* #e2e8f0 */
+  /* dark*/
   --color-dark: oklch(0.28 0.074 278.43); /* #22244d */
   --color-dark-second: oklch(0.34 0.0913 277.19); /* #2e3267 */
   --color-dark-font: oklch(0.9 0.0488 275.22); /* #d4dcff */
-  --color-accent: oklch(0.77 0.1647 70.08); /* #f59e0b;*/
-  --color-orange: oklch(0.77 0.1647 70.08);
+  --color-dark-input: oklch(25% 0.0583 277.13);
+  --color-dark-input-disabled: oklch(0.28 0.074 278.43); /* #22244d */
+  --color-accent: oklch(0.77 0.1647 70.08); /* #f59e0b;*/ 
 
   --color-blog-bg: #22244d;
   --color-blog-card: #2e3267;
