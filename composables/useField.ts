@@ -2,14 +2,19 @@
 import { inject, computed } from 'vue';
 import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
 import { FormContextKey } from './useForm';
-import type { FormContext, ValidationRules } from './useForm';
+import type {
+  ValidationRules,
+  FormContext,
+  UseFieldOptions,
+  UseFieldReturn,
+} from '@/components/ui/form/formType';
 
-export function useField<T = any>(
-  name: string,
-  rules?: ValidationRules,
-  options?: ValidatorOptions,
-  initialValue?: T
-) {
+export function useField<T = any>({
+  name,
+  rules,
+  options,
+  initialValue,
+}: UseFieldOptions<T>): UseFieldReturn<T> {
   // On retire le paramètre générique ici :
   const maybeForm = inject<FormContext>(FormContextKey);
   if (!maybeForm) {

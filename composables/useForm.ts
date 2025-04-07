@@ -1,23 +1,18 @@
 // ~/composables/useForm.ts
 import { reactive, provide } from 'vue';
-import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
-
-export type ValidationRules = Record<string, string | string[]>;
-
-export interface FormContext {
-  values: Record<string, any>;
-  errors: Record<string, string>;
-  touched: Record<string, boolean>;
-  rules?: ValidationRules; // Ajout de la propriété rules
-  handleSubmit: (
-    onValid: (values: Record<string, any>) => void,
-    onInvalid?: (errors: Record<string, string>) => void
-  ) => (e?: Event) => Promise<void>;
-}
+import { Validator } from '@chantouchsek/validatorjs';
+import type {
+  ValidatorOptions,
+  ValidationRules,
+  FormContext,
+  UseFormType,
+} from '@/components/ui/form/formType';
 
 export const FormContextKey = Symbol('FormContext');
 
-export function useForm(rules?: ValidationRules, options?: ValidatorOptions): FormContext {
+
+
+export function useForm<UseFormType>(rules = {}, options = {}) {
   // On déclare values, errors et touched indexables par string
   const values = reactive<Record<string, any>>({});
   const errors = reactive<Record<string, string>>({});

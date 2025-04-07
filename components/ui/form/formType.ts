@@ -1,3 +1,7 @@
+import type { ValidatorOptions } from '@chantouchsek/validatorjs';
+
+export type { ValidatorOptions}
+
 export type InputType =
   | 'button'
   | 'checkbox'
@@ -44,4 +48,37 @@ export interface TypeRule {
 
 export interface TypeInputs {
   [attribute: string]: any | Array<any>;
+}
+
+export type ValidationRules = Record<string, string | string[]>;
+
+export interface FormContext {
+  values: Record<string, any>;
+  errors: Record<string, string>;
+  touched: Record<string, boolean>;
+  rules?: ValidationRules; // Ajout de la propriété rules
+  handleSubmit: (
+    onValid: (values: Record<string, any>) => void,
+    onInvalid?: (errors: Record<string, string>) => void
+  ) => (e?: Event) => Promise<void>;
+}
+
+export type UseFormType = (rules?: ValidationRules, options?: ValidatorOptions) => FormContext;
+
+export interface UseFieldOptions<T = any> {
+  name: string;
+  rules?: ValidationRules;
+  options?: ValidatorOptions;
+  initialValue?: T;
+}
+
+export interface UseFieldReturn<T = any> {
+  value: Ref<T>;
+  errorMessage: ComputedRef<string>;
+  handleBlur: () => void;
+  handleChange: (e: Event) => void;
+  meta: {
+    touched: ComputedRef<boolean>;
+    valid: ComputedRef<boolean>;
+  };
 }

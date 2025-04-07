@@ -8,9 +8,8 @@
 <script lang="ts" setup>
 //@ts-ignore
 import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
-import type { TypeInputs, TypeRule } from './formType';
+import type { TypeInputs, TypeRule, ValidationRules } from './formType';
 import { useForm } from '~/composables/useForm';
-import type { ValidationRules } from '~/composables/useForm';
 import { CustomError } from '@/utils/customError';
 
 //props

@@ -42,7 +42,10 @@ const props = withDefaults(defineProps<InputProps>(), {
 const value = defineModel<string | null>({ required: false, default: null });
 
 //useField
-const { handleChange, handleBlur } = useField(props.name, undefined, undefined, value.value);
+const { handleChange, handleBlur } = useField({
+  name: props.name,
+  initialValue: value.value
+});
 
 //get error value
 //const errors = inject<CustomError>('errors');

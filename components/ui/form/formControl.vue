@@ -20,7 +20,7 @@ interface FormControlValues {
 const props = withDefaults(defineProps<FormControlValues>(), {});
 
 //useField
-const { errorMessage } = useField(props.name);
+const { errorMessage } = useField({ name: props.name });
 
 /*
  :invalid="errors && errors.has(name)"
