@@ -1,35 +1,46 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <slot :lazy="lazy" :errors="errors" />
+  <form @submit.prevent="onSubmit">
+    <slot :lazy="lazy" :errors="errors" :values="values" :touched="touched" />
     <p>{{ lazy }}</p>
   </form>
 </template>
 
 <script lang="ts" setup>
 //@ts-ignore
-import { Validator } from '@chantouchsek/validatorjs';
+import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
 import type { TypeInputs, TypeRule } from './formType';
+import { useForm } from '~/composables/useForm';
+import type { ValidationRules } from '~/composables/useForm';
 import { CustomError } from '@/utils/customError';
 
 //props
 interface FormProps {
-  inputs: TypeInputs;
-  rules: TypeRule;
+  validationRules?: ValidationRules;
+  validationOptions?: ValidatorOptions;
 }
 
 //@ts-ignore
 const props = withDefaults(defineProps<FormProps>(), {
-  inputs: () => ({}),
-  rules: () => ({}),
+  validationRules: () => ({}),
+  validationOptions: () => ({}),
 });
+
+//useForm
+const { values, errors, touched, handleSubmit } = useForm(
+  props.validationRules,
+  props.validationOptions
+);
 
 //emit
 //@ts-ignore
-const emit = defineEmits(['submit']);
+const emit = defineEmits<{
+  (e: 'submit', values: Record<string, any>): void;
+  (e: 'invalid-submit', errors: Record<string, string>): void;
+}>();
 
 //data
 const lazy = ref(false);
-const errors = new CustomError();
+//const errors = new CustomError();
 
 //provide
 provide('lazy', lazy);
@@ -40,7 +51,13 @@ const chengeLazy = (value: boolean) => {
   lazy.value = value;
 };
 
+const onSubmit = handleSubmit(
+  (v) => emit('submit', v),
+  (errs) => emit('invalid-submit', errs)
+);
+
 const submitForm = () => {
+  /* 
   errors.clearAll();
   const validator = new Validator(props.inputs, props.rules);
   const validationRéussie = validator.passes();
@@ -50,5 +67,6 @@ const submitForm = () => {
     console.error(validator.errors);
   }
   //  emit('submit', { chengeLazy });
+  */
 };
 </script>

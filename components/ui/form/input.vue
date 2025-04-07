@@ -10,8 +10,8 @@
     :invalid="invalidComputed"
     :size="size"
     :variant="variant"
-    @input="!props.lazy ? inputChange($event) : null"
-    @blur="props.lazy ? inputChange($event) : null"
+    @input="handleChange"
+    @blur="handleBlur"
   />
 </template>
 
@@ -21,7 +21,7 @@ import { withDefaults, defineProps, defineModel, inject } from 'vue';
 //@ts-ignore
 import InputText from 'primevue/inputtext';
 import { CustomError } from '@/utils/customError';
-
+import { useField } from '~/composables/useField';
 import type { InputProps } from './formType';
 //props
 
@@ -41,12 +41,15 @@ const props = withDefaults(defineProps<InputProps>(), {
 //get model value
 const value = defineModel<string | null>({ required: false, default: null });
 
+//useField
+const { handleChange, handleBlur } = useField(props.name, undefined, undefined, value.value);
+
 //get error value
-const errors = inject<CustomError>('errors');
+//const errors = inject<CustomError>('errors');
 
 //computed
 const invalidComputed = computed(() => {
-  return errors?.has(props.name) || props.invalid;
+  return props.invalid; //errors?.has(props.name)
 });
 
 //methods
@@ -58,14 +61,13 @@ const debounce = (fn: Function, delay: number) => {
   };
 };
 
-const inputChange = debounce(
-  (event: Event) => {
-    errors?.clear(props.name);
-    console.log('inputChange');
-  },
-  props.lazy ? 0 : 300
-);
+const inputChange = debounce(() => {
+  //   errors?.clear(props.name);
+  console.log('inputChange');
+}, 300);
+
 /*
-https://www.creative-tim.com/twcomponents/component/select-with-search
+@input="!props.lazy ? inputChange($event) : null"
+    @blur="props.lazy ? inputChange($event) : null"
 */
 </script>

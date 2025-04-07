@@ -67,10 +67,6 @@ const schema = yup.object().shape({
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
 :root {
   --primary-color: #0071fe;
   --error-color: #f23648;

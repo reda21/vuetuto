@@ -1,7 +1,12 @@
 import { Password } from '../.nuxt/components';
 <template>
   <div>
-    <UiForm :rules="rules" :inputs="inputs" v-slot="{ lazy, errors }" @submit="onsubmit">
+    <UiForm
+      :validation-rules="schema"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ lazy }"
+      @submit="onSubmit"
+    >
       <UiFormControl name="username" label="Username">
         <UiFormInput
           name="username"
@@ -11,30 +16,7 @@ import { Password } from '../.nuxt/components';
           :disabled="lazy"
         />
       </UiFormControl>
-      <UiFormControl name="email" label="Email">
-        <UiFormInput
-          type="email"
-          name="email"
-          id="email"
-          v-model="inputs.email"
-          placeholder="email"
-          :disabled="lazy"
-        />
-      </UiFormControl>
-      <UiFormControl name="password" label="Password">
-        <UiFormInput
-          type="password"
-          name="password"
-          id="password"
-          v-model="inputs.password"
-          :disabled="lazy"
-        />
-      </UiFormControl>
       <UiButton type="submit" :lazy="lazy">Submit</UiButton>
-      <pre>
-      {{ errors }}
-    </pre
-      >
     </UiForm>
   </div>
 </template>
@@ -61,7 +43,21 @@ const inputs = reactive<InputType>({
   password: '',
 });
 
-const onsubmit = ({ chengeLazy }: { chengeLazy: (value: boolean) => void }) => {
+const schema = {
+  username: ['required', 'min:18'],
+  email: ['required', 'email'],
+  password: 'required',
+};
+
+function onSubmit(values: Record<string, any>) {
+  console.log('Valide :', values);
+}
+
+function onInvalidSubmit(errors: Record<string, string>) {
+  console.log('Erreurs :', errors);
+}
+
+const onsubmit2 = ({ chengeLazy }: { chengeLazy: (value: boolean) => void }) => {
   chengeLazy(true);
   setTimeout(() => {
     chengeLazy(false);

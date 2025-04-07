@@ -68,7 +68,11 @@ const {
       }"
     />
 
-    <p :class="!errorMessage ? 'text-success' : 'text-danger'" class="text-sm" v-show="errorMessage || meta.valid">
+    <p
+      :class="!errorMessage ? 'text-success' : 'text-danger'"
+      class="text-sm"
+      v-show="errorMessage || meta.valid"
+    >
       {{ errorMessage || successMessage }}
     </p>
   </div>
