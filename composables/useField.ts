@@ -22,7 +22,6 @@ export function useField<T = any>(
 
   // Fusionner les règles locales et globales
   const fieldRules = rules || globalRules;
-
   // Initialisation
   if (!(name in form.values)) {
     form.values[name] = initialValue ?? '';
@@ -42,9 +41,9 @@ export function useField<T = any>(
 
   // Validation de ce seul champ
   async function validateField() {
-    console.info('validateField', rules);
-    if (!rules || !(name in rules)) return;
-    const singleRule = { [name]: rules[name] };
+    console.info('validateField', fieldRules);
+    if (!fieldRules) return;
+    const singleRule = { [name]: fieldRules };
     const validation = new Validator(form.values, singleRule, options);
     if (validation.fails()) {
       form.errors[name] = validation.errors.first(name) || '';
