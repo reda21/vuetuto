@@ -2,6 +2,7 @@
 import { inject, computed } from 'vue';
 import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
 import { FormContextKey } from './useForm';
+import { CustomError } from '@/utils/customError';
 import type {
   ValidationRules,
   FormContext,
@@ -30,7 +31,7 @@ export function useField<T = any>({
   // Initialisation
   if (!(name in form.values)) {
     form.values[name] = initialValue ?? '';
-    form.errors[name] = '';
+    form.errors.clear(name);
     form.touched[name] = false;
   }
 
@@ -38,35 +39,33 @@ export function useField<T = any>({
     get: () => form.values[name],
     set: (v) => (form.values[name] = v),
   });
-  const errorMessage = computed(() => form.errors[name]);
+  const errorMessage = computed(() => form.errors.first(name));
   const meta = {
     touched: computed(() => form.touched[name]),
-    valid: computed(() => !form.errors[name]),
+    valid: computed(() => !form.errors.has(name)),
   };
 
   // Validation de ce seul champ
-  async function validateField() {
-    console.info('validateField', fieldRules);
+  async function validateField() {    
     if (!fieldRules) return;
     const singleRule = { [name]: fieldRules };
     const validation = new Validator(form.values, singleRule, options);
-    if (validation.fails()) {
-      form.errors[name] = validation.errors.first(name) || '';
+    if (validation.fails()) {      
+      form.errors.setOne(name, validation.errors.first(name));
     } else {
-      form.errors[name] = '';
+      form.errors.clear(name);
     }
   }
 
-  function handleBlur() {
-    console.info('handleBlur');
+  function handleBlur() {    
     form.touched[name] = true;
     validateField();
   }
   function handleChange(e: Event) {
-    console.info('handleChange');
+   // form.errors.clear(name);    
     const t = e.target as HTMLInputElement;
     value.value = t.value;
   }
 
-  return { value, errorMessage, handleBlur, handleChange, meta };
+  return { value, errors: form.errors, handleBlur, handleChange, meta };
 }

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit">
+  <form novalidate @submit.prevent="onSubmit">
     <slot :lazy="lazy" :errors="errors" :values="values" :touched="touched" />
     <p>{{ lazy }}</p>
   </form>

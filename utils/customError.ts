@@ -7,8 +7,15 @@ export class CustomError {
     this.items = ref({});
   }
 
-  set(key: string, value: any | any[]): void {
-    console.info('set errors');
+  setOne(key: string, value: any): void {
+    if (typeof value === 'string')
+      this.items.value[key] = [value];
+    else {
+      this.items.value[key] = value;
+    }
+  }
+
+  set(key: string, value: any | any[]): void {   
     if (typeof value === 'string') {
       // Si la valeur est une chaîne de caractères, on l'ajoute à un tableau
       if (this.items.value[key]) {
@@ -27,8 +34,7 @@ export class CustomError {
   }
 
   setAll(items: ErrorType): void {
-    this.clearAll();
-    console.info('setAll', items);
+    this.clearAll();    
     const _items: ErrorType = {};
     for (const key in items) {
       if (Array.isArray(items[key])) {
@@ -40,8 +46,7 @@ export class CustomError {
     this.items.value = { ..._items };
   }
 
-  get(key: string): any {
-    console.info('get errors', key, this.items);
+  get(key: string): any {   
     return this.items.value[key];
   }
 

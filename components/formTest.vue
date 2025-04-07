@@ -1,20 +1,16 @@
 import { Password } from '../.nuxt/components';
 <template>
   <div>
-    <UiForm
-      :validation-rules="schema"
-      @invalid-submit="onInvalidSubmit"
-      v-slot="{ lazy }"
-      @submit="onSubmit"
-    >
-      <UiFormControl name="username" label="Username">
-        <UiFormInput
-          name="username"
-          id="username"
-          v-model="inputs.username"
-          placeholder="username"
-          :disabled="lazy"
-        />
+    <UiForm :validation-rules="schema" @invalid-submit="onInvalidSubmit" v-slot="{ lazy }" @submit="onSubmit">
+      <UiFormControl class="min-h-24" name="username" label="Username">
+        <UiFormInput name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy" />
+      </UiFormControl>
+      <UiFormControl class="min-h-24" name="email" label="Email">
+        <UiFormInput type="email" name="email" id="email" v-model="inputs.email" placeholder="email" :disabled="lazy" />
+      </UiFormControl>
+      <UiFormControl class="min-h-24" name="password" label="Password">
+        <UiFormInput type="password" name="password" id="passowrd" v-model="inputs.password" placeholder="password"
+          :disabled="lazy" />
       </UiFormControl>
       <UiButton type="submit" :lazy="lazy">Submit</UiButton>
     </UiForm>
@@ -38,8 +34,8 @@ const rules: TypeRule = {
 };
 
 const inputs = reactive<InputType>({
-  username: '',
-  email: '',
+  username: 'reda21',
+  email: 'redacherfaoui@gmail',
   password: '',
 });
 

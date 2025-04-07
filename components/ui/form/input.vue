@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<InputProps>(), {
 const value = defineModel<string | null>({ required: false, default: null });
 
 //useField
-const { handleChange, handleBlur } = useField({
+const { handleChange, handleBlur, errors } = useField({
   name: props.name,
   initialValue: value.value
 });
@@ -52,7 +52,7 @@ const { handleChange, handleBlur } = useField({
 
 //computed
 const invalidComputed = computed(() => {
-  return props.invalid; //errors?.has(props.name)
+  return props.invalid || errors?.has(props.name)
 });
 
 //methods
@@ -63,14 +63,4 @@ const debounce = (fn: Function, delay: number) => {
     timeoutId = setTimeout(() => fn.apply(this, args), delay);
   };
 };
-
-const inputChange = debounce(() => {
-  //   errors?.clear(props.name);
-  console.log('inputChange');
-}, 300);
-
-/*
-@input="!props.lazy ? inputChange($event) : null"
-    @blur="props.lazy ? inputChange($event) : null"
-*/
 </script>

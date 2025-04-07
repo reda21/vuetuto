@@ -1,5 +1,5 @@
 import type { ValidatorOptions } from '@chantouchsek/validatorjs';
-
+import { CustomError } from '@/utils/customError';
 export type { ValidatorOptions}
 
 export type InputType =
@@ -54,7 +54,7 @@ export type ValidationRules = Record<string, string | string[]>;
 
 export interface FormContext {
   values: Record<string, any>;
-  errors: Record<string, string>;
+  errors: CustomError;
   touched: Record<string, boolean>;
   rules?: ValidationRules; // Ajout de la propriété rules
   handleSubmit: (
@@ -74,7 +74,7 @@ export interface UseFieldOptions<T = any> {
 
 export interface UseFieldReturn<T = any> {
   value: Ref<T>;
-  errorMessage: ComputedRef<string>;
+  errors: CustomError;
   handleBlur: () => void;
   handleChange: (e: Event) => void;
   meta: {
