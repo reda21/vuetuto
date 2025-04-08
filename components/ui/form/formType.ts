@@ -40,7 +40,7 @@ export interface InputProps {
   size?: sizeType;
   invalid?: boolean | undefined | null;
   variant?: 'outlined' | 'filled' | undefined | null;
-  rules: string | string[];
+  rules?: string | string[] | undefined;
 }
 
 export interface TypeRule {

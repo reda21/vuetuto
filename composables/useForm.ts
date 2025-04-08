@@ -2,7 +2,7 @@
 import { reactive, provide, computed } from 'vue';
 import { Validator } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
-import { ValidationRulesManager } from '@/utils/ValidationRulesManager';
+import { ValidationRulesManager } from '@/utils/validationRulesManager';
 import type { ValidatorOptions, ValidationRules, FormContext } from '@/components/ui/form/formType';
 
 export const FormContextKey = Symbol('FormContext');

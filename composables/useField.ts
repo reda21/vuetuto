@@ -47,9 +47,8 @@ export function useField<T = any>({
 
   // Validation de ce seul champ
   async function validateField() {
-    console.info(form.rules?.getFieldRules(name));
-    /*
-if (!fieldRules) return;
+    const fieldRules = form.rules?.getFieldRules(name);
+    if (!fieldRules) return;
     const singleRule = { [name]: fieldRules };
     const validation = new Validator(form.values, singleRule, options);
     if (validation.fails()) {
@@ -57,8 +56,7 @@ if (!fieldRules) return;
     } else {
       form.errors.clear(name);
     }
-    */
-  }
+  } //https://vee-validate.logaretm.com/v4/api/use-form/
 
   const handleBlur = () => {};
   const handleChange = () => {
