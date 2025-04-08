@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+//components\ui\form\Label.vue
 //@ts-ignore
 import { computed, withDefaults, defineProps } from 'vue';
 

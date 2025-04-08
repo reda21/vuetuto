@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+//components\ui\form\input.vue
 //@ts-ignore
 import { withDefaults, defineProps, defineModel, inject } from 'vue';
 //@ts-ignore

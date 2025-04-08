@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light-02 p-3 text-gray-800 dark:bg-white/10 dark:text-gray-300">
+  <div class="bg-light-second dark:bg-dark-second text-gray-800  dark:text-gray-300 p-3">
     <h1 class="mb-4 flex items-center gap-0.5 text-2xl font-bold dark:text-white">Formulaire</h1>
     <!--   <Vaalidate />  -->
     <FormTest />

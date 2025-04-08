@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts" setup>
+//components\ui\form\Form.vue
 //@ts-ignore
 import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
 import type { TypeInputs, TypeRule, ValidationRules } from './formType';

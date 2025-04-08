@@ -1,4 +1,3 @@
-import { Password } from '../.nuxt/components';
 <template>
   <div>
     <UiForm :validation-rules="schema" @invalid-submit="onInvalidSubmit" v-slot="{ lazy }" @submit="onSubmit">
@@ -18,6 +17,7 @@ import { Password } from '../.nuxt/components';
 </template>
 
 <script lang="ts" setup>
+//components\formTest.vue
 import type { TypeRule } from '@/components/ui/form/formType';
 
 interface InputType {
