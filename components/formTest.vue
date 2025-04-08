@@ -1,15 +1,40 @@
 <template>
   <div>
-    <UiForm :validation-rules="schema" @invalid-submit="onInvalidSubmit" v-slot="{ lazy }" @submit="onSubmit">
+    <UiForm
+      :schema="schema"
+      :initialValues="init"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ lazy, inputs }"
+      @submit="onSubmit"
+    >
       <UiFormControl class="min-h-24" name="username" label="Username">
-        <UiFormInput name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy" />
+        <UiFormInput
+          name="username"
+          id="username"
+          v-model="inputs.username"
+          placeholder="username"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="email" label="Email">
-        <UiFormInput type="email" name="email" id="email" v-model="inputs.email" placeholder="email" :disabled="lazy" />
+        <UiFormInput
+          type="email"
+          name="email"
+          id="email"
+          v-model="inputs.email"
+          placeholder="email"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password" label="Password">
-        <UiFormInput type="password" name="password" id="passowrd" v-model="inputs.password" placeholder="password"
-          :disabled="lazy" />
+        <UiFormInput
+          type="password"
+          name="password"
+          id="passowrd"
+          v-model="inputs.password"
+          placeholder="password"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiButton type="submit" :lazy="lazy">Submit</UiButton>
     </UiForm>
@@ -26,23 +51,16 @@ interface InputType {
   password: string;
 }
 
-//rules
-const rules: TypeRule = {
-  username: ['required', 'min:18'],
-  email: ['required', 'email'],
-  password: 'required',
+const init: Record<string, any> = {
+  username: 'reda21',
+  email: 'redacherfaoui@gmail.com',
+  password: 'bejaia',
 };
 
-const inputs = reactive<InputType>({
-  username: 'reda21',
-  email: 'redacherfaoui@gmail',
-  password: '',
-});
-
 const schema = {
-  username: ['required', 'min:18'],
+  username: ['required', 'min:3'],
   email: ['required', 'email'],
-  password: 'required',
+  password: ['required', 'min:6'],
 };
 
 function onSubmit(values: Record<string, any>) {

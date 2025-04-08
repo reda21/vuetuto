@@ -1,6 +1,6 @@
 import type { ValidatorOptions } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
-export type { ValidatorOptions}
+export type { ValidatorOptions };
 
 export type InputType =
   | 'button'
@@ -40,6 +40,7 @@ export interface InputProps {
   size?: sizeType;
   invalid?: boolean | undefined | null;
   variant?: 'outlined' | 'filled' | undefined | null;
+  rules: string | string[];
 }
 
 export interface TypeRule {
@@ -52,22 +53,37 @@ export interface TypeInputs {
 
 export type ValidationRules = Record<string, string | string[]>;
 
+export interface FormMeta {
+  touched: boolean;
+  dirty: boolean;
+  valid: boolean;
+  pending: boolean;
+  initialValues: Record<string, any>;
+}
+
 export interface FormContext {
   values: Record<string, any>;
   errors: CustomError;
   touched: Record<string, boolean>;
-  rules?: ValidationRules; // Ajout de la propriété rules
+  rules?: ValidationRulesManager; // Ajout de la propriété rules
+  isSubmitting: Ref<boolean>;
+  isValidating: Ref<boolean>;
+  meta: ComputedRef<FormMeta>;
   handleSubmit: (
     onValid: (values: Record<string, any>) => void,
     onInvalid?: (errors: Record<string, string>) => void
   ) => (e?: Event) => Promise<void>;
+  setFieldValue: (field: string, value: any) => void;
+  setValues: (fields: Record<string, any>) => void;
+  setFieldTouched: (field: string, isTouched: boolean) => void;
+  setTouched: (fields: Record<string, boolean>) => void;
 }
 
 export type UseFormType = (rules?: ValidationRules, options?: ValidatorOptions) => FormContext;
 
 export interface UseFieldOptions<T = any> {
   name: string;
-  rules?: ValidationRules;
+  rules?: string | string[];
   options?: ValidatorOptions;
   initialValue?: T;
 }

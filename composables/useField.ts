@@ -21,13 +21,13 @@ export function useField<T = any>({
   if (!maybeForm) {
     throw new Error('useField doit être utilisé à l’intérieur d’un <Form>.');
   }
+
   const form = maybeForm; // TS sait maintenant que form est non-undefined
 
-  // Récupérer les règles globales du formulaire si elles existent
-  const globalRules = form.rules ? form.rules[name] : undefined;
+  if (rules) {
+    form.rules?.addRule(name, rules);
+  }
 
-  // Fusionner les règles locales et globales
-  const fieldRules = rules || globalRules;
   // Initialisation
   if (!(name in form.values)) {
     form.values[name] = initialValue ?? '';
@@ -39,33 +39,40 @@ export function useField<T = any>({
     get: () => form.values[name],
     set: (v) => (form.values[name] = v),
   });
-  const errorMessage = computed(() => form.errors.first(name));
+
   const meta = {
     touched: computed(() => form.touched[name]),
     valid: computed(() => !form.errors.has(name)),
   };
 
   // Validation de ce seul champ
-  async function validateField() {    
-    if (!fieldRules) return;
+  async function validateField() {
+    console.info(form.rules?.getFieldRules(name));
+    /*
+if (!fieldRules) return;
     const singleRule = { [name]: fieldRules };
     const validation = new Validator(form.values, singleRule, options);
-    if (validation.fails()) {      
+    if (validation.fails()) {
       form.errors.setOne(name, validation.errors.first(name));
     } else {
       form.errors.clear(name);
     }
+    */
   }
 
-  function handleBlur() {    
-    form.touched[name] = true;
+  const handleBlur = () => {};
+  const handleChange = () => {
     validateField();
-  }
-  function handleChange(e: Event) {
-   // form.errors.clear(name);    
-    const t = e.target as HTMLInputElement;
-    value.value = t.value;
-  }
+  };
 
-  return { value, errors: form.errors, handleBlur, handleChange, meta };
+  return {
+    value: value as Ref<T>, //
+    errors: form.errors,
+    handleBlur,
+    handleChange,
+    meta: {
+      touched: computed(() => false), // TODO: Implement touch tracking
+      valid: computed(() => true), // TODO: Implement validation state
+    },
+  };
 }

@@ -45,7 +45,8 @@ const value = defineModel<string | null>({ required: false, default: null });
 //useField
 const { handleChange, handleBlur, errors } = useField({
   name: props.name,
-  initialValue: value.value
+  initialValue: value.value,
+  rules: props.value
 });
 
 //get error value
@@ -53,7 +54,7 @@ const { handleChange, handleBlur, errors } = useField({
 
 //computed
 const invalidComputed = computed(() => {
-  return props.invalid || errors?.has(props.name)
+  return props.invalid || errors?.has(props.name);
 });
 
 //methods
