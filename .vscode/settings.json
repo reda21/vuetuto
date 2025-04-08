@@ -1,0 +1,5 @@
+{
+    "git.autofetch": true,
+    "workbench.experimental.cloudChanges.autoStore": "onShutdown",
+    "workbench.experimental.cloudChanges.partialMatches.enabled": true
+}

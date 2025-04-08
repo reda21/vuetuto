@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit">
+    <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit" v-slot="{  meta }">
       <TextInput
         name="name"
         type="text"
@@ -30,6 +30,7 @@
         success-message="Glad you remembered it!"
       />
       <button class="submit-btn" type="submit">Submit</button>
+      {{ meta }}
     </Form>
   </div>
 </template>
