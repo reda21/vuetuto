@@ -5,18 +5,22 @@
       <UiFormControl class="min-h-24" name="username" label="Username">
         <UiFormInput name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy" />
       </UiFormControl>
+      <UiFormControl class="min-h-24" name="name" label="name">
+        <UiFormInput name="name" id="name" v-model="inputs.name" placeholder="name" :disabled="lazy" />
+      </UiFormControl>
       <UiFormControl class="min-h-24" name="email" label="Email">
         <UiFormInput type="email" name="email" id="email" v-model="inputs.email" placeholder="email" :disabled="lazy" />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password" label="Password">
-        <UiFormInput type="password" name="password" id="passowrd" v-model="inputs.password" placeholder="password"
+        <UiFormInput type="text" name="password" id="passowrd" v-model="inputs.password" placeholder="password"
           :disabled="lazy" />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password_confirmation" label="password confirmation">
-        <UiFormInput type="password" name="password_confirmation" id="password_confirmation"
+        <UiFormInput type="text" name="password_confirmation" id="password_confirmation"
           v-model="inputs.password_confirmation" placeholder="password confirmation" :disabled="lazy" />
       </UiFormControl>
       <UiButton type="submit" :lazy="lazy">Submit</UiButton>
+      {{ inputs }}
     </UiForm>
   </div>
 </template>
@@ -27,20 +31,24 @@ import type { TypeRule } from '@/components/ui/form/formType';
 
 interface InputType {
   username: string;
+  name: string;
   email: string;
   password: string;
   password_confirmation: string
 }
 
-const init: Record<string, any> = {
+const init: InputType = {
   username: 'reda21',
+  name: '',
   email: 'redacherfaoui@gmail.com',
-  password: 'bejaia',
+  password: 'bejaia21',
+  password_confirmation: 'bejaia21'
 };
 
 const schema = {
   username: ['required', 'min:3'],
   email: ['required', 'email'],
+  name: ['required', 'same:username'],
   password: ['required', 'min:6', "confirmed"],
   "password_confirmation": "required"
 };

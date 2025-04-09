@@ -67,7 +67,7 @@ export class ValidationRulesManager {
   /**
    * Récupère les règles d'un champ.
    */
-  getFieldRules(field: string): string[] | undefined {
-    return this.rules[field] || undefined;
+  getFieldRules(field: string): string[] {
+    return this.rules[field] || [];
   }
 }

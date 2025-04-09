@@ -1,9 +1,9 @@
 // ~/composables/useForm.ts
 import { reactive, provide, computed } from 'vue';
-import { Validator } from '@chantouchsek/validatorjs';
+import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
 import { ValidationRulesManager } from '@/utils/validationRulesManager';
-import type { ValidatorOptions, ValidationRules, FormContext } from '@/components/ui/form/formType';
+import type { ValidationRules, FormContext } from '@/components/ui/form/formType';
 
 export const FormContextKey = Symbol('FormContext');
 
@@ -15,6 +15,7 @@ interface UseFormOptions {
   initialTouched?: Record<string, boolean>;
 }
 
+// Modify existing useForm.ts
 export function useForm({
   schema = {},
   options = {},
@@ -47,24 +48,30 @@ export function useForm({
   );
   const isSubmitting = ref(false);
   const isValidating = ref(false);
+  const asyncValidators = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
-  async function validateForm() {
+  const validateForm = async (): Promise<boolean> => {
     isValidating.value = true;
     try {
-      const validation = new Validator(values, rules.getRules(), options);
+      const validation = new Validator(values, rules.getRules(), {
+        customMessages: validationMessages,
+        ...options,
+      });
       if (validation.fails()) {
         const allErrors = validation.errors.all();
         errors.clearAll();
         Object.entries(allErrors).forEach(([field, msgs]) => {
           errors.set(field, msgs);
         });
+        return false;
       } else {
         errors.clearAll();
+        return true;
       }
     } finally {
       isValidating.value = false;
     }
-  }
+  };
 
   function handleSubmit(
     onValid: (vals: Record<string, any>) => void,
@@ -141,6 +148,7 @@ export function useForm({
     values,
     errors,
     touched,
+    dirty,
     rules,
     handleSubmit,
     isSubmitting,
@@ -150,6 +158,16 @@ export function useForm({
     setValues,
     setFieldTouched,
     setTouched,
+    validateForm,
+    resetForm: () => {
+      Object.keys(values).forEach((key) => {
+        values[key] = initialValues[key] || '';
+        touched[key] = false;
+        dirty[key] = false;
+      });
+      errors.clearAll();
+    },
+    asyncValidators,
   };
   provide(FormContextKey, ctx);
   return ctx;

@@ -1,0 +1,65 @@
+import { describe, expect, it } from 'vitest';
+import { Validator } from '@chantouchsek/validatorjs';
+
+describe('confirmed validation rule', () => {
+  it('should fail without a matching confirmation field for the field under validation', () => {
+    const validator = new Validator(
+      { password: 'abc', password_confirmation: 'abcd' },
+      { password: 'confirmed' }
+    );
+    expect(validator.passes()).toBeFalsy();
+    expect(validator.fails()).toBeTruthy();
+    expect(validator.errors.first('password')).toEqual('The password does not match.');
+  });
+
+  it('should pass with a matching confirmation field for the field under validation', () => {
+    const validator = new Validator(
+      { password: 'abc', password_confirmation: 'abc' },
+      { password: 'confirmed' }
+    );
+    expect(validator.passes()).toBeTruthy();
+    expect(validator.fails()).toBeFalsy();
+  });
+
+  it('should reverse message from confirm to _confirmation', () => {
+    const validator = new Validator(
+      {
+        password: 'abc-1',
+        password_confirmation: 'abc',
+      },
+      { password: 'confirmed' },
+      { confirmedReverse: true }
+    );
+    expect(validator.passes()).not.toBeTruthy();
+    expect(validator.fails()).toBeTruthy();
+    expect(validator.errors.first('password_confirmation')).toEqual(
+      'The password confirmation does not match.'
+    );
+  });
+
+  it('use camelCase of passwordConfirmation property', () => {
+    const validator = new Validator(
+      {
+        form: {
+          password: 'abc-1',
+          passwordConfirmation: 'abc',
+        },
+      },
+      { form: { password: 'confirmed' } },
+      {
+        confirmedReverse: true,
+        customAttributes: {
+          form: {
+            password: 'pwd',
+            passwordConfirmation: 'pwd confirmation',
+          },
+        },
+      }
+    );
+    expect(validator.passes()).not.toBeTruthy();
+    expect(validator.fails()).toBeTruthy();
+    expect(validator.errors.first('form.passwordConfirmation')).toEqual(
+      'The pwd confirmation does not match.'
+    );
+  });
+});
