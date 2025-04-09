@@ -5,6 +5,7 @@
     <p v-if="errors.has(name)" class="text-danger mt-1 text-sm">
       {{ errors?.first(name) }}
     </p>
+    {{ meta }}
   </div>
 </template>
 
@@ -23,7 +24,7 @@ interface FormControlValues {
 const props = withDefaults(defineProps<FormControlValues>(), {});
 
 //useField
-const { errors } = useField({ name: props.name });
+const { errors, meta } = useField({ name: props.name });
 
 /*
  :invalid="errors && errors.has(name)"

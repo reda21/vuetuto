@@ -2,6 +2,7 @@
 import type { Ref, ComputedRef } from 'vue';
 import type { ValidatorOptions } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
+import { isValidDate } from '../../../utils/date';
 
 export type ValidationRule =
   | string
@@ -18,6 +19,7 @@ export type FormContext = {
   dirty: Record<string, boolean>;
   isSubmitting: Ref<boolean>;
   isValidating: Ref<boolean>;
+  isValidated: Ref<boolean>;
   validateForm: () => Promise<boolean>;
   handleSubmit: (
     onValid: (vals: Record<string, any>) => void,
@@ -28,6 +30,8 @@ export type FormContext = {
   setValues: (fields: Record<string, any>) => void;
   setFieldTouched: (name: string, touched: boolean) => void;
   setTouched: (fields: Record<string, boolean>) => void;
+  setFieldDirty: (name: string, touched: boolean) => void;
+  setDirty: (fields: Record<string, boolean>) => void;
   meta: ComputedRef<FormMeta>;
   asyncValidators: Ref<Record<string, (value: any) => Promise<boolean | string>>>;
 };
@@ -59,12 +63,22 @@ export interface UseFieldOptions<T = any> {
   initialValue?: T;
 }
 
+export interface MetaField {
+  path: string;
+  touched: ComputedRef<boolean>;
+  dirty: ComputedRef<boolean>;
+  valid: ComputedRef<boolean>;
+  validated: ComputedRef<boolean>;
+  pending: boolean;
+  required: boolean;
+  errors: ComputedRef<string[]>;
+  type: 'default' | 'checkbox' | 'radio';
+  multiple: false; // Indique si le champ peut contenir plusieurs valeurs (ex. multiple select, checkbox group, etc.).
+}
+
 export interface UseFieldReturn<T = any> {
   value: Ref<T>;
-  meta: {
-    touched: ComputedRef<boolean>;
-    valid: ComputedRef<boolean>;
-  };
+  meta: MetaField;
   validateField: () => Promise<boolean>;
 }
 
@@ -141,8 +155,5 @@ export interface UseFieldReturn<T = any> {
   errors: CustomError;
   handleBlur: () => void;
   handleChange: (e: Event) => void;
-  meta: {
-    touched: ComputedRef<boolean>;
-    valid: ComputedRef<boolean>;
-  };
+  meta: MetaField;
 }

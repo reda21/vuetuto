@@ -45,7 +45,7 @@ export class CustomError {
     this.items.value = { ..._items };
   }
 
-  get(key: string): any {
+  get(key: string): string[] {
     return this.items.value[key];
   }
 

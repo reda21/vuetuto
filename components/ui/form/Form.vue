@@ -1,6 +1,6 @@
 <template>
   <form novalidate @submit.prevent="onSubmit">
-    <slot :lazy="lazy" :errors="errors" :inputs="values" :touched="touched" />
+    <slot :lazy="lazy" :errors="errors" :inputs="values" :touched="touched" :rules="rules" :meta="meta" />
     <p class="cursor-pointer text-blue-500" @click="clicked">clicked</p>
     <pre>
       {{ 10 }}

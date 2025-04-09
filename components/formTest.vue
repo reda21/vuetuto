@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UiForm :schema="schema" :initialValues="init" @invalid-submit="onInvalidSubmit" v-slot="{ lazy, inputs }"
+    <UiForm :schema="schema" :initialValues="init" @invalid-submit="onInvalidSubmit" v-slot="{ lazy, inputs, meta }"
       @submit="onSubmit">
       <UiFormControl class="min-h-24" name="username" label="Username">
         <UiFormInput name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy" />
@@ -20,7 +20,7 @@
           v-model="inputs.password_confirmation" placeholder="password confirmation" :disabled="lazy" />
       </UiFormControl>
       <UiButton type="submit" :lazy="lazy">Submit</UiButton>
-      {{ inputs }}
+      {{ meta }}
     </UiForm>
   </div>
 </template>
@@ -46,7 +46,7 @@ const init: InputType = {
 };
 
 const schema = {
-  username: ['required', 'min:3'],
+  username: 'required|min:4',
   email: ['required', 'email'],
   name: ['required', 'same:username'],
   password: ['required', 'min:6', "confirmed"],

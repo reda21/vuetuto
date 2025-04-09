@@ -75,5 +75,6 @@ const {
     >
       {{ errorMessage || successMessage }}
     </p>
+    {{ meta }}
   </div>
 </template>

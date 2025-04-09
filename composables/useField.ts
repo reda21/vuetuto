@@ -8,6 +8,7 @@ import type {
   FormContext,
   UseFieldOptions,
   UseFieldReturn,
+  MetaField,
 } from '@/components/ui/form/formType';
 
 export function useField<T = any>({
@@ -40,10 +41,7 @@ export function useField<T = any>({
     set: (v) => (form.values[name] = v),
   });
 
-  const meta = {
-    touched: computed(() => form.touched[name]),
-    valid: computed(() => !form.errors.has(name)),
-  };
+  
 
   // Validation de ce seul champ
   async function validateField() {
@@ -52,59 +50,65 @@ export function useField<T = any>({
     // Si fieldRules est indéfini ou nul, retourner true
     if (!fieldRules) return true;
 
-    // S'assurer que fieldRules est un tableau de chaînes
-    const rulesArray = Array.isArray(fieldRules) ? fieldRules : [fieldRules];
+    const validation = new Validator(form.values, form.rules.getRules(), {
+      customMessages: validationMessages,
+      ...options,
+    });
 
-    // Vérifier si c'est un champ de confirmation (se terminant par '_confirmation')
-    const isConfirmationField = name.endsWith('_confirmation');
-    const relatedField = isConfirmationField ? name.replace('_confirmation', '') : null;
-
-    // Vérifier si la règle contient 'same'
-    const hasSameRule = rulesArray.some(
-      (rule) => typeof rule === 'string' && rule.startsWith('same:')
-    );
-
-    const hasConfirmedRule = Array.isArray(fieldRules)
-      ? fieldRules.includes('confirmed')
-      : typeof fieldRules === 'string'
-        ? fieldRules === 'confirmed'
-        : false;
-
-    // Valider le champ courant
-    const singleRule = { [name]: fieldRules };
-    const validation = new Validator(form.values, singleRule, options);
+    form.isValidated.value = true;
 
     if (validation.fails()) {
-      form.errors.setOne(name, validation.errors.first(name));
-      return false;
+      if (validation.errors.has(name)) form.errors.setOne(name, validation.errors.first(name));
+      else form.errors.clear(name);
     } else {
-      form.errors.clear(name);
+      if (form.errors.has(name)) form.errors.clear(name);
     }
 
-    // Si c'est un champ de confirmation ou contient une règle 'same', valider aussi le champ lié
-    if ((isConfirmationField || hasSameRule || hasConfirmedRule) && relatedField) {
-      const relatedRules = form.rules?.getFieldRules(relatedField);
-      if (relatedRules) {
-        const relatedValidation = new Validator(
-          form.values,
-          { [relatedField]: relatedRules },
-          options
-        );
-        if (relatedValidation.fails()) {
-          form.errors.setOne(relatedField, relatedValidation.errors.first(relatedField));
-          return false;
-        } else {
-          form.errors.clear(relatedField);
-        }
+    const confirmation = form.rules.checkConfirmationField(name);
+
+    if (confirmation) {
+      if (validation.fails()) {
+        if (validation.errors.has(confirmation))
+          form.errors.setOne(confirmation, validation.errors.first(confirmation));
+        else form.errors.clear(confirmation);
+      } else {
+        if (form.errors.has(confirmation)) form.errors.clear(confirmation);
+      }
+    }
+
+    const same = form.rules.checkSameField(name);
+    console.info('same', same);
+    if (same) {
+      if (validation.fails()) {
+        if (validation.errors.has(same)) form.errors.setOne(same, validation.errors.first(same));
+        else form.errors.clear(same);
+      } else {
+        if (form.errors.has(same)) form.errors.clear(same);
       }
     }
 
     return true;
   }
 
-  const handleBlur = () => {};
+  const handleBlur = () => {    
+    form.setFieldTouched(name, true);
+  };
   const handleChange = () => {
+    form.setFieldDirty(name, true);
     validateField();
+  };
+
+  const meta: MetaField = {
+    path: name,
+    touched: computed(() => form.touched[name]),
+    valid: computed(() => !form.errors.has(name)),
+    validated: computed(() => form.isValidated.value),
+    dirty: computed(() => form.dirty[name]),
+    pending: false,
+    required: form.rules.isRequired(name),
+    errors: computed(() => form.errors.get(name) ?? []),
+    type: "default",
+    multiple: false
   };
 
   return {
@@ -113,11 +117,6 @@ export function useField<T = any>({
     handleBlur,
     handleChange,
     validateField, // Add the validateField function here
-    meta: {
-      // Keep the existing implementation for meta.touched and meta.valid for now
-      // Use the computed properties defined earlier
-      touched: meta.touched,
-      valid: meta.valid,
-    },
+    meta,
   };
 }

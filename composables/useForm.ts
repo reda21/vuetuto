@@ -4,6 +4,8 @@ import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
 import { ValidationRulesManager } from '@/utils/validationRulesManager';
 import type { ValidationRules, FormContext } from '@/components/ui/form/formType';
+import Vaalidate from '~/components/vaalidate.vue';
+import { isValidDate } from '../utils/date';
 
 export const FormContextKey = Symbol('FormContext');
 
@@ -21,7 +23,7 @@ export function useForm({
   options = {},
   initialValues = {},
   initialErrors = {},
-  initialTouched = {},
+  initialTouched = {},  
 }: UseFormOptions) {
   // on initialise values avec initialValues
   const values = reactive<Record<string, any>>(initialValues);
@@ -48,6 +50,7 @@ export function useForm({
   );
   const isSubmitting = ref(false);
   const isValidating = ref(false);
+  const isValidated = ref(false);
   const asyncValidators = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
   const validateForm = async (): Promise<boolean> => {
@@ -57,6 +60,7 @@ export function useForm({
         customMessages: validationMessages,
         ...options,
       });
+      isValidated.value = true;
       if (validation.fails()) {
         const allErrors = validation.errors.all();
         errors.clearAll();
@@ -97,6 +101,7 @@ export function useForm({
     dirty: Object.values(dirty).some(Boolean),
     valid: !Object.values(errors.all()).some(Boolean),
     pending: isValidating.value,
+    validated: isValidated.value,
     initialValues,
   }));
 
@@ -122,7 +127,7 @@ export function useForm({
     }
   }
 
-  function setField(fields: Record<string, boolean>) {
+  function setDirty(fields: Record<string, boolean>) {
     Object.entries(fields).forEach(([field, isDirty]) => {
       if (field in dirty) {
         dirty[field] = isDirty;
@@ -153,12 +158,15 @@ export function useForm({
     handleSubmit,
     isSubmitting,
     isValidating,
+    isValidated,
     meta,
     setFieldValue,
     setValues,
     setFieldTouched,
     setTouched,
     validateForm,
+    setDirty,
+    setFieldDirty,
     resetForm: () => {
       Object.keys(values).forEach((key) => {
         values[key] = initialValues[key] || '';
