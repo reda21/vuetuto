@@ -3,90 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulation de Football - Style & Fun (Corrigé V2)</title>
+    <title>Simulation de Football - Style & Fun (Version Améliorée)</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+        
+        :root {
+            --color-bg: #1a2a33;
+            --color-field: #0e5c28;
+            --color-red: #ff3a3a;
+            --color-blue: #3a6eff;
+            --color-accent: #ffd700;
+            --color-text: #ffffff;
+            --color-text-dark: #333333;
+            --shadow-normal: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.3);
+            --border-radius: 12px;
+        }
+        
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #1a2a33 0%, #0d1b24 100%);
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             flex-direction: column;
             overflow: hidden;
+            color: var(--color-text);
         }
+        
         .game-container {
             position: relative;
-            border: 2px solid #333;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-large);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
         }
+        
+        .game-container:hover {
+            transform: translateY(-5px);
+        }
+        
         canvas {
             display: block;
+            background-color: var(--color-field);
         }
+        
         .ui-top {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             max-width: 600px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-weight: bold;
-            color: #333;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-normal);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
         }
+        
         .team-name {
             font-size: 1.1em;
             padding: 0 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
         }
-        .team-red-text { color: red; }
-        .team-blue-text { color: blue; }
+        
+        .team-red-text { color: var(--color-red); }
+        .team-blue-text { color: var(--color-blue); }
+        
         .score-board {
-            font-size: 1.8em;
+            font-size: 2em;
             display: flex;
             align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 30px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
         }
+        
         .score-board span {
             display: inline-block;
-            padding: 2px 12px;
-            border-radius: 5px;
+            padding: 2px 15px;
+            border-radius: 8px;
             margin: 0 5px;
-        }
-        .score-red {
-            background-color: red;
-            color: white;
-        }
-        .score-blue {
-            background-color: blue;
-            color: white;
-        }
-        #timer {
-            font-size: 1.2em;
-            margin: 0 20px;
-            min-width: 50px;
+            min-width: 30px;
             text-align: center;
-            background-color: #eee;
-            padding: 3px 8px;
-            border-radius: 4px;
-            color: #555;
+            transition: transform 0.2s ease;
         }
+        
+        .score-red {
+            background: linear-gradient(to bottom, #ff5a5a, #ff3a3a);
+            color: white;
+            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.4);
+        }
+        
+        .score-blue {
+            background: linear-gradient(to bottom, #5a8aff, #3a6eff);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 255, 0.4);
+        }
+        
+        #timer {
+            font-size: 1.3em;
+            margin: 0 20px;
+            min-width: 70px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 5px 12px;
+            border-radius: 8px;
+            color: var(--color-accent);
+            font-weight: 700;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
         .controls {
-            margin-top: 15px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
+        
         button {
-            padding: 10px 18px;
+            padding: 12px 22px;
             font-size: 1em;
             cursor: pointer;
-            margin: 0 8px;
-            border-radius: 20px;
+            border-radius: 30px;
             border: none;
-            background-color: #4a4e69;
+            background: linear-gradient(to bottom, #5a6bff, #4a4e69);
             color: white;
-            transition: background-color 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-normal);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
+        
         button:hover {
-            background-color: #6b7091;
+            background: linear-gradient(to bottom, #6b7aff, #5a5e79);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
         }
+        
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        button:hover::after {
+            opacity: 1;
+        }
+        
+        #startButton {
+            background: linear-gradient(to bottom, #4CAF50, #388E3C);
+        }
+        
+        #startButton:hover {
+            background: linear-gradient(to bottom, #5CBF60, #489E4C);
+        }
+        
+        #resetButton {
+            background: linear-gradient(to bottom, #FF9800, #F57C00);
+        }
+        
+        #resetButton:hover {
+            background: linear-gradient(to bottom, #FFA726, #FB8C00);
+        }
+        
         #goalMessage {
             position: absolute;
             top: 50%;
@@ -94,42 +198,296 @@
             transform: translate(-50%, -50%);
             font-size: 5em;
             font-weight: bold;
-            color: white;
-            text-shadow: 0 0 10px black, 0 0 20px black;
+            color: var(--color-accent);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
             display: none;
             z-index: 10;
             animation: goalAnim 1.5s ease-out forwards;
             pointer-events: none;
+            letter-spacing: 2px;
         }
+        
         @keyframes goalAnim {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-5deg); }
+            10% { transform: translate(-50%, -50%) scale(0.7) rotate(5deg); }
+            20% { transform: translate(-50%, -50%) scale(0.9) rotate(-3deg); }
+            30% { transform: translate(-50%, -50%) scale(1.1) rotate(3deg); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(0deg); }
+            70% { transform: translate(-50%, -50%) scale(1.1) rotate(2deg); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
         }
-
+        
+        /* Styles pour le message de fin de match */
+        #endGameMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
+            color: var(--color-text);
+            padding: 25px 40px;
+            border-radius: var(--border-radius);
+            font-size: 1.6em;
+            text-align: center;
+            z-index: 20;
+            display: none;
+            box-shadow: var(--shadow-large);
+            border: 2px solid var(--color-accent);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes popIn {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        @keyframes goal-shake {
+            0% { transform: translateX(0); }
+            10% { transform: translateX(-5px) rotate(-1deg); }
+            20% { transform: translateX(5px) rotate(1deg); }
+            30% { transform: translateX(-5px) rotate(-1deg); }
+            40% { transform: translateX(5px) rotate(1deg); }
+            50% { transform: translateX(-5px) rotate(-1deg); }
+            60% { transform: translateX(5px) rotate(1deg); }
+            70% { transform: translateX(-5px) rotate(-1deg); }
+            80% { transform: translateX(5px) rotate(1deg); }
+            90% { transform: translateX(-5px) rotate(-1deg); }
+            100% { transform: translateX(0); }
+        }
+        
+        .goal-shake {
+            animation: goal-shake 1s ease-in-out;
+        }
+        
+        /* Styles pour le mode responsive */
+        @media (max-width: 650px) {
+            .game-container {
+                width: 95vw;
+                height: auto;
+            }
+            canvas {
+                width: 100%;
+                height: auto;
+            }
+            .ui-top {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+            .team-name {
+                font-size: 0.9em;
+                padding: 0 10px;
+            }
+            .score-board {
+                font-size: 1.6em;
+            }
+            #timer {
+                font-size: 1.1em;
+                margin: 0 10px;
+            }
+            button {
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Styles pour le panneau de configuration (modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .settings-panel {
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.95), rgba(20, 20, 20, 0.95));
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-large);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: zoomIn 0.3s ease-out forwards;
+        }
+        
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--color-text);
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .settings-panel h3 {
+            color: var(--color-accent);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.4em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .settings-item {
+            margin-bottom: 10px;
+        }
+        
+        .settings-item label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        
+        .settings-item input, .settings-item select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--color-text);
+            transition: all 0.3s ease;
+        }
+        
+        .settings-item input:focus, .settings-item select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+        }
+        
+        .settings-item input[type="range"] {
+            -webkit-appearance: none;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        
+        .settings-item input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        #saveSettingsButton {
+            margin-top: 20px;
+            width: 100%;
+            background: linear-gradient(to bottom, #FFD700, #FFC107);
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+        
+        #saveSettingsButton:hover {
+            background: linear-gradient(to bottom, #FFDF2F, #FFD700);
+        }
     </style>
 </head>
 <body>
 
     <div class="ui-top">
-        <span class="team-name team-red-text">Équipe Rouge</span>
+        <span class="team-name team-red-text" id="teamRedName">Équipe Rouge</span>
         <div class="score-board">
             <span class="score-red" id="scoreRed">0</span>
             <span>-</span>
             <span class="score-blue" id="scoreBlue">0</span>
         </div>
          <span id="timer">00:00</span>
-        <span class="team-name team-blue-text">Équipe Bleue</span>
+        <span class="team-name team-blue-text" id="teamBlueName">Équipe Bleue</span>
     </div>
 
     <div class="game-container">
         <canvas id="footballField" width="600" height="400"></canvas>
         <div id="goalMessage">GOOOAAAL!</div>
+        <div id="endGameMessage"></div>
     </div>
 
     <div class="controls">
         <button id="startButton">Démarrer</button>
         <button id="resetButton">Réinitialiser Jeu</button>
+        <button id="settingsButton">Paramètres</button>
+        <button id="debugButton">Mode Débogage: OFF</button>
+    </div>
+    
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-panel" id="settingsPanel">
+            <button class="close-modal" id="closeSettingsButton">&times;</button>
+            <h3>Paramètres du jeu</h3>
+            <div class="settings-grid">
+                <div class="settings-item">
+                    <label for="timerModeSelect">Mode de temps</label>
+                    <select id="timerModeSelect">
+                        <option value="chrono">Chronomètre (5 min)</option>
+                        <option value="timer">Compteur normal</option>
+                    </select>
+                </div>
+                <div class="settings-item" id="matchDurationContainer">
+                    <label for="matchDuration">Durée du match (secondes)</label>
+                    <input type="number" id="matchDuration" min="30" max="300" value="90">
+                </div>
+                <div class="settings-item">
+                    <label for="playerSpeed">Vitesse des joueurs</label>
+                    <input type="range" id="playerSpeed" min="1" max="4" step="0.1" value="2.2">
+                </div>
+                <div class="settings-item">
+                    <label for="ballSpeed">Vitesse du ballon</label>
+                    <input type="range" id="ballSpeed" min="3" max="8" step="0.1" value="5">
+                </div>
+                <div class="settings-item">
+                    <label for="teamRedNameInput">Nom équipe rouge</label>
+                    <input type="text" id="teamRedNameInput" value="Équipe Rouge">
+                </div>
+                <div class="settings-item">
+                    <label for="teamBlueNameInput">Nom équipe bleue</label>
+                    <input type="text" id="teamBlueNameInput" value="Équipe Bleue">
+                </div>
+            </div>
+            <button id="saveSettingsButton" style="margin-top: 15px;">Sauvegarder</button>
+        </div>
     </div>
 
     <script>
@@ -146,14 +504,24 @@
         const goalPostY2 = (fieldHeight + goalHeight) / 2;
         const goalDepth = 15;
 
-        const MAX_PLAYER_SPEED = 2.2;
-        const MAX_BALL_SPEED = 5.0;
+        // --- Configurable Constants ---
+        let MAX_PLAYER_SPEED = 2.2;
+        let MAX_BALL_SPEED = 5.0;
         const BALL_BOUNCE_FACTOR = -0.85;
         const KICK_FORCE = 2.1;
         const ATTRACTION_TO_BALL = 0.045;
         const SHOOT_FORCE = 0.065;
         const PLAYER_SEPARATION = 0.035;
         const TRACE_ALPHA = 0.15;
+        
+        // --- Debug Mode ---
+        let debugMode = true; // Mode de débogage pour afficher les points de ciblage
+        
+        // --- Game Configuration ---
+        let matchDuration = 90; // seconds
+        let teamRedName = "Équipe Rouge";
+        let teamBlueName = "Équipe Bleue";
+        let timerMode = "chrono"; // "chrono" pour compte à rebours, "timer" pour compteur normal
 
         // --- Game State ---
         let teamRed = [];
@@ -166,67 +534,480 @@
         let timerInterval = null;
         let animationFrameId;
         let isRunning = false;
+        let gameEnded = false;
 
         // --- UI Elements ---
         const scoreRedEl = document.getElementById('scoreRed');
         const scoreBlueEl = document.getElementById('scoreBlue');
         const timerEl = document.getElementById('timer');
         const goalMessageEl = document.getElementById('goalMessage');
+        const endGameMessageEl = document.getElementById('endGameMessage');
         const startButton = document.getElementById('startButton');
         const resetButton = document.getElementById('resetButton');
+        const settingsButton = document.getElementById('settingsButton');
+        const debugButton = document.getElementById('debugButton');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const saveSettingsButton = document.getElementById('saveSettingsButton');
+        const teamRedNameEl = document.getElementById('teamRedName');
+        const teamBlueNameEl = document.getElementById('teamBlueName');
 
         // --- Score & Timer ---
         function updateScoreDisplay() { scoreRedEl.textContent = scoreRed; scoreBlueEl.textContent = scoreBlue; }
         function formatTime(seconds) { const mins = Math.floor(seconds / 60); const secs = seconds % 60; return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`; }
         function updateTimerDisplay() { timerEl.textContent = formatTime(gameTime); }
-        function startTimer() { stopTimer(); timerInterval = setInterval(() => { gameTime++; updateTimerDisplay(); }, 1000); }
+        
+        function startTimer() { 
+            stopTimer();
+            
+            // Initialiser le temps selon le mode
+            if (timerMode === "chrono") {
+                // Mode chronomètre: commencer à 5 minutes (300 secondes) et décompter
+                gameTime = 300; // 5 minutes en secondes
+            } else {
+                // Mode compteur: commencer à 0 et incrémenter
+                gameTime = 0;
+            }
+            
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                if (timerMode === "chrono") {
+                    // Mode chronomètre: décompter
+                    gameTime--;
+                    
+                    // Vérifier si le temps est écoulé
+                    if (gameTime <= 0 && !gameEnded) {
+                        gameTime = 0; // S'assurer que le temps ne devient pas négatif
+                        updateTimerDisplay();
+                        endMatch();
+                        return;
+                    }
+                } else {
+                    // Mode compteur: incrémenter
+                    gameTime++;
+                    
+                    // Vérifier si la durée du match est atteinte
+                    if (gameTime >= matchDuration && !gameEnded) {
+                        endMatch();
+                        return;
+                    }
+                }
+                
+                updateTimerDisplay();
+            }, 1000); 
+        }
+        
         function stopTimer() { clearInterval(timerInterval); timerInterval = null; }
+        
+        function endMatch() {
+            gameEnded = true;
+            isRunning = false;
+            stopTimer();
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            
+            // Display end game message
+            let resultMessage = "";
+            if (scoreRed > scoreBlue) {
+                resultMessage = `${teamRedName} gagne ${scoreRed}-${scoreBlue}!`;
+            } else if (scoreBlue > scoreRed) {
+                resultMessage = `${teamBlueName} gagne ${scoreBlue}-${scoreRed}!`;
+            } else {
+                resultMessage = `Match nul ${scoreRed}-${scoreBlue}!`;
+            }
+            
+            endGameMessageEl.textContent = resultMessage;
+            endGameMessageEl.style.display = 'block';
+            startButton.textContent = 'Nouvelle Partie';
+        }
 
         // --- Drawing Functions ---
-
-        // *** FUNCTION AJOUTÉE / ADDED FUNCTION ***
         function drawCircle(x, y, radius, color) {
             ctx.beginPath();
             ctx.arc(x, y, radius, 0, Math.PI * 2, false);
             ctx.fillStyle = color;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 5;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
             ctx.fill();
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
             ctx.closePath();
         }
-        // ****************************************
+        
+        function drawTargetingLines() {
+            // Dessiner les lignes de ciblage pour chaque joueur
+            [...teamRed, ...teamBlue].forEach(player => {
+                // Ligne vers le ballon (attraction)
+                ctx.beginPath();
+                ctx.moveTo(player.x, player.y);
+                ctx.lineTo(ball.x, ball.y);
+                ctx.strokeStyle = player.color === 'red' ? 'rgba(255, 0, 0, 0.3)' : 'rgba(0, 0, 255, 0.3)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                
+                // Ligne vers le but adverse (quand le joueur est proche du ballon)
+                const targetGoalX = (player.color === 'red') ? fieldWidth : 0;
+                const targetGoalY = fieldHeight / 2;
+                const dxBall = ball.x - player.x;
+                const dyBall = ball.y - player.y;
+                const distBall = Math.sqrt(dxBall * dxBall + dyBall * dyBall);
+                
+                if (distBall < playerRadius * 7) {
+                    ctx.beginPath();
+                    ctx.moveTo(player.x, player.y);
+                    ctx.lineTo(targetGoalX, targetGoalY);
+                    ctx.strokeStyle = player.color === 'red' ? 'rgba(255, 0, 0, 0.5)' : 'rgba(0, 0, 255, 0.5)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+            });
+        }
 
         function drawPlayer(player) {
             const { x, y, color } = player;
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)'; ctx.shadowBlur = 6; ctx.shadowOffsetX = 2; ctx.shadowOffsetY = 2;
-            ctx.beginPath(); ctx.arc(x, y, playerRadius, 0, Math.PI * 2, false); ctx.fillStyle = color; ctx.fill(); ctx.closePath();
-            ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
-            ctx.fillStyle = 'white'; ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-            ctx.fillText(color === 'red' ? 'R' : 'B', x, y + 1);
+            // Ombre du joueur
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 8;
+            ctx.shadowOffsetX = 3;
+            ctx.shadowOffsetY = 3;
+            
+            // Gradient pour le corps du joueur
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, playerRadius);
+            if (color === 'red') {
+                gradient.addColorStop(0, '#ff7070');
+                gradient.addColorStop(0.7, '#ff3a3a');
+                gradient.addColorStop(1, '#cc0000');
+            } else {
+                gradient.addColorStop(0, '#7070ff');
+                gradient.addColorStop(0.7, '#3a6eff');
+                gradient.addColorStop(1, '#0000cc');
+            }
+            
+            // Dessiner le corps du joueur
+            ctx.beginPath();
+            ctx.arc(x, y, playerRadius, 0, Math.PI * 2, false);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Ajouter un contour
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = color === 'red' ? '#cc0000' : '#0000cc';
+            ctx.stroke();
+            ctx.closePath();
+            
+            // Réinitialiser les ombres
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // Ajouter le texte (initiale de l'équipe)
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 10px Montserrat';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(color === 'red' ? 'R' : 'B', x, y);
+            
+            // Ajouter un effet de brillance
+            ctx.beginPath();
+            ctx.arc(x - playerRadius/3, y - playerRadius/3, playerRadius/4, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.fill();
+            ctx.closePath();
         }
 
         function drawField() {
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'; ctx.lineWidth = 2;
+            // Dessiner le fond du terrain avec un dégradé
+            const fieldGradient = ctx.createLinearGradient(0, 0, fieldWidth, fieldHeight);
+            fieldGradient.addColorStop(0, '#0e5c28');
+            fieldGradient.addColorStop(0.5, '#0e8028');
+            fieldGradient.addColorStop(1, '#0e5c28');
+            ctx.fillStyle = fieldGradient;
+            ctx.fillRect(0, 0, fieldWidth, fieldHeight);
+            
+            // Ajouter une texture au terrain (motif d'herbe)
+            for (let i = 0; i < 100; i++) {
+                const x = Math.random() * fieldWidth;
+                const y = Math.random() * fieldHeight;
+                const length = Math.random() * 5 + 2;
+                const angle = Math.random() * Math.PI;
+                
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + Math.cos(angle) * length, y + Math.sin(angle) * length);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // Dessiner les lignes du terrain
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.lineWidth = 2;
             ctx.strokeRect(1, 1, fieldWidth - 2, fieldHeight - 2);
-            ctx.beginPath(); ctx.moveTo(fieldWidth / 2, 0); ctx.lineTo(fieldWidth / 2, fieldHeight); ctx.stroke();
-            ctx.beginPath(); ctx.arc(fieldWidth / 2, fieldHeight / 2, 50, 0, Math.PI * 2, false); ctx.stroke();
+            
+            // Ligne médiane
+            ctx.beginPath();
+            ctx.moveTo(fieldWidth / 2, 0);
+            ctx.lineTo(fieldWidth / 2, fieldHeight);
+            ctx.stroke();
+            
+            // Rond central
+            ctx.beginPath();
+            ctx.arc(fieldWidth / 2, fieldHeight / 2, 50, 0, Math.PI * 2, false);
+            ctx.stroke();
+            
+            // Point central
+            ctx.beginPath();
+            ctx.arc(fieldWidth / 2, fieldHeight / 2, 3, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.fill();
+            
+            // Surfaces de réparation
             const paWidth = 100, paHeight = 200;
-            ctx.strokeRect(0, (fieldHeight - paHeight) / 2, paWidth, paHeight); ctx.strokeRect(fieldWidth - paWidth, (fieldHeight - paHeight) / 2, paWidth, paHeight);
-            ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-            ctx.beginPath(); ctx.moveTo(1, goalPostY1); ctx.bezierCurveTo(1 - goalDepth * 1.5, goalPostY1 + goalHeight * 0.2, 1 - goalDepth * 1.5, goalPostY2 - goalHeight * 0.2, 1, goalPostY2); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(fieldWidth - 1, goalPostY1); ctx.bezierCurveTo(fieldWidth - 1 + goalDepth * 1.5, goalPostY1 + goalHeight * 0.2, fieldWidth - 1 + goalDepth * 1.5, goalPostY2 - goalHeight * 0.2, fieldWidth - 1, goalPostY2); ctx.stroke();
-            ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.beginPath(); ctx.moveTo(1, goalPostY1); ctx.lineTo(1, goalPostY2); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(fieldWidth - 1, goalPostY1); ctx.lineTo(fieldWidth - 1, goalPostY2); ctx.stroke();
+            ctx.strokeRect(0, (fieldHeight - paHeight) / 2, paWidth, paHeight);
+            ctx.strokeRect(fieldWidth - paWidth, (fieldHeight - paHeight) / 2, paWidth, paHeight);
+            
+            // Points de penalty
+            ctx.beginPath();
+            ctx.arc(paWidth / 2, fieldHeight / 2, 3, 0, Math.PI * 2, false);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(fieldWidth - paWidth / 2, fieldHeight / 2, 3, 0, Math.PI * 2, false);
+            ctx.fill();
+            
+            // Filets de but
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            
+            // Filet gauche
+            for (let i = 0; i <= 10; i++) {
+                const y = goalPostY1 + (goalHeight / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(1, y);
+                ctx.bezierCurveTo(
+                    1 - goalDepth * 0.5, y,
+                    1 - goalDepth, y,
+                    1 - goalDepth * 1.5, y
+                );
+                ctx.stroke();
+            }
+            
+            for (let i = 0; i <= 5; i++) {
+                const x = 1 - (goalDepth * 1.5 / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, goalPostY1);
+                ctx.bezierCurveTo(
+                    x, goalPostY1 + goalHeight * 0.25,
+                    x, goalPostY1 + goalHeight * 0.5,
+                    x, goalPostY1 + goalHeight * 0.75,
+                    x, goalPostY2
+                );
+                ctx.stroke();
+            }
+            
+            // Filet droit
+            for (let i = 0; i <= 10; i++) {
+                const y = goalPostY1 + (goalHeight / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(fieldWidth - 1, y);
+                ctx.bezierCurveTo(
+                    fieldWidth - 1 + goalDepth * 0.5, y,
+                    fieldWidth - 1 + goalDepth, y,
+                    fieldWidth - 1 + goalDepth * 1.5, y
+                );
+                ctx.stroke();
+            }
+            
+            for (let i = 0; i <= 5; i++) {
+                const x = fieldWidth - 1 + (goalDepth * 1.5 / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, goalPostY1);
+                ctx.bezierCurveTo(
+                    x, goalPostY1 + goalHeight * 0.25,
+                    x, goalPostY1 + goalHeight * 0.5,
+                    x, goalPostY1 + goalHeight * 0.75,
+                    x, goalPostY2
+                );
+                ctx.stroke();
+            }
+            
+            // Poteaux de but
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.beginPath();
+            ctx.moveTo(1, goalPostY1);
+            ctx.lineTo(1, goalPostY2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(fieldWidth - 1, goalPostY1);
+            ctx.lineTo(fieldWidth - 1, goalPostY2);
+            ctx.stroke();
+            
+            // Barres transversales
+            ctx.beginPath();
+            ctx.moveTo(1, goalPostY1);
+            ctx.lineTo(1 - goalDepth * 0.5, goalPostY1);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(1, goalPostY2);
+            ctx.lineTo(1 - goalDepth * 0.5, goalPostY2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(fieldWidth - 1, goalPostY1);
+            ctx.lineTo(fieldWidth - 1 + goalDepth * 0.5, goalPostY1);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(fieldWidth - 1, goalPostY2);
+            ctx.lineTo(fieldWidth - 1 + goalDepth * 0.5, goalPostY2);
+            ctx.stroke();
+            
             ctx.lineWidth = 2;
         }
 
         // --- Particle System ---
-        function createParticle(x, y, color) { const angle = Math.random() * Math.PI * 2; const speed = Math.random() * 3 + 1; const life = Math.random() * 60 + 30; return { x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, radius: Math.random() * 2 + 1, color: color || `rgba(255, 255, ${Math.random() > 0.5 ? 255 : 150}, ${Math.random() * 0.5 + 0.5})`, life: life, maxLife: life, }; }
-        function createGoalParticles(goalX, goalY, teamColor) { particles = []; const numParticles = 50; for (let i = 0; i < numParticles; i++) { particles.push(createParticle(goalX, goalY, teamColor)); } }
-        function updateParticles() { for (let i = particles.length - 1; i >= 0; i--) { const p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.life -= 1; p.vx *= 0.99; p.vy *= 0.99; if (p.life <= 0) { particles.splice(i, 1); } } }
-        function drawParticles() { particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.radius * (p.life / p.maxLife), 0, Math.PI * 2, false); ctx.fillStyle = p.color.startsWith('rgba') ? p.color.replace(/,[^,]+?\)$/, `, ${p.life / p.maxLife})`) : p.color; ctx.fill(); ctx.closePath(); }); }
+        function createParticle(x, y, color) { 
+            const angle = Math.random() * Math.PI * 2; 
+            const speed = Math.random() * 3 + 1; 
+            const life = Math.random() * 60 + 30; 
+            return { 
+                x, y, 
+                vx: Math.cos(angle) * speed, 
+                vy: Math.sin(angle) * speed, 
+                radius: Math.random() * 3 + 2, 
+                color: color || `rgba(255, 255, ${Math.random() > 0.5 ? 255 : 150}, ${Math.random() * 0.5 + 0.5})`, 
+                life: life, 
+                maxLife: life, 
+                rotation: Math.random() * Math.PI * 2,
+                rotationSpeed: (Math.random() - 0.5) * 0.2
+            }; 
+        }
+        
+        function createGoalParticles(goalX, goalY, teamColor) { 
+            particles = []; 
+            const numParticles = 80; 
+            const baseColor = teamColor === 'red' ? 'rgba(255, 60, 60,' : 'rgba(60, 60, 255,';
+            const goldColor = 'rgba(255, 215, 0,';
+            
+            for (let i = 0; i < numParticles; i++) { 
+                const particle = createParticle(goalX, goalY, Math.random() > 0.3 ? baseColor : goldColor);
+                // Ajuster la vitesse pour une explosion plus spectaculaire
+                particle.vx *= 1.5;
+                particle.vy *= 1.5;
+                particles.push(particle); 
+            } 
+        }
+        
+        function updateParticles() { 
+            for (let i = particles.length - 1; i >= 0; i--) { 
+                const p = particles[i]; 
+                p.x += p.vx; 
+                p.y += p.vy; 
+                p.vy += 0.05; // Gravité
+                p.life -= 1; 
+                p.vx *= 0.99; 
+                p.vy *= 0.99; 
+                p.rotation += p.rotationSpeed;
+                
+                // Ajouter un effet de rebond sur les bords
+                if (p.x < 0 || p.x > fieldWidth) {
+                    p.vx *= -0.7;
+                }
+                if (p.y < 0 || p.y > fieldHeight) {
+                    p.vy *= -0.7;
+                }
+                
+                if (p.life <= 0) { 
+                    particles.splice(i, 1); 
+                } 
+            } 
+        }
+        
+        function drawParticles() { 
+            particles.forEach(p => { 
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation);
+                
+                // Dessiner des formes variées (cercles, étoiles, confettis)
+                const lifeRatio = p.life / p.maxLife;
+                
+                if (p.color.includes('255, 215, 0')) { // Particules dorées (étoiles)
+                    const size = p.radius * 2 * lifeRatio;
+                    drawStar(0, 0, 5, size, size/2, p.color.replace(/,[^,]+?\)$/, `, ${lifeRatio})`))
+                } else if (Math.random() > 0.7) { // Confettis rectangulaires
+                    ctx.fillStyle = p.color.replace(/,[^,]+?\)$/, `, ${lifeRatio})`);
+                    ctx.fillRect(-p.radius * lifeRatio, -p.radius/3 * lifeRatio, 
+                                p.radius * 2 * lifeRatio, p.radius/1.5 * lifeRatio);
+                } else { // Cercles
+                    ctx.beginPath();
+                    ctx.arc(0, 0, p.radius * lifeRatio, 0, Math.PI * 2, false);
+                    ctx.fillStyle = p.color.replace(/,[^,]+?\)$/, `, ${lifeRatio})`);
+                    ctx.fill();
+                    ctx.closePath();
+                }
+                
+                ctx.restore();
+            }); 
+        }
+        
+        // Fonction pour dessiner une étoile
+        function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
+            let rot = Math.PI / 2 * 3;
+            let x = cx;
+            let y = cy;
+            let step = Math.PI / spikes;
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - outerRadius);
+            
+            for (let i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+            }
+            
+            ctx.lineTo(cx, cy - outerRadius);
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
 
         // --- Goal Message ---
-        function showGoalMessage() { goalMessageEl.style.display = 'none'; void goalMessageEl.offsetWidth; goalMessageEl.style.display = 'block'; }
+        function showGoalMessage(teamColor) {
+            // Réinitialiser l'animation
+            goalMessageEl.style.display = 'none';
+            void goalMessageEl.offsetWidth;
+            
+            // Définir la couleur du message selon l'équipe qui a marqué
+            if (teamColor === 'red') {
+                goalMessageEl.style.color = 'var(--color-red)';
+                goalMessageEl.style.textShadow = '0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3)';
+            } else {
+                goalMessageEl.style.color = 'var(--color-blue)';
+                goalMessageEl.style.textShadow = '0 0 10px rgba(0, 0, 255, 0.5), 0 0 20px rgba(0, 0, 255, 0.3)';
+            }
+            
+            // Afficher le message
+            goalMessageEl.style.display = 'block';
+            
+            // Ajouter un effet sonore (vibration visuelle)
+            document.querySelector('.game-container').classList.add('goal-shake');
+            setTimeout(() => {
+                document.querySelector('.game-container').classList.remove('goal-shake');
+            }, 1000);
+        }
 
         // --- Initialization ---
         function definePlayer(x, y, color) { return { x, y, color, vx: 0, vy: 0 }; }
@@ -235,17 +1016,57 @@
             teamRed = [ definePlayer(60, fieldHeight / 2, 'red'), definePlayer(140, fieldHeight / 3.5, 'red'), definePlayer(140, fieldHeight * 2.5 / 3.5, 'red'), definePlayer(230, fieldHeight / 4, 'red'), definePlayer(230, fieldHeight * 3 / 4, 'red'), definePlayer(290, fieldHeight / 2, 'red') ];
             teamBlue = [ definePlayer(fieldWidth - 60, fieldHeight / 2, 'blue'), definePlayer(fieldWidth - 140, fieldHeight / 3.5, 'blue'), definePlayer(fieldWidth - 140, fieldHeight * 2.5 / 3.5, 'blue'), definePlayer(fieldWidth - 230, fieldHeight / 4, 'blue'), definePlayer(fieldWidth - 230, fieldHeight * 3 / 4, 'blue'), definePlayer(fieldWidth - 290, fieldHeight / 2, 'blue') ];
             ball = { x: fieldWidth / 2, y: fieldHeight / 2, color: '#ffffff', vx: 0, vy: 0 };
-            if (!keepBallVelocity) { ball.vx = (Math.random() - 0.5) * 2; ball.vy = (Math.random() - 0.5) * 2; }
+            if (!keepBallVelocity) {
+                // Générer un angle aléatoire pour une direction vraiment équilibrée
+                // Utiliser une méthode plus robuste pour garantir une direction aléatoire
+                // Éviter que le ballon aille toujours vers le but des bleus
+                
+                // Générer un angle complètement aléatoire (0 à 360 degrés)
+                const randomAngle = Math.random() * Math.PI * 2;
+                
+                // Vitesse initiale constante pour plus de prévisibilité
+                const initialSpeed = 1.5;
+                
+                // Calculer les composantes de vitesse
+                ball.vx = Math.cos(randomAngle) * initialSpeed;
+                ball.vy = Math.sin(randomAngle) * initialSpeed;
+                
+                // Vérifier que la vitesse horizontale n'est pas trop faible
+                // pour éviter que le ballon aille principalement vers le haut/bas
+                if (Math.abs(ball.vx) < 0.3) {
+                    // Si trop faible, réajuster pour avoir une composante horizontale plus forte
+                    ball.vx = ball.vx < 0 ? -0.5 : 0.5;
+                }
+            }
             if (!isRunning) { drawEverything(); }
         }
 
         function resetGame() {
-            stopTimer(); if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
-            isRunning = false; startButton.textContent = 'Démarrer';
-            scoreRed = 0; scoreBlue = 0; updateScoreDisplay();
-            gameTime = 0; updateTimerDisplay();
-            particles = []; resetPositions(false);
-            ctx.fillStyle = '#4CAF50'; ctx.fillRect(0, 0, fieldWidth, fieldHeight);
+            stopTimer(); 
+            if (animationFrameId) { 
+                cancelAnimationFrame(animationFrameId); 
+                animationFrameId = null; 
+            }
+            isRunning = false; 
+            gameEnded = false;
+            startButton.textContent = 'Démarrer';
+            scoreRed = 0; 
+            scoreBlue = 0; 
+            updateScoreDisplay();
+            
+            // Réinitialiser le temps selon le mode
+            if (timerMode === "chrono") {
+                gameTime = 300; // 5 minutes en secondes pour le mode chronomètre
+            } else {
+                gameTime = 0; // 0 pour le mode compteur
+            }
+            
+            updateTimerDisplay();
+            particles = []; 
+            resetPositions(false);
+            endGameMessageEl.style.display = 'none';
+            ctx.fillStyle = '#4CAF50'; 
+            ctx.fillRect(0, 0, fieldWidth, fieldHeight);
             drawEverything();
         }
 
@@ -256,6 +1077,7 @@
                 let targetVx = 0, targetVy = 0;
                 const dxBall = ball.x - player.x, dyBall = ball.y - player.y; const distBall = Math.sqrt(dxBall * dxBall + dyBall * dyBall) || 1;
                 targetVx += (dxBall / distBall) * ATTRACTION_TO_BALL; targetVy += (dyBall / distBall) * ATTRACTION_TO_BALL;
+                // Chaque équipe vise le but adverse: rouge vers la droite (but bleu), bleu vers la gauche (but rouge)
                 const targetGoalX = (player.color === 'red') ? fieldWidth : 0, targetGoalY = fieldHeight / 2;
                 if (distBall < playerRadius * 7) { const dxGoal = targetGoalX - player.x, dyGoal = targetGoalY - player.y; const distGoal = Math.sqrt(dxGoal * dxGoal + dyGoal * dyGoal) || 1; targetVx += (dxGoal / distGoal) * SHOOT_FORCE; targetVy += (dyGoal / distGoal) * SHOOT_FORCE; }
                  allPlayers.forEach((otherPlayer, o_idx) => { if (p_idx === o_idx) return; const dx = otherPlayer.x - player.x, dy = otherPlayer.y - player.y; const dist = Math.sqrt(dx * dx + dy * dy) || 1; if (dist < playerRadius * 5) { targetVx -= (dx / dist) * PLAYER_SEPARATION; targetVy -= (dy / dist) * PLAYER_SEPARATION; } });
@@ -279,6 +1101,7 @@
                 const dx = ball.x - player.x, dy = ball.y - player.y; const distance = Math.sqrt(dx * dx + dy * dy); const minDist = playerRadius + ballRadius;
                 if (distance < minDist) {
                     const angle = Math.atan2(dy, dx);
+                    // Chaque équipe vise le but adverse: rouge vers la droite (but bleu), bleu vers la gauche (but rouge)
                     const targetGoalX = (player.color === 'red') ? fieldWidth : 0; const targetGoalY = fieldHeight / 2;
                     const angleToGoal = Math.atan2(targetGoalY - player.y, targetGoalX - player.x); const kickAngle = angle * 0.6 + angleToGoal * 0.4;
                     ball.vx += Math.cos(kickAngle) * KICK_FORCE; ball.vy += Math.sin(kickAngle) * KICK_FORCE;
@@ -288,7 +1111,7 @@
              const ballSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy); if (ballSpeed > MAX_BALL_SPEED) { ball.vx = (ball.vx / ballSpeed) * MAX_BALL_SPEED; ball.vy = (ball.vy / ballSpeed) * MAX_BALL_SPEED; }
 
              // Handle Goal Effects
-             if (goalScored) { updateScoreDisplay(); createGoalParticles(goalX, fieldHeight / 2, goalTeamColor); showGoalMessage(); resetPositions(false); }
+             if (goalScored) { updateScoreDisplay(); createGoalParticles(goalX, fieldHeight / 2, goalTeamColor); showGoalMessage(goalTeamColor); resetPositions(false); }
 
              // Update Particles
              updateParticles();
@@ -302,31 +1125,212 @@
 
             // Draw static elements
             drawField();
-            // *** Use drawCircle for center spot ***
             drawCircle(fieldWidth / 2, fieldHeight / 2, 3, 'rgba(255, 255, 255, 0.8)');
+            
+            // Dessiner les ombres des joueurs et du ballon
+            drawShadows();
+            
+            // Draw debug targeting lines if debug mode is enabled
+            if (debugMode) {
+                drawTargetingLines();
+            }
+            
+            // Dessiner la traînée du ballon si en mouvement
+            if (Math.abs(ball.vx) > 0.5 || Math.abs(ball.vy) > 0.5) {
+                drawBallTrail();
+            }
 
             // Draw dynamic elements
             teamRed.forEach(player => drawPlayer(player));
             teamBlue.forEach(player => drawPlayer(player));
-            // *** Use drawCircle for the ball ***
-            drawCircle(ball.x, ball.y, ballRadius, ball.color);
+            drawBall(ball.x, ball.y, ballRadius, ball.color);
 
             // Draw Particles
             drawParticles();
         }
+        
+        function drawShadows() {
+            // Ombres des joueurs
+            [...teamRed, ...teamBlue].forEach(player => {
+                ctx.beginPath();
+                ctx.ellipse(player.x, player.y + playerRadius + 3, playerRadius * 0.8, playerRadius * 0.3, 0, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                ctx.fill();
+                ctx.closePath();
+            });
+            
+            // Ombre du ballon
+            ctx.beginPath();
+            ctx.ellipse(ball.x, ball.y + ballRadius + 2, ballRadius * 0.8, ballRadius * 0.3, 0, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            ctx.fill();
+            ctx.closePath();
+        }
+        
+        function drawBallTrail() {
+            const trailLength = 5;
+            const speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+            const normalizedSpeed = Math.min(speed / MAX_BALL_SPEED, 1);
+            
+            for (let i = 1; i <= trailLength; i++) {
+                const alpha = (1 - i / trailLength) * 0.3 * normalizedSpeed;
+                const trailX = ball.x - ball.vx * i * 2;
+                const trailY = ball.y - ball.vy * i * 2;
+                
+                ctx.beginPath();
+                ctx.arc(trailX, trailY, ballRadius * (1 - i / trailLength * 0.5), 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+        
+        function drawBall(x, y, radius, color) {
+            // Ombre du ballon
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
+            
+            // Gradient pour le ballon
+            const gradient = ctx.createRadialGradient(x - radius/3, y - radius/3, 0, x, y, radius);
+            gradient.addColorStop(0, '#ffffff');
+            gradient.addColorStop(0.7, '#f0f0f0');
+            gradient.addColorStop(1, '#d0d0d0');
+            
+            // Dessiner le ballon
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Ajouter un contour
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#888888';
+            ctx.stroke();
+            ctx.closePath();
+            
+            // Réinitialiser les ombres
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // Ajouter des détails au ballon (motif de football)
+            const segments = 5;
+            const segmentAngle = Math.PI * 2 / segments;
+            const rotationOffset = performance.now() / 1000; // Rotation basée sur le temps
+            
+            for (let i = 0; i < segments; i++) {
+                const angle = i * segmentAngle + rotationOffset;
+                const segX = x + Math.cos(angle) * (radius * 0.7);
+                const segY = y + Math.sin(angle) * (radius * 0.7);
+                
+                ctx.beginPath();
+                ctx.arc(segX, segY, radius * 0.25, 0, Math.PI * 2);
+                ctx.fillStyle = '#333';
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
 
         // --- Game Loop ---
-        function gameLoop() { if (!isRunning) return; updatePositions(); drawEverything(); animationFrameId = requestAnimationFrame(gameLoop); }
+        function gameLoop() { 
+            if (!isRunning) return; 
+            updatePositions(); 
+            drawEverything(); 
+            animationFrameId = requestAnimationFrame(gameLoop); 
+        }
 
-         // --- Event Listeners ---
-         startButton.addEventListener('click', () => { isRunning = !isRunning; if (isRunning) { startButton.textContent = 'Pause'; startTimer(); if (!animationFrameId) { gameLoop(); } } else { startButton.textContent = 'Démarrer'; stopTimer(); if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; } } });
-         resetButton.addEventListener('click', () => { resetGame(); });
+        // --- Settings Management ---
+        function showSettings() {
+            // Afficher la modale complète (overlay + panneau)
+            document.getElementById('settingsModal').style.display = 'flex';
+            document.getElementById('timerModeSelect').value = timerMode;
+            document.getElementById('matchDuration').value = matchDuration;
+            document.getElementById('playerSpeed').value = MAX_PLAYER_SPEED;
+            document.getElementById('ballSpeed').value = MAX_BALL_SPEED;
+            document.getElementById('teamRedNameInput').value = teamRedName;
+            document.getElementById('teamBlueNameInput').value = teamBlueName;
+            
+            // Afficher ou masquer l'option de durée du match selon le mode de temps
+            updateMatchDurationVisibility();
+        }
+        
+        function closeSettings() {
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+        
+        function updateMatchDurationVisibility() {
+            const matchDurationContainer = document.getElementById('matchDurationContainer');
+            if (document.getElementById('timerModeSelect').value === "chrono") {
+                matchDurationContainer.style.display = 'none';
+            } else {
+                matchDurationContainer.style.display = 'block';
+            }
+        }
+        
+        function saveSettings() {
+            timerMode = document.getElementById('timerModeSelect').value;
+            matchDuration = parseInt(document.getElementById('matchDuration').value);
+            MAX_PLAYER_SPEED = parseFloat(document.getElementById('playerSpeed').value);
+            MAX_BALL_SPEED = parseFloat(document.getElementById('ballSpeed').value);
+            teamRedName = document.getElementById('teamRedNameInput').value;
+            teamBlueName = document.getElementById('teamBlueNameInput').value;
+            
+            // Update UI
+            teamRedNameEl.textContent = teamRedName;
+            teamBlueNameEl.textContent = teamBlueName;
+            
+            // Réinitialiser le temps selon le mode
+            if (timerMode === "chrono") {
+                gameTime = 300; // 5 minutes en secondes pour le mode chronomètre
+            } else {
+                gameTime = 0; // 0 pour le mode compteur
+            }
+            updateTimerDisplay();
+            
+            // Fermer la modale complète
+            closeSettings();
+        }
+
+        // --- Event Listeners ---
+        startButton.addEventListener('click', () => { 
+            if (gameEnded) {
+                resetGame();
+                isRunning = true;
+                startButton.textContent = 'Pause';
+                startTimer();
+                gameLoop();
+                return;
+            }
+            
+            isRunning = !isRunning; 
+            if (isRunning) { 
+                startButton.textContent = 'Pause'; 
+                startTimer(); 
+                if (!animationFrameId) { 
+                    gameLoop(); 
+                } 
+            } else { 
+                startButton.textContent = 'Démarrer'; 
+                stopTimer(); 
+                if (animationFrameId) { 
+                    cancelAnimationFrame(animationFrameId); 
+                    animationFrameId = null; 
+                } 
+            } 
+        });
+        
+        resetButton.addEventListener('click', () => { resetGame(); });
+        settingsButton.addEventListener('click', () => { showSettings(); });
+        saveSettingsButton.addEventListener('click', () => { saveSettings(); });
+        document.getElementById('closeSettingsButton').addEventListener('click', () => { closeSettings(); });
 
         // --- Initial Setup ---
         window.onload = () => {
             resetGame();
         };
-
     </script>
 
 </body>

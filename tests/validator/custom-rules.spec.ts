@@ -3,8 +3,13 @@ import { describe, it, expect } from 'vitest';
 import { Validator } from '@chantouchsek/validatorjs';
 import { useValidator } from '../../composables/useValidator';
 
-const { validate, addCustomRule } = useValidator();
-
+const rules = { name: 'uppercase' };
+const { validate, addCustomRule, values } = useValidator({
+  initialValues: {
+    name: '',
+  },
+  schema: rules,
+});
 // Enregistrer une règle de validation personnalisée
 addCustomRule(
   'uppercase',
@@ -13,22 +18,20 @@ addCustomRule(
 );
 
 describe('Règles de validation personnalisées', () => {
-  it('devrait valider que la valeur est en majuscules', () => {
-    const data = { name: 'JOHN' };
-    const rules = { name: 'uppercase' };
+  it('devrait valider que la valeur est en majuscules', async () => {
+    values.name = 'JOHN';
 
-    const { passes, fails } = validate(data, rules);
-    expect(passes()).toBe(true);
-    expect(fails()).toBe(false);
+    const { valid, fails } = await validate();
+    expect(valid).toBe(true);
+    expect(fails).toBe(false);
   });
 
-  it("devrait échouer si la valeur n'est pas en majuscules", () => {
-    const data = { name: 'John' };
-    const rules = { name: 'uppercase' };
-    const { passes, fails, errors } = validate(data, rules);
+  it("devrait échouer si la valeur n'est pas en majuscules", async () => {
+    values.name = 'John';   
+    const { valid, fails, errors } = await validate();
 
-    expect(passes()).toBe(false);
-    expect(fails()).toBe(true);
+    expect(valid).toBe(false);
+    expect(fails).toBe(true);
     expect(errors.first('name')).toBe('Le champ name doit être en majuscules.');
   });
 });

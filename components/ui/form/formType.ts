@@ -157,3 +157,47 @@ export interface UseFieldReturn<T = any> {
   handleChange: (e: Event) => void;
   meta: MetaField;
 }
+
+//use Validator
+export type AddCustomRule = (
+  ruleName: string,
+  callback: (value: any) => boolean,
+  errorMessage: string
+) => void;
+
+export type AddCustomAsyncRule = (
+  ruleName: string,
+  callback: (
+    value: string,
+    attribute: string,
+    req: any,
+    passes: (success?: boolean, message?: string) => void
+  ) => void,
+  errorMessage: string
+) => void;
+
+export interface UseValidatorParams {
+  initialValues?: Record<string, any>;
+  schema?: ValidationRules;
+  customMessages?: Record<string, any>;
+}
+
+export interface UseValidatorResult {
+  addCustomRule: AddCustomRule;
+  addCustomAsyncRule: AddCustomAsyncRule;
+  validate: () => Promise<ValidationResult>;
+  values: Record<string, any>;
+  errors: CustomError;
+  meta: ComputedRef<Partial<FormMeta>>;
+  rules: ValidationRulesManager;
+}
+
+export interface ValidationResult {
+  valid: boolean;
+  fails: boolean;
+  errors: CustomError;
+  isValidating: Ref<boolean>;
+}
+
+export type UseValidator = (options: UseValidatorParams) => UseValidatorResult;
+

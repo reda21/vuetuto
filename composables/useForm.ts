@@ -15,6 +15,7 @@ interface UseFormOptions {
   initialValues?: Record<string, any>;
   initialErrors?: Record<string, string>;
   initialTouched?: Record<string, boolean>;
+  customMessages?: Record<string, any>;
 }
 
 // Modify existing useForm.ts
@@ -24,11 +25,16 @@ export function useForm({
   initialValues = {},
   initialErrors = {},
   initialTouched = {},
+  customMessages = {},
 }: UseFormOptions) {
   // on initialise values avec initialValues
-  const values = reactive<Record<string, any>>(initialValues);
-  const errors = new CustomError();
-  const rules = new ValidationRulesManager(schema);
+  const { values, errors, rules } = useValidator({
+    schema,
+    initialValues,
+    customMessages,
+  });
+  
+ // const rules = new ValidationRulesManager(schema);
   Object.entries(initialErrors).forEach(([field, msg]) => errors.set(field, msg));
   const touched = reactive<Record<string, boolean>>(
     Object.keys(values).reduce(
@@ -103,6 +109,7 @@ export function useForm({
     pending: isValidating.value,
     validated: isValidated.value,
     initialValues,
+    values,
   }));
 
   function setFieldValue(field: string, value: any) {
