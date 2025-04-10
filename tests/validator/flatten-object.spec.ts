@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { flattenObject, isEmpty } from '../../utils';
+import { flattenObject, isEmpty2 as isEmpty } from '../../utils';
 
 describe('object', () => {
   it('should correctly flatten nested object', () => {

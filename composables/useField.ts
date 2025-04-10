@@ -41,8 +41,6 @@ export function useField<T = any>({
     set: (v) => (form.values[name] = v),
   });
 
-  
-
   // Validation de ce seul champ
   async function validateField() {
     const fieldRules = form.rules?.getFieldRules(name);
@@ -90,7 +88,7 @@ export function useField<T = any>({
     return true;
   }
 
-  const handleBlur = () => {    
+  const handleBlur = () => {
     form.setFieldTouched(name, true);
   };
   const handleChange = () => {
@@ -107,8 +105,8 @@ export function useField<T = any>({
     pending: false,
     required: form.rules.isRequired(name),
     errors: computed(() => form.errors.get(name) ?? []),
-    type: "default",
-    multiple: false
+    type: 'default',
+    multiple: false,
   };
 
   return {

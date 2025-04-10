@@ -6,7 +6,7 @@ describe('Form Validation', () => {
   it('should validate form fields correctly', async () => {
     const { handleSubmit } = useForm({
       initialValues: { email: 'test' },
-      schema: { email: 'required|email' }
+      schema: { email: 'required|email' },
     });
     // ... test implementation
   });

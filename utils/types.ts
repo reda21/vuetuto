@@ -48,7 +48,7 @@ export type LangTypes =
   | 'uz'
   | 'vi'
   | 'zh'
-  | 'zh_TW'
+  | 'zh_TW';
 
 export type RuleType =
   | 'accepted'
@@ -94,14 +94,14 @@ export type RuleType =
   | 'sometimes'
   | 'string'
   | 'url'
-  | string
+  | string;
 
-export type SimpleObject<T = any> = Record<string, T>
+export type SimpleObject<T = any> = Record<string, T>;
 export interface ValidatorOptions {
-  confirmedReverse?: boolean
-  customAttributes?: SimpleObject
-  customMessages?: SimpleObject
-  defaultAttributeName?: Partial<Record<LangTypes, string>>
-  locale?: LangTypes
+  confirmedReverse?: boolean;
+  customAttributes?: SimpleObject;
+  customMessages?: SimpleObject;
+  defaultAttributeName?: Partial<Record<LangTypes, string>>;
+  locale?: LangTypes;
 }
-export type CbFunction<R = any> = ((...arg: any) => R)
+export type CbFunction<R = any> = (...arg: any) => R;

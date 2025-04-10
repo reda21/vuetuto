@@ -23,7 +23,7 @@ export function useForm({
   options = {},
   initialValues = {},
   initialErrors = {},
-  initialTouched = {},  
+  initialTouched = {},
 }: UseFormOptions) {
   // on initialise values avec initialValues
   const values = reactive<Record<string, any>>(initialValues);

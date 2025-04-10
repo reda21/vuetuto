@@ -1,23 +1,59 @@
 <template>
   <div>
-    <UiForm :schema="schema" :initialValues="init" @invalid-submit="onInvalidSubmit" v-slot="{ lazy, inputs, meta }"
-      @submit="onSubmit">
+    <UiForm
+      :schema="schema"
+      :initialValues="init"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ lazy, inputs, meta }"
+      @submit="onSubmit"
+    >
       <UiFormControl class="min-h-24" name="username" label="Username">
-        <UiFormInput name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy" />
+        <UiFormInput
+          name="username"
+          id="username"
+          v-model="inputs.username"
+          placeholder="username"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="name" label="name">
-        <UiFormInput name="name" id="name" v-model="inputs.name" placeholder="name" :disabled="lazy" />
+        <UiFormInput
+          name="name"
+          id="name"
+          v-model="inputs.name"
+          placeholder="name"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="email" label="Email">
-        <UiFormInput type="email" name="email" id="email" v-model="inputs.email" placeholder="email" :disabled="lazy" />
+        <UiFormInput
+          type="email"
+          name="email"
+          id="email"
+          v-model="inputs.email"
+          placeholder="email"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password" label="Password">
-        <UiFormInput type="text" name="password" id="passowrd" v-model="inputs.password" placeholder="password"
-          :disabled="lazy" />
+        <UiFormInput
+          type="text"
+          name="password"
+          id="passowrd"
+          v-model="inputs.password"
+          placeholder="password"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password_confirmation" label="password confirmation">
-        <UiFormInput type="text" name="password_confirmation" id="password_confirmation"
-          v-model="inputs.password_confirmation" placeholder="password confirmation" :disabled="lazy" />
+        <UiFormInput
+          type="text"
+          name="password_confirmation"
+          id="password_confirmation"
+          v-model="inputs.password_confirmation"
+          placeholder="password confirmation"
+          :disabled="lazy"
+        />
       </UiFormControl>
       <UiButton type="submit" :lazy="lazy">Submit</UiButton>
       {{ meta }}
@@ -34,7 +70,7 @@ interface InputType {
   name: string;
   email: string;
   password: string;
-  password_confirmation: string
+  password_confirmation: string;
 }
 
 const init: InputType = {
@@ -42,15 +78,15 @@ const init: InputType = {
   name: '',
   email: 'redacherfaoui@gmail.com',
   password: 'bejaia21',
-  password_confirmation: 'bejaia21'
+  password_confirmation: 'bejaia21',
 };
 
 const schema = {
   username: 'required|min:4',
   email: ['required', 'email'],
   name: ['required', 'same:username'],
-  password: ['required', 'min:6', "confirmed"],
-  "password_confirmation": "required"
+  password: ['required', 'min:6', 'confirmed'],
+  password_confirmation: 'required',
 };
 
 function onSubmit(values: Record<string, any>) {

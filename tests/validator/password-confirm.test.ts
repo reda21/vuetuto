@@ -1,6 +1,6 @@
 // password-confirm.test.js
 import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
-import {describe, it, expect} from "vitest"
+import { describe, it, expect } from 'vitest';
 
 describe('Validation de confirmation de mot de passe', () => {
   const rules = {

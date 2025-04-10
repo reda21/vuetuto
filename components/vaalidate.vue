@@ -1,6 +1,11 @@
 <template>
   <div class="p-4">
-    <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit" v-slot="{  meta }">
+    <Form
+      @submit="onSubmit"
+      :validation-schema="schema"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ meta }"
+    >
       <TextInput
         name="name"
         type="text"

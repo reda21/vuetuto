@@ -91,9 +91,9 @@ export class ValidationRulesManager {
    * Returns the referenced field name if found, false otherwise
    */
   checkSameField(field: string): string | false {
-    for (const [key, rules] of Object.entries(this.rules)) {      
-      const sameRule = rules.find(rule => rule.startsWith('same:'));     
-      if (sameRule && sameRule.slice(5) === field) {        
+    for (const [key, rules] of Object.entries(this.rules)) {
+      const sameRule = rules.find((rule) => rule.startsWith('same:'));
+      if (sameRule && sameRule.slice(5) === field) {
         return key;
       }
     }
@@ -108,6 +108,4 @@ export class ValidationRulesManager {
   isRequired(field: string): boolean {
     return this.rules[field]?.includes('required') ?? false;
   }
-
-  
 }
