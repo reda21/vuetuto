@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     '@sidebase/nuxt-auth',
     //"@nuxt/eslint",
     '@nuxt/fonts',
-    '@primevue/nuxt-module',
   ],
   css: ['~/assets/css/main.css'],
   auth: {
@@ -64,6 +63,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  plugins: ['~/plugins/primevue'],
   pinia: {
     storesDirs: ['./stores/**'],
   },
@@ -75,20 +75,6 @@ export default defineNuxtConfig({
     public: {
       laravelToken: process.env.LARAVEL_TOKEN || 'hello',
       tester: process.env.TESTER ?? 'alpha',
-    },
-  },
-  primevue: {
-    options: {
-      //     css: false,
-      theme: {
-        preset: Aura,
-        options: {
-          cssLayer: {
-            name: 'primevue',
-            order: 'tailwind-base, primevue, tailwind-utilities',
-          },
-        },
-      },
     },
   },
 });

@@ -1,8 +1,12 @@
 <template>
-  <div class="grid gap-8 md:grid-cols-3 md:gap-5">
-    <CardTuto categorie="php" />
-    <CardTuto categorie="js" />
-    <CardTuto categorie="css" />
+  <div>
+    <div class="grid gap-8 md:grid-cols-3 md:gap-5 mb-4">
+      <CardTuto categorie="php" />
+      <CardTuto categorie="js" />
+      <CardTuto categorie="css" />
+    </div>
+    <VButton label="Hello World" />
+    <VInputText v-model="value" />
   </div>
 </template>
 
@@ -10,4 +14,6 @@
 definePageMeta({
   layout: 'default', // correspond au fichier layouts/blog.vue
 });
+
+const value = ref("")
 </script>
