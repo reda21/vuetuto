@@ -8,7 +8,7 @@
       <input id="username" v-model="form.username" type="text" :disabled="meta.pending"
         class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-100"
         placeholder="Entrez votre nom d’utilisateur" />
-      <p v-if="errors.has('username')" class="mt-1 text-sm text-red-600">
+      <p v-if="errors.has('v')" class="mt-1 text-sm text-red-600">
         {{ errors.first('username') }}
       </p>
     </div>
@@ -55,8 +55,11 @@
 </template>
 
 <script setup lang="ts">
+//@ts-ignore
+import { reactive } from 'vue';
 import { useValidator } from '@/composables/useValidator';
-
+import { Data } from '../data/data';
+import { Password } from '../.nuxt/components';
 
 type InitialValuesType = {
   username: string;
@@ -70,15 +73,8 @@ const initialValues: Record<string, any> =  {
   password: '',
 }
 
-const rules = {
-  username: 'required|min:3|username_available',
-  email: 'required|email',
-  password: 'required|min:8',
-};
-
-const { values: form, errors, meta, validate} = useValidator({
+const { values: form, errors, meta, validate } = useValidator({
   initialValues,
-  schema: rules,
   customMessages: {}
 });
 

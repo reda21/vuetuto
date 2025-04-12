@@ -180,6 +180,9 @@ export interface UseValidatorParams {
   initialValues?: Record<string, any>;
   schema?: ValidationRules;
   customMessages?: Record<string, any>;
+  initialErrors?: Record<string, string>;
+  options?: ValidatorOptions;
+  initialTouched?: Record<string, boolean>;
 }
 
 export interface UseValidatorResult {

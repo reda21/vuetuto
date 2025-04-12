@@ -34,8 +34,7 @@ export function useForm({
     customMessages,
   });
   
- // const rules = new ValidationRulesManager(schema);
-  Object.entries(initialErrors).forEach(([field, msg]) => errors.set(field, msg));
+ 
   const touched = reactive<Record<string, boolean>>(
     Object.keys(values).reduce(
       (acc, key) => ({

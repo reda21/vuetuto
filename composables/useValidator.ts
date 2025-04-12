@@ -12,7 +12,14 @@ import type {
   ValidationResult,
 } from '@/components/ui/form/formType';
 
-export const useValidator: UseValidator = ({ initialValues = {}, schema = {}, customMessages = {} }) => {
+export const useValidator: UseValidator = ({
+  schema = {},
+  options = {},
+  initialValues = {},
+  initialErrors = {},
+  initialTouched = {},
+  customMessages = {},
+}) => {
   //init
   // on initialise values avec initialValues
   const values = reactive<Record<string, any>>(initialValues);
@@ -21,6 +28,29 @@ export const useValidator: UseValidator = ({ initialValues = {}, schema = {}, cu
 
   const isValidated = ref(false);
   const isValidating = ref(false);
+  const isSubmitting = ref(false);
+
+  const touched = reactive<Record<string, boolean>>(
+    Object.keys(values).reduce(
+      (acc, key) => ({
+        ...acc,
+        [key]: initialTouched[key] || false,
+      }),
+      {}
+    )
+  );
+  const dirty = reactive<Record<string, boolean>>(
+    Object.keys(values).reduce(
+      (acc, key) => ({
+        ...acc,
+        [key]: initialTouched[key] || false,
+      }),
+      {}
+    )
+  );
+
+  Object.entries(initialErrors).forEach(([field, msg]) => errors.set(field, msg));
+
   const meta: ComputedRef<Partial<FormMeta>> = computed(() => ({
     pending: isValidating.value,
     valid: isValidated.value,
@@ -56,6 +86,8 @@ export const useValidator: UseValidator = ({ initialValues = {}, schema = {}, cu
       isValidating,
     };
   };
+
+  const asyncValidate = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
   return { addCustomRule, addCustomAsyncRule, validate, values, errors, meta, rules };
 };
