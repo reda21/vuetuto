@@ -2,7 +2,7 @@
   <div>
     <h1 class="text-gray-900">Button {{ add }}</h1>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
-      <UiButton label="Secondary" variant="soft" />
+      <UiButton label="Secondary"  />
       <UiButton label="Secondary" variant="outlined" severity="info" />
     </div>
   </div>

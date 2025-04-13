@@ -95,8 +95,8 @@
                         'slide-in': 'slideIn 0.5s ease-in-out',
   */
   --color-tiotio: #c00;
-  --color-primary: oklch(57.82% 0.2282 260.03);
-  --color-primary-hover: oklch(51.49% 0.1997 259.8);
+  --color-primary: oklch(0.58 0.2282 260.03); /*#0d6efd */
+  --color-primary-hover: oklch(51.49% 0.1997 259.8); /* #0b5ed7 */
   --color-secondary: oklch(55.75% 0.0165 244.89);
   --color-secondary-hover: oklch(49.6% 0.0142 248.11);
   --color-success: oklch(55.2% 0.1234 157.01);
