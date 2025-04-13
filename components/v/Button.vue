@@ -1,6 +1,6 @@
 <template>
   <Button
-    unstyled data-p="alpha"
+    unstyled
     :pt="theme"
     :ptOptions="{
       mergeProps: ptViewMerge,

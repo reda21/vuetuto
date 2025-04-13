@@ -5,6 +5,8 @@
 @plugin "@tailwindcss/typography";
 
 @import './utility.css';
+
+@import './variant.css';
 /*configure dark mode*/
 @import './base.css';
 

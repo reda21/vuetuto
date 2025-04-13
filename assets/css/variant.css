@@ -1,0 +1,17 @@
+@custom-variant b-soft {
+  &:where([data-b~="soft"]) {
+    @slot;
+  }
+}
+
+@custom-variant b-outlined {
+  &:where([data-b~="outlined"]) {
+    @slot;
+  }
+}
+
+@custom-variant b-info {
+    &:where([data-p-severity="info"]){
+        @slot;
+    }
+}

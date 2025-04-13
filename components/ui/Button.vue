@@ -1,11 +1,5 @@
 <template>
-  <BTN unstyled  :data-p="mergedDataP" :ptOptions="{
-      mergeProps: ptViewMerge,
-    }">
-   <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
-      <slot :name="slotName" v-bind="slotProps ?? {}" />
-    </template>
-  </BTN>
+  <BTN unstyled :pt="theme" :severity="severity" :data-b="[variant, 'toto'].join(' ')" />
 </template>
 
 <script lang="ts" setup>
@@ -15,22 +9,23 @@ import { computed, withDefaults, defineProps, useAttrs } from 'vue';
 import BTN, { type ButtonPassThroughOptions, type ButtonProps } from 'primevue/button';
 import { ptViewMerge } from '@/components/v/utils';
 
-// Récupère tous les attributs passés au composant
-const attrs = useAttrs() as Record<string, unknown>
+interface Props extends /* @vue-ignore */ ButtonProps {
+  variant?: 'soft' | 'outlined' | 'text' | 'link' | undefined,
+  severity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined,
+ } 
+ 
+const props = defineProps<Props>();
 
-// On extrait `data-p` et on regroupe le reste
-const { 'data-p': parentDataP, ...restAttrs } = attrs
-
-const mergedDataP = computed<string>(() => {
-  const parent = typeof parentDataP === 'string' ? parentDataP : ''
-  // Ici on sépare par un espace, vous pouvez changer le séparateur si besoin
-  return [parent, 'alpha']
-    .filter(Boolean)
-    .join(' ')
-})
-
-interface Props extends /* @vue-ignore */ ButtonProps {}
-defineProps<Props>();
+const theme = ref<ButtonPassThroughOptions>({
+  root: `btn`,
+  loadingIcon: ``,
+  icon: `p-right:order-1 p-bottom:order-2`,
+  label: `font-medium p-icon-only:invisible p-icon-only:w-0
+        p-small:text-sm p-large:text-[1.125rem]`,
+  pcBadge: {
+    root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`,
+  },
+});
 
 
 </script>
