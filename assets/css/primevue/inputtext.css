@@ -8,14 +8,14 @@ input.p-inputtext {
   }
 
   @variant disabled {
-    @apply opacity-100 bg-light-input-disabled text-surface-400;
+    @apply bg-light-input-disabled text-surface-400 opacity-100;
   }
 
   @variant dark {
     @apply bg-dark-input text-dark-font border-surface-700;
 
     @variant disabled {
-      @apply  bg-dark-input-disabled;
+      @apply bg-dark-input-disabled;
     }
   }
 }

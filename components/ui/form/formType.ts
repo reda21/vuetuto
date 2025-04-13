@@ -203,4 +203,3 @@ export interface ValidationResult {
 }
 
 export type UseValidator = (options: UseValidatorParams) => UseValidatorResult;
-

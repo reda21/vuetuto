@@ -13,7 +13,8 @@
     "api": "json-server --watch db.json --port 3030",
     "test": "vitest",
     "format": "prettier --write \"**/*.{js,ts,vue,css,json,md, html}\"",
-    "ft": "prettier --write \"**/*.{ts,vue,tsx}\""
+    "format:c": "prettier --write \"**/*.{ts,vue,tsx}\"",
+    "format:s": "prettier --write \"**/*.{css}\""
   },
   "dependencies": {
     "@chantouchsek/validatorjs": "^2.2.4",
@@ -38,7 +39,7 @@
     "next-auth": "~4.24.11",
     "nuxt": "^3.15.4",
     "pinia": "^3.0.1",
-    "primeicons": "^7.0.0",    
+    "primeicons": "^7.0.0",
     "rollup": "4.34.8",
     "sass": "^1.85.0",
     "socket.io-client": "^4.8.1",

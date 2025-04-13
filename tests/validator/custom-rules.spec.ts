@@ -27,7 +27,7 @@ describe('Règles de validation personnalisées', () => {
   });
 
   it("devrait échouer si la valeur n'est pas en majuscules", async () => {
-    values.name = 'John';   
+    values.name = 'John';
     const { valid, fails, errors } = await validate();
 
     expect(valid).toBe(false);

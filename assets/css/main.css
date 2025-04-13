@@ -11,8 +11,10 @@
 /*configure theme*/
 @import './theme.css';
 
+@import "./prime_theme.css";
+
 /* navbar */
-@import "./navbar.css";
+@import './navbar.css';
 
 /*ui composent */
 @import './ui/button.css';

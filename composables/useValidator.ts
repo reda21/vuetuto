@@ -119,5 +119,3 @@ const setCustomRules = () => {
     "Le champ :attribute n'est pas disponible."
   );
 };
-
-
