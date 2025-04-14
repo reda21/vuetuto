@@ -12,6 +12,26 @@
       <UiButton label="Contrast" severity="contrast" />
     </div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
+      <UiButton label="primary" raised />
+      <UiButton label="info" severity="info" raised />
+      <UiButton label="Secondary" severity="secondary" raised />
+      <UiButton label="Success" severity="success" raised />
+      <UiButton label="Warn" severity="warn" raised />
+      <UiButton label="Help" severity="help" raised />
+      <UiButton label="Danger" severity="danger" raised />
+      <UiButton label="Contrast" severity="contrast" raised />
+    </div>
+    <div class="card mb-4 flex flex-wrap justify-center gap-4">
+      <UiButton label="primary" rounded />
+      <UiButton label="info" severity="info" rounded />
+      <UiButton label="Secondary" severity="secondary" rounded />
+      <UiButton label="Success" severity="success" rounded />
+      <UiButton label="Warn" severity="warn" rounded />
+      <UiButton label="Help" severity="help" rounded />
+      <UiButton label="Danger" severity="danger" rounded />
+      <UiButton label="Contrast" severity="contrast" rounded />
+    </div>
+    <div class="card mb-4 flex flex-wrap justify-center gap-4">
       <UiButton label="primary" disabled />
       <UiButton label="info" severity="info" disabled />
       <UiButton label="Secondary" severity="secondary" disabled />
@@ -62,14 +82,43 @@
       <UiButton variant="soft" label="Contrast" severity="contrast" disabled />
     </div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
-      <UiButton variant="subtle" label="primary"  />
-      <UiButton variant="subtle" label="info" severity="info"  />
-      <UiButton variant="subtle" label="Secondary" severity="secondary"  />
-      <UiButton variant="subtle" label="Success" severity="success"  />
-      <UiButton variant="subtle" label="Warn" severity="warn"  />
-      <UiButton variant="subtle" label="Help" severity="help"  />
-      <UiButton variant="subtle" label="Danger" severity="danger"  />
-      <UiButton variant="subtle" label="Contrast" severity="contrast"  />
+      <UiButton variant="subtle" label="primary" />
+      <UiButton variant="subtle" label="info" severity="info" />
+      <UiButton variant="subtle" label="Secondary" severity="secondary" />
+      <UiButton variant="subtle" label="Success" severity="success" />
+      <UiButton variant="subtle" label="Warn" severity="warn" />
+      <UiButton variant="subtle" label="Help" severity="help" />
+      <UiButton variant="subtle" label="Danger" severity="danger" />
+      <UiButton variant="subtle" label="Contrast" severity="contrast" />
+    </div>
+    <div class="card mb-4 flex flex-wrap justify-center gap-4">
+      <UiButton variant="ghost" label="primary" />
+      <UiButton variant="ghost" label="info" severity="info" />
+      <UiButton variant="ghost" label="Secondary" severity="secondary" />
+      <UiButton variant="ghost" label="Success" severity="success" />
+      <UiButton variant="ghost" label="Warn" severity="warn" />
+      <UiButton variant="ghost" label="Help" severity="help" />
+      <UiButton variant="ghost" label="Danger" severity="danger" />
+      <UiButton variant="ghost" label="Contrast" severity="contrast" />
+    </div>
+    <div class="card mb-4 flex flex-wrap justify-center gap-4">
+      <UiButton variant="link" label="primary" />
+      <UiButton variant="link" label="info" severity="info" />
+      <UiButton variant="link" label="Secondary" severity="secondary" />
+      <UiButton variant="link" label="Success" severity="success" />
+      <UiButton variant="link" label="Warn" severity="warn" />
+      <UiButton variant="link" label="Help" severity="help" />
+      <UiButton variant="link" label="Danger" severity="danger" />
+      <UiButton variant="link" label="Contrast" severity="contrast" />
+    </div>
+    <div class="card mb-4 flex flex-wrap items-center justify-center gap-4">
+      <UiButton label="primary" />
+      <UiButton label="primary" size="xs" />
+      <UiButton label="primary" size="sm" />
+      <UiButton label="primary" size="md" />
+      <UiButton label="primary" size="lg" />
+      <UiButton label="primary" size="xl" />
+      <UiButton label="primary" size="2xl" />
     </div>
   </div>
 </template>

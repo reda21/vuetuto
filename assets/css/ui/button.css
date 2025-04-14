@@ -9,14 +9,7 @@ inline-flex cursor-pointer select-none items-center justify-center overflow-hidd
         p-icon-only:p-rounded:rounded-full p-icon-only:p-rounded:h-10
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
-        p-raised:shadow-sm p-rounded:rounded-[2rem]
-        p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
-        p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200 enabled:active:p-outlined:border-primary-200
-        p-outlined:text-primary enabled:hover:p-outlined:text-primary enabled:active:p-outlined:text-primary
-        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-primary/5 dark:enabled:active:p-outlined:bg-primary/15
-        dark:p-outlined:border-primary-700 dark:enabled:hover:p-outlined:border-primary-700 dark:enabled:active:p-outlined:border-primary-700
-        dark:p-outlined:text-primary dark:enabled:hover:p-outlined:text-primary dark:enabled:active:p-outlined:text-primary
-        p-text:bg-transparent enabled:hover:p-text:bg-primary-50 enabled:active:p-text:bg-primary-100
+        p-raised:shadow-sm p-rounded:rounded-[2rem]        
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-primary enabled:hover:p-text:text-primary enabled:active:p-text:text-primary
         dark:p-text:bg-transparent dark:enabled:hover:p-text:bg-primary/5 dark:enabled:active:p-text:bg-primary/15
@@ -25,7 +18,7 @@ inline-flex cursor-pointer select-none items-center justify-center overflow-hidd
 */
 
 .btn {
-  @apply bg-primary text-surface-50 border-primary relative inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-md border px-3 py-2 transition-colors duration-200 select-none;
+  @apply bg-primary text-surface-50 border-primary relative inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden border py-1.5 px-2.5 text-sm transition-colors duration-200 select-none;
 
   @variant enabled {
     @variant hover {
@@ -75,10 +68,10 @@ inline-flex cursor-pointer select-none items-center justify-center overflow-hidd
   }
 
   @variant b-contrast {
-    @apply bg-surface-950 bg-surface-50 border-surface-950 enabled:hover:bg-surface-800 enabled:hover:border-surface-800 enabled:active:bg-surface-800 enabled:active:border-surface-800;
+    @apply bg-surface-950 dark:bg-surface-50 border-surface-950 enabled:hover:bg-surface-800 enabled:hover:border-surface-800 enabled:active:bg-surface-800 enabled:active:border-surface-800;
 
     @variant dark {
-      @apply bg-surface-50 border-surface-50 enabled:hover:bg-surface-200 enabled:hover:border-surface-200 enabled:active:bg-surface-200 enabled:active:border-surface-200;
+      @apply bg-surface-50 dark:border-surface-50 enabled:hover:bg-surface-200 enabled:hover:border-surface-200 enabled:active:bg-surface-200 enabled:active:border-surface-200;
     }
   }
 
@@ -347,132 +340,252 @@ inline-flex cursor-pointer select-none items-center justify-center overflow-hidd
       }
     }
   }
-}
-/*
 
-.btn-xs {
-  @apply px-2 py-1 text-xs;
-}
-.btn-sm {
-  @apply px-2 py-1 text-sm;
-}
+  @variant b-ghost {
+    @apply text-primary bg-transparent border-0;
 
-.btn-md {
-  @apply px-4 py-2 text-sm;
-}
+    @variant enabled {
+      @variant hover {
+        @apply bg-primary-hover/15;
+      }
 
-.btn-lg {
-  @apply px-6 py-3 text-base;
-}
+      @variant active {
+        @apply bg-primary-hover/15;
+      }
+    }
 
-.btn-xl {
-  @apply px-8 py-4 text-base;
-}
+    @variant b-info {
+      @apply text-info;
 
-.btn-2xl {
-  @apply px-12 py-6 text-lg;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-info-hover/15;
+        }
 
-.btn-primary {
-  @apply bg-primary hover:bg-primary-hover disabled:bg-primary/50 text-white focus:ring-4 focus:ring-blue-300;
-}
+        @variant active {
+          @apply bg-info-hover/15;
+        }
+      }
+    }
 
-.btn-secondary {
-  @apply bg-secondary hover:bg-secondary-hover disabled:bg-secondary/50 text-white;
-}
+    @variant b-secondary {
+      @apply text-secondary;
 
-.btn-success {
-  @apply bg-success hover:bg-success-hover disabled:bg-success/50 text-white;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-secondary-hover/15;
+        }
 
-.btn-danger {
-  @apply bg-danger hover:bg-danger-hover disabled:bg-danger/50 text-white;
-}
+        @variant active {
+          @apply bg-secondary-hover/15;
+        }
+      }
+    }
 
-.btn-warning {
-  @apply bg-warning hover:bg-warning-hover disabled:bg-warning/50 text-white;
-}
+    @variant b-success {
+      @apply text-success;
 
-.btn-info {
-  @apply bg-info hover:bg-info-hover disabled:bg-info/50 text-white;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-success-hover/15;
+        }
 
-.btn-light {
-  @apply bg-light text-dark hover:bg-light-hover disabled:bg-light/50;
-}
+        @variant active {
+          @apply bg-success-hover/15;
+        }
+      }
+    }
 
-.btn-dark {
-  @apply bg-dark text-light hover:bg-dark-hover disabled:bg-dark/50;
-}
+    @variant b-warn {
+      @apply text-warning;
 
-.btn-link {
-  @apply text-blue-500 hover:text-blue-700 disabled:text-black;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-warning-hover/15;
+        }
 
-.btn-outline-primary {
-  @apply border-primary text-primary hover:bg-primary disabled:text-primary/50 border hover:text-white disabled:bg-transparent/50;
-}
+        @variant active {
+          @apply bg-warning-hover/15;
+        }
+      }
+    }
 
-.btn-outline-secondary {
-  @apply border-secondary text-secondary hover:bg-secondary disabled:text-secondary/50 border hover:text-white disabled:bg-transparent/50;
-}
+    @variant b-help {
+      @apply text-help;
 
-.btn-outline-success {
-  @apply border-success text-success hover:bg-success disabled:text-success/50 border hover:text-white disabled:bg-transparent/50;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-help-hover/40;
+        }
 
-.btn-outline-danger {
-  @apply border-danger text-danger hover:bg-danger disabled:text-danger/50 border hover:text-white disabled:bg-transparent/50;
-}
+        @variant active {
+          @apply bg-help-hover/40;
+        }
+      }
+    }
 
-.btn-outline-warning {
-  @apply border-warning text-warning hover:bg-warning disabled:text-warning/50 border hover:text-white disabled:bg-transparent/50;
-}
+    @variant b-danger {
+      @apply text-danger;
 
-.btn-outline-info {
-  @apply border-info text-info hover:bg-info disabled:text-info/50 border hover:text-white disabled:bg-transparent/50;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-danger-hover/40;
+        }
 
-.btn-outline-light {
-  @apply border-light text-light hover:bg-light hover:text-dark disabled:text-light/50 border disabled:bg-transparent/50;
-}
+        @variant active {
+          @apply bg-danger-hover/40;
+        }
+      }
+    }
 
-.btn-outline-dark {
-  @apply border-dark text-dark hover:bg-dark disabled:text-dark/50 border hover:text-white disabled:bg-transparent/50;
-}
+    @variant b-contrast {
+      @apply text-surface-950 dark:text-surface-50;
 
-.btn-gradient-primary {
-  @apply from-primary via-primary-hover hover:from-primary-hover hover:via-primary-hover disabled:bg-primary/50 bg-gradient-to-r text-white hover:bg-gradient-to-br;
-}
+      @variant enabled {
+        @variant hover {
+          @apply bg-surface-800/15 dark:bg-surface-200/15;
+        }
 
+        @variant active {
+          @apply bg-surface-800/15 dark:bg-surface-200/15;
+        }
+      }
+    }
+  }
 
+  @variant b-link {
+    @apply text-primary bg-transparent border-0;
 
-.btn:has(.icon-left) {
-  @apply flex-row;
-}
+    @variant enabled {
+      @variant hover {
+        @apply text-primary-hover bg-transparent;
+      }
 
-.btn:has(.icon-right) {
-  @apply flex-row-reverse;
-}
+      @variant active {
+        @apply text-primary-hover bg-transparent;
+      }
+    }
 
-.btn:has(.icon-top) {
-  @apply flex-col;
-}
+    @variant b-info {
+      @apply text-info;
 
-.btn:has(.icon-bottom) {
-  @apply flex-col-reverse;
-}
+      @variant enabled {
+        @variant hover {
+          @apply text-info-hover;
+        }
 
-.icon-left {
-  @apply mr-2;
+        @variant active {
+          @apply text-info-hover;
+        }
+      }
+    }
+
+    @variant b-secondary {
+      @apply text-secondary;
+
+      @variant enabled {
+        @variant hover {
+          @apply text-secondary-hover;
+        }
+
+        @variant active {
+          @apply text-secondary-hover;
+        }
+      }
+    }
+
+    @variant b-success {
+      @apply text-success;
+
+      @variant enabled {
+        @variant hover {
+          @apply text-success-hover;
+        }
+
+        @variant active {
+          @apply text-success-hover;
+        }
+      }
+    }
+
+    @variant b-warn {
+      @apply text-warning;
+
+      @variant enabled {
+        @variant hover {
+          @apply text-warning-hover;
+        }
+
+        @variant active {
+          @apply text-warning-hover;
+        }
+      }
+    }
+
+    @variant b-help {
+      @apply text-help;
+
+      @variant enabled {
+        @variant hover {
+          @apply text-help-hover;
+        }
+
+        @variant active {
+          @apply text-help-hover;
+        }
+      }
+    }
+
+    @variant b-danger {
+      @apply text-danger;
+
+      @variant enabled {
+        @variant hover {
+          @apply text-danger-hover;
+        }
+
+        @variant active {
+          @apply text-danger-hover;
+        }
+      }
+    }
+
+    @variant b-contrast {
+      @apply text-surface-950 dark:text-surface-50;
+
+      @variant enabled {
+        @variant hover {
+          @apply text-surface-800 dark:text-surface-200;
+        }
+
+        @variant active {
+          @apply text-surface-800 dark:text-surface-200;
+        }
+      }
+    }
+  }
+
+  @variant b-xs {
+    @apply py-1 px-2 text-xs;
+  }
+
+  @variant b-sm {
+    @apply py-1.5 px-2.5 text-xs;
+  }
+
+  @variant b-md {
+    @apply py-1.5 px-2.5 text-sm;
+  }
+
+  @variant b-lg {
+    @apply py-2 px-3 text-sm;
+  }
+
+  @variant b-xl {
+    @apply py-2.5 px-3.5 text-base;
+  }
+
+  @variant b-2xl {
+    @apply py-3 px-4 text-lg;
+  }
 }
-.icon-right {
-  @apply ml-2;
-}
-.icon-top {
-  @apply mb-2;
-}
-.icon-bottom {
-  @apply mt-2;
-}
-*/

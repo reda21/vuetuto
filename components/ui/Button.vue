@@ -1,5 +1,5 @@
 <template>
-  <BTN unstyled :pt="theme" :severity="severity" :data-b="[variant, 'toto'].join(' ')" />
+  <BTN unstyled :pt="theme" :severity="severity" :data-b="[variant, size].join(' ')" />
 </template>
 
 <script lang="ts" setup>
@@ -12,6 +12,7 @@ import { ptViewMerge } from '@/components/v/utils';
 interface Props extends /* @vue-ignore */ ButtonProps {
   variant?: 'soft' | 'outlined' | 'subtle' | 'ghost' | 'link' | undefined;
   severity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | undefined;
 }
 
 const props = defineProps<Props>();

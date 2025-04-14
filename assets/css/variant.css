@@ -72,3 +72,56 @@
     @slot;
   }
 }
+
+/* size */
+
+@custom-variant b-xs {
+  &:where([data-b~='xs']) {
+    @slot;
+  }
+}
+
+@custom-variant b-sm {
+  &:where([data-b~='sm']) {
+    @slot;
+  }
+}
+
+@custom-variant b-md {
+  &:where([data-b~='md']) {
+    @slot;
+  }
+}
+
+@custom-variant b-lg {
+  &:where([data-b~='lg']) {
+    @slot;
+  }
+}
+
+@custom-variant b-xl {
+  &:where([data-b~='xl']) {
+    @slot;
+  }
+}
+
+@custom-variant b-2xl {
+  &:where([data-b~='2xl']) {
+    @slot;
+  }
+}
+
+/*roundes  */
+@custom-variant b-raised {
+  &:where([data-p~='raised']) {
+    @slot;
+  }
+}
+
+@custom-variant b-rounded {
+  &:where([data-p~='rounded']) {
+    @slot;
+  }
+}
+
+
