@@ -1,6 +1,17 @@
 <template>
   <div>
     <h1 class="mb-4 text-gray-900">Button {{ add }}</h1>
+    <div class="card mb-4 flex flex-col items-center gap-4">
+      <div class="flex flex-wrap justify-center gap-4">
+        <UiButton icon="pi pi-home" aria-label="Save" />
+        <UiButton label="Profile" icon="pi pi-user" />
+        <UiButton label="Save" icon="pi pi-check" iconPos="right" />
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <UiButton label="Search" icon="pi pi-search" iconPos="top" />
+        <UiButton label="Update" icon="pi pi-refresh" iconPos="bottom" />
+      </div>
+    </div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
       <UiButton label="primary" />
       <UiButton label="info" severity="info" />
@@ -119,6 +130,13 @@
       <UiButton label="primary" size="lg" />
       <UiButton label="primary" size="xl" />
       <UiButton label="primary" size="2xl" />
+    </div>
+    <div class="card mb-4 flex flex-wrap items-center justify-center gap-4">
+      <vButtonGroup>
+        <UiButton label="Save" icon="pi pi-check" />
+        <UiButton severity="danger" label="Delete" icon="pi pi-trash" />
+        <UiButton label="Cancel" icon="pi pi-times" />
+      </vButtonGroup>
     </div>
   </div>
 </template>
