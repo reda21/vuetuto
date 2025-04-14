@@ -334,15 +334,15 @@ inline-flex cursor-pointer select-none items-center justify-center overflow-hidd
     }
 
     @variant b-contrast {
-      @apply text-surface-950 dark:text-surface-50 bg-surface-950/30 dark:bg-surface-50/30;
+      @apply text-surface-950 dark:text-surface-50 bg-surface-950/30 dark:bg-surface-50/30 border-surface-950 dark:border-surface-50;
 
       @variant enabled {
         @variant hover {
-          @apply bg-surface-800/40 dark:bg-surface-200/40;
+          @apply bg-surface-800/40 dark:bg-surface-200/40 border-surface-800 dark:border-surface-200;
         }
 
         @variant active {
-          @apply bg-surface-800/40 dark:bg-surface-200/40;
+          @apply bg-surface-800/40 dark:bg-surface-200/40 border-surface-800 dark:border-surface-200;
         }
       }
     }
