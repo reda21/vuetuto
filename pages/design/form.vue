@@ -29,29 +29,44 @@ const items = ref<string[]>([]);
 const loading = ref(false);
 const error = ref('');
 
+// Ajout d'un identifiant de requête pour lazying
+let lastRequestId = 0;
+
 interface Inputs {
   nom: string;
   prenom: string[];
 }
 
 const inputs = reactive<Inputs>({
-  nom: '' as string,
-  prenom: [] as string[]
+  nom: '',
+  prenom: []
 });
 
+const test: (string | number)[] = [15, "10"]
+
 const search = async (event: { query: string }) => {
+  const requestId = ++lastRequestId; // incrémente à chaque appel
   try {
     loading.value = true;
     error.value = '';
     const data = await $fetch<string[]>('/api/suggestions', {
-      params: { q: event.query }
+      // @ts-ignore
+      query: { q: event.query }
     });
-    items.value = data as string[];
+    // Ne met à jour les items que si c'est la dernière requête
+    if (requestId === lastRequestId) {
+      items.value = data;
+    }
   } catch (err) {
-    error.value = 'Erreur lors du chargement des suggestions';
-    items.value = [];
+    if (requestId === lastRequestId) {
+      error.value = 'Erreur lors du chargement des suggestions';
+      items.value = [];
+    }
   } finally {
-    loading.value = false;
+    if (requestId === lastRequestId) {
+      loading.value = false;
+    }
   }
 }
 </script>
+
