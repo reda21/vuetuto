@@ -10,10 +10,10 @@ import BTN, { type ButtonPassThroughOptions, type ButtonProps } from 'primevue/b
 import { ptViewMerge } from '@/components/v/utils';
 
 interface Props extends /* @vue-ignore */ ButtonProps {
-  variant?: 'soft' | 'outlined' | 'text' | 'link' | undefined,
-  severity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined,
- } 
- 
+  variant?: 'soft' | 'outlined' | 'subtle' | 'ghost' | 'link' | undefined;
+  severity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined;
+}
+
 const props = defineProps<Props>();
 
 const theme = ref<ButtonPassThroughOptions>({
@@ -26,6 +26,6 @@ const theme = ref<ButtonPassThroughOptions>({
     root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`,
   },
 });
-
-
 </script>
+
+<style></style>

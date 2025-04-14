@@ -1,17 +1,74 @@
 @custom-variant b-soft {
-  &:where([data-b~="soft"]) {
+  &:where([data-b~='soft']) {
     @slot;
   }
 }
+
+@custom-variant b-subtle {
+  &:where([data-b~='subtle']) {
+    @slot;
+  }
+}
+
+@custom-variant b-ghost {
+  &:where([data-b~='ghost']) {
+    @slot;
+  }
+}
+
+@custom-variant b-link {
+  &:where([data-b~='link']) {
+    @slot;
+  }
+}
+
+/* variant */
 
 @custom-variant b-outlined {
-  &:where([data-b~="outlined"]) {
+  &:where([data-b~='outlined']) {
     @slot;
   }
 }
 
+/* colors */
 @custom-variant b-info {
-    &:where([data-p-severity="info"]){
-        @slot;
-    }
+  &:where([data-p-severity='info']) {
+    @slot;
+  }
+}
+
+@custom-variant b-secondary {
+  &:where([data-p-severity='secondary']) {
+    @slot;
+  }
+}
+
+@custom-variant b-success {
+  &:where([data-p-severity='success']) {
+    @slot;
+  }
+}
+
+@custom-variant b-warn {
+  &:where([data-p-severity='warn']) {
+    @slot;
+  }
+}
+
+@custom-variant b-help {
+  &:where([data-p-severity='help']) {
+    @slot;
+  }
+}
+
+@custom-variant b-danger {
+  &:where([data-p-severity='danger']) {
+    @slot;
+  }
+}
+
+@custom-variant b-contrast {
+  &:where([data-p-severity='contrast']) {
+    @slot;
+  }
 }

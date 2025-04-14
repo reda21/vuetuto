@@ -13,7 +13,7 @@
 /*configure theme*/
 @import './theme.css';
 
-@import "./prime_theme.css";
+@import './prime_theme.css';
 
 /* navbar */
 @import './navbar.css';

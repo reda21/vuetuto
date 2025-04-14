@@ -1,4 +1,3 @@
-
 /*
 inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
         px-3 py-2 gap-2 rounded-md disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
@@ -25,18 +24,327 @@ inline-flex cursor-pointer select-none items-center justify-center overflow-hidd
         dark:p-text:text-primary dark:enabled:hover:p-text:text-primary dark:enabled:active:p-text:text-primary
 */
 
-
-
 .btn {
-  @apply inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
-        px-3 py-2 gap-2 rounded-md disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
-        bg-primary enabled:hover:bg-primary-hover enabled:active:bg-primary-emphasis-alt text-white
-        border border-primary enabled:hover:border-primary-emphasis enabled:active:border-primary-emphasis-alt
-        focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  @apply bg-primary text-surface-50 border-primary relative inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-md border px-3 py-2 transition-colors duration-200 select-none;
 
-  @variant b-outlined{
-    @variant b-info{
-        @apply bg-green-500;
+  @variant enabled {
+    @variant hover {
+      @apply bg-primary-hover border-primary-hover;
+    }
+
+    @variant active {
+      @apply bg-primary-hover border-primary-hover;
+    }
+  }
+
+  @variant focus-visible {
+    @apply outline-primary outline-1 outline-offset-2;
+  }
+
+  @variant disabled {
+    @apply pointer-events-none opacity-60;
+  }
+
+  @variant dark {
+    @apply text-surface-950;
+  }
+
+  /* colors */
+  @variant b-info {
+    @apply bg-info border-info enabled:hover:bg-info-hover enabled:hover:border-info-hover enabled:active:bg-info-hover enabled:active:border-info-hover;
+  }
+
+  @variant b-secondary {
+    @apply bg-secondary border-secondary enabled:hover:bg-secondary-hover enabled:hover:border-secondary-hover enabled:active:bg-secondary-hover enabled:active:border-secondary-hover;
+  }
+
+  @variant b-success {
+    @apply bg-success border-success enabled:hover:bg-success-hover enabled:hover:border-success-hover enabled:active:bg-success-hover enabled:active:border-success-hover;
+  }
+
+  @variant b-warn {
+    @apply bg-warning border-warning enabled:hover:bg-warning-hover enabled:hover:border-warning-hover enabled:active:bg-warning-hover enabled:active:border-warning-hover;
+  }
+
+  @variant b-help {
+    @apply bg-help border-help enabled:hover:bg-help-hover enabled:hover:border-help-hover enabled:active:bg-help-hover enabled:active:border-help-hover;
+  }
+
+  @variant b-danger {
+    @apply bg-danger border-danger enabled:hover:bg-danger-hover enabled:hover:border-danger-hover enabled:active:bg-danger-hover enabled:active:border-danger-hover;
+  }
+
+  @variant b-contrast {
+    @apply bg-surface-950 bg-surface-50 border-surface-950 enabled:hover:bg-surface-800 enabled:hover:border-surface-800 enabled:active:bg-surface-800 enabled:active:border-surface-800;
+
+    @variant dark {
+      @apply bg-surface-50 border-surface-50 enabled:hover:bg-surface-200 enabled:hover:border-surface-200 enabled:active:bg-surface-200 enabled:active:border-surface-200;
+    }
+  }
+
+  @variant b-outlined {
+    @apply text-primary bg-transparent;
+
+    @variant enabled {
+      @variant hover {
+        @apply bg-primary border-primary text-surface-50 dark:text-surface-800;
+      }
+
+      @variant active {
+        @apply bg-primary border-primary text-transparent;
+      }
+    }
+
+    @variant b-info {
+      @apply text-info enabled:hover:bg-info enabled:hover:border-info enabled:active:bg-info enabled:active:border-info;
+    }
+
+    @variant b-success {
+      @apply text-success enabled:hover:bg-success enabled:hover:border-success enabled:active:bg-success enabled:active:border-success;
+    }
+
+    @variant b-warn {
+      @apply text-warning enabled:hover:bg-warning enabled:hover:border-warning enabled:active:bg-warning enabled:active:border-warning;
+    }
+
+    @variant b-help {
+      @apply text-help enabled:hover:bg-help enabled:hover:border-help enabled:active:bg-help enabled:active:border-help;
+    }
+
+    @variant b-danger {
+      @apply text-danger enabled:hover:bg-danger enabled:hover:border-danger enabled:active:bg-danger enabled:active:border-danger;
+    }
+
+    @variant b-contrast {
+      @apply text-surface-950 enabled:hover:bg-surface-950 enabled:hover:border-surface-950 enabled:active:bg-surface-950 enabled:active:border-surface-950;
+
+      @variant dark {
+        @apply text-surface-50 enabled:hover:bg-surface-50 enabled:hover:border-surface-50 enabled:active:bg-surface-50 enabled:active:border-surface-50;
+      }
+    }
+  }
+
+  @variant b-soft {
+    @apply text-primary bg-primary/30 border-0;
+
+    @variant enabled {
+      @variant hover {
+        @apply bg-primary-hover/40;
+      }
+
+      @variant active {
+        @apply bg-primary-hover/40;
+      }
+    }
+
+    @variant b-info {
+      @apply text-info bg-info/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-info-hover/40;
+        }
+
+        @variant active {
+          @apply bg-info-hover/40;
+        }
+      }
+    }
+
+    @variant b-secondary {
+      @apply text-secondary bg-secondary/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-secondary-hover/40;
+        }
+
+        @variant active {
+          @apply bg-secondary-hover/40;
+        }
+      }
+    }
+
+    @variant b-success {
+      @apply text-success bg-success/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-success-hover/40;
+        }
+
+        @variant active {
+          @apply bg-success-hover/40;
+        }
+      }
+    }
+
+    @variant b-warn {
+      @apply text-warning bg-warning/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-warning-hover/40;
+        }
+
+        @variant active {
+          @apply bg-warning-hover/40;
+        }
+      }
+    }
+
+    @variant b-help {
+      @apply text-help bg-help/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-help-hover/40;
+        }
+
+        @variant active {
+          @apply bg-help-hover/40;
+        }
+      }
+    }
+
+    @variant b-danger {
+      @apply text-danger bg-danger/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-danger-hover/40;
+        }
+
+        @variant active {
+          @apply bg-danger-hover/40;
+        }
+      }
+    }
+
+    @variant b-contrast {
+      @apply text-surface-950 dark:text-surface-50 bg-surface-950/30 dark:bg-surface-50/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-surface-800/40 dark:bg-surface-200/40;
+        }
+
+        @variant active {
+          @apply bg-surface-800/40 dark:bg-surface-200/40;
+        }
+      }
+    }
+  }
+
+  @variant b-subtle {
+    @apply text-primary bg-primary/30 border-primary;
+
+    @variant enabled {
+      @variant hover {
+        @apply bg-primary-hover/40 border-primary-hover;
+      }
+
+      @variant active {
+        @apply bg-primary-hover/40 border-primary-hover;
+      }
+    }
+
+    @variant b-info {
+      @apply text-info bg-info/30 border-info;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-info-hover/40 border-info-hover;
+        }
+
+        @variant active {
+          @apply bg-info-hover/40 border-info-hover;
+        }
+      }
+    }
+
+    @variant b-secondary {
+      @apply text-secondary bg-secondary/30 border-secondary;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-secondary-hover/40 border-secondary-hover;
+        }
+
+        @variant active {
+          @apply bg-secondary-hover/40 border-secondary-hover;
+        }
+      }
+    }
+
+    @variant b-success {
+      @apply text-success bg-success/30 border-success;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-success-hover/40 border-success-hover;
+        }
+
+        @variant active {
+          @apply bg-success-hover/40 border-success-hover;
+        }
+      }
+    }
+
+    @variant b-warn {
+      @apply text-warning bg-warning/30 border-warning;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-warning-hover/40 border-warning-hover;
+        }
+
+        @variant active {
+          @apply bg-warning-hover/40 border-warning-hover;
+        }
+      }
+    }
+
+    @variant b-help {
+      @apply text-help bg-help/30 border-help;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-help-hover/40 border-help-hover;
+        }
+
+        @variant active {
+          @apply bg-help-hover/40 border-help-hover;
+        }
+      }
+    }
+
+    @variant b-danger {
+      @apply text-danger bg-danger/30 border-danger;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-danger-hover/40 border-danger-hover;
+        }
+
+        @variant active {
+          @apply bg-danger-hover/40 border-danger-hover;
+        }
+      }
+    }
+
+    @variant b-contrast {
+      @apply text-surface-950 dark:text-surface-50 bg-surface-950/30 dark:bg-surface-50/30;
+
+      @variant enabled {
+        @variant hover {
+          @apply bg-surface-800/40 dark:bg-surface-200/40;
+        }
+
+        @variant active {
+          @apply bg-surface-800/40 dark:bg-surface-200/40;
+        }
+      }
     }
   }
 }

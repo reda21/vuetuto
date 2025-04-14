@@ -14,7 +14,7 @@
     "test": "vitest",
     "format": "prettier --write \"**/*.{js,ts,vue,css,json,md, html}\"",
     "format:c": "prettier --write \"**/*.{ts,vue,tsx}\"",
-    "format:s": "prettier --write \"**/*.{css}\""
+    "format:s": "prettier --write \"**/*.css\""
   },
   "dependencies": {
     "@chantouchsek/validatorjs": "^2.2.4",
