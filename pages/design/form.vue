@@ -1,34 +1,72 @@
 <template>
   <div
-    class="bg-light-second dark:bg-dark-second animate-fade-in mx-auto max-w-3xl overflow-hidden rounded-xl p-4 shadow-2xl"
-  >
+    class="bg-light-second dark:bg-dark-second animate-fade-in mx-auto max-w-3xl overflow-hidden rounded-xl p-4 shadow-2xl">
     <h2 class="mb-6 text-center text-3xl font-bold">Test de Formulaires</h2>
     <form class="space-y-6">
       <!-- Champ texte -->
       <div class="mp-3">
-        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom Utulisateur</label>
-        <VInputText v-model="inputs.username" placeholder="Username" fluid/>
+        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom
+          Utulisateur</label>
+        <VInputText v-model="inputs.username" placeholder="Username" fluid />
       </div>
       <div class="mp-3">
         <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom</label>
-        <VInputText v-model="inputs.nom" placeholder="Nom" fluid/>
+        <VInputText v-model="inputs.nom" placeholder="Nom" fluid />
       </div>
       <div class="mp-3">
-        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom</label>
-        <VSelect v-model="inputs.city" :options="cities" showClear optionLabel="name" placeholder="Select a City" fluid/>
+        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">cities</label>
+        <VMultiSelect v-model="inputs.cities" filter :options="cities" optionLabel="name" placeholder="cities" fluid />
       </div>
       <div class="mp-3">
-        <label for="firstname" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Prénom</label>
-        <VAutoComplete 
-          v-model="inputs.prenom" 
-          :suggestions="items" 
-          :loading="loading"
-          @complete="search" 
-          fluid
-        />
+        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">city</label>
+        <VSelect v-model="inputs.city" :options="cities" showClear optionLabel="name" placeholder="Select a City"
+          fluid />
+      </div>
+      <div class="mp-3">
+        <label for="firstname"
+          class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Prénom</label>
+        <VAutoComplete v-model="inputs.prenom" :suggestions="items" :loading="loading" @complete="search" fluid />
         <small class="text-red-500 dark:text-red-400" v-if="error">{{ error }}</small>
       </div>
+      <div class="mb-3 card flex flex-wrap justify-center gap-4">
+        <div class="flex items-center gap-2">
+          <VCheckbox v-model="inputs.pizza" inputId="ingredient1" name="pizza" value="Cheese" />
+          <label for="ingredient1"> Cheese </label>
+        </div>
+        <div class="flex items-center gap-2">
+          <VCheckbox v-model="inputs.pizza" inputId="ingredient2" name="pizza" value="Mushroom" />
+          <label for="ingredient2"> Mushroom </label>
+        </div>
+        <div class="flex items-center gap-2">
+          <VCheckbox v-model="inputs.pizza" inputId="ingredient3" name="pizza" value="Pepper" />
+          <label for="ingredient3"> Pepper </label>
+        </div>
+        <div class="flex items-center gap-2">
+          <VCheckbox v-model="inputs.pizza" inputId="ingredient4" name="pizza" value="Onion" />
+          <label for="ingredient4"> Onion </label>
+        </div>
+      </div>
+      <div class="mp-3">
+        <label for="password"
+          class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">password</label>
+        <VPassword v-model="inputs.password" promptLabel="Choose a password" weakLabel="Too simple"
+          mediumLabel="Average complexity" strongLabel="Complex password" toggleMask fluid>
+          <template #header>
+            <div class="font-semibold text-xm mb-4">Pick a password</div>
+          </template>
+          <template #footer>
+            <Divider />
+            <ul class="pl-2 my-0 leading-normal ">
+              <li>At least one lowercase</li>
+              <li>At least one uppercase</li>
+              <li>At least one numeric</li>
+              <li>Minimum 8 characters</li>
+            </ul>
+          </template>
+        </VPassword>
+      </div>
     </form>
+    <pre>{{ inputs }}</pre>
   </div>
 </template>
 
@@ -45,21 +83,29 @@ interface Inputs {
   nom: string;
   prenom: string[];
   city: string;
+  cities: string[];
+  textea: string;
+  pizza: string[];
+  password: string;
 }
 
 const inputs = reactive<Inputs>({
-  username:'reda21',
+  username: 'reda21',
   nom: '',
   prenom: [],
-  city: ''
+  city: '',
+  cities: [],
+  textea: String(),
+  pizza: [],
+  password: ''
 });
 
 const cities = ref([
-    { name: 'New York', code: 'NY' },
-    { name: 'Rome', code: 'RM' },
-    { name: 'London', code: 'LDN' },
-    { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' }
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' }
 ]);
 
 const test: (string | number)[] = [15, "10"]
@@ -89,4 +135,3 @@ const search = async (event: { query: string }) => {
   }
 }
 </script>
-
