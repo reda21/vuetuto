@@ -6,8 +6,16 @@
     <form class="space-y-6">
       <!-- Champ texte -->
       <div class="mp-3">
+        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom Utulisateur</label>
+        <VInputText v-model="inputs.username" placeholder="Username" fluid/>
+      </div>
+      <div class="mp-3">
         <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom</label>
-        <VInputText v-model="inputs.nom" fluid/>
+        <VInputText v-model="inputs.nom" placeholder="Nom" fluid/>
+      </div>
+      <div class="mp-3">
+        <label for="nom" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Nom</label>
+        <VSelect v-model="inputs.city" :options="cities" showClear optionLabel="name" placeholder="Select a City" fluid/>
       </div>
       <div class="mp-3">
         <label for="firstname" class="mb-1 block text-sm font-medium text-surface-600 dark:text-surface-300">Prénom</label>
@@ -33,14 +41,26 @@ const error = ref('');
 let lastRequestId = 0;
 
 interface Inputs {
+  username: string,
   nom: string;
   prenom: string[];
+  city: string;
 }
 
 const inputs = reactive<Inputs>({
+  username:'reda21',
   nom: '',
-  prenom: []
+  prenom: [],
+  city: ''
 });
+
+const cities = ref([
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' }
+]);
 
 const test: (string | number)[] = [15, "10"]
 

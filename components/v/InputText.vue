@@ -17,16 +17,16 @@ import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ InputTextProps {}
 defineProps<Props>();
-
+//w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent
 const theme = ref<InputTextPassThroughOptions>({
     root: `appearance-none rounded-md outline-hidden
         bg-light-input dark:bg-dark-input
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
-        text-surface-700 dark:text-surface-0
+        text-surface-950 dark:text-surface-0
         placeholder:text-surface-500 dark:placeholder:text-surface-400
-        border-3 border-surface-300 dark:border-surface-700
+        border border-surface-300 dark:border-surface-700
         enabled:hover:border-accent dark:enabled:hover:border-accent
-        enabled:focus:border-accent ring-accent
+        enabled:focus:border-accent focus:ring-2 focus:ring-accent
         disabled:bg-light-input-disabled disabled:text-surface-500
         dark:disabled:bg-dark-input-disabled dark:disabled:text-surface-400
         p-invalid:border-red-400 dark:p-invalid:border-red-300
