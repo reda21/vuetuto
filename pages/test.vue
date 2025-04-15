@@ -84,7 +84,7 @@
 import { reactive } from 'vue';
 import { useValidator } from '@/composables/useValidator';
 import { Data } from '../data/data';
-import { Password } from '../.nuxt/components';
+
 
 type InitialValuesType = {
   username: string;
