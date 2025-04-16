@@ -92,6 +92,7 @@ export function useField<T = any>({
     form.setFieldTouched(name, true);
   };
   const handleChange = () => {
+    console.info("change", name);
     form.setFieldDirty(name, true);
     validateField();
   };

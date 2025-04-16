@@ -28,33 +28,29 @@ export function useForm({
   customMessages = {},
 }: UseFormOptions) {
   // on initialise values avec initialValues
-  const { values, errors, rules } = useValidator({
+  const {
+    values,
+    errors,
+    rules,
+    touched,
+    dirty,
+    isSubmitting,
+    isValidating,
+    isValidated,
+    validate,
+    asyncValidate,
+    setDirty,
+    setFieldDirty,
+    setAllDirty,
+    setTouched,
+    setFieldTouched,
+    setAllTouched,
+  } = useValidator({
     schema,
     initialValues,
     customMessages,
   });
 
-  const touched = reactive<Record<string, boolean>>(
-    Object.keys(values).reduce(
-      (acc, key) => ({
-        ...acc,
-        [key]: initialTouched[key] || false,
-      }),
-      {}
-    )
-  );
-  const dirty = reactive<Record<string, boolean>>(
-    Object.keys(values).reduce(
-      (acc, key) => ({
-        ...acc,
-        [key]: initialTouched[key] || false,
-      }),
-      {}
-    )
-  );
-  const isSubmitting = ref(false);
-  const isValidating = ref(false);
-  const isValidated = ref(false);
   const asyncValidators = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
   const validateForm = async (): Promise<boolean> => {
@@ -87,16 +83,10 @@ export function useForm({
   ) {
     return async (e?: Event) => {
       e?.preventDefault?.();
-      isSubmitting.value = true;
-      Object.keys(values).forEach((f) => (touched[f] = true));
-      try {
-        await validateForm();
-        const hasErrors = Object.values(errors.all()).some((m) => !!m);
-        if (!hasErrors) onValid(values);
-        else onInvalid?.(errors.all());
-      } finally {
-        isSubmitting.value = false;
-      }
+      setAllTouched(true);
+
+      const { valid, errors } = await asyncValidate();
+      valid ? onValid(values) : onInvalid?.(errors.all());
     };
   }
 
@@ -124,34 +114,6 @@ export function useForm({
       setFieldTouched(field, true);
     });
     validateForm();
-  }
-
-  function setFieldDirty(field: string, isDirty: boolean) {
-    if (field in dirty) {
-      dirty[field] = isDirty;
-    }
-  }
-
-  function setDirty(fields: Record<string, boolean>) {
-    Object.entries(fields).forEach(([field, isDirty]) => {
-      if (field in dirty) {
-        dirty[field] = isDirty;
-      }
-    });
-  }
-
-  function setFieldTouched(field: string, isTouched: boolean) {
-    if (field in touched) {
-      touched[field] = isTouched;
-    }
-  }
-
-  function setTouched(fields: Record<string, boolean>) {
-    Object.entries(fields).forEach(([field, isTouched]) => {
-      if (field in touched) {
-        touched[field] = isTouched;
-      }
-    });
   }
 
   const ctx: FormContext = {

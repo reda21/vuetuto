@@ -10,6 +10,14 @@ import type {
   AddCustomAsyncRule,
   FormMeta,
   ValidationResult,
+  SetFieldValue,
+  SetValues,
+  SetFieldDirty,
+  SetDirty,
+  SetAllDirty,
+  SetFieldTouched,
+  SetTouched,
+  SetAllTouched,
 } from '@/components/ui/form/formType';
 
 export const useValidator: UseValidator = ({
@@ -58,7 +66,27 @@ export const useValidator: UseValidator = ({
 
   setCustomRules();
 
-  const validate = async (): Promise<ValidationResult> => {
+  const validate = (): ValidationResult => {
+    isValidating.value = true;
+
+    const validation = new Validator(values, rules.getRules(), customMessages);
+    if (validation.passes()) {
+      isValidated.value = true;
+    } else {
+      errors.setAll(validation.errors.all());
+      isValidated.value = false;
+    }
+    isValidating.value = false;
+
+    return {
+      valid: isValidated.value,
+      fails: !isValidated.value,
+      errors,
+      isValidating,
+    };
+  };
+
+  const asyncValidate = async (): Promise<ValidationResult> => {
     isValidating.value = true;
 
     const validation = new Validator(values, rules.getRules(), customMessages);
@@ -87,9 +115,89 @@ export const useValidator: UseValidator = ({
     };
   };
 
-  const asyncValidate = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
+  const setFieldValue: SetFieldValue = (field, value) => {
+    values[field] = value;
+    setFieldDirty(field, true);
+    setFieldTouched(field, true);
+    //   validateForm();
+  };
 
-  return { addCustomRule, addCustomAsyncRule, validate, values, errors, meta, rules };
+  const setValues: SetValues = (fields) => {
+    Object.entries(fields).forEach(([field, value]) => {
+      values[field] = value;
+      setFieldDirty(field, true);
+      setFieldTouched(field, true);
+    });
+    //   validateForm();
+  };
+
+  const setFieldDirty: SetFieldDirty = (field, isDirty) => {
+    if (field in dirty) {
+      dirty[field] = isDirty;
+    }
+  };
+
+  const setDirty: SetDirty = (fields) => {
+    Object.entries(fields).forEach(([field, isDirty]) => {
+      if (field in dirty) {
+        dirty[field] = isDirty;
+      }
+    });
+  };
+
+  const setAllDirty: SetAllDirty = (isDirty) => {
+    Object.keys(dirty).forEach((field) => {
+      if (typeof isDirty === 'boolean') {
+        dirty[field] = isDirty;
+      }
+    });
+  };
+
+  const setFieldTouched: SetFieldTouched = (field, isTouched) => {
+    if (field in touched) {
+      touched[field] = isTouched;
+    }
+  };
+
+  const  setTouched: SetTouched = (fields) => {
+    Object.entries(fields).forEach(([field, isTouched]) => {
+      if (field in touched) {
+        touched[field] = isTouched;
+      }
+    });
+  }
+
+  const setAllTouched: SetAllTouched = (isTouched) => {
+    Object.keys(touched).forEach((field) => {
+      if (typeof isTouched === 'boolean') {
+        touched[field] = isTouched;
+      }
+    });
+  };
+
+  return {
+    addCustomRule,
+    addCustomAsyncRule,
+    validate,
+    asyncValidate,
+    setFieldValue,
+    setValues,
+    setFieldDirty,
+    setDirty,
+    setAllDirty,
+    setFieldTouched,
+    setTouched,
+    setAllTouched,
+    values,
+    errors,
+    meta,
+    rules,
+    touched,
+    dirty,
+    isValidated,
+    isValidating,
+    isSubmitting,
+  };
 };
 
 // Ajouter une règle personnalisée (synchrone)

@@ -1,22 +1,22 @@
 <template>
-    <InputText
-        unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
-    />
+    <InputText unstyled :pt="theme" :ptOptions="{
+        mergeProps: ptViewMerge
+    }" v-model="value" @input="handleChange" @blur="handleBlur" />
 </template>
 
 <script setup lang="ts">
 // @ts-ignore
 import InputText, { type InputTextPassThroughOptions, type InputTextProps } from 'primevue/inputtext';
 // @ts-ignore
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, defineModel } from 'vue';
 import { ptViewMerge } from './utils';
 
-interface Props extends /* @vue-ignore */ InputTextProps {}
-defineProps<Props>();
+interface Props extends /* @vue-ignore */ InputTextProps {
+    name: string;
+    rules?: string | string[] | undefined;
+
+}
+const props = defineProps<Props>();
 //w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent
 const theme = ref<InputTextPassThroughOptions>({
     root: `appearance-none rounded-md outline-hidden
@@ -35,5 +35,17 @@ const theme = ref<InputTextPassThroughOptions>({
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`
+});
+
+//get model value
+const value = defineModel<string | null>({ required: false, default: null });
+
+
+
+//useField
+const { handleChange, handleBlur, errors } = useField({
+    name: props.name,
+    initialValue: value.value,
+    rules: props.rules,
 });
 </script>

@@ -185,21 +185,44 @@ export interface UseValidatorParams {
   initialTouched?: Record<string, boolean>;
 }
 
-export interface UseValidatorResult {
-  addCustomRule: AddCustomRule;
-  addCustomAsyncRule: AddCustomAsyncRule;
-  validate: () => Promise<ValidationResult>;
-  values: Record<string, any>;
-  errors: CustomError;
-  meta: ComputedRef<Partial<FormMeta>>;
-  rules: ValidationRulesManager;
-}
-
 export interface ValidationResult {
   valid: boolean;
   fails: boolean;
   errors: CustomError;
   isValidating: Ref<boolean>;
+}
+
+export type SetFieldValue = (field: string, value: any) => void
+export type SetValues = (fields: Record<string, any>) => void
+export type SetFieldDirty = (field: string, isDirty: boolean) => void
+export type SetDirty = (fields: Record<string, boolean>) => void
+export type SetAllDirty = (isDirty: boolean) => void;
+export type SetFieldTouched = (field: string, isTouched: boolean) => void;
+export type SetTouched = (fields: Record<string, boolean>) => void;
+export type SetAllTouched = (isTouched: boolean) => void;
+
+export interface UseValidatorResult {
+  addCustomRule: AddCustomRule;
+  addCustomAsyncRule: AddCustomAsyncRule;
+  validate: () => ValidationResult;
+  asyncValidate: () => Promise<ValidationResult>;
+  setFieldValue: SetFieldValue;
+  setValues: SetValues;
+  setFieldDirty: SetFieldDirty;
+  setDirty: SetDirty;
+  setAllDirty: SetAllDirty;
+  setFieldTouched: SetFieldTouched;
+  setTouched: SetTouched;
+  setAllTouched: SetAllTouched;
+  values: Record<string, any>;
+  errors: CustomError;
+  meta: ComputedRef<Partial<FormMeta>>;
+  rules: ValidationRulesManager;
+  touched: Record<string, boolean>;
+  dirty: Record<string, boolean>;
+  isValidated: Ref<boolean>;
+  isValidating: Ref<boolean>;
+  isSubmitting: Ref<boolean>;
 }
 
 export type UseValidator = (options: UseValidatorParams) => UseValidatorResult;
