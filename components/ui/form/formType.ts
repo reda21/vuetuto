@@ -156,6 +156,7 @@ export interface UseFieldReturn<T = any> {
   handleBlur: () => void;
   handleChange: (e: Event) => void;
   meta: MetaField;
+  hasError: boolean;
 }
 
 //use Validator

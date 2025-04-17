@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { CustomError } from '../../utils/customError2';
+import { CustomError2 } from '../../utils/customError2';
 import { ref } from 'vue';
 
 interface Inputs {
@@ -11,10 +11,10 @@ interface Inputs {
 }
 
 describe('CustomError', () => {
-  let error: CustomError<Inputs>;
+  let error: CustomError2<Inputs>;
 
   beforeEach(() => {
-    error = new CustomError<Inputs>();
+    error = new CustomError2<Inputs>();
   });
 
   it('setOne ajoute une erreur sous forme de tableau', () => {

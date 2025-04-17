@@ -2,7 +2,7 @@ export type ErrorType<T> = {
   [K in keyof T]?: string[];
 };
 
-export class CustomError<T extends Record<string, any>> {
+export class CustomError2<T extends Record<string, any>> {
   private items: { value: ErrorType<T> };
 
   constructor() {
