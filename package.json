@@ -19,7 +19,7 @@
     "@iconify/vue": "^4.1.2",
     "@logto/next": "^4.2.0",
     "@mastra/client-js": "^0.1.11",
-    "@mastra/core": "^0.6.3",
+    "@mastra/core": "^0.7.0",
     "@pinia/nuxt": "^0.10.1",
     "@sidebase/nuxt-auth": "0.10.0",
     "@tailwindcss/vite": "^4.0.6",
