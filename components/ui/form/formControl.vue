@@ -1,9 +1,9 @@
 <template>
   <div class="mb-2">
-    <UiFormLabel :invalid="errors.has(name)" :for="name" :id="id ?? name">{{ label }}</UiFormLabel>
+    <UiFormLabel :invalid="hasError" :for="name" :id="id ?? name">{{ label }}</UiFormLabel>
     <slot />
-    <p v-if="errors.has(name)" class="text-danger mt-1 text-sm">
-      {{ errors?.first(name) }}
+    <p v-if="hasError" class="text-danger mt-1 text-sm">
+      {{ oneError }}
     </p>
   </div>
 </template>
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<FormControlValues>(), {});
 
 
 //useField
-const { errors, meta } = useField({ name: props.name });
+const { hasError, oneError, meta } = useField({ name: props.name });
 
 /*
  :invalid="errors && errors.has(name)"

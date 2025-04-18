@@ -68,16 +68,19 @@ export const useValidator: UseValidator = ({
 
   const validate = (): ValidationResult => {
     isValidating.value = true;
-
-    const validation = new Validator(values, rules.getRules(), customMessages);
-    if (validation.passes()) {
-      isValidated.value = true;
-    } else {
-      errors.setAll(validation.errors.all());
-      isValidated.value = false;
-    }
+    runValidate(
+      values,
+      rules.getRules(),
+      customMessages,
+      () => {
+        isValidated.value = true;
+      },
+      (er) => {
+        errors.setAll(er)
+        isValidated.value = false;
+      }
+    );
     isValidating.value = false;
-
     return {
       valid: isValidated.value,
       fails: !isValidated.value,
@@ -87,25 +90,19 @@ export const useValidator: UseValidator = ({
   };
 
   const asyncValidate = async (): Promise<ValidationResult> => {
-    isValidating.value = true;
-
-    const validation = new Validator(values, rules.getRules(), customMessages);
-
-    try {
-      await new Promise<void>((resolve, reject) => {
-        validation.checkAsync(
-          () => resolve(), // passes
-          () => reject(validation.errors.all()) // fails
-        );
-      });
-      errors.clearAll();
-      isValidated.value = true;
-    } catch (validationErrors) {
-      errors.setAll(validationErrors as Record<string, string[]>);
-      isValidated.value = false;
-    } finally {
-      isValidating.value = false;
-    }
+    runAsyncValidate(
+      values,
+      rules.getRules(),
+      customMessages,
+      () => {
+        errors.clearAll();
+        isValidated.value = true;
+      },
+      (er) => {
+        errors.setAll(er);
+        isValidated.value = false;
+      }
+    );
 
     return {
       valid: isValidated.value,
@@ -159,13 +156,13 @@ export const useValidator: UseValidator = ({
     }
   };
 
-  const  setTouched: SetTouched = (fields) => {
+  const setTouched: SetTouched = (fields) => {
     Object.entries(fields).forEach(([field, isTouched]) => {
       if (field in touched) {
         touched[field] = isTouched;
       }
     });
-  }
+  };
 
   const setAllTouched: SetAllTouched = (isTouched) => {
     Object.keys(touched).forEach((field) => {
@@ -227,3 +224,27 @@ const setCustomRules = () => {
     "Le champ :attribute n'est pas disponible."
   );
 };
+
+const runValidate = (
+  values: Record<string, any>,
+  rules: Record<string, string[]>,
+  customMessages?: Record<string, any>,
+  passes?: () => void,
+  fails?: (errors: Record<string, string[]>) => void
+): void => {
+  const validation = new Validator(values, rules, customMessages);
+
+  validation.passes() ? passes?.() : fails?.(validation.errors.all());
+};
+
+const runAsyncValidate = async (
+  values: Record<string, any>,
+  rules: Record<string, string[]>,
+  customMessages?: Record<string, any>,
+  passes?: () => void,
+  fails?: (errors: Record<string, string[]>) => void
+) => {
+  const validation = new Validator(values, rules, customMessages);
+  validation.checkAsync(passes, () => fails?.(validation.errors.all()));
+};
+// This closing brace appears to be extra and should be removed as it doesn't match any opening brace

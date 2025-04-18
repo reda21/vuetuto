@@ -1,12 +1,12 @@
-export type ErrorType<T> = {
+export type ErrorType2<T> = {
   [K in keyof T]?: string[];
 };
 
 export class CustomError2<T extends Record<string, any>> {
-  private items: { value: ErrorType<T> };
+  private items: { value: ErrorType2<T> };
 
   constructor() {
-    this.items = { value: {} as ErrorType<T> };
+    this.items = { value: {} as ErrorType2<T> };
   }
 
   setOne<K extends keyof T>(key: K, value: any): void {
@@ -34,7 +34,7 @@ export class CustomError2<T extends Record<string, any>> {
 
   setAll(items: Partial<Record<keyof T, string | string[]>>): void {
     this.clearAll();
-    const _items: ErrorType<T> = {};
+    const _items: ErrorType2<T> = {};
     for (const key in items) {
       if (Array.isArray(items[key])) {
         _items[key as keyof T] = items[key] as string[];
@@ -53,7 +53,7 @@ export class CustomError2<T extends Record<string, any>> {
     return key in this.items.value;
   }
 
-  all(): ErrorType<T> {
+  all(): ErrorType2<T> {
     return this.items.value;
   }
 
@@ -62,7 +62,7 @@ export class CustomError2<T extends Record<string, any>> {
   }
 
   clearAll(): void {
-    this.items.value = {} as ErrorType<T>;
+    this.items.value = {} as ErrorType2<T>;
   }
 
   first<K extends keyof T>(key: K): any {

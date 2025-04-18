@@ -1,14 +1,12 @@
 <template>
-    <InputText unstyled :pt="theme" :ptOptions="{
-        mergeProps: ptViewMerge
-    }" v-model="value" @input="handleChange" @blur="handleBlur" />
+    <InputText unstyled :pt="theme" :ptOptions="ptOptions" v-model="value" @input="handleChange" @blur="handleBlur" :invalid="i" />
 </template>
 
 <script setup lang="ts">
 // @ts-ignore
 import InputText, { type InputTextPassThroughOptions, type InputTextProps } from 'primevue/inputtext';
 // @ts-ignore
-import { ref, defineProps, defineModel } from 'vue';
+import { ref, defineProps, defineModel, withDefaults } from 'vue';
 import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ InputTextProps {
@@ -16,7 +14,11 @@ interface Props extends /* @vue-ignore */ InputTextProps {
     rules?: string | string[] | undefined;
 
 }
-const props = defineProps<Props>();
+
+const props = withDefaults(defineProps<Props>(), {
+    invalid: false
+});
+
 //w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent
 const theme = ref<InputTextPassThroughOptions>({
     root: `appearance-none rounded-md outline-hidden
@@ -29,21 +31,27 @@ const theme = ref<InputTextPassThroughOptions>({
         enabled:focus:border-accent focus:ring-2 focus:ring-accent
         disabled:bg-light-input-disabled disabled:text-surface-500
         dark:disabled:bg-dark-input-disabled dark:disabled:text-surface-400
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
-        p-invalid:placeholder:text-red-600 dark:p-invalid:placeholder:text-red-400
+        p-invalid:border-danger dark:p-invalid:border-red-300
+        p-invalid:placeholder:text-danger dark:p-invalid:placeholder:text-red-400 p-invalid:focus:ring-danger
         px-3 py-2 p-fluid:w-full
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`
-});
-
+})
 //get model value
 const value = defineModel<string | null>({ required: false, default: null });
 
+const ptOptions = computed(() => ({
+    mergeProps: ptViewMerge
+}))
 
+//computed
+const i = computed(() => {
+    return (props.invalid ?? false) || hasError.value
+ })
 
 //useField
-const { handleChange, handleBlur, errors } = useField({
+const { handleChange, handleBlur,  hasError } = useField({
     name: props.name,
     initialValue: value.value,
     rules: props.rules,
