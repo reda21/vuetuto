@@ -1,5 +1,6 @@
 <template>
-    <InputText unstyled :pt="theme" :ptOptions="ptOptions" v-model="value" @input="handleChange" @blur="handleBlur" :invalid="i" />
+    <InputText unstyled :pt="theme" :ptOptions="ptOptions" v-model="value" @input="handleChange" @blur="handleBlur"
+        :disabled="disabling" :invalid="i" />       
 </template>
 
 <script setup lang="ts">
@@ -12,11 +13,14 @@ import { ptViewMerge } from './utils';
 interface Props extends /* @vue-ignore */ InputTextProps {
     name: string;
     rules?: string | string[] | undefined;
+    invalid?: boolean;
+    disabled?: boolean;
 
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    invalid: false
+    invalid: false,
+    disabled: false,
 });
 
 //w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blog-accent
@@ -31,7 +35,7 @@ const theme = ref<InputTextPassThroughOptions>({
         enabled:focus:border-accent focus:ring-2 focus:ring-accent
         disabled:bg-light-input-disabled disabled:text-surface-500
         dark:disabled:bg-dark-input-disabled dark:disabled:text-surface-400
-        p-invalid:border-danger dark:p-invalid:border-red-300
+        p-invalid:border-danger dark:p-invalid:border-red-300 p-invalid:text-danger
         p-invalid:placeholder:text-danger dark:p-invalid:placeholder:text-red-400 p-invalid:focus:ring-danger
         px-3 py-2 p-fluid:w-full
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
@@ -48,10 +52,15 @@ const ptOptions = computed(() => ({
 //computed
 const i = computed(() => {
     return (props.invalid ?? false) || hasError.value
- })
+})
+
+const disabling = computed(() => {
+    // disabled || meta.pending
+    return meta.pending.value || props.disabled;
+})
 
 //useField
-const { handleChange, handleBlur,  hasError } = useField({
+const { handleChange, handleBlur,  hasError, meta } = useField({
     name: props.name,
     initialValue: value.value,
     rules: props.rules,

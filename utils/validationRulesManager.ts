@@ -27,10 +27,24 @@ export class ValidationRulesManager {
   }
 
   /**
-   * Récupère le schéma complet sous forme d'objet prêt pour ValidatorJS.
+   * Récupère le schéma complet ou partiel sous forme d'objet prêt pour ValidatorJS.
+   * Si `fields` est fourni, ne retourne que les règles pour ces champs.
    */
-  getRules(): Record<string, string[]> {
-    return { ...this.rules };
+  getRules(fields?: string | string[]): Record<string, string[]> {
+    if (!fields) {
+      return { ...this.rules };
+    }
+
+    const fieldList = Array.isArray(fields) ? fields : [fields];
+    const filteredRules: Record<string, string[]> = {};
+
+    fieldList.forEach((field) => {
+      if (this.rules[field]) {
+        filteredRules[field] = this.rules[field];
+      }
+    });
+
+    return filteredRules;
   }
 
   /**

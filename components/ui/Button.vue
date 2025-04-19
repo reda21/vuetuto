@@ -19,7 +19,7 @@ const props = defineProps<Props>();
 
 const theme = ref<ButtonPassThroughOptions>({
   root: `btn`,
-  loadingIcon: ``,
+  loadingIcon: `animate-spin`,
   icon: `p-right:order-1 p-bottom:order-2`,
   label: `font-medium p-icon-only:invisible p-icon-only:w-0
         p-small:text-sm p-large:text-[1.125rem]`,

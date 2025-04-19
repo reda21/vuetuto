@@ -35,10 +35,11 @@ export function useForm({
     touched,
     dirty,
     isSubmitting,
-    isValidating,
+    pending,
     isValidated,
     validate,
     asyncValidate,
+    asyncValidateWitchField,
     setDirty,
     setFieldDirty,
     setAllDirty,
@@ -53,29 +54,7 @@ export function useForm({
 
   const asyncValidators = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
-  const validateForm = async (): Promise<boolean> => {
-    isValidating.value = true;
-    try {
-      const validation = new Validator(values, rules.getRules(), {
-        customMessages: validationMessages,
-        ...options,
-      });
-      isValidated.value = true;
-      if (validation.fails()) {
-        const allErrors = validation.errors.all();
-        errors.clearAll();
-        Object.entries(allErrors).forEach(([field, msgs]) => {
-          errors.set(field, msgs);
-        });
-        return false;
-      } else {
-        errors.clearAll();
-        return true;
-      }
-    } finally {
-      isValidating.value = false;
-    }
-  };
+ 
 
   function handleSubmit(
     onValid: (vals: Record<string, any>) => void,
@@ -94,7 +73,7 @@ export function useForm({
     touched: Object.values(touched).some(Boolean),
     dirty: Object.values(dirty).some(Boolean),
     valid: !Object.values(errors.all()).some(Boolean),
-    pending: isValidating.value,
+    pending: pending.value,
     validated: isValidated.value,
     initialValues,
     values,
@@ -104,7 +83,7 @@ export function useForm({
     values[field] = value;
     setFieldDirty(field, true);
     setFieldTouched(field, true);
-    validateForm();
+//    validateForm();
   }
 
   function setValues(fields: Record<string, any>) {
@@ -113,7 +92,7 @@ export function useForm({
       setFieldDirty(field, true);
       setFieldTouched(field, true);
     });
-    validateForm();
+ //   validateForm();
   }
 
   const ctx: FormContext = {
@@ -124,14 +103,15 @@ export function useForm({
     rules,
     handleSubmit,
     isSubmitting,
-    isValidating,
+    pending,
     isValidated,
+    asyncValidateWitchField,
     meta,
     setFieldValue,
     setValues,
     setFieldTouched,
     setTouched,
-    validateForm,
+//    validateForm,
     setDirty,
     setFieldDirty,
     resetForm: () => {
@@ -147,3 +127,30 @@ export function useForm({
   provide(FormContextKey, ctx);
   return ctx;
 }
+
+
+/*
+ const validateForm = async (): Promise<boolean> => {
+    pending.value = true;
+    try {
+      const validation = new Validator(values, rules.getRules(), {
+        customMessages: validationMessages,
+        ...options,
+      });
+      isValidated.value = true;
+      if (validation.fails()) {
+        const allErrors = validation.errors.all();
+        errors.clearAll();
+        Object.entries(allErrors).forEach(([field, msgs]) => {
+          errors.set(field, msgs);
+        });
+        return false;
+      } else {
+        errors.clearAll();
+        return true;
+      }
+    } finally {
+      pending.value = false;
+    }
+  }; 
+*/

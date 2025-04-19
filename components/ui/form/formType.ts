@@ -18,13 +18,14 @@ export type FormContext = {
   touched: Record<string, boolean>;
   dirty: Record<string, boolean>;
   isSubmitting: Ref<boolean>;
-  isValidating: Ref<boolean>;
+  pending: Ref<boolean>;
   isValidated: Ref<boolean>;
-  validateForm: () => Promise<boolean>;
+  // validateForm: () => Promise<boolean>;
   handleSubmit: (
     onValid: (vals: Record<string, any>) => void,
     onInvalid?: (errs: Record<string, string>) => void
   ) => (e?: Event) => Promise<void>;
+  asyncValidateWitchField: (field: string) => void;
   resetForm: () => void;
   setFieldValue: (name: string, value: any) => void;
   setValues: (fields: Record<string, any>) => void;
@@ -43,7 +44,7 @@ export interface FormContext {
   touched: Record<string, boolean>;
   rules?: ValidationRulesManager; // Ajout de la propriété rules
   isSubmitting: Ref<boolean>;
-  isValidating: Ref<boolean>;
+  pending: Ref<boolean>;
   meta: ComputedRef<FormMeta>;
   handleSubmit: (
     onValid: (values: Record<string, any>) => void,
@@ -69,7 +70,7 @@ export interface MetaField {
   dirty: ComputedRef<boolean>;
   valid: ComputedRef<boolean>;
   validated: ComputedRef<boolean>;
-  pending: boolean;
+  pending:  ComputedRef<boolean>;
   required: boolean;
   errors: ComputedRef<string[]>;
   type: 'default' | 'checkbox' | 'radio';
@@ -192,7 +193,7 @@ export interface ValidationResult {
   valid: boolean;
   fails: boolean;
   errors: CustomError;
-  isValidating: Ref<boolean>;
+  pending: Ref<boolean>;
 }
 
 export type SetFieldValue = (field: string, value: any) => void
@@ -209,6 +210,7 @@ export interface UseValidatorResult {
   addCustomAsyncRule: AddCustomAsyncRule;
   validate: () => ValidationResult;
   asyncValidate: () => Promise<ValidationResult>;
+  asyncValidateWitchField: (field: string) => void;
   setFieldValue: SetFieldValue;
   setValues: SetValues;
   setFieldDirty: SetFieldDirty;
@@ -224,7 +226,7 @@ export interface UseValidatorResult {
   touched: Record<string, boolean>;
   dirty: Record<string, boolean>;
   isValidated: Ref<boolean>;
-  isValidating: Ref<boolean>;
+  pending: Ref<boolean>;
   isSubmitting: Ref<boolean>;
 }
 

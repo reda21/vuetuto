@@ -17,15 +17,14 @@ export function useField<T = any>({
   options,
   initialValue,
 }: UseFieldOptions<T>): UseFieldReturn<T> {
-  const form = inject<FormContext>(FormContextKey);
-  console.info('form', form);
+  const form = inject<FormContext>(FormContextKey); 
 
   const handleBlur = () => {
     form?.setFieldTouched(name, true);
   };
 
   const handleChange = (e: Event) => {
-    console.info('handleChange', e);
+    form?.asyncValidateWitchField(name);
   };
 
   const er = new CustomError();
@@ -45,7 +44,7 @@ export function useField<T = any>({
       valid: computed(() => true),
       validated: computed(() => false),
       dirty: computed(() => false),
-      pending: false,
+      pending: computed(() => form?.pending.value ?? false),
       required: false,
       errors: computed(() => form?.errors.get(name) ?? []),
       type: 'default',

@@ -65,6 +65,14 @@ export class CustomError {
     this.items.value = {};
   }
 
+  clearWith(fields: string | string[]) {
+    if (typeof fields === 'string') {
+      this.clear(fields);
+    } else if (Array.isArray(fields)) {
+      fields.forEach(field => this.clear(field));
+    }
+  }
+
   first(key: string): any {
     return this.has(key) ? this.get(key)[0] : null;
   }

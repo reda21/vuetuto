@@ -1,8 +1,7 @@
 <template>
   <div>
-    <UiForm :schema="schema" :initialValues="init" @invalid-submit="onInvalidSubmit" v-slot="{ lazy, inputs
-    }"
-      @submit="onSubmit">
+    <UiForm :schema="schema" :initialValues="init" @invalid-submit="onInvalidSubmit" v-slot="{ lazy, inputs, meta
+    }" @submit="onSubmit">
       <UiFormControl class="min-h-24" name="username" label="Username">
         <VInputText name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy"
           fluid />
@@ -22,7 +21,8 @@
         <VInputText type="text" name="password_confirmation" id="password_confirmation"
           v-model="inputs.password_confirmation" placeholder="password confirmation" :disabled="lazy" fluid />
       </UiFormControl>
-      <VButton type="submit" :loading="lazy">Submit</VButton>
+      <UiButton icon="pi pi-check" type="submit" label="Submit" :loading="lazy || meta.pending" />    
+      <p>{{ lazy ? 'oui' : 'non' }}</p>  
     </UiForm>
   </div>
 </template>
@@ -62,11 +62,4 @@ function onSubmit(values: Record<string, any>) {
 function onInvalidSubmit(errors: Record<string, string>) {
   console.log('Erreurs :', errors);
 }
-
-const onsubmit2 = ({ chengeLazy }: { chengeLazy: (value: boolean) => void }) => {
-  chengeLazy(true);
-  setTimeout(() => {
-    chengeLazy(false);
-  }, 3000);
-};
 </script>

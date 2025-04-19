@@ -16,9 +16,12 @@
 </template>
 
 <script setup lang="ts">
+//@ts-ignore
 import ChevronDownIcon from '@primevue/icons/chevrondown';
+//@ts-ignore
 import AutoComplete, { type AutoCompletePassThroughOptions, type AutoCompleteProps } from 'primevue/autocomplete';
-import { ref } from 'vue';
+//@ts-ignore
+import { ref, defineProps } from 'vue';
 import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ AutoCompleteProps {}

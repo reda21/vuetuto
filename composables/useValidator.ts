@@ -35,7 +35,7 @@ export const useValidator: UseValidator = ({
   const rules = new ValidationRulesManager(schema);
 
   const isValidated = ref(false);
-  const isValidating = ref(false);
+  const pending = ref(false);
   const isSubmitting = ref(false);
 
   const touched = reactive<Record<string, boolean>>(
@@ -60,14 +60,14 @@ export const useValidator: UseValidator = ({
   Object.entries(initialErrors).forEach(([field, msg]) => errors.set(field, msg));
 
   const meta: ComputedRef<Partial<FormMeta>> = computed(() => ({
-    pending: isValidating.value,
+    pending: pending.value,
     valid: isValidated.value,
   }));
 
   setCustomRules();
 
   const validate = (): ValidationResult => {
-    isValidating.value = true;
+    pending.value = true;
     runValidate(
       values,
       rules.getRules(),
@@ -76,31 +76,64 @@ export const useValidator: UseValidator = ({
         isValidated.value = true;
       },
       (er) => {
-        errors.setAll(er)
+        errors.setAll(er);
         isValidated.value = false;
       }
     );
-    isValidating.value = false;
+    pending.value = false;
     return {
       valid: isValidated.value,
       fails: !isValidated.value,
       errors,
-      isValidating,
+      pending,
     };
   };
 
+  const asyncValidateWitchField = (field: string) => {
+    const fieldList = [field];
+    const confirmation = rules.checkConfirmationField(field);
+    
+    if (confirmation)
+      fieldList.push(confirmation);
+
+    const same = rules.checkSameField(field);
+    if (same) fieldList.push(same);
+    
+    errors.clearWith(fieldList);
+    pending.value = true;
+
+    runAsyncValidate(
+      values,
+      rules.getRules(fieldList),
+      customMessages,
+      () => {
+        isValidated.value = true;
+        pending.value = false;
+      },
+      (er) => {
+        errors.setAll(er);
+        isValidated.value = false;
+        pending.value = false;
+      }
+    );
+  }
+
   const asyncValidate = async (): Promise<ValidationResult> => {
+    pending.value = true;
+    errors.clearAll();
     runAsyncValidate(
       values,
       rules.getRules(),
       customMessages,
       () => {
-        errors.clearAll();
+        
         isValidated.value = true;
+        pending.value = false;
       },
       (er) => {
         errors.setAll(er);
         isValidated.value = false;
+        pending.value = false;
       }
     );
 
@@ -108,7 +141,7 @@ export const useValidator: UseValidator = ({
       valid: isValidated.value,
       fails: !isValidated.value,
       errors,
-      isValidating,
+      pending,
     };
   };
 
@@ -177,6 +210,7 @@ export const useValidator: UseValidator = ({
     addCustomAsyncRule,
     validate,
     asyncValidate,
+    asyncValidateWitchField,
     setFieldValue,
     setValues,
     setFieldDirty,
@@ -192,7 +226,7 @@ export const useValidator: UseValidator = ({
     touched,
     dirty,
     isValidated,
-    isValidating,
+    pending,
     isSubmitting,
   };
 };
