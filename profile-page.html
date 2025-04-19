@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .profile-card {
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner {
+            height: 200px;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .camera-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .profile-info {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            position: absolute;
+            top: -60px;
+            left: 20px;
+            overflow: hidden;
+        }
+        
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-picture .camera-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #0066ff;
+            color: white;
+        }
+        
+        .profile-details {
+            margin-left: 140px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .profile-title {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-icon {
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: #0066ff;
+        }
+        
+        .profile-bio {
+            padding: 0 20px 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 600px) {
+            .profile-details {
+                margin-left: 0;
+                margin-top: 70px;
+                text-align: center;
+            }
+            
+            .profile-picture {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="banner">
+            <img class="banner-image" src="/api/placeholder/800/200" alt="Blue spiral banner" />
+            <div class="camera-icon">
+                <i class="fas fa-camera"></i>
+            </div>
+        </div>
+        
+        <div class="profile-info">
+            <div class="profile-picture">
+                <img src="/api/placeholder/120/120" alt="Profile picture" />
+                <div class="camera-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            
+            <div class="profile-details">
+                <h1 class="profile-name">Danish Hebo</h1>
+                <p class="profile-title">Professional UI/UX Designer</p>
+                
+                <div class="social-links">
+                    <span>Follow me on</span>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fas fa-globe"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-bio">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus. Etiam congue ex enim</p>
+        </div>
+    </div>
+</body>
+</html>
