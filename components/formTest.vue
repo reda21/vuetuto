@@ -60,8 +60,8 @@
           fluid
         />
       </UiFormControl>
-      <UiButton icon="pi pi-check" type="submit" label="Submit" :loading="lazy || meta.pending" />
-      <p>{{ lazy ? 'oui' : 'non' }}</p>
+      <UiButton icon="pi pi-check" type="submit" label="Submit" :loading="lazy || meta.pending.value" />
+      <p>{{ meta }}</p>
     </UiForm>
   </div>
 </template>

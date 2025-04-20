@@ -41,6 +41,7 @@ export class MetaForm {
     this.initialValues = initialValues;
     this.rules = rules;
     this.values = values;
+    this.touched = {};
 
     this.setDirty(initialValues);
     this.setTouched(initialValues);
@@ -71,7 +72,7 @@ export class MetaForm {
     );
   }
 
-  public setAllTouched(state: boolean): void {
+  public setAllTouched(state: boolean): void {  
     Object.keys(this.touched).forEach((field) => {
       this.touched[field] = state;
     });

@@ -12,13 +12,7 @@ import type {
   FormMeta,
   ValidationResult,
   SetFieldValue,
-  SetValues,
-  SetFieldDirty,
-  SetDirty,
-  SetAllDirty,
-  SetFieldTouched,
-  SetTouched,
-  SetAllTouched,
+  SetValues,  
 } from '@/components/ui/form/formType';
 
 export const useValidator: UseValidator = ({
@@ -81,7 +75,7 @@ export const useValidator: UseValidator = ({
     if (same) fieldList.push(same);
 
     errors.clearWith(fieldList);
-    meta.setAllPending(true);
+    meta.setFieldPending(field, true);
 
     runAsyncValidate(
       values,
@@ -89,12 +83,18 @@ export const useValidator: UseValidator = ({
       customMessages,
       () => {
         meta.setValidated(true);
-        meta.setAllPending(false);
+        meta.setFieldPending(field, false);
+        fieldList.forEach((f) => {
+          meta.setFieldDirty(f, true);
+        });
       },
       (er) => {
         errors.setAll(er);
         meta.setValidated(false);
-        meta.setAllPending(false);
+        meta.setFieldPending(field, false);        
+        fieldList.forEach(f => {
+          meta.setFieldDirty(f, true);
+        });
       }
     );
   };
@@ -109,11 +109,13 @@ export const useValidator: UseValidator = ({
       () => {
         meta.setValidated(true);
         meta.setAllPending(false);
+        meta.setAllDirty(true);
       },
       (er) => {
         errors.setAll(er);
         meta.setValidated(false);
         meta.setAllPending(false);
+        meta.setAllDirty(true);
       }
     );
 

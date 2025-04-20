@@ -36,12 +36,6 @@ export function useForm({
     meta,
     asyncValidate,
     asyncValidateWitchField,
-    setDirty,
-    setFieldDirty,
-    setAllDirty,
-    setTouched,
-    setFieldTouched,
-    setAllTouched,
   } = useValidator({
     schema,
     initialValues,
@@ -56,7 +50,7 @@ export function useForm({
   ) {
     return async (e?: Event) => {
       e?.preventDefault?.();
-      setAllTouched(true);
+      meta.setAllTouched(true);
 
       const { valid, errors } = await asyncValidate();
       valid ? onValid(values) : onInvalid?.(errors.all());
@@ -65,16 +59,16 @@ export function useForm({
 
   function setFieldValue(field: string, value: any) {
     values[field] = value;
-    setFieldDirty(field, true);
-    setFieldTouched(field, true);
+    meta.setFieldDirty(field, true);
+    meta.setFieldTouched(field, true);
     //    validateForm();
   }
 
   function setValues(fields: Record<string, any>) {
     Object.entries(fields).forEach(([field, value]) => {
       values[field] = value;
-      setFieldDirty(field, true);
-      setFieldTouched(field, true);
+      meta.setFieldDirty(field, true);
+      meta.setFieldTouched(field, true);
     });
     //   validateForm();
   }
@@ -87,12 +81,8 @@ export function useForm({
     asyncValidateWitchField,
     meta,
     setFieldValue,
-    setValues,
-    setFieldTouched,
-    setTouched,
-    //    validateForm,
-    setDirty,
-    setFieldDirty,
+    setValues,    
+    //    validateForm,    
     resetForm: () => {
       /*    Object.keys(values).forEach((key) => {
         values[key] = initialValues[key] || '';

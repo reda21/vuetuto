@@ -21,7 +21,7 @@ export function useField<T = any>({
   const form = inject<FormContext | undefined>(FormContextKey, undefined);
 
   const handleBlur = () => {
-    form?.setFieldTouched(name, true);
+    form?.meta.setFieldTouched(name, true);
   };
 
   const handleChange = (e: Event) => {

@@ -5,7 +5,7 @@
     <p v-if="hasError" class="text-danger mt-1 text-sm">
       {{ oneError }}
     </p>
-    <p>panding : {{ meta.pending }}</p>
+    <p>panding : {{ meta }}</p>
   </div>
 </template>
 

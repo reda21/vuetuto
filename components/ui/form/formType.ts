@@ -24,11 +24,7 @@ export type FormContext = {
   asyncValidateWitchField: (field: string) => void;
   resetForm: () => void;
   setFieldValue: (name: string, value: any) => void;
-  setValues: (fields: Record<string, any>) => void;
-  setFieldTouched: (name: string, touched: boolean) => void;
-  setTouched: (fields: Record<string, boolean>) => void;
-  setFieldDirty: (name: string, touched: boolean) => void;
-  setDirty: (fields: Record<string, boolean>) => void;
+  setValues: (fields: Record<string, any>) => void;  
   meta: MetaForm;
   asyncValidators: Ref<Record<string, (value: any) => Promise<boolean | string>>>;
 };

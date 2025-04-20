@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   const isTaken = username === 'reda22';
 
   // Ajout d'un délai de 2 secondes
-  // await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 4000));
 
   // Retourne un JSON indiquant si le pseudo est disponible
   return {
