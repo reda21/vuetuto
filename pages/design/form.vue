@@ -11,7 +11,7 @@
           class="text-surface-600 dark:text-surface-300 mb-1 block text-sm font-medium"
           >Nom Utulisateur</label
         >
-        <VInputText v-model="inputs.username" placeholder="Username" fluid />
+        <VInputText v-model="inputs.username" name="username" placeholder="Username" fluid />
       </div>
       <div class="mp-3">
         <label
@@ -19,7 +19,7 @@
           class="text-surface-600 dark:text-surface-300 mb-1 block text-sm font-medium"
           >Nom</label
         >
-        <VInputText v-model="inputs.nom" placeholder="Nom" fluid />
+        <VInputText v-model="inputs.nom" name="nom" placeholder="Nom" fluid />
       </div>
       <div class="mp-3">
         <label
