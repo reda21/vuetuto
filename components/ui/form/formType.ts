@@ -2,7 +2,8 @@
 import type { Ref, ComputedRef } from 'vue';
 import type { ValidatorOptions } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
-import { isValidDate } from '../../../utils/date';
+import { isValidDate } from '@/utils/date';
+import { MetaForm } from '@/utils/metaForm';
 
 export type ValidationRule =
   | string
@@ -15,11 +16,6 @@ export type FormContext = {
   values: Record<string, any>;
   errors: CustomError;
   rules: ValidationRulesManager;
-  touched: Record<string, boolean>;
-  dirty: Record<string, boolean>;
-  isSubmitting: Ref<boolean>;
-  pending: Ref<boolean>;
-  isValidated: Ref<boolean>;
   // validateForm: () => Promise<boolean>;
   handleSubmit: (
     onValid: (vals: Record<string, any>) => void,
@@ -33,7 +29,7 @@ export type FormContext = {
   setTouched: (fields: Record<string, boolean>) => void;
   setFieldDirty: (name: string, touched: boolean) => void;
   setDirty: (fields: Record<string, boolean>) => void;
-  meta: ComputedRef<FormMeta>;
+  meta: MetaForm;
   asyncValidators: Ref<Record<string, (value: any) => Promise<boolean | string>>>;
 };
 
@@ -70,7 +66,7 @@ export interface MetaField {
   dirty: ComputedRef<boolean>;
   valid: ComputedRef<boolean>;
   validated: ComputedRef<boolean>;
-  pending:  ComputedRef<boolean>;
+  pending: ComputedRef<boolean>;
   required: boolean;
   errors: ComputedRef<string[]>;
   type: 'default' | 'checkbox' | 'radio';
@@ -190,16 +186,16 @@ export interface UseValidatorParams {
 }
 
 export interface ValidationResult {
-  valid: boolean;
-  fails: boolean;
+  valid: Ref<boolean>;
+  fails: Ref<boolean>;
   errors: CustomError;
   pending: Ref<boolean>;
 }
 
-export type SetFieldValue = (field: string, value: any) => void
-export type SetValues = (fields: Record<string, any>) => void
-export type SetFieldDirty = (field: string, isDirty: boolean) => void
-export type SetDirty = (fields: Record<string, boolean>) => void
+export type SetFieldValue = (field: string, value: any) => void;
+export type SetValues = (fields: Record<string, any>) => void;
+export type SetFieldDirty = (field: string, isDirty: boolean) => void;
+export type SetDirty = (fields: Record<string, boolean>) => void;
 export type SetAllDirty = (isDirty: boolean) => void;
 export type SetFieldTouched = (field: string, isTouched: boolean) => void;
 export type SetTouched = (fields: Record<string, boolean>) => void;
@@ -221,13 +217,8 @@ export interface UseValidatorResult {
   setAllTouched: SetAllTouched;
   values: Record<string, any>;
   errors: CustomError;
-  meta: ComputedRef<Partial<FormMeta>>;
+  meta: MetaForm;
   rules: ValidationRulesManager;
-  touched: Record<string, boolean>;
-  dirty: Record<string, boolean>;
-  isValidated: Ref<boolean>;
-  pending: Ref<boolean>;
-  isSubmitting: Ref<boolean>;
 }
 
 export type UseValidator = (options: UseValidatorParams) => UseValidatorResult;

@@ -1,16 +1,17 @@
-import { ref, computed, reactive, type Ref, type ComputedRef } from 'vue';
+import type {} from '@/components/ui/form/formType';
+import { ValidationRulesManager } from '@/utils/validationRulesManager';
 
-// Interface pour les métadonnées d'un champ spécifique
 export interface FieldMeta {
+  path: string;
   touched: Ref<boolean>;
   dirty: Ref<boolean>;
   valid: Ref<boolean>;
   pending: Ref<boolean>;
   validated: Ref<boolean>;
-  initialValue: any;
+  required: boolean;
 }
 
-// Interface pour les métadonnées globales du formulaire
+
 export interface FormMeta {
   touched: ComputedRef<boolean>;
   dirty: ComputedRef<boolean>;
@@ -18,128 +19,188 @@ export interface FormMeta {
   pending: Ref<boolean>;
   validated: Ref<boolean>;
   initialValues: Record<string, any>;
-  values: Record<string, any>; // Référence aux valeurs actuelles du formulaire
+  values: Record<string, any>;
 }
 
 export class MetaForm {
-  private fieldMeta: Record<string, FieldMeta> = reactive({});
-  private formValues: Record<string, any>; // Garde une référence aux valeurs du formulaire
-  private formInitialValues: Record<string, any>;
+  touched: Record<string, boolean> = {};
+  dirty: Record<string, boolean> = {};
+  pending: Record<string, boolean> = {};
+  initialValues: Record<string, any> = {};
+  rules: ValidationRulesManager | null = null;
+  values: Record<string, any> | null = null;
+  validated = false;
+  submitting = false;
+  valid = false;
 
-  // Métadonnées globales du formulaire
-  public pending = ref(false);
-  public validated = ref(false);
+  constructor(
+    initialValues: Record<string, any>,
+    values: Record<string, any>,
+    rules: ValidationRulesManager
+  ) {
+    this.initialValues = initialValues;
+    this.rules = rules;
+    this.values = values;
 
-  constructor(initialValues: Record<string, any>, formValues: Record<string, any>) {
-    this.formInitialValues = { ...initialValues };
-    this.formValues = formValues; // Stocke la référence
-    this.initializeFieldMeta(initialValues);
+    this.setDirty(initialValues);
+    this.setTouched(initialValues);
+    this.setPending(initialValues);
   }
 
-  private initializeFieldMeta(values: Record<string, any>): void {
-    for (const key in values) {
-      this.ensureFieldMeta(key, values[key]);
-    }
-  }
-
-  private ensureFieldMeta(field: string, initialValue: any): FieldMeta {
-    if (!this.fieldMeta[field]) {
-      this.fieldMeta[field] = reactive({
-        touched: ref(false),
-        dirty: ref(false),
-        valid: ref(true), // Par défaut, un champ est considéré valide
-        pending: ref(false),
-        validated: ref(false),
-        initialValue: initialValue,
-      });
-    }
-    return this.fieldMeta[field];
-  }
-
-  // --- Méthodes pour les métadonnées de champ ---
-
-  public getFieldMeta(field: string): FieldMeta | undefined {
-    return this.fieldMeta[field];
-  }
-
-  public setFieldTouched(field: string, state: boolean): void {
-    this.ensureFieldMeta(field, this.formInitialValues[field]).touched.value = state;
-  }
-
-  public setFieldDirty(field: string, state: boolean): void {
-    this.ensureFieldMeta(field, this.formInitialValues[field]).dirty.value = state;
-  }
-
-  public setFieldValid(field: string, state: boolean): void {
-    this.ensureFieldMeta(field, this.formInitialValues[field]).valid.value = state;
-  }
-
-  public setFieldPending(field: string, state: boolean): void {
-    this.ensureFieldMeta(field, this.formInitialValues[field]).pending.value = state;
-  }
-
-  public setFieldValidated(field: string, state: boolean): void {
-    this.ensureFieldMeta(field, this.formInitialValues[field]).validated.value = state;
-  }
-
-  public resetFieldMeta(field: string): void {
-    const meta = this.getFieldMeta(field);
-    if (meta) {
-      meta.touched.value = false;
-      meta.dirty.value = false;
-      meta.valid.value = true;
-      meta.pending.value = false;
-      meta.validated.value = false;
-    }
-  }
-
-  // --- Méthodes pour les métadonnées globales du formulaire ---
-
-  public setAllTouched(state: boolean): void {
-    Object.keys(this.fieldMeta).forEach(field => {
-      this.setFieldTouched(field, state);
-    });
+  public setDirty(initialValues: Record<string, any>) {
+    this.dirty = reactive<Record<string, boolean>>(
+      Object.keys(initialValues).reduce(
+        (acc, key) => ({ ...acc, [key]: false }),
+        {}
+      )
+    );
   }
 
   public setAllDirty(state: boolean): void {
-    Object.keys(this.fieldMeta).forEach(field => {
-      this.setFieldDirty(field, state);
+    Object.keys(this.dirty).forEach((field) => {
+      this.dirty[field] = state;
     });
   }
 
-  public resetFormMeta(): void {
-    this.pending.value = false;
-    this.validated.value = false;
-    Object.keys(this.fieldMeta).forEach(field => {
-      this.resetFieldMeta(field);
+  public setTouched(initialValues: Record<string, any>) {
+    this.touched = reactive<Record<string, boolean>>(
+      Object.keys(initialValues).reduce(
+        (acc, key) => ({ ...acc, [key]: false }),
+        {}
+      )
+    );
+  }
+
+  public setAllTouched(state: boolean): void {
+    Object.keys(this.touched).forEach((field) => {
+      this.touched[field] = state;
     });
   }
 
-  // --- Propriétés calculées globales ---
+  public setPending(initialValues: Record<string, any>) {
+    this.pending = reactive<Record<string, boolean>>(
+      Object.keys(initialValues).reduce(
+        (acc, key) => ({ ...acc, [key]: false }),
+        {}
+      )
+    );
+  }
+
+  public setFieldTouched(field: string, state: boolean): void {
+    if (field in this.touched) {
+      this.touched[field] = state;
+    }
+  }
+
+  public setFieldDirty(field: string, state: boolean): void {
+    if (field in this.dirty) {
+      this.dirty[field] = state;
+    }
+  }
+
+  public setFieldPending(field: string, state: boolean): void {
+    if (field in this.pending) {
+      this.pending[field] = state;
+    }
+  }
+
+  public setAllPending(state: boolean): void {
+    Object.keys(this.pending).forEach((field) => {
+      this.pending[field] = state;
+    });
+  }
+
+  public resetFieldPending(field: string): void {
+    if (field in this.pending) {
+      this.pending[field] = false;
+    }
+  }
+
+  public resetAllPending(): void {
+    this.setAllPending(false);
+  }
+
+  public setValidated(state: boolean): void {
+    this.validated = state;
+  }
+
+  public setSubmitting(state: boolean): void {
+    this.submitting = state;
+  }
+
+  public setValid(state: boolean): void {
+    this.valid = state;
+  }
+
+  public getDirty(field?: string | string[]): Record<string, boolean> | boolean {
+    if (typeof field === 'undefined') {
+      return this.dirty;
+    }
+    if (typeof field === 'string') {
+      return this.dirty?.[field] ?? false;
+    }
+    if (Array.isArray(field)) {
+      return field.reduce((acc, f) => ({ ...acc, [f]: !!this.dirty[f] }), {});
+    }
+    return this.dirty;
+  }
+
+  public getTouched(field?: string | string[]): Record<string, boolean> | boolean {
+    if (typeof field === 'undefined') {
+      return this.touched;
+    }
+    if (typeof field === 'string') {
+      return this.touched?.[field] ?? false;
+    }
+    if (Array.isArray(field)) {
+      return field.reduce((acc, f) => ({ ...acc, [f]: !!this.touched[f] }), {});
+    }
+    return this.touched;
+  }
+
+  // Propriétés calculées globales
 
   public isTouched = computed(() => {
-    return Object.values(this.fieldMeta).some(meta => meta.touched.value);
+    return Object.values(this.touched).some(Boolean);
   });
 
   public isDirty = computed(() => {
-    return Object.values(this.fieldMeta).some(meta => meta.dirty.value);
+    return Object.values(this.dirty).some(Boolean);
   });
 
   public isValid = computed(() => {
-    return Object.values(this.fieldMeta).every(meta => meta.valid.value);
+    return true;
   });
 
-  // --- Accès aux métadonnées combinées ---
+  public isPending = computed(() => {
+    return Object.values(this.pending).some(Boolean);
+  });
+
+  public isvalidated = computed(() => {
+    return this.validated;
+  });
 
   public getFormMeta(): FormMeta {
     return {
       touched: this.isTouched,
       dirty: this.isDirty,
       valid: this.isValid,
-      pending: this.pending,
-      validated: this.validated,
-      initialValues: this.formInitialValues,
-      values: this.formValues, // Retourne la référence aux valeurs
+      pending: this.isPending,
+      validated: this.isvalidated,
+      initialValues: this.initialValues,
+      values: this.values ?? {},
+    };
+  }
+
+  public getFieldMeta(field: string): FieldMeta {
+    return {
+      path: field,
+      touched: computed(() => this.touched[field]),
+      dirty: computed(() => this.dirty[field]),
+      valid: computed(() => this.valid),
+      pending: computed(() => this.pending[field]),
+      validated: computed(() => this.validated),
+      required: this.rules?.isRequired(field)?? false,
     };
   }
 }

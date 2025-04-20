@@ -1,7 +1,8 @@
 // composables/useValidator.ts
-import { ref } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { Validator } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
+import { MetaForm } from "@/utils/metaForm"
 import type {
   ValidationRules,
   FormContext,
@@ -33,176 +34,111 @@ export const useValidator: UseValidator = ({
   const values = reactive<Record<string, any>>(initialValues);
   const errors = new CustomError();
   const rules = new ValidationRulesManager(schema);
+  const meta = new MetaForm(initialValues, values, rules);
 
-  const isValidated = ref(false);
-  const pending = ref(false);
-  const isSubmitting = ref(false);
+  // const isValidated = ref(false);
+  //const pending = ref(false);
+  //const isSubmitting = ref(false);
 
-  const touched = reactive<Record<string, boolean>>(
-    Object.keys(values).reduce(
-      (acc, key) => ({
-        ...acc,
-        [key]: initialTouched[key] || false,
-      }),
-      {}
-    )
-  );
-  const dirty = reactive<Record<string, boolean>>(
-    Object.keys(values).reduce(
-      (acc, key) => ({
-        ...acc,
-        [key]: initialTouched[key] || false,
-      }),
-      {}
-    )
-  );
+  //const touched
+  //const dirty
 
   Object.entries(initialErrors).forEach(([field, msg]) => errors.set(field, msg));
-
-  const meta: ComputedRef<Partial<FormMeta>> = computed(() => ({
-    pending: pending.value,
-    valid: isValidated.value,
-  }));
 
   setCustomRules();
 
   const validate = (): ValidationResult => {
-    pending.value = true;
+    meta.setAllPending(true);
+
     runValidate(
       values,
       rules.getRules(),
       customMessages,
       () => {
-        isValidated.value = true;
+        meta.setValidated(true);
       },
       (er) => {
         errors.setAll(er);
-        isValidated.value = false;
+        meta.setValidated(false);
       }
     );
-    pending.value = false;
+    meta.setAllPending(false);
     return {
-      valid: isValidated.value,
-      fails: !isValidated.value,
+      valid: meta.isvalidated,
+      fails: ref(!meta.isvalidated),
       errors,
-      pending,
+      pending: meta.isPending,
     };
   };
 
   const asyncValidateWitchField = (field: string) => {
     const fieldList = [field];
     const confirmation = rules.checkConfirmationField(field);
-    
-    if (confirmation)
-      fieldList.push(confirmation);
+
+    if (confirmation) fieldList.push(confirmation);
 
     const same = rules.checkSameField(field);
     if (same) fieldList.push(same);
-    
+
     errors.clearWith(fieldList);
-    pending.value = true;
+    meta.setAllPending(true);
 
     runAsyncValidate(
       values,
       rules.getRules(fieldList),
       customMessages,
       () => {
-        isValidated.value = true;
-        pending.value = false;
+        meta.setValidated(true);
+        meta.setAllPending(false);
       },
       (er) => {
         errors.setAll(er);
-        isValidated.value = false;
-        pending.value = false;
+        meta.setValidated(false);
+        meta.setAllPending(false);
       }
     );
-  }
+  };
 
   const asyncValidate = async (): Promise<ValidationResult> => {
-    pending.value = true;
+    meta.setAllPending(true);
     errors.clearAll();
     runAsyncValidate(
       values,
       rules.getRules(),
       customMessages,
       () => {
-        
-        isValidated.value = true;
-        pending.value = false;
+        meta.setValidated(true);
+        meta.setAllPending(false);
       },
       (er) => {
         errors.setAll(er);
-        isValidated.value = false;
-        pending.value = false;
+        meta.setValidated(false);
+        meta.setAllPending(false);
       }
     );
 
     return {
-      valid: isValidated.value,
-      fails: !isValidated.value,
+      valid: meta.isvalidated,
+      fails: ref(!meta.isvalidated),
       errors,
-      pending,
+      pending: meta.isPending,
     };
   };
 
   const setFieldValue: SetFieldValue = (field, value) => {
     values[field] = value;
-    setFieldDirty(field, true);
-    setFieldTouched(field, true);
+    meta.setFieldDirty(field, true);
+    meta.setFieldTouched(field, true);
     //   validateForm();
   };
 
   const setValues: SetValues = (fields) => {
     Object.entries(fields).forEach(([field, value]) => {
       values[field] = value;
-      setFieldDirty(field, true);
-      setFieldTouched(field, true);
+      meta.setFieldDirty(field, true);
+      meta.setFieldTouched(field, true);
     });
     //   validateForm();
-  };
-
-  const setFieldDirty: SetFieldDirty = (field, isDirty) => {
-    if (field in dirty) {
-      dirty[field] = isDirty;
-    }
-  };
-
-  const setDirty: SetDirty = (fields) => {
-    Object.entries(fields).forEach(([field, isDirty]) => {
-      if (field in dirty) {
-        dirty[field] = isDirty;
-      }
-    });
-  };
-
-  const setAllDirty: SetAllDirty = (isDirty) => {
-    Object.keys(dirty).forEach((field) => {
-      if (typeof isDirty === 'boolean') {
-        dirty[field] = isDirty;
-      }
-    });
-  };
-
-  const setFieldTouched: SetFieldTouched = (field, isTouched) => {
-    if (field in touched) {
-      touched[field] = isTouched;
-    }
-  };
-
-  const setTouched: SetTouched = (fields) => {
-    Object.entries(fields).forEach(([field, isTouched]) => {
-      if (field in touched) {
-        touched[field] = isTouched;
-      }
-    });
-  };
-
-  const setAllTouched: SetAllTouched = (isTouched) => {
-    Object.keys(touched).forEach((field) => {
-      if (typeof isTouched === 'boolean') {
-        touched[field] = isTouched;
-      }
-    });
   };
 
   return {
@@ -213,21 +149,16 @@ export const useValidator: UseValidator = ({
     asyncValidateWitchField,
     setFieldValue,
     setValues,
-    setFieldDirty,
-    setDirty,
-    setAllDirty,
-    setFieldTouched,
-    setTouched,
-    setAllTouched,
+    setFieldDirty: meta.setFieldDirty,
+    setDirty: meta.setDirty,
+    setAllDirty: meta.setAllDirty,
+    setFieldTouched: meta.setFieldTouched,
+    setTouched: meta.setTouched,
+    setAllTouched: meta.setAllTouched,
     values,
     errors,
     meta,
     rules,
-    touched,
-    dirty,
-    isValidated,
-    pending,
-    isSubmitting,
   };
 };
 

@@ -23,7 +23,6 @@ interface FormControlValues {
 //@ts-ignore
 const props = withDefaults(defineProps<FormControlValues>(), {});
 
-
 //useField
 const { hasError, oneError, meta } = useField({ name: props.name });
 

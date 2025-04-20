@@ -32,12 +32,8 @@ export function useForm({
     values,
     errors,
     rules,
-    touched,
-    dirty,
-    isSubmitting,
-    pending,
-    isValidated,
     validate,
+    meta,
     asyncValidate,
     asyncValidateWitchField,
     setDirty,
@@ -54,8 +50,6 @@ export function useForm({
 
   const asyncValidators = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
- 
-
   function handleSubmit(
     onValid: (vals: Record<string, any>) => void,
     onInvalid?: (errs: Record<string, string>) => void
@@ -69,21 +63,11 @@ export function useForm({
     };
   }
 
-  const meta = computed(() => ({
-    touched: Object.values(touched).some(Boolean),
-    dirty: Object.values(dirty).some(Boolean),
-    valid: !Object.values(errors.all()).some(Boolean),
-    pending: pending.value,
-    validated: isValidated.value,
-    initialValues,
-    values,
-  }));
-
   function setFieldValue(field: string, value: any) {
     values[field] = value;
     setFieldDirty(field, true);
     setFieldTouched(field, true);
-//    validateForm();
+    //    validateForm();
   }
 
   function setValues(fields: Record<string, any>) {
@@ -92,65 +76,39 @@ export function useForm({
       setFieldDirty(field, true);
       setFieldTouched(field, true);
     });
- //   validateForm();
+    //   validateForm();
   }
 
   const ctx: FormContext = {
     values,
     errors,
-    touched,
-    dirty,
     rules,
     handleSubmit,
-    isSubmitting,
-    pending,
-    isValidated,
     asyncValidateWitchField,
     meta,
     setFieldValue,
     setValues,
     setFieldTouched,
     setTouched,
-//    validateForm,
+    //    validateForm,
     setDirty,
     setFieldDirty,
     resetForm: () => {
-      Object.keys(values).forEach((key) => {
+      /*    Object.keys(values).forEach((key) => {
         values[key] = initialValues[key] || '';
         touched[key] = false;
         dirty[key] = false;
       });
-      errors.clearAll();
+      errors.clearAll(); */
     },
     asyncValidators,
   };
   provide(FormContextKey, ctx);
-  return ctx;
+  return {
+    values,
+    errors,
+    rules,
+    handleSubmit,
+    meta: meta.getFormMeta(),
+  };
 }
-
-
-/*
- const validateForm = async (): Promise<boolean> => {
-    pending.value = true;
-    try {
-      const validation = new Validator(values, rules.getRules(), {
-        customMessages: validationMessages,
-        ...options,
-      });
-      isValidated.value = true;
-      if (validation.fails()) {
-        const allErrors = validation.errors.all();
-        errors.clearAll();
-        Object.entries(allErrors).forEach(([field, msgs]) => {
-          errors.set(field, msgs);
-        });
-        return false;
-      } else {
-        errors.clearAll();
-        return true;
-      }
-    } finally {
-      pending.value = false;
-    }
-  }; 
-*/

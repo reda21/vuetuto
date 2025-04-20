@@ -85,7 +85,6 @@ import { reactive } from 'vue';
 import { useValidator } from '@/composables/useValidator';
 import { Data } from '../data/data';
 
-
 type InitialValuesType = {
   username: string;
   email: string;

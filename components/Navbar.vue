@@ -75,7 +75,7 @@ const navLinks = [
   { name: 'tailwind', path: '/tailwind' },
   { name: 'formulaire', path: '/formulaire' },
   { name: 'button', path: '/design/button' },
-  { name: 'form', path: '/design/form' }
+  { name: 'form', path: '/design/form' },
 ];
 
 const classBtn = 'transition-transform duration-300 ease-in-out transform hover:scale-110';

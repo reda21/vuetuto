@@ -17,7 +17,8 @@ export function useField<T = any>({
   options,
   initialValue,
 }: UseFieldOptions<T>): UseFieldReturn<T> {
-  const form = inject<FormContext>(FormContextKey); 
+  // 1. Injecte le contexte ; si absent, form sera `undefined`
+  const form = inject<FormContext | undefined>(FormContextKey, undefined);
 
   const handleBlur = () => {
     form?.setFieldTouched(name, true);
@@ -38,18 +39,16 @@ export function useField<T = any>({
     handleChange,
     validateField: async () => false,
 
-    meta: {
+    meta: form?.meta.getFieldMeta(name) as MetaField ?? {
       path: name,
       touched: computed(() => false),
       valid: computed(() => true),
       validated: computed(() => false),
       dirty: computed(() => false),
-      pending: computed(() => form?.pending.value ?? false),
-      required: false,
-      errors: computed(() => form?.errors.get(name) ?? []),
-      type: 'default',
-      multiple: false,
-    },
+      pending: false,
+      required: false,      
+   //   multiple: false,
+    }
   };
 }
 

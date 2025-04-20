@@ -69,7 +69,7 @@ export class CustomError {
     if (typeof fields === 'string') {
       this.clear(fields);
     } else if (Array.isArray(fields)) {
-      fields.forEach(field => this.clear(field));
+      fields.forEach((field) => this.clear(field));
     }
   }
 
