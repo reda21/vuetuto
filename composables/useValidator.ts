@@ -2,7 +2,7 @@
 import { ref, reactive, computed } from 'vue';
 import { Validator } from '@chantouchsek/validatorjs';
 import { CustomError } from '@/utils/customError';
-import { MetaForm } from "@/utils/metaForm"
+import { MetaForm } from '@/utils/metaForm';
 import type {
   ValidationRules,
   FormContext,
@@ -12,7 +12,7 @@ import type {
   FormMeta,
   ValidationResult,
   SetFieldValue,
-  SetValues,  
+  SetValues,
 } from '@/components/ui/form/formType';
 
 export const useValidator: UseValidator = ({
@@ -91,8 +91,8 @@ export const useValidator: UseValidator = ({
       (er) => {
         errors.setAll(er);
         meta.setValidated(false);
-        meta.setFieldPending(field, false);        
-        fieldList.forEach(f => {
+        meta.setFieldPending(field, false);
+        fieldList.forEach((f) => {
           meta.setFieldDirty(f, true);
         });
       }

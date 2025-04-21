@@ -13,11 +13,14 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import InputText, {  type InputTextPassThroughOptions,  type InputTextProps,} from 'primevue/inputtext';
+import InputText, {
+  type InputTextPassThroughOptions,
+  type InputTextProps,
+} from 'primevue/inputtext';
 // @ts-ignore
 import { ref, defineProps, defineModel, withDefaults } from 'vue';
 import { ptViewMerge } from './utils';
-import { useField } from "@/composables/useField"
+import { useField } from '@/composables/useField';
 
 interface Props extends /* @vue-ignore */ InputTextProps {
   name: string;

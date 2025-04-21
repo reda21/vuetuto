@@ -1,26 +1,5 @@
-import type {} from '@/components/ui/form/formType';
+import type { FormMeta, FieldMeta } from '@/components/ui/form/formType';
 import { ValidationRulesManager } from '@/utils/validationRulesManager';
-
-export interface FieldMeta {
-  path: string;
-  touched: Ref<boolean>;
-  dirty: Ref<boolean>;
-  valid: Ref<boolean>;
-  pending: Ref<boolean>;
-  validated: Ref<boolean>;
-  required: boolean;
-}
-
-
-export interface FormMeta {
-  touched: ComputedRef<boolean>;
-  dirty: ComputedRef<boolean>;
-  valid: ComputedRef<boolean>;
-  pending: Ref<boolean>;
-  validated: Ref<boolean>;
-  initialValues: Record<string, any>;
-  values: Record<string, any>;
-}
 
 export class MetaForm {
   touched: Record<string, boolean> = {};
@@ -50,10 +29,7 @@ export class MetaForm {
 
   public setDirty(initialValues: Record<string, any>) {
     this.dirty = reactive<Record<string, boolean>>(
-      Object.keys(initialValues).reduce(
-        (acc, key) => ({ ...acc, [key]: false }),
-        {}
-      )
+      Object.keys(initialValues).reduce((acc, key) => ({ ...acc, [key]: false }), {})
     );
   }
 
@@ -65,14 +41,11 @@ export class MetaForm {
 
   public setTouched(initialValues: Record<string, any>) {
     this.touched = reactive<Record<string, boolean>>(
-      Object.keys(initialValues).reduce(
-        (acc, key) => ({ ...acc, [key]: false }),
-        {}
-      )
+      Object.keys(initialValues).reduce((acc, key) => ({ ...acc, [key]: false }), {})
     );
   }
 
-  public setAllTouched(state: boolean): void {  
+  public setAllTouched(state: boolean): void {
     Object.keys(this.touched).forEach((field) => {
       this.touched[field] = state;
     });
@@ -80,10 +53,7 @@ export class MetaForm {
 
   public setPending(initialValues: Record<string, any>) {
     this.pending = reactive<Record<string, boolean>>(
-      Object.keys(initialValues).reduce(
-        (acc, key) => ({ ...acc, [key]: false }),
-        {}
-      )
+      Object.keys(initialValues).reduce((acc, key) => ({ ...acc, [key]: false }), {})
     );
   }
 
@@ -201,7 +171,7 @@ export class MetaForm {
       valid: computed(() => this.valid),
       pending: computed(() => this.pending[field]),
       validated: computed(() => this.validated),
-      required: this.rules?.isRequired(field)?? false,
+      required: this.rules?.isRequired(field) ?? false,
     };
   }
 }

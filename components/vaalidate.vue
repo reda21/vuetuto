@@ -1,16 +1,46 @@
 <template>
   <div class="p-4">
-    <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit" v-slot="{ meta }">
-      <TextInput name="email" type="email" label="E-mail" placeholder="Your email address"
-        success-message="Got it, we won't spam you!" />
-      <TextInput name="name" type="texte" label="Name" placeholder="your name"
-        success-message="Got it, we won't spam you!" />
-      <TextInput name="username" type="text" label="Username" placeholder="Your username"
-        success-message="Nice to meet you!" />
-      <TextInput name="password" type="password" label="Password" placeholder="Your password"
-        success-message="Nice and secure!" />
-      <TextInput name="confirm_password" type="password" label="Confirm Password" placeholder="Type it again"
-        success-message="Glad you remembered it!" />
+    <Form
+      @submit="onSubmit"
+      :validation-schema="schema"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ meta }"
+    >
+      <TextInput
+        name="email"
+        type="email"
+        label="E-mail"
+        placeholder="Your email address"
+        success-message="Got it, we won't spam you!"
+      />
+      <TextInput
+        name="name"
+        type="texte"
+        label="Name"
+        placeholder="your name"
+        success-message="Got it, we won't spam you!"
+      />
+      <TextInput
+        name="username"
+        type="text"
+        label="Username"
+        placeholder="Your username"
+        success-message="Nice to meet you!"
+      />
+      <TextInput
+        name="password"
+        type="password"
+        label="Password"
+        placeholder="Your password"
+        success-message="Nice and secure!"
+      />
+      <TextInput
+        name="confirm_password"
+        type="password"
+        label="Confirm Password"
+        placeholder="Type it again"
+        success-message="Glad you remembered it!"
+      />
       <button class="submit-btn" type="submit">Submit</button>
       {{ meta }}
     </Form>
@@ -39,16 +69,22 @@ function onInvalidSubmit() {
 // Using yup to generate a validation schema
 // https://vee-validate.logaretm.com/v4/guide/validation#validation-schemas-with-yup
 const schema = yup.object().shape({
-  username: yup.string().min(6).required().test('username-available', 'Ce nom d\'utilisateur est déjà pris', async (value: string) => {
-    if (!value || value.length < 6) return true;
-    try {
-      const response = await fetch(`/api/users/check-username?username=${encodeURIComponent(value)}`);
-      const data = await response.json();
-      return data.available;
-    } catch {
-      return false;
-    }
-  }),
+  username: yup
+    .string()
+    .min(6)
+    .required()
+    .test('username-available', "Ce nom d'utilisateur est déjà pris", async (value: string) => {
+      if (!value || value.length < 6) return true;
+      try {
+        const response = await fetch(
+          `/api/users/check-username?username=${encodeURIComponent(value)}`
+        );
+        const data = await response.json();
+        return data.available;
+      } catch {
+        return false;
+      }
+    }),
   name: yup.string().min(6).required(),
   email: yup.string().email().required(),
   password: yup.string().min(6).required(),

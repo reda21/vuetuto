@@ -1,46 +1,25 @@
 // ~/composables/useForm.ts
-import { reactive, provide, computed } from 'vue';
-import { Validator, type ValidatorOptions } from '@chantouchsek/validatorjs';
-import { CustomError } from '@/utils/customError';
-import { ValidationRulesManager } from '@/utils/validationRulesManager';
-import type { ValidationRules, FormContext } from '@/components/ui/form/formType';
-import Vaalidate from '~/components/vaalidate.vue';
-import { isValidDate } from '../utils/date';
+import { provide } from 'vue';
+import type { FormContext, UseForm } from '@/components/ui/form/formType';
 
 export const FormContextKey = Symbol('FormContext');
 
-interface UseFormOptions {
-  schema?: ValidationRules;
-  options?: ValidatorOptions;
-  initialValues?: Record<string, any>;
-  initialErrors?: Record<string, string>;
-  initialTouched?: Record<string, boolean>;
-  customMessages?: Record<string, any>;
-}
-
 // Modify existing useForm.ts
-export function useForm({
+export const useForm: UseForm = ({
   schema = {},
   options = {},
   initialValues = {},
   initialErrors = {},
   initialTouched = {},
   customMessages = {},
-}: UseFormOptions) {
+}) => {
   // on initialise values avec initialValues
-  const {
-    values,
-    errors,
-    rules,
-    validate,
-    meta,
-    asyncValidate,
-    asyncValidateWitchField,
-  } = useValidator({
-    schema,
-    initialValues,
-    customMessages,
-  });
+  const { values, errors, rules, validate, meta, asyncValidate, asyncValidateWitchField } =
+    useValidator({
+      schema,
+      initialValues,
+      customMessages,
+    });
 
   const asyncValidators = ref<Record<string, (value: any) => Promise<boolean | string>>>({});
 
@@ -81,8 +60,8 @@ export function useForm({
     asyncValidateWitchField,
     meta,
     setFieldValue,
-    setValues,    
-    //    validateForm,    
+    setValues,
+    //    validateForm,
     resetForm: () => {
       /*    Object.keys(values).forEach((key) => {
         values[key] = initialValues[key] || '';
@@ -101,4 +80,4 @@ export function useForm({
     handleSubmit,
     meta: meta.getFormMeta(),
   };
-}
+};

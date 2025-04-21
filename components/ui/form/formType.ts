@@ -11,6 +11,7 @@ export type ValidationRule =
   | { rule: string | ((value: any) => boolean | string); message?: string };
 
 ///export type ValidationRules = Record<string, ValidationRule | ValidationRule[]>;
+export type ValidationRules = Record<string, string | string[]>;
 
 export type FormContext = {
   values: Record<string, any>;
@@ -24,56 +25,10 @@ export type FormContext = {
   asyncValidateWitchField: (field: string) => void;
   resetForm: () => void;
   setFieldValue: (name: string, value: any) => void;
-  setValues: (fields: Record<string, any>) => void;  
+  setValues: (fields: Record<string, any>) => void;
   meta: MetaForm;
   asyncValidators: Ref<Record<string, (value: any) => Promise<boolean | string>>>;
 };
-
-/*
-export interface FormContext {
-  values: Record<string, any>;
-  errors: CustomError;
-  touched: Record<string, boolean>;
-  rules?: ValidationRulesManager; // Ajout de la propriété rules
-  isSubmitting: Ref<boolean>;
-  pending: Ref<boolean>;
-  meta: ComputedRef<FormMeta>;
-  handleSubmit: (
-    onValid: (values: Record<string, any>) => void,
-    onInvalid?: (errors: Record<string, string>) => void
-  ) => (e?: Event) => Promise<void>;
-  setFieldValue: (field: string, value: any) => void;
-  setValues: (fields: Record<string, any>) => void;
-  setFieldTouched: (field: string, isTouched: boolean) => void;
-  setTouched: (fields: Record<string, boolean>) => void;
-}
-*/
-
-export interface UseFieldOptions<T = any> {
-  name: string;
-  rules?: ValidationRule | ValidationRule[];
-  options?: ValidatorOptions;
-  initialValue?: T;
-}
-
-export interface MetaField {
-  path: string;
-  touched: ComputedRef<boolean>;
-  dirty: ComputedRef<boolean>;
-  valid: ComputedRef<boolean>;
-  validated: ComputedRef<boolean>;
-  pending: ComputedRef<boolean>;
-  required: boolean;
-  errors: ComputedRef<string[]>;
-  type: 'default' | 'checkbox' | 'radio';
-  multiple: false; // Indique si le champ peut contenir plusieurs valeurs (ex. multiple select, checkbox group, etc.).
-}
-
-export interface UseFieldReturn<T = any> {
-  value: Ref<T>;
-  meta: MetaField;
-  validateField: () => Promise<boolean>;
-}
 
 export type InputType =
   | 'button'
@@ -124,18 +79,6 @@ export interface TypeInputs {
   [attribute: string]: any | Array<any>;
 }
 
-export type ValidationRules = Record<string, string | string[]>;
-
-export interface FormMeta {
-  touched: boolean;
-  dirty: boolean;
-  valid: boolean;
-  pending: boolean;
-  initialValues: Record<string, any>;
-}
-
-export type UseFormType = (rules?: ValidationRules, options?: ValidatorOptions) => FormContext;
-
 export interface UseFieldOptions<T = any> {
   name: string;
   rules?: ValidationRule | ValidationRule[];
@@ -148,13 +91,50 @@ export interface UseFieldReturn<T = any> {
   errors: CustomError;
   handleBlur: () => void;
   handleChange: (e: Event) => void;
-  meta: MetaField;
+  meta: FieldMeta;
   hasError: ComputedRef<boolean>;
   oneError: ComputedRef<string | null>;
   errorList: ComputedRef<string[]>;
 }
 
-//use Validator
+//composables\useField.ts :
+export interface UseFieldOptions<T = any> {
+  name: string;
+  rules?: ValidationRule | ValidationRule[];
+  options?: ValidatorOptions;
+  initialValue?: T;
+}
+
+export interface UseFieldReturn<T = any> {
+  value: Ref<T>;
+  meta: FieldMeta;
+  validateField: () => Promise<boolean>;
+}
+
+//composables\useForm.ts:
+export interface UseFormOptions {
+  schema?: ValidationRules;
+  options?: ValidatorOptions;
+  initialValues?: Record<string, any>;
+  initialErrors?: Record<string, string>;
+  initialTouched?: Record<string, boolean>;
+  customMessages?: Record<string, any>;
+}
+
+export type UseFormReturn = {
+  values: Record<string, any>;
+  errors: CustomError;
+  rules: ValidationRulesManager;
+  handleSubmit: (
+    onValid: (vals: Record<string, any>) => void,
+    onInvalid?: (errs: Record<string, string>) => void
+  ) => (e?: Event) => Promise<void>;
+  meta: any;
+};
+
+export type UseForm = (options: UseFormOptions) => UseFormReturn;
+
+// composables/useValidator.ts :
 export type AddCustomRule = (
   ruleName: string,
   callback: (value: any) => boolean,
@@ -218,3 +198,39 @@ export interface UseValidatorResult {
 }
 
 export type UseValidator = (options: UseValidatorParams) => UseValidatorResult;
+
+//utils\metaForm.ts :
+export interface FormMeta {
+  touched: ComputedRef<boolean>;
+  dirty: ComputedRef<boolean>;
+  valid: ComputedRef<boolean>;
+  pending: Ref<boolean>;
+  validated: Ref<boolean>;
+  initialValues: Record<string, any>;
+  values: Record<string, any>;
+}
+
+export interface FieldMeta {
+  path: string;
+  touched: Ref<boolean>;
+  dirty: Ref<boolean>;
+  valid: Ref<boolean>;
+  pending: Ref<boolean>;
+  validated: Ref<boolean>;
+  required: boolean;
+}
+
+/*
+export interface MetaField {
+  path: string;
+  touched: ComputedRef<boolean>;
+  dirty: ComputedRef<boolean>;
+  valid: ComputedRef<boolean>;
+  validated: ComputedRef<boolean>;
+  pending: ComputedRef<boolean>;
+  required: boolean;
+  errors: ComputedRef<string[]>;
+  type: 'default' | 'checkbox' | 'radio';
+  multiple: false; // Indique si le champ peut contenir plusieurs valeurs (ex. multiple select, checkbox group, etc.).
+}
+*/

@@ -9,9 +9,6 @@
       :meta="meta"
     />
     <p class="cursor-pointer text-blue-500" @click="clicked">clicked</p>
-    <pre>
-      {{ 10 }}
-    </pre>
   </form>
 </template>
 
@@ -45,7 +42,7 @@ const props = withDefaults(defineProps<FormProps>(), {
 });
 
 // Initialisation du formulaire via useForm
-const { values, errors, touched, handleSubmit, meta, setFieldValue, rules } = useForm({
+const { values, errors,  handleSubmit, meta, setFieldValue ,rules } = useForm({
   schema: props.schema,
   options: props.options,
   initialValues: props.initialValues,
