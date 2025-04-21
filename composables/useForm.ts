@@ -3,7 +3,7 @@ import { provide } from 'vue';
 import type { FormContext, UseForm } from '@/components/ui/form/formType';
 
 export const FormContextKey = Symbol('FormContext');
-export const FormMetaKey = Symbol('FormMeta');
+export const PendingKey = Symbol('pending');
 
 // Modify existing useForm.ts
 export const useForm: UseForm = ({
@@ -74,7 +74,7 @@ export const useForm: UseForm = ({
     asyncValidators,
   };
   provide(FormContextKey, ctx);
-  provide(FormMetaKey, meta.getFormMeta);
+  provide(PendingKey, meta.isPending);
 
   return {
     values,

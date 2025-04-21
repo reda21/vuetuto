@@ -19,6 +19,7 @@ import Button, { type ButtonPassThroughOptions, type ButtonProps } from 'primevu
 import { ref, defineProps } from 'vue';
 import { ptViewMerge } from './utils';
 
+
 interface Props extends /* @vue-ignore */ ButtonProps {}
 defineProps<Props>();
 

@@ -1,5 +1,5 @@
 <template>
-  <BTN unstyled :pt="theme" :severity="severity" :data-b="[variant, size].join(' ')" />
+  <BTN unstyled :pt="theme" :severity="severity" :loading="true" :data-b="[variant, size].join(' ')" />
 </template>
 
 <script lang="ts" setup>
@@ -7,7 +7,7 @@
 import { computed, withDefaults, defineProps, useAttrs } from 'vue';
 // @ts-ignore
 import BTN, { type ButtonPassThroughOptions, type ButtonProps } from 'primevue/button';
-import { ptViewMerge } from '@/components/v/utils';
+import { PendingKey } from "@/composables/useForm"
 
 interface Props extends /* @vue-ignore */ ButtonProps {
   variant?: 'soft' | 'outlined' | 'subtle' | 'ghost' | 'link' | undefined;
@@ -15,7 +15,9 @@ interface Props extends /* @vue-ignore */ ButtonProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | undefined;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  loading: false
+});
 
 const theme = ref<ButtonPassThroughOptions>({
   root: `btn`,
@@ -27,6 +29,20 @@ const theme = ref<ButtonPassThroughOptions>({
     root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`,
   },
 });
+
+const pending = inject<Ref<boolean>>(PendingKey)
+
+const lazy = computed(() =>{
+  console.info("lazy", pending?.value)
+  return  (pending?.value ?? false) || props.loading;
+});
+
+
+
+onMounted(() => {
+  console.info("pending", pending?.value)
+})
+
 </script>
 
 <style></style>
