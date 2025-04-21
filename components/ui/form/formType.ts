@@ -125,6 +125,7 @@ export type UseFormReturn = {
   values: Record<string, any>;
   errors: CustomError;
   rules: ValidationRulesManager;
+  setFieldValue: SetFieldValue;
   handleSubmit: (
     onValid: (vals: Record<string, any>) => void,
     onInvalid?: (errs: Record<string, string>) => void
