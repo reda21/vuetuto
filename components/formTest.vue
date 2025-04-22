@@ -4,7 +4,7 @@
       :schema="schema"
       :initialValues="init"
       @invalid-submit="onInvalidSubmit"
-      v-slot="{ lazy, inputs, meta }"
+      v-slot="{ lazy, inputs }"
       @submit="onSubmit"
     >
       <UiFormControl class="min-h-24" name="username" label="Username">
