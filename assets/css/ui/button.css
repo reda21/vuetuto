@@ -579,10 +579,34 @@
   }
 
   @variant b-raised {
+    @apply shadow-xl;
+  }
+
+  @variant b-rounded-xs {
+    @apply rounded-xs;
+  }
+
+  @variant b-rounded-sm {
+    @apply rounded-sm;
+  }
+
+  @variant b-rounded-md {
     @apply rounded-md;
   }
 
-  @variant b-rounded {
+  @variant b-rounded-lg {
+    @apply rounded-lg;
+  }
+
+  @variant b-rounded-xl {
+    @apply rounded-xl;
+  }
+
+  @variant b-rounded-2xl {
+    @apply rounded-2xl;
+  }
+
+  @variant b-rounded-full {
     @apply rounded-full;
   }
 

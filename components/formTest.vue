@@ -1,25 +1,64 @@
 <template>
   <div>
-    <UiForm :schema="schema" :initialValues="init" @invalid-submit="onInvalidSubmit" v-slot="{ lazy, inputs, meta }"
-      @submit="onSubmit">
+    <UiForm
+      :schema="schema"
+      :initialValues="init"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ lazy, inputs, meta }"
+      @submit="onSubmit"
+    >
       <UiFormControl class="min-h-24" name="username" label="Username">
-        <VInputText name="username" id="username" v-model="inputs.username" placeholder="username" :disabled="lazy"
-          fluid />
+        <VInputText
+          name="username"
+          id="username"
+          v-model="inputs.username"
+          placeholder="username"
+          :disabled="lazy"
+          fluid
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="name" label="name">
-        <VInputText name="name" id="name" v-model="inputs.name" placeholder="name" :disabled="lazy" fluid />
+        <VInputText
+          name="name"
+          id="name"
+          v-model="inputs.name"
+          placeholder="name"
+          :disabled="lazy"
+          fluid
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="email" label="Email">
-        <VInputText type="email" name="email" id="email" v-model="inputs.email" placeholder="email" :disabled="lazy"
-          fluid />
+        <VInputText
+          type="email"
+          name="email"
+          id="email"
+          v-model="inputs.email"
+          placeholder="email"
+          :disabled="lazy"
+          fluid
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password" label="Password">
-        <VInputText type="text" name="password" id="passowrd" v-model="inputs.password" placeholder="password"
-          :disabled="lazy" fluid />
+        <VInputText
+          type="text"
+          name="password"
+          id="passowrd"
+          v-model="inputs.password"
+          placeholder="password"
+          :disabled="lazy"
+          fluid
+        />
       </UiFormControl>
       <UiFormControl class="min-h-24" name="password_confirmation" label="password confirmation">
-        <VInputText type="text" name="password_confirmation" id="password_confirmation"
-          v-model="inputs.password_confirmation" placeholder="password confirmation" :disabled="lazy" fluid />
+        <VInputText
+          type="text"
+          name="password_confirmation"
+          id="password_confirmation"
+          v-model="inputs.password_confirmation"
+          placeholder="password confirmation"
+          :disabled="lazy"
+          fluid
+        />
       </UiFormControl>
       <UiButton icon="pi pi-check" type="submit" label="Submit" :loading="lazy" />
     </UiForm>

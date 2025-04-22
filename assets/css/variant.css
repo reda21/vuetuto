@@ -32,43 +32,43 @@
 
 /* colors */
 @custom-variant b-info {
-  &:where([data-p-severity='info']) {
+  &:where([data-b-severity='info']) {
     @slot;
   }
 }
 
 @custom-variant b-secondary {
-  &:where([data-p-severity='secondary']) {
+  &:where([data-b-severity='secondary']) {
     @slot;
   }
 }
 
 @custom-variant b-success {
-  &:where([data-p-severity='success']) {
+  &:where([data-b-severity='success']) {
     @slot;
   }
 }
 
 @custom-variant b-warn {
-  &:where([data-p-severity='warn']) {
+  &:where([data-b-severity='warn']) {
     @slot;
   }
 }
 
 @custom-variant b-help {
-  &:where([data-p-severity='help']) {
+  &:where([data-b-severity='help']) {
     @slot;
   }
 }
 
 @custom-variant b-danger {
-  &:where([data-p-severity='danger']) {
+  &:where([data-b-severity='danger']) {
     @slot;
   }
 }
 
 @custom-variant b-contrast {
-  &:where([data-p-severity='contrast']) {
+  &:where([data-b-severity='contrast']) {
     @slot;
   }
 }
@@ -113,13 +113,51 @@
 
 /*roundes  */
 @custom-variant b-raised {
-  &:where([data-p~='raised']) {
+  &:where([data-b~='raised']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded {
-  &:where([data-p~='rounded']) {
+@custom-variant b-rounded-xs {
+  &:where([data-b~='rounded-xs']) {
     @slot;
   }
 }
+
+@custom-variant b-rounded-sm {
+  &:where([data-b~='rounded-sm']) {
+    @slot;
+  }
+}
+
+@custom-variant b-rounded-md {
+  &:where([data-b~='rounded-md']) {
+    @slot;
+  }
+}
+
+@custom-variant b-rounded-lg {
+  &:where([data-b~='rounded-lg']) {
+    @slot;
+  }
+}
+
+@custom-variant b-rounded-xl {
+  &:where([data-b~='rounded-xl']) {
+    @slot;
+  }
+}
+
+@custom-variant b-rounded-2xl {
+  &:where([data-b~='rounded-2xl']) {
+    @slot;
+  }
+}
+
+@custom-variant b-rounded-full {
+  &:where([data-b~='rounded-full']) {
+    @slot;
+  }
+}
+
+

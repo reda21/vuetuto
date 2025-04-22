@@ -1,32 +1,80 @@
 <template>
-  <BTN unstyled :pt="theme" :severity="severity" :data-b="[variant, size].join(' ')" />
+  <component
+    :is="componentType"
+    class="btn"
+    v-bind="componentAttrs"
+    @click="onClick" 
+    @change="onChange"
+  >
+    <InputIcon v-if="lazy || icon" :class="lazy ? 'pi pi-spin pi-spinner' : icon" />    
+    <span :class="spanClass" v-if="props.label">{{ props.label }} </span>
+    <slot v-else></slot>
+  </component>
 </template>
 
 <script lang="ts" setup>
 // @ts-ignore
-import { computed, withDefaults, defineProps, useAttrs } from 'vue';
-// @ts-ignore
-import BTN, { type ButtonPassThroughOptions, type ButtonProps } from 'primevue/button';
-import { ptViewMerge } from '@/components/v/utils';
+import { computed, withDefaults, defineProps } from 'vue';
+//@ts-ignore
+import InputIcon from 'primevue/inputicon';
+import type { ButtonProps, ButtonType, ElementType } from '@/types/ui/button';
 
-interface Props extends /* @vue-ignore */ ButtonProps {
-  variant?: 'soft' | 'outlined' | 'subtle' | 'ghost' | 'link' | undefined;
-  severity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | undefined;
-}
+const spanClass = "font-medium p-icon-only:invisible p-icon-only:w-0 p-small:text-sm p-large:text-[1.125rem]"
 
-const props = defineProps<Props>();
-
-const theme = ref<ButtonPassThroughOptions>({
-  root: `btn`,
-  loadingIcon: `animate-spin`,
-  icon: `p-right:order-1 p-bottom:order-2`,
-  label: `font-medium p-icon-only:invisible p-icon-only:w-0
-        p-small:text-sm p-large:text-[1.125rem]`,
-  pcBadge: {
-    root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`,
-  },
+const props = withDefaults(defineProps<ButtonProps>(), {
+  size: 'md',
+  icon: undefined,
+  iconPos: 'left',
+  type: 'button' as ButtonType,
+  lazy: false,
+  disabled: false,
+  as: 'button' as ElementType,
+  href: '#',
+  full: false,
+  bsPrefix: 'btn',
+  active: false,
+  raised: false,
+  onChange: () => {},
+  onClick: () => {},
 });
+
+const componentType = computed(() => props.as);
+
+const dataP = computed(() => {
+  return [
+    props.variant,
+    props.size,
+    props.rounded ? 'rounded-'+props.rounded : undefined,
+    props.raised ? 'raised' : undefined,
+  ]
+    .filter(Boolean)
+    .join(' ');
+});
+
+const componentAttrs = computed(() => {
+  const baseAttrs = {
+    'aria-label': props.ariaLabel || props.label,
+    'data-b': dataP.value,
+    'data-b-severity': props.severity,
+    disabled: props.disabled || props.lazy,
+  };
+
+  if (props.as === 'a') {
+    return { ...baseAttrs, href: props.href, role: 'button' };
+  }
+
+  if (props.as === 'input') {
+    return { ...baseAttrs, type: props.type, value: props.label };
+  }
+
+  return { ...baseAttrs, type: props.type };
+});
+
+const buttonClasses = computed(() => {
+  return 'btn';
+});
+
+
 </script>
 
 <style></style>
