@@ -3,7 +3,7 @@
     <h1 class="mb-4 text-gray-900">Button {{ add }}</h1>
     <div class="card mb-4 flex flex-col items-center gap-4">
       <div class="flex flex-wrap justify-center gap-4">
-        <UiButton icon="pi pi-home" aria-label="Save" />
+        <UiButton z icon="pi pi-home" aria-label="Save" />
         <UiButton label="Profile" icon="pi pi-user" />
         <UiButton label="Save" icon="pi pi-check" iconPos="right" />
       </div>
@@ -23,7 +23,7 @@
       <UiButton label="Contrast" severity="contrast" />
     </div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
-      <UiButton label="primary" raised />
+      <UiButton label="raised" raised />
       <UiButton label="info" severity="info" raised />
       <UiButton label="Secondary" severity="secondary" raised />
       <UiButton label="Success" severity="success" raised />
@@ -33,14 +33,14 @@
       <UiButton label="Contrast" severity="contrast" raised />
     </div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
-      <UiButton label="primary" rounded />
-      <UiButton label="info" severity="info" rounded />
-      <UiButton label="Secondary" severity="secondary" rounded />
-      <UiButton label="Success" severity="success" rounded />
-      <UiButton label="Warn" severity="warn" rounded />
-      <UiButton label="Help" severity="help" rounded />
-      <UiButton label="Danger" severity="danger" rounded />
-      <UiButton label="Contrast" severity="contrast" rounded />
+      <UiButton label="rounded" rounded="xs" />
+      <UiButton label="info" severity="info" rounded="sm" />
+      <UiButton label="Secondary" severity="secondary" rounded="md" />
+      <UiButton label="Success" severity="success" rounded="lg" />
+      <UiButton label="Warn" severity="warn" rounded="lg" />
+      <UiButton label="Help" severity="help" rounded="xl" />
+      <UiButton label="Danger" severity="danger" rounded="2xl" />
+      <UiButton label="Contrast" severity="contrast" rounded="full" />
     </div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">
       <UiButton label="primary" disabled />
