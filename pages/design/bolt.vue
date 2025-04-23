@@ -1,4 +1,3 @@
-import { Variant } from '../../types/ui/button';
 <template>
   <div>
     <div class="card mb-4 flex flex-wrap justify-center gap-4">

@@ -3,7 +3,7 @@
     <h1 class="mb-4 text-gray-900">Button {{ add }}</h1>
     <div class="card mb-4 flex flex-col items-center gap-4">
       <div class="flex flex-wrap justify-center gap-4">
-        <UiButton z icon="pi pi-home" aria-label="Save" />
+        <UiButton icon="pi pi-home" aria-label="Save" />
         <UiButton label="Profile" icon="pi pi-user" />
         <UiButton label="Save" icon="pi pi-check" iconPos="right" />
       </div>
