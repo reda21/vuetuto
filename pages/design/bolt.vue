@@ -8,7 +8,7 @@ import { Variant } from '../../types/ui/button';
       <VButton icon="pi pi-home" aria-label="Save" />
       <VButton size="small" label="primary" raised />
       <VButton label="reaction">Action</VButton>
-      <UiButton lazy aria-label="Save" rounded="lg">Save</UiButton>
+      <UiButton :badge="4" aria-label="Save" rounded="lg">Save</UiButton>
     </div>
   </div>
 </template>

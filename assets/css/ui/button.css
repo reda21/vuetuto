@@ -625,3 +625,206 @@
     }
   }
 }
+
+.btn .badge {
+  @apply bg-surface-50 dark:bg-surface-950 text-primary border-surface-50 h-4 min-w-4 rounded-full border-0 text-xs font-bold;
+
+  @variant b-info {
+    @apply text-info;
+  }
+
+  @variant b-secondary {
+    @apply text-secondary;
+  }
+
+  @variant b-success {
+    @apply text-success;
+  }
+
+  @variant b-warn {
+    @apply text-warning;
+  }
+
+  @variant b-help {
+    @apply text-help;
+  }
+
+  @variant b-danger {
+    @apply text-danger;
+  }
+
+  @variant b-contrast {
+    @apply text-surface-950 dark:text-surface-50;
+  }
+
+  @variant b-outlined {
+    @apply bg-primary text-surface-50 dark:text-surface-950;
+
+    
+
+    @variant b-info {
+      @apply bg-info;
+    }
+
+    @variant b-secondary {
+      @apply bg-secondary;
+    }
+
+    @variant b-success {
+      @apply bg-success;
+    }
+
+    @variant b-warn {
+      @apply bg-warning;
+    }
+
+    @variant b-help {
+      @apply bg-help;
+    }
+
+    @variant b-danger {
+      @apply bg-danger;
+    }
+
+    @variant b-contrast {
+      @apply bg-surface-950 dark:bg-surface-50;
+    }
+  }
+
+  @variant b-ghost {
+    @apply bg-primary text-surface-50 dark:text-surface-950;
+
+    
+
+    @variant b-info {
+      @apply bg-info;
+    }
+
+    @variant b-secondary {
+      @apply bg-secondary;
+    }
+
+    @variant b-success {
+      @apply bg-success;
+    }
+
+    @variant b-warn {
+      @apply bg-warning;
+    }
+
+    @variant b-help {
+      @apply bg-help;
+    }
+
+    @variant b-danger {
+      @apply bg-danger;
+    }
+
+    @variant b-contrast {
+      @apply bg-surface-950 dark:bg-surface-50;
+    }
+  }
+
+  @variant b-link {
+    @apply bg-primary text-surface-50 dark:text-surface-950;
+
+    
+
+    @variant b-info {
+      @apply bg-info;
+    }
+
+    @variant b-secondary {
+      @apply bg-secondary;
+    }
+
+    @variant b-success {
+      @apply bg-success;
+    }
+
+    @variant b-warn {
+      @apply bg-warning;
+    }
+
+    @variant b-help {
+      @apply bg-help;
+    }
+
+    @variant b-danger {
+      @apply bg-danger;
+    }
+
+    @variant b-contrast {
+      @apply bg-surface-950 dark:bg-surface-50;
+    }
+  }
+}
+
+.btn:not(:disabled):hover .badge{
+   @variant b-outlined {
+    @apply text-primary bg-surface-50 dark:bg-surface-950;
+
+    
+
+    @variant b-info {
+      @apply text-info;
+    }
+
+    @variant b-secondary {
+      @apply text-secondary;
+    }
+
+    @variant b-success {
+      @apply text-success;
+    }
+
+    @variant b-warn {
+      @apply text-warning;
+    }
+
+    @variant b-help {
+      @apply text-help;
+    }
+
+    @variant b-danger {
+      @apply text-danger;
+    }
+
+    @variant b-contrast {
+      @apply text-surface-950 dark:text-surface-50;
+    }
+  }
+
+  @variant b-link {
+    @apply bg-primary-hover;
+    
+
+    @variant b-info {
+      @apply bg-info-hover;
+    }
+
+    @variant b-secondary {
+      @apply bg-secondary-hover;
+    }
+
+    @variant b-success {
+      @apply bg-success-hover;
+    }
+
+    @variant b-warn {
+      @apply bg-warning-hover;
+    }
+
+    @variant b-help {
+      @apply bg-help-hover;
+    }
+
+    @variant b-danger {
+      @apply bg-danger-hover;
+    }
+
+    @variant b-contrast {
+      @apply bg-surface-800 dark:bg-surface-200;
+    }
+  }
+}

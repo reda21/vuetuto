@@ -35,6 +35,7 @@ export interface ButtonProps {
   full?: boolean;
   bsPrefix?: string;
   active?: boolean;
+  badge?: number;
   // Propriétés ARIA courantes pour l'accessibilité
   ariaExpanded?: boolean;
   ariaPressed?: boolean;

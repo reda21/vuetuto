@@ -1,13 +1,12 @@
 <template>
-  <component :is="componentType" class="btn" v-bind="componentAttrs" @click="onClick" @dblclick="onDblClick"
+  <component :is="componentType" class="group btn" v-bind="componentAttrs" @click="onClick" @dblclick="onDblClick"
     @mouseenter="onMouseenter" @mouseleave="onMouseleave" @touchstart="onTouchstart" @focus="onFocus" @blur="onBlur"
     @animationend="onAnimationend" @animationstart="onAnimationstart" @transitionend="onTransitionend"
     @mousedown="onMousedown" @mouseup="onMouseup" @keydown="onKeydown" @keyup="onKeyup" @change="onChange">
     <InputIcon v-if="loading || icon" :class="loading ? 'pi pi-spin pi-spinner' : icon" />
     <span :class="spanClass" v-if="props.label">{{ props.label }} </span>
     <slot v-else></slot>
-    <span data-p="circle secondary" class="min-w-4 h-4 bg-primary rounded-full text-white text-xs font-bold"
-      data-pc-name="pcbadge" data-pc-extend="badge" pc0_9="" data-pc-section="root">2</span>
+    <span v-if="badge" :data-b-severity="severity" :data-b="variant" class="badge">{{ badge }}</span>
   </component>
 </template>
 
@@ -110,17 +109,9 @@ const buttonClasses = computed(() => {
   return 'btn';
 });
 
-const pending = inject<Ref<boolean>>(PendingKey)
+const pending = inject<Ref<boolean>>(PendingKey, ref(false))
 
-const loading = computed(() => {
-  console.info("lazy", pending?.value)
-  return (pending?.value ?? false) || props.lazy;
-});
+const loading = computed(() =>  (pending?.value ?? false) || props.lazy);
 
-onMounted(() => {
-  console.info("pending", pending?.value)
-})
 
 </script>
-
-<style></style>
