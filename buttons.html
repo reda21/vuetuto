@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Démo complète des Boutons Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .spinner {
+        border: 2px solid transparent;
+        border-top-color: currentColor;
+        border-radius: 9999px;
+        width: 1rem;
+        height: 1rem;
+        animation: spin 0.5s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="space-y-12 bg-gray-50 p-8">
+    <h1 class="text-3xl font-bold">Démo complète des Boutons Tailwind</h1>
+
+    <!-- Variant : Normal (alias Soft par défaut) -->
+    <section>
+      <h2 class="mb-4 text-2xl font-semibold">Variant : Normal</h2>
+      <div class="flex flex-wrap gap-4">
+        <!-- Secondary -->
+        <button class="rounded bg-gray-500 px-4 py-2 text-white transition hover:bg-gray-600">
+          Secondary
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-gray-500 px-4 py-2 text-white opacity-50"
+        >
+          Secondary
+        </button>
+        <!-- Success -->
+        <button class="rounded bg-green-500 px-4 py-2 text-white transition hover:bg-green-600">
+          Success
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-green-500 px-4 py-2 text-white opacity-50"
+        >
+          Success
+        </button>
+        <!-- Info -->
+        <button class="rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600">
+          Info
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-blue-500 px-4 py-2 text-white opacity-50"
+        >
+          Info
+        </button>
+        <!-- Warn -->
+        <button class="rounded bg-yellow-500 px-4 py-2 text-white transition hover:bg-yellow-600">
+          Warn
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-yellow-500 px-4 py-2 text-white opacity-50"
+        >
+          Warn
+        </button>
+        <!-- Help -->
+        <button class="rounded bg-purple-500 px-4 py-2 text-white transition hover:bg-purple-600">
+          Help
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-purple-500 px-4 py-2 text-white opacity-50"
+        >
+          Help
+        </button>
+        <!-- Danger -->
+        <button class="rounded bg-red-500 px-4 py-2 text-white transition hover:bg-red-600">
+          Danger
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-red-500 px-4 py-2 text-white opacity-50"
+        >
+          Danger
+        </button>
+        <!-- Contrast -->
+        <button class="rounded bg-black px-4 py-2 text-white transition hover:bg-gray-800">
+          Contrast
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-black px-4 py-2 text-white opacity-50"
+        >
+          Contrast
+        </button>
+      </div>
+    </section>
+
+    <!-- Variant : Outlined -->
+    <section>
+      <h2 class="mb-4 text-2xl font-semibold">Variant : Outlined</h2>
+      <div class="flex flex-wrap gap-4">
+        <button
+          class="rounded border border-gray-500 px-4 py-2 text-gray-500 transition hover:bg-gray-50"
+        >
+          Secondary
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-gray-500 px-4 py-2 text-gray-500 opacity-50"
+        >
+          Secondary
+        </button>
+        <button
+          class="rounded border border-green-500 px-4 py-2 text-green-500 transition hover:bg-green-50"
+        >
+          Success
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-green-500 px-4 py-2 text-green-500 opacity-50"
+        >
+          Success
+        </button>
+        <button
+          class="rounded border border-blue-500 px-4 py-2 text-blue-500 transition hover:bg-blue-50"
+        >
+          Info
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-blue-500 px-4 py-2 text-blue-500 opacity-50"
+        >
+          Info
+        </button>
+        <button
+          class="rounded border border-yellow-500 px-4 py-2 text-yellow-500 transition hover:bg-yellow-50"
+        >
+          Warn
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-yellow-500 px-4 py-2 text-yellow-500 opacity-50"
+        >
+          Warn
+        </button>
+        <button
+          class="rounded border border-purple-500 px-4 py-2 text-purple-500 transition hover:bg-purple-50"
+        >
+          Help
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-purple-500 px-4 py-2 text-purple-500 opacity-50"
+        >
+          Help
+        </button>
+        <button
+          class="rounded border border-red-500 px-4 py-2 text-red-500 transition hover:bg-red-50"
+        >
+          Danger
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-red-500 px-4 py-2 text-red-500 opacity-50"
+        >
+          Danger
+        </button>
+        <button
+          class="rounded border border-black px-4 py-2 text-black transition hover:bg-gray-200"
+        >
+          Contrast
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded border border-black px-4 py-2 text-black opacity-50"
+        >
+          Contrast
+        </button>
+      </div>
+    </section>
+
+    <!-- Variant : Subtle -->
+    <section>
+      <h2 class="mb-4 text-2xl font-semibold">Variant : Subtle</h2>
+      <div class="flex flex-wrap gap-4">
+        <button class="rounded bg-gray-100 px-4 py-2 text-gray-700 transition hover:bg-gray-200">
+          Secondary
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-gray-100 px-4 py-2 text-gray-700 opacity-50"
+        >
+          Secondary
+        </button>
+        <button class="rounded bg-green-100 px-4 py-2 text-green-700 transition hover:bg-green-200">
+          Success
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-green-100 px-4 py-2 text-green-700 opacity-50"
+        >
+          Success
+        </button>
+        <button class="rounded bg-blue-100 px-4 py-2 text-blue-700 transition hover:bg-blue-200">
+          Info
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-blue-100 px-4 py-2 text-blue-700 opacity-50"
+        >
+          Info
+        </button>
+        <button
+          class="rounded bg-yellow-100 px-4 py-2 text-yellow-700 transition hover:bg-yellow-200"
+        >
+          Warn
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-yellow-100 px-4 py-2 text-yellow-700 opacity-50"
+        >
+          Warn
+        </button>
+        <button
+          class="rounded bg-purple-100 px-4 py-2 text-purple-700 transition hover:bg-purple-200"
+        >
+          Help
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-purple-100 px-4 py-2 text-purple-700 opacity-50"
+        >
+          Help
+        </button>
+        <button class="rounded bg-red-100 px-4 py-2 text-red-700 transition hover:bg-red-200">
+          Danger
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-red-100 px-4 py-2 text-red-700 opacity-50"
+        >
+          Danger
+        </button>
+        <button class="rounded bg-gray-300 px-4 py-2 text-black transition hover:bg-gray-400">
+          Contrast
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-gray-300 px-4 py-2 text-black opacity-50"
+        >
+          Contrast
+        </button>
+      </div>
+    </section>
+
+    <!-- Variant : Ghost -->
+    <section>
+      <h2 class="mb-4 text-2xl font-semibold">Variant : Ghost</h2>
+      <div class="flex flex-wrap gap-4">
+        <button class="rounded bg-transparent px-4 py-2 text-gray-500 transition hover:bg-gray-100">
+          Secondary
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-gray-500 opacity-50"
+        >
+          Secondary
+        </button>
+        <button
+          class="rounded bg-transparent px-4 py-2 text-green-500 transition hover:bg-green-100"
+        >
+          Success
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-green-500 opacity-50"
+        >
+          Success
+        </button>
+        <button class="rounded bg-transparent px-4 py-2 text-blue-500 transition hover:bg-blue-100">
+          Info
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-blue-500 opacity-50"
+        >
+          Info
+        </button>
+        <button
+          class="rounded bg-transparent px-4 py-2 text-yellow-500 transition hover:bg-yellow-100"
+        >
+          Warn
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-yellow-500 opacity-50"
+        >
+          Warn
+        </button>
+        <button
+          class="rounded bg-transparent px-4 py-2 text-purple-500 transition hover:bg-purple-100"
+        >
+          Help
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-purple-500 opacity-50"
+        >
+          Help
+        </button>
+        <button class="rounded bg-transparent px-4 py-2 text-red-500 transition hover:bg-red-100">
+          Danger
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-red-500 opacity-50"
+        >
+          Danger
+        </button>
+        <button class="rounded bg-transparent px-4 py-2 text-black transition hover:bg-gray-200">
+          Contrast
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-transparent px-4 py-2 text-black opacity-50"
+        >
+          Contrast
+        </button>
+      </div>
+    </section>
+
+    <!-- Variant : Link -->
+    <section>
+      <h2 class="mb-4 text-2xl font-semibold">Variant : Link</h2>
+      <div class="flex flex-wrap gap-4">
+        <button class="px-4 py-2 text-gray-500 underline transition hover:text-gray-700">
+          Secondary
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-gray-500 underline opacity-50">
+          Secondary
+        </button>
+        <button class="px-4 py-2 text-green-500 underline transition hover:text-green-700">
+          Success
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-green-500 underline opacity-50">
+          Success
+        </button>
+        <button class="px-4 py-2 text-blue-500 underline transition hover:text-blue-700">
+          Info
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-blue-500 underline opacity-50">
+          Info
+        </button>
+        <button class="px-4 py-2 text-yellow-500 underline transition hover:text-yellow-700">
+          Warn
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-yellow-500 underline opacity-50">
+          Warn
+        </button>
+        <button class="px-4 py-2 text-purple-500 underline transition hover:text-purple-700">
+          Help
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-purple-500 underline opacity-50">
+          Help
+        </button>
+        <button class="px-4 py-2 text-red-500 underline transition hover:text-red-700">
+          Danger
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-red-500 underline opacity-50">
+          Danger
+        </button>
+        <button class="px-4 py-2 text-black underline transition hover:text-gray-700">
+          Contrast
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-black underline opacity-50">
+          Contrast
+        </button>
+      </div>
+    </section>
+  </body>
+</html>
