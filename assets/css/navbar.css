@@ -23,7 +23,7 @@
 }
 
 .submenu .submenu-link {
-  @apply hover:text-accent block px-3 py-2 text-base font-medium text-font;
+  @apply hover:text-accent text-font block px-3 py-2 text-base font-medium;
 }
 
 .submenu .submenu-link.active {

@@ -21,6 +21,8 @@
 /*ui composent */
 @import './ui/button.css';
 
+@import './ui/badge.css';
+
 @import './ui/buttonGroup.css';
 
 @import './ui/icon.css';
