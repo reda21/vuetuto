@@ -15,7 +15,7 @@ export type Severity =
 
 export type SizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
-type RoundedType =  'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+type RoundedType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
 
 export interface ButtonProps {
   variant?: Variant;

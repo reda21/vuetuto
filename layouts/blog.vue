@@ -221,7 +221,14 @@
 </template>
 
 <script lang="ts" setup>
+//@ts-ignore
 import { ref, onMounted, onUnmounted } from 'vue';
+
+useHead({
+  bodyAttrs: {
+    class: 'min-h-screen bg-theme transition-colors duration-300', // Ajoute la classe au body
+  },
+});
 
 const backToTopButton = ref<HTMLButtonElement | null>(null);
 

@@ -7,7 +7,7 @@
 */
 
 .btn {
-  @apply bg-primary text-surface-50 border-primary relative inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden border px-2.5 py-1.5 text-sm transition-colors duration-200 select-none;
+  @apply bg-primary text-inverse border-primary relative inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden border px-2.5 py-1.5 text-sm transition-colors duration-200 select-none;
 
   @variant enabled {
     @variant hover {
@@ -25,11 +25,7 @@
 
   @variant disabled {
     @apply pointer-events-none opacity-60;
-  }
-
-  @variant dark {
-    @apply text-surface-950;
-  }
+  }  
 
   /* colors */
   @variant b-info {
@@ -57,11 +53,7 @@
   }
 
   @variant b-contrast {
-    @apply bg-surface-950 dark:bg-surface-50 border-surface-950 enabled:hover:bg-surface-800 enabled:hover:border-surface-800 enabled:active:bg-surface-800 enabled:active:border-surface-800;
-
-    @variant dark {
-      @apply bg-surface-50 dark:border-surface-50 enabled:hover:bg-surface-200 enabled:hover:border-surface-200 enabled:active:bg-surface-200 enabled:active:border-surface-200;
-    }
+    @apply bg-contrast border-contrast enabled:hover:bg-contrast-hover enabled:hover:border-contrast-hover enabled:active:bg-contrast-hover enabled:active:border-contrast-hover;
   }
 
   @variant b-outlined {
@@ -69,7 +61,7 @@
 
     @variant enabled {
       @variant hover {
-        @apply bg-primary border-primary text-surface-50 dark:text-surface-800;
+        @apply bg-primary border-primary text-inverse;
       }
 
       @variant active {
@@ -79,6 +71,10 @@
 
     @variant b-info {
       @apply text-info enabled:hover:bg-info enabled:hover:border-info enabled:active:bg-info enabled:active:border-info;
+    }
+
+    @variant b-secondary  {
+      @apply text-secondary enabled:hover:bg-secondary enabled:hover:border-secondary enabled:active:bg-secondary enabled:active:border-secondary;
     }
 
     @variant b-success {
@@ -98,11 +94,7 @@
     }
 
     @variant b-contrast {
-      @apply text-surface-950 enabled:hover:bg-surface-950 enabled:hover:border-surface-950 enabled:active:bg-surface-950 enabled:active:border-surface-950;
-
-      @variant dark {
-        @apply text-surface-50 enabled:hover:bg-surface-50 enabled:hover:border-surface-50 enabled:active:bg-surface-50 enabled:active:border-surface-50;
-      }
+      @apply text-contrast enabled:hover:bg-contrast enabled:hover:border-contrast enabled:active:bg-contrast enabled:active:border-contrast;     
     }
   }
 
@@ -204,15 +196,15 @@
     }
 
     @variant b-contrast {
-      @apply text-surface-950 dark:text-surface-50 bg-surface-950/30 dark:bg-surface-50/30;
+      @apply text-contrast bg-contrast/30;
 
       @variant enabled {
         @variant hover {
-          @apply bg-surface-800/40 dark:bg-surface-200/40;
+          @apply bg-contrast-hover/40;
         }
 
         @variant active {
-          @apply bg-surface-800/40 dark:bg-surface-200/40;
+          @apply bg-contrast-hover/40;
         }
       }
     }
@@ -316,15 +308,15 @@
     }
 
     @variant b-contrast {
-      @apply text-surface-950 dark:text-surface-50 bg-surface-950/30 dark:bg-surface-50/30 border-surface-950 dark:border-surface-50;
+      @apply text-contrast bg-contrast/30 border-contrast;
 
       @variant enabled {
         @variant hover {
-          @apply bg-surface-800/40 dark:bg-surface-200/40 border-surface-800 dark:border-surface-200;
+          @apply bg-contrast-hover/40 border-contrast-hover;
         }
 
         @variant active {
-          @apply bg-surface-800/40 dark:bg-surface-200/40 border-surface-800 dark:border-surface-200;
+          @apply bg-contrast-hover/40 border-contrast-hover;
         }
       }
     }
@@ -428,15 +420,15 @@
     }
 
     @variant b-contrast {
-      @apply text-surface-950 dark:text-surface-50;
+      @apply text-contrast;
 
       @variant enabled {
         @variant hover {
-          @apply bg-surface-800/15 dark:bg-surface-200/15;
+          @apply bg-contrast-hover/15;
         }
 
         @variant active {
-          @apply bg-surface-800/15 dark:bg-surface-200/15;
+          @apply bg-contrast-hover/15;
         }
       }
     }
@@ -540,15 +532,15 @@
     }
 
     @variant b-contrast {
-      @apply text-surface-950 dark:text-surface-50;
+      @apply text-contrast;
 
       @variant enabled {
         @variant hover {
-          @apply text-surface-800 dark:text-surface-200;
+          @apply text-contrast-hover;
         }
 
         @variant active {
-          @apply text-surface-800 dark:text-surface-200;
+          @apply text-contrast-hover;
         }
       }
     }
@@ -627,7 +619,7 @@
 }
 
 .btn .badge {
-  @apply bg-surface-50 dark:bg-surface-950 text-primary border-surface-50 h-4 min-w-4 rounded-full border-0 text-xs font-bold;
+  @apply bg-surface-50 dark:bg-surface-950 text-primary h-4 min-w-4 rounded-full border-0 text-xs font-bold;
 
   @variant b-info {
     @apply text-info;
@@ -660,8 +652,6 @@
   @variant b-outlined {
     @apply bg-primary text-surface-50 dark:text-surface-950;
 
-    
-
     @variant b-info {
       @apply bg-info;
     }
@@ -687,14 +677,12 @@
     }
 
     @variant b-contrast {
-      @apply bg-surface-950 dark:bg-surface-50;
+      @apply bg-contrast;
     }
   }
 
   @variant b-ghost {
-    @apply bg-primary text-surface-50 dark:text-surface-950;
-
-    
+    @apply bg-primary text-contrast;
 
     @variant b-info {
       @apply bg-info;
@@ -721,14 +709,12 @@
     }
 
     @variant b-contrast {
-      @apply bg-surface-950 dark:bg-surface-50;
+      @apply bg-contrast;
     }
   }
 
   @variant b-link {
-    @apply bg-primary text-surface-50 dark:text-surface-950;
-
-    
+    @apply bg-primary text-contrast;
 
     @variant b-info {
       @apply bg-info;
@@ -755,16 +741,14 @@
     }
 
     @variant b-contrast {
-      @apply bg-surface-950 dark:bg-surface-50;
+      @apply bg-contrast;
     }
   }
 }
 
-.btn:not(:disabled):hover .badge{
-   @variant b-outlined {
-    @apply text-primary bg-surface-50 dark:bg-surface-950;
-
-    
+.btn:not(:disabled):hover .badge {
+  @variant b-outlined {
+    @apply text-primary bg-contrast;
 
     @variant b-info {
       @apply text-info;
@@ -791,13 +775,12 @@
     }
 
     @variant b-contrast {
-      @apply text-surface-950 dark:text-surface-50;
+      @apply text-contrast;
     }
   }
 
   @variant b-link {
     @apply bg-primary-hover;
-    
 
     @variant b-info {
       @apply bg-info-hover;

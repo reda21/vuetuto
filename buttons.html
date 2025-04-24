@@ -1,4 +1,5 @@
 <!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -27,6 +28,16 @@
     <section>
       <h2 class="mb-4 text-2xl font-semibold">Variant : Normal</h2>
       <div class="flex flex-wrap gap-4">
+        <!-- Primary -->
+        <button class="rounded bg-blue-700 px-4 py-2 text-white transition hover:bg-blue-800">
+          Primary
+        </button>
+        <button
+          disabled
+          class="cursor-not-allowed rounded bg-blue-700 px-4 py-2 text-white opacity-50"
+        >
+          Primary
+        </button>
         <!-- Secondary -->
         <button class="rounded bg-gray-500 px-4 py-2 text-white transition hover:bg-gray-600">
           Secondary
@@ -350,13 +361,21 @@
         <button disabled class="cursor-not-allowed px-4 py-2 text-green-500 underline opacity-50">
           Success
         </button>
-        <button class="px-4 py-2 text-blue-500 underline transition hover:text-blue-700">
+        <button class="button class="rounded bg-blue-700 px-4 py-2 text-white font-semibold transition hover:bg-blue-800">
+          Primary
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-blue-500 underline opacity-50">
           Info
         </button>
         <button disabled class="cursor-not-allowed px-4 py-2 text-blue-500 underline opacity-50">
           Info
         </button>
-        <button class="px-4 py-2 text-yellow-500 underline transition hover:text-yellow-700">
+        <button
+          class="rounded border border-blue-700 px-4 py-2 text-blue-700 font-semibold transition hover:bg-blue-100"
+        >
+          Primary
+        </button>
+        <button disabled class="cursor-not-allowed px-4 py-2 text-yellow-500 underline opacity-50">
           Warn
         </button>
         <button disabled class="cursor-not-allowed px-4 py-2 text-yellow-500 underline opacity-50">

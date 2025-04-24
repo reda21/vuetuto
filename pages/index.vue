@@ -5,8 +5,7 @@
       <CardTuto categorie="js" />
       <CardTuto categorie="css" />
     </div>
-    <VButton label="Hello World" />
-    <VInputText v-model="value" />
+    <UiButton label="Hello World" />
   </div>
 </template>
 
@@ -14,6 +13,4 @@
 definePageMeta({
   layout: 'default', // correspond au fichier layouts/blog.vue
 });
-
-const value = ref('');
 </script>

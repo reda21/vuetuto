@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-light dark:bg-dark">
+  <nav class="bg-theme">
     <div class="container mx-auto px-4">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center space-x-8">

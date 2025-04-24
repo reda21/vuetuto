@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 useHead({
   bodyAttrs: {
-    class: 'min-h-screen bg-light dark:bg-dark transition-colors duration-300', // Ajoute la classe au body
+    class: 'min-h-screen bg-theme transition-colors duration-300', // Ajoute la classe au body
   },
 });
 </script>

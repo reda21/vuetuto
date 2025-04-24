@@ -1,12 +1,30 @@
 <template>
-  <component :is="componentType" class="group btn" v-bind="componentAttrs" @click="onClick" @dblclick="onDblClick"
-    @mouseenter="onMouseenter" @mouseleave="onMouseleave" @touchstart="onTouchstart" @focus="onFocus" @blur="onBlur"
-    @animationend="onAnimationend" @animationstart="onAnimationstart" @transitionend="onTransitionend"
-    @mousedown="onMousedown" @mouseup="onMouseup" @keydown="onKeydown" @keyup="onKeyup" @change="onChange">
+  <component
+    :is="componentType"
+    class="group btn"
+    v-bind="componentAttrs"
+    @click="onClick"
+    @dblclick="onDblClick"
+    @mouseenter="onMouseenter"
+    @mouseleave="onMouseleave"
+    @touchstart="onTouchstart"
+    @focus="onFocus"
+    @blur="onBlur"
+    @animationend="onAnimationend"
+    @animationstart="onAnimationstart"
+    @transitionend="onTransitionend"
+    @mousedown="onMousedown"
+    @mouseup="onMouseup"
+    @keydown="onKeydown"
+    @keyup="onKeyup"
+    @change="onChange"
+  >
     <InputIcon v-if="loading || icon" :class="loading ? 'pi pi-spin pi-spinner' : icon" />
     <span :class="spanClass" v-if="props.label">{{ props.label }} </span>
     <slot v-else></slot>
-    <span v-if="badge" :data-b-severity="severity" :data-b="variant" class="badge">{{ badge }}</span>
+    <span v-if="badge" :data-b-severity="severity" :data-b="variant" class="badge">{{
+      badge
+    }}</span>
   </component>
 </template>
 
@@ -16,9 +34,10 @@ import { computed, withDefaults, defineProps } from 'vue';
 //@ts-ignore
 import InputIcon from 'primevue/inputicon';
 import type { ButtonProps, ButtonType, ElementType } from '@/types/ui/button';
-import { PendingKey } from "@/composables/useForm"
+import { PendingKey } from '@/composables/useForm';
 
-const spanClass = "font-medium p-icon-only:invisible p-icon-only:w-0 p-small:text-sm p-large:text-[1.125rem]"
+const spanClass =
+  'font-medium p-icon-only:invisible p-icon-only:w-0 p-small:text-sm p-large:text-[1.125rem]';
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   size: 'md',
@@ -33,6 +52,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   bsPrefix: 'btn',
   active: false,
   raised: false,
+  badge: 5,
   onClick: () => {},
   onDblClick: () => {},
   onMouseenter: () => {},
@@ -47,7 +67,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   onMouseup: () => {},
   onKeydown: () => {},
   onKeyup: () => {},
-  onChange: () => {}
+  onChange: () => {},
 });
 
 const componentType = computed(() => props.as);
@@ -56,7 +76,7 @@ const dataP = computed(() => {
   return [
     props.variant,
     props.size,
-    props.rounded ? 'rounded-'+props.rounded : undefined,
+    props.rounded ? 'rounded-' + props.rounded : undefined,
     props.raised ? 'raised' : undefined,
   ]
     .filter(Boolean)
@@ -84,12 +104,13 @@ const componentAttrs = computed(() => {
     'ariaRelevant',
     'ariaDisabled',
     'ariaHidden',
-    'ariaLabelledby'
+    'ariaLabelledby',
   ];
-  ariaProps.forEach(key => {
+  ariaProps.forEach((key) => {
     if (key in props && props[key as keyof typeof props] !== undefined) {
       // Conversion camelCase -> kebab-case pour les attributs HTML
-      const htmlKey = 'aria-' + key.replace(/^aria/, '').replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+      const htmlKey =
+        'aria-' + key.replace(/^aria/, '').replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
       (baseAttrs as Record<string, any>)[htmlKey] = props[key as keyof typeof props];
     }
   });
@@ -109,9 +130,7 @@ const buttonClasses = computed(() => {
   return 'btn';
 });
 
-const pending = inject<Ref<boolean>>(PendingKey, ref(false))
+const pending = inject<Ref<boolean>>(PendingKey, ref(false));
 
-const loading = computed(() =>  (pending?.value ?? false) || props.lazy);
-
-
+const loading = computed(() => (pending?.value ?? false) || props.lazy);
 </script>
