@@ -117,7 +117,7 @@ const pending = inject<Ref<boolean>>(PendingKey, ref(false));
 const loading = computed(() => (pending?.value ?? false) || props.lazy);
 
 const badgeVariant = computed((): "outlined" | "ghost" | "link" | undefined => {
-if(!props.variant) return undefined;
+  if (!props.variant) return "outlined";
 
 if (props.variant === "ghost" || props.variant === "link") {
     return props.variant;

@@ -2,7 +2,7 @@
     @apply bg-primary text-contrast inline-flex items-center justify-center rounded-md py-0 px-2 text-xs font-bold min-w-5 h-5 
     p-empty:min-w-2 p-empty:h-2 p-empty:rounded-full p-empty:p-0 p-circle:p-0 p-circle:rounded-full bg-primary text-inverse
     p-secondary:bg-secondary p-info:bg-info p-success:bg-success p-warn:bg-warning p-danger:bg-danger p-help:bg-help p-contrast:bg-contrast
-     p-outlined:text-primary p-outlined:bg-inverse
+    p-outlined:text-primary p-outlined:bg-inverse
     p-outlined:p-secondary:text-secondary p-outlined:p-info:text-info p-outlined:p-success:text-success p-outlined:p-warn:text-warning p-outlined:p-danger:text-danger
     p-outlined:p-help:text-help p-outlined:p-help:bg-inverse p-outlined:p-contrast:text-contrast;
 }
