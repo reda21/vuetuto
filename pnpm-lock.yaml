@@ -39,7 +39,7 @@ dependencies:
     specifier: ^0.5.16
     version: 0.5.16(tailwindcss@4.1.4)
   '@tailwindcss/vite':
-    specifier: ^4.0.7
+    specifier: ^4.1.4
     version: 4.1.4(vite@6.1.0)
   '@types/node':
     specifier: ^22.14.1
@@ -53,6 +53,9 @@ dependencies:
   '@vueuse/nuxt':
     specifier: ^12.7.0
     version: 12.8.2(nuxt@3.16.2)(typescript@5.8.3)
+  daisyui:
+    specifier: ^5.0.28
+    version: 5.0.28
   dotenv:
     specifier: ^16.4.7
     version: 16.5.0
@@ -99,7 +102,7 @@ dependencies:
     specifier: ^3.2.0
     version: 3.2.0
   tailwindcss:
-    specifier: ^4.1.3
+    specifier: ^4.1.4
     version: 4.1.4
   tailwindcss-primeui:
     specifier: ^0.6.1
@@ -5095,6 +5098,10 @@ packages:
 
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
+  /daisyui@5.0.28:
+    resolution: {integrity: sha512-H082p8Lg3c7Se9wTbjfSOOhfUbp3BnOM2+cdr3OeY5G1Ll7GYLXB9NWLHgitkTsB1pQKwHRYYchqN2YG0VVShg==}
+    dev: false
 
   /dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
