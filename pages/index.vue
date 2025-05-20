@@ -5,12 +5,11 @@
       <CardTuto categorie="js" />
       <CardTuto categorie="css" />
     </div>
-    <UiButton label="Hello World" />
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default', // correspond au fichier layouts/blog.vue
+  layout: 'tester', // correspond au fichier layouts/blog.vue
 });
 </script>
