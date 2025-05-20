@@ -2,6 +2,9 @@
 @import 'tailwindcss-primeui';
 @import 'primeicons/primeicons.css';
 
+@plugin "daisyui";
+
+
 @plugin "@tailwindcss/typography";
 
 @import './utility.css';
@@ -18,8 +21,10 @@
 /* navbar */
 @import './navbar.css';
 
-/*ui composent */
-@import './ui/button.css';
+/*ui composent @import './ui/button.css'; */
+
+
+@import './ui/badge.css';
 
 @import './ui/buttonGroup.css';
 

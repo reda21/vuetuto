@@ -103,7 +103,7 @@
             <div class="text-xm mb-4 font-semibold">Pick a password</div>
           </template>
           <template #footer>
-            <Divider />
+            <VDivider />
             <ul class="my-0 pl-2 leading-normal">
               <li>At least one lowercase</li>
               <li>At least one uppercase</li>

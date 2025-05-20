@@ -1,22 +1,22 @@
-@custom-variant b-soft {
+@custom-variant p-soft {
   &:where([data-b~='soft']) {
     @slot;
   }
 }
 
-@custom-variant b-subtle {
+@custom-variant p-subtle {
   &:where([data-b~='subtle']) {
     @slot;
   }
 }
 
-@custom-variant b-ghost {
+@custom-variant p-ghost {
   &:where([data-b~='ghost']) {
     @slot;
   }
 }
 
-@custom-variant b-link {
+@custom-variant p-link {
   &:where([data-b~='link']) {
     @slot;
   }
@@ -24,138 +24,138 @@
 
 /* variant */
 
-@custom-variant b-outlined {
+@custom-variant p-outlined {
   &:where([data-b~='outlined']) {
     @slot;
   }
 }
 
 /* colors */
-@custom-variant b-info {
-  &:where([data-b-severity='info']) {
+@custom-variant p-info {
+  &:where([data-p~='info']) {
     @slot;
   }
 }
 
-@custom-variant b-secondary {
-  &:where([data-b-severity='secondary']) {
+@custom-variant p-secondary {
+  &:where([data-p~='secondary']) {
     @slot;
   }
 }
 
-@custom-variant b-success {
-  &:where([data-b-severity='success']) {
+@custom-variant p-success {
+  &:where([data-p~='success']) {
     @slot;
   }
 }
 
-@custom-variant b-warn {
-  &:where([data-b-severity='warn']) {
+@custom-variant p-warn {
+  &:where([data-p~='warn']) {
     @slot;
   }
 }
 
-@custom-variant b-help {
-  &:where([data-b-severity='help']) {
+@custom-variant p-help {
+  &:where([data-p~='help']) {
     @slot;
   }
 }
 
-@custom-variant b-danger {
-  &:where([data-b-severity='danger']) {
+@custom-variant p-danger {
+  &:where([data-p~='danger']) {
     @slot;
   }
 }
 
-@custom-variant b-contrast {
-  &:where([data-b-severity='contrast']) {
+@custom-variant p-contrast {
+  &:where([data-p~='contrast']) {
     @slot;
   }
 }
 
 /* size */
 
-@custom-variant b-xs {
-  &:where([data-b~='xs']) {
+@custom-variant p-xs {
+  &:where([data-p~='xs']) {
     @slot;
   }
 }
 
-@custom-variant b-sm {
-  &:where([data-b~='sm']) {
+@custom-variant p-sm {
+  &:where([data-p~='sm']) {
     @slot;
   }
 }
 
-@custom-variant b-md {
-  &:where([data-b~='md']) {
+@custom-variant p-md {
+  &:where([data-p~='md']) {
     @slot;
   }
 }
 
-@custom-variant b-lg {
-  &:where([data-b~='lg']) {
+@custom-variant p-lg {
+  &:where([data-p~='lg']) {
     @slot;
   }
 }
 
-@custom-variant b-xl {
-  &:where([data-b~='xl']) {
+@custom-variant p-xl {
+  &:where([data-p~='xl']) {
     @slot;
   }
 }
 
-@custom-variant b-2xl {
-  &:where([data-b~='2xl']) {
+@custom-variant p-2xl {
+  &:where([data-p~='2xl']) {
     @slot;
   }
 }
 
 /*roundes  */
-@custom-variant b-raised {
-  &:where([data-b~='raised']) {
+@custom-variant p-raised {
+  &:where([data-p~='raised']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-xs {
-  &:where([data-b~='rounded-xs']) {
+@custom-variant p-rounded-xs {
+  &:where([data-p~='rounded-xs']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-sm {
-  &:where([data-b~='rounded-sm']) {
+@custom-variant p-rounded-sm {
+  &:where([data-p~='rounded-sm']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-md {
-  &:where([data-b~='rounded-md']) {
+@custom-variant p-rounded-md {
+  &:where([data-p~='rounded-md']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-lg {
-  &:where([data-b~='rounded-lg']) {
+@custom-variant p-rounded-lg {
+  &:where([data-p~='rounded-lg']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-xl {
-  &:where([data-b~='rounded-xl']) {
+@custom-variant p-rounded-xl {
+  &:where([data-p~='rounded-xl']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-2xl {
-  &:where([data-b~='rounded-2xl']) {
+@custom-variant p-rounded-2xl {
+  &:where([data-p~='rounded-2xl']) {
     @slot;
   }
 }
 
-@custom-variant b-rounded-full {
-  &:where([data-b~='rounded-full']) {
+@custom-variant p-rounded-full {
+  &:where([data-p~='rounded-full']) {
     @slot;
   }
 }

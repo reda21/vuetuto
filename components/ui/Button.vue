@@ -1,30 +1,12 @@
 <template>
-  <component
-    :is="componentType"
-    class="group btn"
-    v-bind="componentAttrs"
-    @click="onClick"
-    @dblclick="onDblClick"
-    @mouseenter="onMouseenter"
-    @mouseleave="onMouseleave"
-    @touchstart="onTouchstart"
-    @focus="onFocus"
-    @blur="onBlur"
-    @animationend="onAnimationend"
-    @animationstart="onAnimationstart"
-    @transitionend="onTransitionend"
-    @mousedown="onMousedown"
-    @mouseup="onMouseup"
-    @keydown="onKeydown"
-    @keyup="onKeyup"
-    @change="onChange"
-  >
+  <component :is="componentType" class="group btn" v-bind="componentAttrs" @click="onClick" @dblclick="onDblClick"
+    @mouseenter="onMouseenter" @mouseleave="onMouseleave" @touchstart="onTouchstart" @focus="onFocus" @blur="onBlur"
+    @animationend="onAnimationend" @animationstart="onAnimationstart" @transitionend="onTransitionend"
+    @mousedown="onMousedown" @mouseup="onMouseup" @keydown="onKeydown" @keyup="onKeyup" @change="onChange">
     <InputIcon v-if="loading || icon" :class="loading ? 'pi pi-spin pi-spinner' : icon" />
     <span :class="spanClass" v-if="props.label">{{ props.label }} </span>
     <slot v-else></slot>
-    <span v-if="badge" :data-b-severity="severity" :data-b="variant" class="badge">{{
-      badge
-    }}</span>
+    <VBadge v-if="badge" :value="badge" :severity="severity" :variant="badgeVariant" />
   </component>
 </template>
 
@@ -74,10 +56,10 @@ const componentType = computed(() => props.as);
 
 const dataP = computed(() => {
   return [
-    props.variant,
     props.size,
     props.rounded ? 'rounded-' + props.rounded : undefined,
     props.raised ? 'raised' : undefined,
+    props.severity,
   ]
     .filter(Boolean)
     .join(' ');
@@ -86,8 +68,8 @@ const dataP = computed(() => {
 const componentAttrs = computed(() => {
   const baseAttrs = {
     'aria-label': props.ariaLabel || props.label,
-    'data-b': dataP.value,
-    'data-b-severity': props.severity,
+    'data-p': dataP.value,
+    'data-b': props.variant,
     disabled: props.disabled || loading.value,
   };
 
@@ -133,4 +115,13 @@ const buttonClasses = computed(() => {
 const pending = inject<Ref<boolean>>(PendingKey, ref(false));
 
 const loading = computed(() => (pending?.value ?? false) || props.lazy);
+
+const badgeVariant = computed((): "outlined" | "ghost" | "link" | undefined => {
+  if (!props.variant) return "outlined";
+
+if (props.variant === "ghost" || props.variant === "link") {
+    return props.variant;
+  }
+  return props.variant === "outlined" ? undefined : "outlined";
+});
 </script>

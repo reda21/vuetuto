@@ -1,0 +1,28 @@
+.badge{
+    @apply bg-primary text-contrast inline-flex items-center justify-center rounded-md py-0 px-2 text-xs font-bold min-w-5 h-5 
+    p-empty:min-w-2 p-empty:h-2 p-empty:rounded-full p-empty:p-0 p-circle:p-0 p-circle:rounded-full bg-primary text-inverse
+    p-secondary:bg-secondary p-info:bg-info p-success:bg-success p-warn:bg-warning p-danger:bg-danger p-help:bg-help p-contrast:bg-contrast
+    p-outlined:text-primary p-outlined:bg-inverse
+    p-outlined:p-secondary:text-secondary p-outlined:p-info:text-info p-outlined:p-success:text-success p-outlined:p-warn:text-warning p-outlined:p-danger:text-danger
+    p-outlined:p-help:text-help p-outlined:p-help:bg-inverse p-outlined:p-contrast:text-contrast;
+}
+
+.btn:not(:disabled):hover .badge{
+    @apply bg-inverse text-primary p-contrast:text-contrast p-danger:text-danger p-secondary:text-secondary p-warn:text-warning p-contrast:text-contrast p-help:text-help;
+}
+/*
+
+        
+       
+        
+        p-secondary:bg-surface-100 dark:p-secondary:bg-surface-800 p-secondary:text-surface-600 dark:p-secondary:text-surface-300
+        p-success:bg-green-500 dark:p-success:bg-green-400 p-success:text-white dark:p-success:text-green-950
+        p-info:bg-sky-500 dark:p-info:bg-sky-400 p-info:text-white dark:p-info:text-sky-950
+        p-warn:bg-orange-500 dark:p-warn:bg-orange-400 p-warn:text-white dark:p-warn:text-orange-950
+        p-danger:bg-red-500 dark:p-danger:bg-red-400 p-danger:text-white dark:p-danger:text-red-950
+        p-contrast:bg-surface-950 dark:p-contrast:bg-white p-contrast:text-white dark:p-contrast:text-surface-950
+        p-small:text-[0.625rem] p-small:min-w-5 p-small:h-5
+        p-large:text-sm p-large:min-w-7 p-large:h-7
+        p-xlarge:text-base p-xlarge:min-w-8 p-xlarge:h-8
+*/
+

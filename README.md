@@ -1,4 +1,4 @@
-# Nuxt Minimal Starter https://huggingface.co/spaces/enzostvs/deepsite
+# Nuxt Minimal Starter https://huggingface.co/spaces/enzostvs/deepsite https://www.yourware.so/editor/183f3c90-3f87-4107-b813-3c0c548b9b5f
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
